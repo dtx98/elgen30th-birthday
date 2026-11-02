@@ -1,160 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy 30th Birthday, Elgen!</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
-            color: #444;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .card {
-            background: white;
-            width: 100%;
-            max-width: 550px;
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.15);
-            text-align: center;
-        }
-        .hidden { display: none !important; }
-        .lock-icon { font-size: 48px; margin-bottom: 15px; }
-        h1 { font-size: 26px; color: #1f2937; margin-bottom: 10px; font-weight: 700; }
-        p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
-        input {
-            width: 100%;
-            padding: 14px;
-            font-size: 24px;
-            text-align: center;
-            letter-spacing: 8px;
-            border: 2px solid #fecdd3;
-            border-radius: 12px;
-            outline: none;
-            margin-bottom: 20px;
-            transition: border-color 0.2s;
-        }
-        input:focus { border-color: #f43f5e; }
-        button {
-            width: 100%;
-            background: #f43f5e;
-            color: white;
-            border: none;
-            padding: 14px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
-        }
-        button:hover { background: #e11d48; }
-        button:active { transform: scale(0.98); }
-        .error { color: #ef4444; font-size: 13px; margin-top: 15px; }
-        
-        /* Main Content Styles */
-        .content-header { margin-bottom: 30px; text-align: center; }
-        .badge {
-            background: #ffe4e6;
-            color: #e11d48;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-        .timeline-box {
-            background: #fff1f2;
-            border-left: 4px solid #f43f5e;
-            padding: 16px;
-            border-radius: 0 12px 12px 0;
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        .timeline-box h3 { font-size: 15px; color: #9f1239; margin-bottom: 6px; font-weight: 600; }
-        .timeline-box p { font-size: 13px; color: #4b5563; margin-bottom: 0; text-align: left; }
-        .letter-box {
-            background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
-            color: white;
-            padding: 24px;
-            border-radius: 16px;
-            margin-top: 25px;
-            text-align: left;
-            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.25);
-        }
-        .letter-box h3 { font-size: 17px; margin-bottom: 10px; font-weight: 700; }
-        .letter-box p { font-size: 13px; color: white; opacity: 0.95; line-height: 1.7; margin-bottom: 0; text-align: left; }
-        .footer-note { font-size: 11px; color: #9ca3af; margin-top: 20px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 30th Birthday, Elgen!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            color: #444;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.15);
+            text-align: center;
+        }
+        .hidden { display: none !important; }
+        .lock-icon { font-size: 48px; margin-bottom: 15px; }
+        h1 { font-size: 26px; color: #1f2937; margin-bottom: 10px; font-weight: 700; }
+        p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
+        input {
+            width: 100%;
+            padding: 14px;
+            font-size: 24px;
+            text-align: center;
+            letter-spacing: 8px;
+            border: 2px solid #fecdd3;
+            border-radius: 12px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        input:focus { border-color: #f43f5e; }
+        button-pass, .btn-primary {
+            width: 100%;
+            background: #f43f5e;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+        }
+        button-pass:hover { background: #e11d48; }
+        .error { color: #ef4444; font-size: 13px; margin-top: 15px; }
+        
+        /* Quiz Styles */
+        .quiz-container { text-align: left; }
+        .chapter-title { font-size: 12px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .quiz-question { font-size: 22px; color: #1f2937; font-weight: 700; margin-bottom: 6px; text-align: left; }
+        .quiz-instruction { font-size: 13px; color: #9ca3af; margin-bottom: 20px; text-align: left; }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .option-btn {
+            background: #ffffff;
+            border: 2px solid #fecdd3;
+            padding: 16px 20px;
+            border-radius: 16px;
+            font-size: 15px;
+            color: #4b5563;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        .option-btn:hover { border-color: #f43f5e; background: #fff1f2; }
+        .option-btn.selected {
+            border-color: #10b981;
+            background: #ecfdf5;
+            color: #065f46;
+        }
+        .option-badge {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #fee2e2;
+            color: #f43f5e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .option-btn.selected .option-badge {
+            background: #10b981;
+            color: white;
+        }
+        
+        .success-box {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            text-align: left;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .success-box h3 { color: #065f46; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .success-box p { color: #047857; font-size: 14px; margin-bottom: 0; text-align: left; }
+        .footer-note { font-size: 11px; color: #9ca3af; margin-top: 20px; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
 <body>
 
-    <!-- 1. LOCK SCREEN (PASSCODE) -->
-    <div id="lock-screen" class="card">
-        <div class="lock-icon">🔒</div>
-        <h1>Enter Passcode</h1>
-        <p>Hint: A very special date (Month & Year, e.g., 122023)</p>
-        
-        <input type="password" id="passcode-input" maxlength="6" placeholder="••••••">
-        <button onclick="checkPasscode()">Unlock Surprise 💖</button>
-        
-        <p id="error-msg" class="error hidden">Oops, wrong code! Try to remember again.</p>
-        <div class="footer-note">Emergency? Just call me 😉</div>
-    </div>
+    <!-- 1. PASSCODE SCREEN -->
+    <div id="lock-screen" class="card">
+        <div class="lock-icon">🔒</div>
+        <h1>Enter Passcode</h1>
+        <p>Hint: Birthday boy date (DDMM, e.g., 0711)</p>
+        
+        <input type="password" id="passcode-input" maxlength="4" placeholder="••••">
+        <button style="width:100%; background:#f43f5e; color:white; border:none; padding:14px; font-size:16px; font-weight:600; border-radius:12px; cursor:pointer;" onclick="checkPasscode()">Unlock Surprise 💖</button>
+        
+        <p id="error-msg" class="error hidden">Oops, wrong code! Try 0711 😉</p>
+        <div class="footer-note">Emergency? Just call me ❤️</div>
+    </div>
 
-    <!-- 2. MAIN WEBSITE CONTENT -->
-    <div id="main-content" class="card hidden">
-        <div class="content-header">
-            <span class="badge">Special Milestone</span>
-            <h1 style="margin-top: 5px;">Happy 30th Birthday, My Love! 🎉</h1>
-            <p style="margin-bottom: 0;">A special interactive journey dedicated to you.</p>
-        </div>
+    <!-- 2. CHAPTER 1 QUIZ CONTENT -->
+    <div id="main-content" class="card hidden quiz-container">
+        <div class="chapter-title">Chapter 1 · Childhood</div>
+        <div class="quiz-question">How did Elgen spend his childhood?</div>
+        <div class="quiz-instruction">Pick all the right answers (Select 3 correct choices)</div>
 
-        <!-- Story / Timeline Section -->
-        <div>
-            <div class="timeline-box">
-                <h3>1. Early Days & Hobbies</h3>
-                <p>Reading manga all day, playing football when there's free time, and spending the rest of the time acting like a rebel (totally zero studying hahaha).</p>
-            </div>
-            <div class="timeline-box">
-                <h3>2. Taiwan & University Adventures</h3>
-                <p>Hard work, studies, and pushing through life's milestones.</p>
-            </div>
-            <div class="timeline-box">
-                <h3>3. Reconnecting (December 2023) 🏸</h3>
-                <p>Playing badminton with my brother's friends brought us back together!</p>
-            </div>
-        </div>
+        <div class="options-grid">
+            <button class="option-btn" onclick="toggleOption(this, 1)">
+                <span>Playing football</span>
+                <div class="option-badge">1</div>
+            </button>
+            <button class="option-btn" onclick="toggleOption(this, 2)">
+                <span>Studying 24/7</span>
+                <div class="option-badge">X</div>
+            </button>
+            <button class="option-btn" onclick="toggleOption(this, 3)">
+                <span>Reading Naruto comics</span>
+                <div class="option-badge">2</div>
+            </button>
+            <button class="option-btn" onclick="toggleOption(this, 4)">
+                <span>Doing silly things</span>
+                <div class="option-badge">3</div>
+            </button>
+        </div>
 
-        <!-- Love Letter Section -->
-        <div class="letter-box">
-            <h3>A Message For You 💌</h3>
-            <p>
-                "Thank you for being such an incredible, hardworking man and for always bringing laughter into my life. Wishing you all your dreams come true in your 30s, as we continue walking forward together. I love you!"
-            </p>
-        </div>
-    </div>
+        <!-- SUCCESS MESSAGE BOX -->
+        <div id="success-box" class="success-box hidden">
+            <h3>✨ Correct!</h3>
+            <p>是不是都在看漫畫，有空去踢足球，剩下時間當屁孩哈哈哈，完全沒看書</p>
+        </div>
+    </div>
 
-    <script>
-        function checkPasscode() {
-            const input = document.getElementById('passcode-input').value;
-            if (input === '122023') {
-                document.getElementById('lock-screen').classList.add('hidden');
-                document.getElementById('main-content').classList.remove('hidden');
-            } else {
-                document.getElementById('error-msg').classList.remove('hidden');
-            }
-        }
-    </script>
+    <script>
+        let selectedCount = 0;
+
+        function checkPasscode() {
+            const input = document.getElementById('passcode-input').value;
+            if (input === '0711') {
+                document.getElementById('lock-screen').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+            }
+        }
+
+        function toggleOption(btn, id) {
+            // Jika memilih opsi salah (Studying 24/7 = id 2)
+            if (id === 2) {
+                alert("*Boro2 wkwkwk. Masa kecil koko mana ada belajar 24/7 😂 Coba pilih yang lain!");
+                return;
+            }
+
+            if (btn.classList.contains('selected')) {
+                btn.classList.remove('selected');
+                selectedCount--;
+            } else {
+                btn.classList.add('selected');
+                selectedCount++;
+            }
+
+            // Jika 3 pilihan benar sudah dipilih semua
+            if (selectedCount === 3) {
+                document.getElementById('success-box').classList.remove('hidden');
+            } else {
+                document.getElementById('success-box').classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
