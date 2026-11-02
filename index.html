@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 30th Birthday, Elgen!</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; background-color: #fff1f2; color: #444; }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <!-- 1. PASSCODE SCREEN -->
+    <div id="lock-screen" class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
+        <div class="text-4xl mb-2">🔒</div>
+        <h1 class="text-2xl font-bold text-gray-800 mb-2">Enter Passcode</h1>
+        <p class="text-sm text-gray-500 mb-6">Hint: A very special date (Month & Year, e.g., 122023)</p>
+        
+        <input type="password" id="passcode-input" maxlength="6" placeholder="• • • • • •" 
+            class="w-full text-center text-2xl tracking-widest py-3 border-2 border-pink-300 rounded-xl focus:outline-none focus:border-pink-500 mb-4">
+        
+        <button onclick="checkPasscode()" class="w-full bg-pink-500 text-white font-semibold py-3 rounded-xl hover:bg-pink-600 transition shadow-lg">
+            Unlock Surprise 💖
+        </button>
+        <p id="error-msg" class="text-red-500 text-sm mt-3 hidden">Oops, wrong code! Try to remember again.</p>
+        <div class="mt-8 text-xs text-gray-400">Emergency? Just call me 😉</div>
+    </div>
+
+    <!-- 2. MAIN WEBSITE CONTENT -->
+    <div id="main-content" class="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 hidden">
+        <div class="text-center mb-8">
+            <span class="text-xs bg-pink-100 text-pink-600 font-semibold px-3 py-1 rounded-full">Special Milestone</span>
+            <h1 class="text-3xl font-bold text-gray-800 mt-3">Happy 30th Birthday, My Love! 🎉</h1>
+            <p class="text-gray-500 mt-1">A special interactive journey dedicated to you.</p>
+        </div>
+
+        <!-- Story / Timeline Section -->
+        <div class="space-y-4 mb-8">
+            <div class="p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
+                <h3 class="font-bold text-pink-700">1. Early Days & Hobbies</h3>
+                <p class="text-sm text-gray-600 mt-1">Reading manga all day, playing football when there's free time, and spending the rest of the time acting like a rebel (totally zero studying hahaha).</p>
+            </div>
+            <div class="p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
+                <h3 class="font-bold text-pink-700">2. Taiwan & University Adventures</h3>
+                <p class="text-sm text-gray-600 mt-1">Hard work, studies, and pushing through life's milestones.</p>
+            </div>
+            <div class="p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
+                <h3 class="font-bold text-pink-700">3. Reconnecting (December 2023) 🏸</h3>
+                <p class="text-sm text-gray-600 mt-1">Playing badminton with my brother's friends brought us back together!</p>
+            </div>
+        </div>
+
+        <!-- Love Letter Section -->
+        <div class="bg-gradient-to-r from-pink-500 to-rose-500 text-white p-6 rounded-2xl text-center shadow-md">
+            <h3 class="text-xl font-bold mb-2">A Message For You 💌</h3>
+            <p class="text-sm leading-relaxed opacity-90">
+                "Thank you for being such an incredible, hardworking man and for always bringing laughter into my life. Wishing you all your dreams come true in your 30s, as we continue walking forward together. I love you!"
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function checkPasscode() {
+            const input = document.getElementById('passcode-input').value;
+            if (input === '122023') {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('main-content').classList.remove('hidden');
+            } else {
+                document.getElementById('error-msg').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
