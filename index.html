@@ -77,7 +77,6 @@
             align-items: center;
         }
         
-        /* Ikon Gembok iOS (Berubah State Locked/Unlocked) */
         .ios-lock-icon {
             width: 14px;
             height: 11px;
@@ -100,7 +99,6 @@
             transition: all 0.3s ease;
             transform-origin: bottom left;
         }
-        /* State Unlocked */
         .ios-lock-icon.unlocked::after {
             transform: rotate(-45deg) translateY(-1px);
         }
@@ -701,7 +699,7 @@
                 <div class="options-grid">
                     <button class="option-btn" onclick="answerInline(this, 5, 'Let’s build a much calmer, happier future together. I love you 💖')">
                         <div class="option-badge">A</div>
-                        <span>Finding someone who truly stays by my side.<br>(秀 ☺️)</span>
+                        <span>Finding someone who truly stays by my side. (秀 ☺️)</span>
                     </button>
                     <button class="option-btn" onclick="answerInline(this, 5, 'tidak ada pekerjaan keras yang sia-sia ko 💪')">
                         <div class="option-badge">B</div>
@@ -821,8 +819,9 @@
     </div>
 
     <script>
-        // --- AUDIO UNLOCK IPHONE (VOLUME TINGGI) ---
+        // --- AUDIO: IPHONE UNLOCK SOUND & "I LAY MY LOVE ON YOU" WESTLIFE INSTRUMENTAL ---
         let audioCtx = null;
+        let songInterval = null;
 
         function initAudioContext() {
             if (!audioCtx) {
@@ -833,6 +832,7 @@
             }
         }
 
+        // Suara iPhone Unlock
         function playUnlockSound() {
             initAudioContext();
             const now = audioCtx.currentTime;
@@ -853,6 +853,53 @@
                 osc.start(now + (index * 0.08));
                 osc.stop(now + (index * 0.08) + 0.4);
             });
+        }
+
+        // Melodi Instrumental "I Lay My Love on You" - Westlife
+        function playWestlifeSong() {
+            initAudioContext();
+            
+            // Catatan nada intro/chorus lagu "I Lay My Love on You"
+            const melody = [
+                { f: 392.00, d: 400 }, // G4
+                { f: 440.00, d: 400 }, // A4
+                { f: 523.25, d: 800 }, // C5
+                { f: 493.88, d: 400 }, // B4
+                { f: 392.00, d: 800 }, // G4
+                { f: 329.63, d: 400 }, // E4
+                { f: 349.23, d: 400 }, // F4
+                { f: 392.00, d: 800 }, // G4
+                { f: 440.00, d: 400 }, // A4
+                { f: 392.00, d: 400 }, // G4
+                { f: 329.63, d: 1200}// E4
+            ];
+
+            let noteIdx = 0;
+
+            function playNextNote() {
+                if (!audioCtx) return;
+                const note = melody[noteIdx];
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(note.f, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (note.d / 1000) - 0.05);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + (note.d / 1000));
+
+                noteIdx = (noteIdx + 1) % melody.length;
+                songInterval = setTimeout(playNextNote, note.d + 100);
+            }
+
+            playNextNote();
         }
 
         // --- BACKGROUND & CLOCK ---
@@ -896,11 +943,13 @@
             if (enteredPin === "0711") {
                 playUnlockSound();
                 
-                // Animasi ikon gembok berubah jadi unlocked sebelum masuk
+                // Ubah gembok menjadi unlocked
                 const lockIcon = document.getElementById('lock-icon');
                 lockIcon.classList.add('unlocked');
                 
+                // Mulai putar lagu Westlife setelah unlocked
                 setTimeout(() => {
+                    playWestlifeSong();
                     document.getElementById('lock-screen').classList.add('hidden');
                     document.getElementById('app-content').classList.remove('hidden');
                 }, 400);
