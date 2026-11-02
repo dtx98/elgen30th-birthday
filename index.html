@@ -302,17 +302,17 @@
             user-select: none;
         }
 
-        /* Envelope Interaktif Lebih Lembut */
+        /* Envelope Interaktif dengan Soft Pink Background */
         .envelope-container {
-            background: #5c1d2c;
-            border: 1px solid rgba(255,255,255,0.15);
+            background: #fbcfe8; /* Soft Pink Background */
+            border: 1px solid rgba(244,63,94,0.3);
             padding: 25px 20px;
             border-radius: 20px;
             text-align: center;
             cursor: pointer;
             animation: pulseGlow 2.5s infinite ease-in-out;
             margin-bottom: 25px;
-            color: white;
+            color: #831843;
         }
         @keyframes pulseGlow {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
@@ -326,7 +326,7 @@
             margin: 0 auto 10px auto;
             display: flex; align-items: center; justify-content: center;
             font-size: 24px;
-            position: relative;
+            color: white;
         }
 
         .letter-paper {
@@ -341,31 +341,31 @@
         .letter-paper h3 { font-size: 20px; margin-bottom: 15px; color: #4a1525; }
         .letter-paper p { font-size: 13.5px; line-height: 1.8; margin-bottom: 12px; color: #4b5563; font-family: 'Poppins', sans-serif; }
 
-        /* Esthetic Countdown Cards */
+        /* Esthetic Countdown Cards (Persis seperti gambar referensi) */
         .countdown-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
             margin-bottom: 12px;
         }
         .cd-card {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 10px;
-            padding: 10px 4px;
+            padding: 8px 2px;
             text-align: center;
             color: white;
         }
         .cd-number {
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             color: #fff;
         }
         .cd-label {
-            font-size: 8px;
+            font-size: 7px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: #fca5a5;
             font-weight: 600;
         }
@@ -417,8 +417,8 @@
     <!-- MAIN APP CONTAINER -->
     <div id="app-content" class="main-layout hidden">
         
-        <!-- TOP TIMELINE BAR HORIZONTAL -->
-        <div class="timeline-bar">
+        <!-- TOP TIMELINE BAR (Hanya muncul di Q1-Q5) -->
+        <div class="timeline-bar" id="timeline-bar">
             <div class="tl-dot active" id="dot-s1">1</div>
             <div class="tl-dot" id="dot-s2">🔒</div>
             <div class="tl-dot" id="dot-s3">🔒</div>
@@ -628,9 +628,10 @@
             <!-- CHAPTER 6: MINIGAME -->
             <div id="minigame-screen" class="hidden" style="text-align: center;">
                 <div class="chapter-subtitle">Chapter 6 · Minigame</div>
-                <div class="quiz-question" style="margin-bottom: 5px;">Click as much as you can</div>
+                <div class="quiz-question" style="margin-bottom: 5px; cursor: pointer;" onclick="forceOpenLetter()" title="Hidden Skip">Click as much as you can</div>
+                <div style="font-size: 11px; color: #9ca3af; margin-bottom: 8px;">(Goal: Score 7 to unlock letter)</div>
                 <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #e11d48; margin-bottom: 10px;">
-                    <span id="game-score">Score: 0</span>
+                    <span id="game-score">Score: 0 / 7</span>
                     <span id="game-timer">Time: 15s</span>
                 </div>
                 
@@ -647,8 +648,8 @@
                     <h2 style="font-size: 22px; color: #1f2937; text-align: center; margin-bottom: 20px;">A letter, just for you</h2>
                     <div class="envelope-container" onclick="openLetter()">
                         <div class="envelope-icon-circle">✉️</div>
-                        <h3 style="font-size: 18px; margin-bottom: 6px;">You've got mail</h3>
-                        <p style="font-size: 12px; opacity: 0.8;">Tap to open the envelope</p>
+                        <h3 style="font-size: 18px; margin-bottom: 6px; color: #831843;">You've got mail</h3>
+                        <p style="font-size: 12px; opacity: 0.8; color: #831843;">Tap to open the envelope</p>
                     </div>
                 </div>
 
@@ -664,7 +665,7 @@
 
                     <!-- COUNTDOWN MUNCUL SETELAH SURAT DIBUKA -->
                     <div style="margin-top: 30px; animation: fadeIn 0.5s ease;">
-                        <div style="text-align: center; font-size: 12px; font-weight: 600; color: #e11d48; margin-bottom: 8px;">
+                        <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;">
                             How long you have survived in this world since November 7, 1996 🎂
                         </div>
                         <div class="countdown-grid">
@@ -672,20 +673,20 @@
                             <div class="cd-card"><div class="cd-number" id="life-months">00</div><div class="cd-label">Months</div></div>
                             <div class="cd-card"><div class="cd-number" id="life-days">00</div><div class="cd-label">Days</div></div>
                             <div class="cd-card"><div class="cd-number" id="life-hours">00</div><div class="cd-label">Hours</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-mins">00</div><div class="cd-label">Mins</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Secs</div></div>
+                            <div class="cd-card"><div class="cd-number" id="life-mins">00</div><div class="cd-label">Minutes</div></div>
+                            <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Seconds</div></div>
                         </div>
 
-                        <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin: 15px 0 8px 0;">
+                        <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin: 12px 0 6px 0;">
                             And you have been spending your time with me for 💕
                         </div>
-                        <div class="countdown-grid" style="font-size: 90%;">
-                            <div class="cd-card" style="padding: 6px 2px;"><div class="cd-number" id="cd-years" style="font-size:18px;">00</div><div class="cd-label">Yrs</div></div>
-                            <div class="cd-card" style="padding: 6px 2px;"><div class="cd-number" id="cd-months" style="font-size:18px;">00</div><div class="cd-label">Mos</div></div>
-                            <div class="cd-card" style="padding: 6px 2px;"><div class="cd-number" id="cd-days" style="font-size:18px;">00</div><div class="cd-label">Days</div></div>
-                            <div class="cd-card" style="padding: 6px 2px;"><div class="cd-number" id="cd-hours" style="font-size:18px;">00</div><div class="cd-label">Hrs</div></div>
-                            <div class="cd-card" style="padding: 6px 2px;"><div class="cd-number" id="cd-mins" style="font-size:18px;">00</div><div class="cd-label">Mins</div></div>
-                            <div class="cd-card" style="padding: 6px 2px;"><div class="cd-number" id="cd-secs" style="font-size:18px;">00</div><div class="cd-label">Secs</div></div>
+                        <div class="countdown-grid">
+                            <div class="cd-card"><div class="cd-number" id="cd-years">00</div><div class="cd-label">Years</div></div>
+                            <div class="cd-card"><div class="cd-number" id="cd-months">00</div><div class="cd-label">Months</div></div>
+                            <div class="cd-card"><div class="cd-number" id="cd-days">00</div><div class="cd-label">Days</div></div>
+                            <div class="cd-card"><div class="cd-number" id="cd-hours">00</div><div class="cd-label">Hours</div></div>
+                            <div class="cd-card"><div class="cd-number" id="cd-mins">00</div><div class="cd-label">Minutes</div></div>
+                            <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Seconds</div></div>
                         </div>
 
                         <div style="text-align: center; font-size: 12px; color: #6b7280; margin-top: 10px; font-weight: 500;" id="cd-total-days">
@@ -696,7 +697,7 @@
 
                 <div style="display: flex; gap: 10px; margin-top: 25px;">
                     <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151;">← Back</button>
-                    <button class="btn-primary" onclick="alert('Happy 30th Birthday, Elgen! 🎉 I love you!')" style="flex: 2; background: #be123c; color: #fff; box-shadow: 0 4px 12px rgba(190, 18, 60, 0.4);">Finish ❤️</button>
+                    <button class="btn-primary" onclick="alert('Happy 30th Birthday, Elgen! 🎉 I love you!')" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Finish ❤️</button>
                 </div>
             </div>
 
@@ -785,28 +786,33 @@
             document.getElementById('letter-countdown-screen').classList.add('hidden');
 
             const skipBtn = document.getElementById('global-skip-btn');
+            const timelineBar = document.getElementById('timeline-bar');
 
             if (screenKey === 'story') { 
                 document.getElementById('story-screen').classList.remove('hidden'); 
                 skipBtn.style.display = 'none';
+                timelineBar.style.display = 'none';
             }
             else if (screenKey === 'guess') { 
                 document.getElementById('guess-screen').classList.remove('hidden'); 
                 skipBtn.style.display = 'block'; 
+                timelineBar.style.display = 'none';
             }
-            else if (screenKey === 'ch1') { document.getElementById('quiz-screen-1').classList.remove('hidden'); unlockLevel(1); skipBtn.style.display = 'block'; }
-            else if (screenKey === 'ch2') { document.getElementById('quiz-screen-2').classList.remove('hidden'); unlockLevel(2); skipBtn.style.display = 'block'; }
-            else if (screenKey === 'ch3') { document.getElementById('quiz-screen-3').classList.remove('hidden'); unlockLevel(3); skipBtn.style.display = 'block'; }
-            else if (screenKey === 'ch4') { document.getElementById('quiz-screen-4').classList.remove('hidden'); unlockLevel(4); skipBtn.style.display = 'block'; }
-            else if (screenKey === 'ch5') { document.getElementById('quiz-screen-5').classList.remove('hidden'); unlockLevel(5); skipBtn.style.display = 'block'; }
+            else if (screenKey === 'ch1') { document.getElementById('quiz-screen-1').classList.remove('hidden'); unlockLevel(1); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
+            else if (screenKey === 'ch2') { document.getElementById('quiz-screen-2').classList.remove('hidden'); unlockLevel(2); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
+            else if (screenKey === 'ch3') { document.getElementById('quiz-screen-3').classList.remove('hidden'); unlockLevel(3); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
+            else if (screenKey === 'ch4') { document.getElementById('quiz-screen-4').classList.remove('hidden'); unlockLevel(4); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
+            else if (screenKey === 'ch5') { document.getElementById('quiz-screen-5').classList.remove('hidden'); unlockLevel(5); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
             else if (screenKey === 'minigame') { 
                 document.getElementById('minigame-screen').classList.remove('hidden'); 
                 skipBtn.style.display = 'none'; 
+                timelineBar.style.display = 'none'; // Sembunyikan timeline setelah Q5
                 initMinigame();
             }
             else if (screenKey === 'letter-countdown') { 
                 document.getElementById('letter-countdown-screen').classList.remove('hidden'); 
                 skipBtn.style.display = 'none'; 
+                timelineBar.style.display = 'none';
             }
         }
 
@@ -860,7 +866,7 @@
             if (nextBtn) nextBtn.classList.remove('hidden');
         }
 
-        // MINIGAME LOGIC (Strict Target First Click, Faster, 15s)
+        // MINIGAME LOGIC (Lebih banyak item, target score 7, hidden skip)
         let gameInterval, spawnerInterval, score = 0, timeLeft = 15;
         let targetSymbol = null;
         const hobbies = ['⚽', '🏸', '🍣'];
@@ -873,19 +879,22 @@
             score = 0;
             timeLeft = 15;
             targetSymbol = null;
-            document.getElementById('game-score').innerText = `Score: ${score}`;
+            document.getElementById('game-score').innerText = `Score: ${score} / 7`;
             document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
             document.getElementById('game-next-btn').classList.add('hidden');
             
             const container = document.getElementById('game-container');
             container.querySelectorAll('.falling-item').forEach(el => el.remove());
 
-            spawnerInterval = setInterval(spawnItem, 400); // Lebih cepat
+            spawnerInterval = setInterval(spawnItem, 250); // Spawn lebih banyak & cepat
             gameInterval = setInterval(() => {
                 timeLeft--;
                 document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
                 if (timeLeft <= 0) {
                     stopMinigame();
+                    if (score < 7) {
+                        alert("Waktu habis! Tapi tenang, kamu tetap bisa lanjut ke surat ❤️");
+                    }
                     document.getElementById('game-next-btn').classList.remove('hidden');
                 }
             }, 1000);
@@ -910,20 +919,23 @@
 
             let posY = -40;
             const fall = setInterval(() => {
-                posY += 5; // Kecepatan dipercepat
+                posY += 4; 
                 item.style.top = posY + 'px';
 
                 item.onmousedown = item.ontouchstart = (e) => {
                     e.preventDefault();
                     if (!targetSymbol) {
-                        targetSymbol = symbol; // Tentukan target berdasarkan klik pertama
+                        targetSymbol = symbol; 
                     }
                     if (symbol === targetSymbol) {
                         score++;
-                        document.getElementById('game-score').innerText = `Score: ${score} (Target: ${targetSymbol})`;
+                        document.getElementById('game-score').innerText = `Score: ${score} / 7 (Target: ${targetSymbol})`;
+                        if (score >= 7) {
+                            document.getElementById('game-next-btn').classList.remove('hidden');
+                        }
                     } else {
-                        score = Math.max(0, score - 1); // Penalti jika salah klik
-                        document.getElementById('game-score').innerText = `Score: ${score} (Target: ${targetSymbol})`
+                        score = Math.max(0, score - 1); 
+                        document.getElementById('game-score').innerText = `Score: ${score} / 7 (Target: ${targetSymbol})`;
                     }
                     item.remove();
                     clearInterval(fall);
@@ -936,12 +948,20 @@
             }, 25);
         }
 
+        // Hidden button skip minigame jika diklik tulisannya
+        function forceOpenLetter() {
+            score = 7;
+            stopMinigame();
+            document.getElementById('game-score').innerText = `Score: 7 / 7 (Unlocked!)`;
+            document.getElementById('game-next-btn').classList.remove('hidden');
+        }
+
         function openLetter() {
             document.getElementById('envelope-wrapper').classList.add('hidden');
             document.getElementById('opened-letter-wrapper').classList.remove('hidden');
         }
 
-        // Timer Ganda (Life & Together)
+        // Timer Ganda (Life & Together) dengan Format 1 Baris Grid
         setInterval(() => {
             const birthDate = new Date('1996-11-07T00:00:00');
             const metDate = new Date('2023-12-31T00:00:00');
