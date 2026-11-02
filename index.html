@@ -213,13 +213,14 @@
             z-index: 5;
         }
 
+        /* TOMBOL HOME DI POJOK KIRI ATAS */
         .home-btn {
             position: absolute;
-            top: 20px; left: 20px;
+            top: 12px; left: 12px;
             background: #f3f4f6; border: none;
             color: #4b5563; font-weight: 600;
             font-size: 14px; cursor: pointer;
-            width: 34px; height: 34px;
+            width: 32px; height: 32px;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             z-index: 5;
@@ -477,6 +478,12 @@
     </style>
 </head>
 <body>
+
+    <!-- AUDIO PEMUTAR LAGU WESTLIFE -->
+    <audio id="bg-music" loop>
+        <source src="https://cdns.eu/p/s/a/westlife-i-lay-my-love-on-you-audio.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="hearts-bg" id="hearts-bg"></div>
 
@@ -803,10 +810,10 @@
                         </div>
                     </div>
 
-                    <!-- TOMBOL FINISH SETELAH COUNTDOWN -->
+                    <!-- TOMBOL FINISH -->
                     <div style="display: flex; gap: 10px; margin-top: 25px;" id="final-buttons-wrapper" class="hidden">
                         <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151;">← Back</button>
-                        <button class="btn-primary" onclick="alert('Happy 30th Birthday, 張彬哥哥! 🎉 I love you! ❤️')" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish ❤️</button>
+                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish ❤️</button>
                     </div>
                 </div>
 
@@ -815,13 +822,18 @@
                 </div>
             </div>
 
+            <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
+            <div id="finish-celebration-screen" class="hidden" style="text-align: center; padding: 20px 0;">
+                <img src="https://i.pinimg.com/originals/f5/e0/a5/f5e0a5e748b2dc73bdec6ba0aca0a083.gif" alt="Celebration GIF" style="width: 180px; height: auto; border-radius: 16px; margin-bottom: 20px;">
+                <h2 style="font-size: 20px; color: #1f2937; font-weight: 700; line-height: 1.5; margin-bottom: 25px;">Happy 30th Birthday, 張彬哥哥! 🎉 I love you! ❤️</h2>
+                <button class="btn-primary" onclick="goToScreen('story')">Play Again 💖</button>
+            </div>
+
         </div>
     </div>
 
     <script>
-        // --- AUDIO: IPHONE UNLOCK SOUND & "I LAY MY LOVE ON YOU" WESTLIFE INSTRUMENTAL ---
         let audioCtx = null;
-        let songInterval = null;
 
         function initAudioContext() {
             if (!audioCtx) {
@@ -832,7 +844,6 @@
             }
         }
 
-        // Suara iPhone Unlock
         function playUnlockSound() {
             initAudioContext();
             const now = audioCtx.currentTime;
@@ -855,54 +866,6 @@
             });
         }
 
-        // Melodi Instrumental "I Lay My Love on You" - Westlife
-        function playWestlifeSong() {
-            initAudioContext();
-            
-            // Catatan nada intro/chorus lagu "I Lay My Love on You"
-            const melody = [
-                { f: 392.00, d: 400 }, // G4
-                { f: 440.00, d: 400 }, // A4
-                { f: 523.25, d: 800 }, // C5
-                { f: 493.88, d: 400 }, // B4
-                { f: 392.00, d: 800 }, // G4
-                { f: 329.63, d: 400 }, // E4
-                { f: 349.23, d: 400 }, // F4
-                { f: 392.00, d: 800 }, // G4
-                { f: 440.00, d: 400 }, // A4
-                { f: 392.00, d: 400 }, // G4
-                { f: 329.63, d: 1200}// E4
-            ];
-
-            let noteIdx = 0;
-
-            function playNextNote() {
-                if (!audioCtx) return;
-                const note = melody[noteIdx];
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(note.f, audioCtx.currentTime);
-
-                gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 0.05);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (note.d / 1000) - 0.05);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + (note.d / 1000));
-
-                noteIdx = (noteIdx + 1) % melody.length;
-                songInterval = setTimeout(playNextNote, note.d + 100);
-            }
-
-            playNextNote();
-        }
-
-        // --- BACKGROUND & CLOCK ---
         function createHeart() {
             const container = document.getElementById('hearts-bg');
             const heart = document.createElement('div');
@@ -943,13 +906,14 @@
             if (enteredPin === "0711") {
                 playUnlockSound();
                 
-                // Ubah gembok menjadi unlocked
                 const lockIcon = document.getElementById('lock-icon');
                 lockIcon.classList.add('unlocked');
+
+                const music = document.getElementById('bg-music');
+                music.volume = 0.6;
+                music.play().catch(e => console.log("Audio autoplay prevented", e));
                 
-                // Mulai putar lagu Westlife setelah unlocked
                 setTimeout(() => {
-                    playWestlifeSong();
                     document.getElementById('lock-screen').classList.add('hidden');
                     document.getElementById('app-content').classList.remove('hidden');
                 }, 400);
@@ -989,6 +953,7 @@
             document.getElementById('quiz-screen-5').classList.add('hidden');
             document.getElementById('minigame-screen').classList.add('hidden');
             document.getElementById('letter-countdown-screen').classList.add('hidden');
+            document.getElementById('finish-celebration-screen').classList.add('hidden');
 
             document.getElementById('envelope-wrapper').classList.remove('hidden');
             document.getElementById('opened-letter-wrapper').classList.add('hidden');
@@ -1024,6 +989,11 @@
                 skipBtn.style.display = 'none'; 
                 timelineBar.style.display = 'none';
             }
+        }
+
+        function showFinishCelebration() {
+            document.getElementById('letter-countdown-screen').classList.add('hidden');
+            document.getElementById('finish-celebration-screen').classList.remove('hidden');
         }
 
         function unlockChapter(nextCh) {
