@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy 30th Birthday, Elgen!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -16,7 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 15px;
             overflow-x: hidden;
             position: relative;
         }
@@ -41,8 +41,7 @@
         .heart::before, .heart::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background: inherit;
             border-radius: 50%;
         }
@@ -57,7 +56,7 @@
 
         .hidden { display: none !important; }
 
-        /* Lockscreen Styles (Wallpaper iPhone) */
+        /* Lockscreen Styles (Wallpaper iPhone Portrait Mode) */
         .lockscreen-wrapper {
             background: linear-gradient(135deg, #4a1525 0%, #883348 50%, #f43f5e 100%);
             color: #fff;
@@ -71,12 +70,12 @@
         .lockscreen-container {
             text-align: center;
             width: 100%;
-            max-width: 380px;
+            max-width: 360px;
             padding: 20px;
         }
         .lock-icon-top { font-size: 22px; margin-bottom: 5px; opacity: 0.9; transition: transform 0.3s ease; }
         .date-text { font-size: 14px; font-weight: 400; opacity: 0.85; margin-bottom: 4px; letter-spacing: 0.5px; }
-        .time-text { font-size: 64px; font-weight: 300; letter-spacing: -2px; margin-bottom: 25px; line-height: 1; }
+        .time-text { font-size: 60px; font-weight: 300; letter-spacing: -2px; margin-bottom: 25px; line-height: 1; }
         
         .passcode-label { font-size: 13px; font-weight: 400; opacity: 0.9; margin-bottom: 12px; }
         
@@ -87,30 +86,29 @@
             margin-bottom: 8px;
         }
         .dot {
-            width: 14px;
-            height: 14px;
+            width: 14px; height: 14px;
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.8);
             background: transparent;
             transition: all 0.2s ease;
         }
         .dot.filled { background: #ffffff; border-color: #ffffff; }
-        .hint-text { font-size: 11px; opacity: 0.7; margin-bottom: 30px; }
+        .hint-text { font-size: 11px; opacity: 0.7; margin-bottom: 25px; }
 
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            max-width: 280px;
+            gap: 14px;
+            max-width: 260px;
             margin: 0 auto;
         }
         .key-btn {
-            width: 70px; height: 70px;
+            width: 65px; height: 65px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border: none; color: white;
-            font-size: 24px; font-weight: 400;
+            font-size: 22px; font-weight: 400;
             cursor: pointer;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             margin: 0 auto;
@@ -121,162 +119,131 @@
         .key-zero { grid-column: 2; }
         .error-shake { animation: shake 0.4s ease-in-out; }
 
-        /* Main App Layout (Timeline + Card) */
+        /* Main App Layout */
         .main-layout {
             display: flex;
-            max-width: 1050px;
+            flex-direction: column;
+            max-width: 450px;
             width: 100%;
-            gap: 40px;
-            align-items: flex-start;
+            gap: 20px;
+            align-items: center;
             z-index: 2;
-            padding: 20px;
         }
 
-        /* Timeline Sidebar */
-        .timeline-sidebar {
-            width: 240px;
+        /* Top Timeline Bar */
+        .timeline-bar {
             display: flex;
-            flex-direction: column;
-            gap: 24px;
-            position: relative;
-            padding-left: 10px;
+            justify-content: space-between;
+            width: 100%;
+            background: white;
+            padding: 12px 16px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.1);
         }
-        .timeline-sidebar::before {
-            content: '';
-            position: absolute;
-            left: 27px;
-            top: 20px;
-            bottom: 20px;
-            width: 2px;
-            background: #fbcfe8;
-            z-index: -1;
-        }
-        .timeline-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            opacity: 0.7;
-        }
-        .timeline-item.active { opacity: 1; }
-        .timeline-icon {
-            width: 36px; height: 36px;
+        .tl-dot {
+            width: 28px; height: 28px;
             border-radius: 50%;
-            background: #ffffff;
-            border: 2px solid #f43f5e;
-            color: #f43f5e;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 600;
-            font-size: 14px;
-            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.15);
-        }
-        .timeline-item.locked .timeline-icon {
-            border-color: #d1d5db;
-            color: #9ca3af;
             background: #f3f4f6;
+            color: #9ca3af;
+            font-size: 12px; font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid #e5e7eb;
         }
-        .timeline-text small { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; display: block; font-weight: 700; }
-        .timeline-text span { font-size: 14px; font-weight: 600; color: #374151; }
-        .timeline-item.locked .timeline-text span { color: #9ca3af; }
+        .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
+        .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        /* Content Area Container */
-        .content-area {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Intro Story Page */
-        .story-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .story-header h1 {
-            font-size: 38px;
-            color: #1f2937;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
-        }
-        .story-header p {
-            font-size: 15px;
-            color: #6b7280;
-            max-width: 600px;
-            line-height: 1.6;
-        }
-        .story-card {
+        /* Content Card */
+        .card {
             background: white;
             width: 100%;
-            max-width: 650px;
-            padding: 40px;
+            padding: 30px 24px;
             border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.12);
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.12);
+            position: relative;
+        }
+
+        .skip-btn {
+            position: absolute;
+            top: 20px; right: 20px;
+            background: none; border: none;
+            color: #f43f5e; font-weight: 600;
+            font-size: 13px; cursor: pointer;
+        }
+
+        /* Story Intro Page */
+        .story-header h1 {
+            font-size: 24px;
+            color: #1f2937;
+            font-weight: 700;
+            margin-bottom: 8px;
             text-align: center;
         }
+        .story-header p {
+            font-size: 13px;
+            color: #6b7280;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .bubu-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
         .bubu-img {
-            width: 180px;
+            width: 140px;
             height: auto;
-            margin-bottom: 15px;
-            border-radius: 16px;
+            border-radius: 14px;
         }
         .speech-bubble {
             background: #fff1f2;
-            padding: 14px 20px;
-            border-radius: 16px;
-            font-size: 15px;
+            padding: 12px 16px;
+            border-radius: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #e11d48;
-            margin-bottom: 25px;
-            display: inline-block;
             border: 1px solid #fecdd3;
+            position: relative;
+            max-width: 180px;
         }
         .btn-primary {
             width: 100%;
             background: #f43f5e;
             color: white;
             border: none;
-            padding: 15px;
-            font-size: 16px;
+            padding: 14px;
+            font-size: 15px;
             font-weight: 600;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
             font-family: 'Poppins', sans-serif;
         }
         .btn-primary:hover { background: #e11d48; }
 
         /* Quiz Card Styles */
-        .quiz-card {
-            background: white;
-            width: 100%;
-            max-width: 680px;
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(244, 63, 94, 0.12);
-            text-align: left;
-        }
-        .chapter-subtitle { font-size: 12px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .quiz-question { font-size: 24px; color: #1f2937; font-weight: 700; margin-bottom: 6px; }
-        .quiz-instruction { font-size: 13px; color: #9ca3af; margin-bottom: 25px; }
+        .chapter-subtitle { font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .quiz-question { font-size: 18px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
+        .quiz-instruction { font-size: 12px; color: #9ca3af; margin-bottom: 20px; }
         
         .options-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 15px;
         }
         .option-btn {
             background: #ffffff;
             border: 2px solid #fecdd3;
-            padding: 18px 20px;
-            border-radius: 16px;
+            padding: 14px 16px;
+            border-radius: 14px;
             font-size: 14px;
             color: #4b5563;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             transition: all 0.2s;
             font-family: 'Poppins', sans-serif;
             font-weight: 500;
@@ -289,13 +256,13 @@
             color: #065f46;
         }
         .option-badge {
-            width: 32px; height: 32px;
+            width: 28px; height: 28px;
             border-radius: 50%;
             background: #fee2e2;
             color: #f43f5e;
             display: flex; align-items: center; justify-content: center;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             flex-shrink: 0;
         }
         .option-btn.selected .option-badge {
@@ -305,50 +272,54 @@
         
         .wrong-msg {
             color: #ef4444;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .success-box {
             background: #ecfdf5;
             border: 2px solid #10b981;
-            padding: 20px;
-            border-radius: 16px;
-            margin-top: 15px;
-            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: 14px;
+            margin-bottom: 15px;
             animation: fadeIn 0.4s ease-in-out;
         }
-        .success-box h3 { color: #065f46; font-size: 16px; margin-bottom: 8px; }
-        .success-box p { color: #047857; font-size: 14px; margin-bottom: 0; line-height: 1.6; }
+        .success-box h3 { color: #065f46; font-size: 15px; margin-bottom: 6px; }
+        .success-box p { color: #047857; font-size: 13px; margin-bottom: 0; line-height: 1.5; }
+
+        /* Pop-up Modal */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
+            z-index: 100;
+        }
+        .modal-box {
+            background: white; padding: 24px; border-radius: 20px; text-align: center; max-width: 280px; width: 90%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-box h3 { font-size: 18px; color: #1f2937; margin-bottom: 8px; }
+        .modal-box p { font-size: 13px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
+        .modal-btn {
+            background: #f43f5e; color: white; border: none; padding: 10px 20px; font-size: 14px; font-weight: 600;
+            border-radius: 10px; cursor: pointer; width: 100%;
+        }
 
         .nav-footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 25px;
+            margin-top: 20px;
             border-top: 1px solid #f3f4f6;
-            padding-top: 20px;
+            padding-top: 16px;
         }
         .nav-btn {
-            background: #f3f4f6;
-            color: #4b5563;
-            border: none;
-            padding: 10px 22px;
-            font-size: 14px;
-            font-weight: 600;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: background 0.2s;
-            font-family: 'Poppins', sans-serif;
+            background: #f3f4f6; color: #4b5563; border: none;
+            padding: 10px 18px; font-size: 13px; font-weight: 600;
+            border-radius: 10px; cursor: pointer; font-family: 'Poppins', sans-serif;
         }
-        .nav-btn:hover { background: #e5e7eb; }
-        .nav-btn.next {
-            background: #f43f5e;
-            color: white;
-            margin-left: auto;
-        }
-        .nav-btn.next:hover { background: #e11d48; }
+        .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -360,10 +331,10 @@
 </head>
 <body>
 
-    <!-- Floating Hearts Background Effect -->
+    <!-- Floating Hearts Background -->
     <div class="hearts-bg" id="hearts-bg"></div>
 
-    <!-- 1. LOCKSCREEN ALA IPHONE (WALLPAPER AWAL) -->
+    <!-- 1. LOCKSCREEN IPHONE -->
     <div id="lock-screen" class="lockscreen-wrapper">
         <div class="lockscreen-container">
             <div id="lock-icon" class="lock-icon-top">🔒</div>
@@ -380,7 +351,6 @@
             </div>
             <div class="hint-text">Guess the password, I believe in you</div>
 
-            <!-- Keypad -->
             <div class="keypad" id="keypad">
                 <button class="key-btn" onclick="pressKey('1')">1<span class="key-sub"></span></button>
                 <button class="key-btn" onclick="pressKey('2')">2<span class="key-sub">abc</span></button>
@@ -396,106 +366,212 @@
         </div>
     </div>
 
-    <!-- 2. MAIN LAYOUT (SIDEBAR TIMELINE + KONTEN UTAMA) -->
+    <!-- POP-UP MODAL -->
+    <div id="popup-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <h3 id="modal-title">Keep going!</h3>
+            <p id="modal-text">Choose more correct answers!</p>
+            <button class="modal-btn" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
     <div id="app-content" class="main-layout hidden">
         
-        <!-- TIMELINE SIDEBAR (CHAPTER 1-5) -->
-        <div class="timeline-sidebar">
-            <div class="timeline-item active" id="tl-1">
-                <div class="timeline-icon">1</div>
-                <div class="timeline-text">
-                    <small>Chapter 1</small>
-                    <span>Childhood</span>
-                </div>
-            </div>
-            <div class="timeline-item locked" id="tl-2">
-                <div class="timeline-icon">🔒</div>
-                <div class="timeline-text">
-                    <small>Chapter 2</small>
-                    <span>Locked</span>
-                </div>
-            </div>
-            <div class="timeline-item locked" id="tl-3">
-                <div class="timeline-icon">🔒</div>
-                <div class="timeline-text">
-                    <small>Chapter 3</small>
-                    <span>Locked</span>
-                </div>
-            </div>
-            <div class="timeline-item locked" id="tl-4">
-                <div class="timeline-icon">🔒</div>
-                <div class="timeline-text">
-                    <small>Chapter 4</small>
-                    <span>Locked</span>
-                </div>
-            </div>
-            <div class="timeline-item locked" id="tl-5">
-                <div class="timeline-icon">🔒</div>
-                <div class="timeline-text">
-                    <small>Chapter 5</small>
-                    <span>Locked</span>
-                </div>
-            </div>
+        <!-- TOP TIMELINE BAR -->
+        <div class="timeline-bar">
+            <div class="tl-dot active" id="dot-ch1">1</div>
+            <div class="tl-dot" id="dot-ch2">2</div>
+            <div class="tl-dot" id="dot-ch3">3</div>
+            <div class="tl-dot" id="dot-ch4">4</div>
+            <div class="tl-dot" id="dot-ch5">5</div>
         </div>
 
-        <!-- CONTENT AREA -->
-        <div class="content-area">
-            
-            <!-- INTRO STORY PAGE -->
-            <div id="story-screen" class="story-card">
-                <div class="story-header" style="margin-bottom: 20px;">
-                    <h1 style="font-size: 32px;">Guess right to unlock the next chapter</h1>
-                    <p style="font-size: 14px;">Let's see how well you know your own story. Pick all the right answers — get one wrong and you'll have to try again.</p>
+        <!-- CONTENT CARD -->
+        <div class="card">
+            <!-- PART 1: INTRO STORY -->
+            <div id="story-screen">
+                <div class="story-header">
+                    <h1>Guess right to unlock the next chapter</h1>
+                    <p>Once upon a time, this tiny guy came to this world.</p>
                 </div>
                 
-                <!-- GIF Bubu Dudu Pilihanmu -->
-                <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu GIF" class="bubu-img">
-                <div class="speech-bubble">Let's see how well you know your own story.</div>
+                <div class="bubu-container">
+                    <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-img">
+                    <div class="speech-bubble">Let's see how well you know your own story.</div>
+                </div>
                 
-                <button class="btn-primary" onclick="goToQuiz()">Start Chapter 1 ✨</button>
+                <button class="btn-primary" onclick="goToQuiz(1)">Start Chapter 1 ✨</button>
             </div>
 
-            <!-- CHAPTER 1 QUIZ PAGE -->
-            <div id="quiz-screen" class="quiz-card hidden">
+            <!-- CHAPTER 1 QUIZ -->
+            <div id="quiz-screen-1" class="hidden">
                 <div class="chapter-subtitle">Chapter 1 · Childhood</div>
                 <div class="quiz-question">How did Elgen spend his childhood?</div>
                 <div class="quiz-instruction">Pick all the right answers</div>
 
                 <div class="options-grid">
-                    <button class="option-btn" onclick="toggleOption(this, 1)">
+                    <button class="option-btn" onclick="toggleOption(this, 1, 1)">
                         <div class="option-badge">A</div>
                         <span>Playing football</span>
                     </button>
-                    <button class="option-btn" onclick="toggleOption(this, 2)">
+                    <button class="option-btn" onclick="toggleOption(this, 2, 1)">
                         <div class="option-badge">B</div>
                         <span>Studying 24/7</span>
                     </button>
-                    <button class="option-btn" onclick="toggleOption(this, 3)">
+                    <button class="option-btn" onclick="toggleOption(this, 3, 1)">
                         <div class="option-badge">C</div>
                         <span>Reading Naruto comics</span>
                     </button>
-                    <button class="option-btn" onclick="toggleOption(this, 4)">
+                    <button class="option-btn" onclick="toggleOption(this, 4, 1)">
                         <div class="option-badge">D</div>
                         <span>Doing silly things</span>
                     </button>
                 </div>
 
-                <!-- WRONG MESSAGE (FONT MERAH DUA BARIS) -->
-                <div id="wrong-msg" class="wrong-msg hidden">
+                <div id="wrong-msg-1" class="wrong-msg hidden">
                     WRONG! Masa kecil koko mana ada belajar 24/7 😂<br>
                     Coba pilih yang lain!
                 </div>
 
-                <!-- SUCCESS MESSAGE BOX -->
-                <div id="success-box" class="success-box hidden">
+                <div id="success-box-1" class="success-box hidden">
                     <h3>✨ Correct!</h3>
                     <p>是不是都在看漫畫，有空去踢足球，剩下時間當屁孩哈哈哈，完全沒看書</p>
                 </div>
 
-                <!-- NAVIGATION BUTTONS -->
                 <div class="nav-footer">
                     <button class="nav-btn" onclick="goBackToIntro()">← Back</button>
-                    <button class="nav-btn next" onclick="alert('Chapter 2 is locked! Complete Chapter 1 first.')">Next →</button>
+                    <button class="nav-btn next" id="next-btn-1" onclick="goToQuiz(2)">Next Chapter Unlocked</button>
+                </div>
+            </div>
+
+            <!-- CHAPTER 2 QUIZ -->
+            <div id="quiz-screen-2" class="hidden">
+                <div class="chapter-subtitle">Chapter 2 · Major Choice</div>
+                <div class="quiz-question">If you could turn back time and had all the resources like money to pursue it, what major would you choose?</div>
+                <div class="quiz-instruction">Pick your choice</div>
+
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerChapter2(this)">
+                        <div class="option-badge">A</div>
+                        <span>Business/ finance</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter2(this)">
+                        <div class="option-badge">B</div>
+                        <span>Doctor</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter2(this)">
+                        <div class="option-badge">C</div>
+                        <span>Software engineering</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter2(this)">
+                        <div class="option-badge">D</div>
+                        <span>No, I will not change any of my past</span>
+                    </button>
+                </div>
+
+                <div id="success-box-2" class="success-box hidden">
+                    <h3>💖 Proud of You!</h3>
+                    <p>No matter what major you choose, i am proud of you.</p>
+                </div>
+
+                <div class="nav-footer">
+                    <button class="nav-btn" onclick="goToQuiz(1)">← Back</button>
+                    <button class="nav-btn next" id="next-btn-2" onclick="goToQuiz(3)">Next Chapter Unlocked</button>
+                </div>
+            </div>
+
+            <!-- CHAPTER 3 QUIZ -->
+            <div id="quiz-screen-3" class="hidden">
+                <div class="chapter-subtitle">Chapter 3 · Life Motivation</div>
+                <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:13px; font-weight:400; color:#6b7280;">(What makes you keep going when life goes hard?)</span></div>
+                <div class="quiz-instruction">Pick your choice</div>
+
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerChapter3(this, 'You will be a great family man 👨‍👩‍👦')">
+                        <div class="option-badge">A</div>
+                        <span>Working hard for a better family life.</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter3(this, 'What a great motivation 👍')">
+                        <div class="option-badge">B</div>
+                        <span>Looking forward to my next day off to wake up late.</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter3(this, 'At least remember to video call me please 🥺')">
+                        <div class="option-badge">C</div>
+                        <span>Taking a quick break to game or watch movies.</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter3(this, 'Thank you for staying strong. Here is a big hug 🫂')">
+                        <div class="option-badge">D</div>
+                        <span>Honestly, just pushing through on autopilot.</span>
+                    </button>
+                </div>
+
+                <div id="success-box-3" class="success-box hidden">
+                    <h3>🫂 Always Here For You</h3>
+                    <p>Thank you for staying strong. Here is a big hug from me!</p>
+                </div>
+
+                <div class="nav-footer">
+                    <button class="nav-btn" onclick="goToQuiz(2)">← Back</button>
+                    <button class="nav-btn next" id="next-btn-3" onclick="goToQuiz(4)">Next Chapter Unlocked</button>
+                </div>
+            </div>
+
+            <!-- CHAPTER 4 QUIZ -->
+            <div id="quiz-screen-4" class="hidden">
+                <div class="chapter-subtitle">Chapter 4 · The Coping Mechanism</div>
+                <div class="quiz-question">How do you quietly handle overwhelming stress?</div>
+                <div class="quiz-instruction">Pick your choice</div>
+
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerChapter4(this, 'dasar wibu wkwkwkwk 🎮')">
+                        <div class="option-badge">A</div>
+                        <span>By withdrawing into music or games alone or anime</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter4(this, '要跟秀分享喔，不要自己承擔，秀會盡量幫忙哥哥 ❤️')">
+                        <div class="option-badge">B</div>
+                        <span>Putting on a smile so nobody worries.</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter4(this, '辛苦了哥哥，記得每天睡前要禱告哦 ✨')">
+                        <div class="option-badge">C</div>
+                        <span>Sleeping it off.</span>
+                    </button>
+                </div>
+
+                <div class="nav-footer">
+                    <button class="nav-btn" onclick="goToQuiz(3)">← Back</button>
+                    <button class="nav-btn next" id="next-btn-4" onclick="goToQuiz(5)">Next Chapter Unlocked</button>
+                </div>
+            </div>
+
+            <!-- CHAPTER 5: THE FINALE -->
+            <div id="quiz-screen-5" class="hidden">
+                <div class="chapter-subtitle">Chapter 5 · The Finale</div>
+                <div class="quiz-question">What is the most meaningful gift life has given you?</div>
+                <div class="quiz-instruction">Pick your choice</div>
+
+                <div class="options-grid">
+                    <button class="option-btn" onclick="answerChapter5(this, 'Let’s build a much calmer, happier future together. I love you 💖')">
+                        <div class="option-badge">A</div>
+                        <span>Finding someone who truly stays by my side. (秀 ☺️)</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter5(this, 'tidak ada pekerjaan keras yang sia-sia ko 💪')">
+                        <div class="option-badge">B</div>
+                        <span>Finally seeing the fruits of my hard work.</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter5(this, '那我要天天吵你 😈')">
+                        <div class="option-badge">C</div>
+                        <span>Having a little peace and quiet.</span>
+                    </button>
+                    <button class="option-btn" onclick="answerChapter5(this, '雖然你以前做了很多不該做的事，現在沒做了，那希望上帝給你一輩子的健健康康哦 🙏')">
+                        <div class="option-badge">D</div>
+                        <span>My health</span>
+                    </button>
+                </div>
+
+                <div class="nav-footer">
+                    <button class="nav-btn" onclick="goToQuiz(4)">← Back</button>
+                    <button class="nav-btn next" onclick="alert('Happy 30th Birthday, Elgen! 🎉 I love you!')">Finish ❤️</button>
                 </div>
             </div>
 
@@ -503,105 +579,108 @@
     </div>
 
     <script>
-        // Efek Love Terbang di Background
+        // Floating Hearts
         function createHeart() {
-            const heartsContainer = document.getElementById('hearts-bg');
+            const container = document.getElementById('hearts-bg');
             const heart = document.createElement('div');
             heart.classList.add('heart');
-            
-            const size = Math.random() * 10 + 8;
+            const size = Math.random() * 8 + 6;
             heart.style.width = `${size}px`;
             heart.style.height = `${size}px`;
             heart.style.left = `${Math.random() * 100}vw`;
-            
             const duration = Math.random() * 3 + 4;
             heart.style.animationDuration = `${duration}s`;
-            
-            heartsContainer.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, duration * 1000);
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), duration * 1000);
         }
-        setInterval(createHeart, 350);
+        setInterval(createHeart, 400);
 
-        // Jam & Tanggal Live
+        // Clock
         function updateClock() {
             const now = new Date();
-            const optionsDate = { weekday: 'long', month: 'long', day: 'numeric' };
-            document.getElementById('current-date').innerText = now.toLocaleDateString('en-US', optionsDate);
-            
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            document.getElementById('current-time').innerText = `${hours}:${minutes}`;
+            document.getElementById('current-date').innerText = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+            document.getElementById('current-time').innerText = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Passcode Lockscreen Logika
+        // Passcode
         let enteredPin = "";
-        const correctPin = "0711";
-        let selectedCount = 0;
-
         function pressKey(num) {
             if (enteredPin.length < 4) {
                 enteredPin += num;
                 updateDots();
-                if (enteredPin.length === 4) {
-                    setTimeout(checkPin, 300);
-                }
+                if (enteredPin.length === 4) setTimeout(checkPin, 300);
             }
         }
-
         function updateDots() {
             for (let i = 0; i < 4; i++) {
-                const dot = document.getElementById(`dot-${i}`);
-                if (i < enteredPin.length) {
-                    dot.classList.add('filled');
-                } else {
-                    dot.classList.remove('filled');
-                }
+                document.getElementById(`dot-${i}`).classList.toggle('filled', i < enteredPin.length);
             }
         }
-
         function checkPin() {
-            if (enteredPin === correctPin) {
-                const lockIcon = document.getElementById('lock-icon');
-                lockIcon.innerText = "🔓";
-                lockIcon.style.transform = "scale(1.2)";
-
+            if (enteredPin === "0711") {
+                document.getElementById('lock-icon').innerText = "🔓";
                 setTimeout(() => {
                     document.getElementById('lock-screen').classList.add('hidden');
                     document.getElementById('app-content').classList.remove('hidden');
-                }, 500);
-            } else {
-                const keypad = document.getElementById('keypad');
-                keypad.classList.add('error-shake');
-                setTimeout(() => {
-                    keypad.classList.remove('error-shake');
-                    enteredPin = "";
-                    updateDots();
                 }, 400);
+            } else {
+                const kp = document.getElementById('keypad');
+                kp.classList.add('error-shake');
+                setTimeout(() => { kp.classList.remove('error-shake'); enteredPin = ""; updateDots(); }, 400);
             }
         }
 
-        function goToQuiz() {
+        // Navigation
+        function goToQuiz(chap) {
             document.getElementById('story-screen').classList.add('hidden');
-            document.getElementById('quiz-screen').classList.remove('hidden');
+            document.getElementById('quiz-screen-1').classList.add('hidden');
+            document.getElementById('quiz-screen-2').classList.add('hidden');
+            document.getElementById('quiz-screen-3').classList.add('hidden');
+            document.getElementById('quiz-screen-4').classList.add('hidden');
+            document.getElementById('quiz-screen-5').classList.add('hidden');
+            
+            if (chap === 1) {
+                document.getElementById('quiz-screen-1').classList.remove('hidden');
+                updateTimeline(1);
+            } else if (chap === 2) {
+                document.getElementById('quiz-screen-2').classList.remove('hidden');
+                updateTimeline(2);
+            } else if (chap === 3) {
+                document.getElementById('quiz-screen-3').classList.remove('hidden');
+                updateTimeline(3);
+            } else if (chap === 4) {
+                document.getElementById('quiz-screen-4').classList.remove('hidden');
+                updateTimeline(4);
+            } else if (chap === 5) {
+                document.getElementById('quiz-screen-5').classList.remove('hidden');
+                updateTimeline(5);
+            }
         }
-
         function goBackToIntro() {
-            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('quiz-screen-1').classList.add('hidden');
             document.getElementById('story-screen').classList.remove('hidden');
         }
 
-        // Pilihan Ganda Logika
+        function updateTimeline(ch) {
+            for (let i = 1; i <= 5; i++) {
+                const dot = document.getElementById(`dot-ch${i}`);
+                dot.className = "tl-dot";
+                if (i < ch) dot.classList.add('completed'), dot.innerText = "✓";
+                else if (i === ch) dot.classList.add('active'), dot.innerText = i;
+                else dot.innerText = i;
+            }
+        }
+
+        // Quiz Logic Chapter 1
+        let selectedCount = 0;
         function toggleOption(btn, id) {
-            const wrongMsg = document.getElementById('wrong-msg');
-            
-            // Jika memilih pilihan salah (Studying 24/7 = id 2)
+            const wrongMsg = document.getElementById('wrong-msg-1');
             if (id === 2) {
                 wrongMsg.classList.remove('hidden');
                 return;
             }
-
             wrongMsg.classList.add('hidden');
 
             if (btn.classList.contains('selected')) {
@@ -610,20 +689,56 @@
             } else {
                 btn.classList.add('selected');
                 selectedCount++;
+                if (selectedCount < 3) {
+                    showModal("Keep going!", `You selected ${selectedCount}/3 correct answers. Choose more!`);
+                }
             }
 
-            // Jika 3 opsi benar terpilih
             if (selectedCount === 3) {
-                document.getElementById('success-box').classList.remove('hidden');
-                // Buka kunci Chapter 2 di timeline sidebar
-                const tl2 = document.getElementById('tl-2');
-                tl2.classList.remove('locked');
-                tl2.classList.add('active');
-                tl2.querySelector('.timeline-icon').innerText = "2";
-                tl2.querySelector('span').innerText = "Taiwan Life";
+                document.getElementById('success-box-1').classList.remove('hidden');
+                const nextBtn = document.getElementById('next-btn-1');
+                nextBtn.innerText = "Next Chapter Unlocked 🎉";
             } else {
-                document.getElementById('success-box').classList.add('hidden');
+                document.getElementById('success-box-1').classList.add('hidden');
             }
+        }
+
+        // Quiz Logic Chapter 2
+        function answerChapter2(btn) {
+            document.querySelectorAll('#quiz-screen-2 .option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            document.getElementById('success-box-2').classList.remove('hidden');
+        }
+
+        // Quiz Logic Chapter 3
+        function answerChapter3(btn, popupText) {
+            document.querySelectorAll('#quiz-screen-3 .option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            showModal("Aww so sweet 💖", popupText);
+            document.getElementById('success-box-3').classList.remove('hidden');
+        }
+
+        // Quiz Logic Chapter 4
+        function answerChapter4(btn, popupText) {
+            document.querySelectorAll('#quiz-screen-4 .option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            showModal("Coping Mechanism 🫂", popupText);
+        }
+
+        // Quiz Logic Chapter 5 (The Finale)
+        function answerChapter5(btn, popupText) {
+            document.querySelectorAll('#quiz-screen-5 .option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            showModal("The Finale ✨", popupText);
+        }
+
+        function showModal(title, text) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-text').innerText = text;
+            document.getElementById('popup-modal').classList.remove('hidden');
+        }
+        function closeModal() {
+            document.getElementById('popup-modal').classList.add('hidden');
         }
     </script>
 </body>
