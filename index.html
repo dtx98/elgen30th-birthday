@@ -55,8 +55,9 @@
 
         .hidden { display: none !important; }
 
+        /* LOCKSCREEN SESUAI REFERENSI iOS[cite: 10] */
         .lockscreen-wrapper {
-            background: linear-gradient(135deg, #4a1525 0%, #883348 50%, #f43f5e 100%);
+            background: linear-gradient(160deg, #9b5a6c 0%, #7b4352 40%, #512633 80%, #35131f 100%);
             color: #fff;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -68,46 +69,90 @@
         .lockscreen-container {
             text-align: center;
             width: 100%;
-            max-width: 360px;
+            max-width: 340px;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .lock-icon-top { font-size: 22px; margin-bottom: 5px; opacity: 0.9; }
-        .date-text { font-size: 14px; opacity: 0.85; margin-bottom: 4px; }
-        .time-text { font-size: 60px; font-weight: 300; letter-spacing: -2px; margin-bottom: 25px; line-height: 1; }
-        .passcode-label { font-size: 13px; opacity: 0.9; margin-bottom: 12px; }
+        
+        /* Ikon Gembok Ramping ala iOS[cite: 10] */
+        .ios-lock-icon {
+            width: 14px;
+            height: 11px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 4px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .ios-lock-icon::after {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 2px;
+            width: 6px;
+            height: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-bottom: none;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .date-text { font-size: 15px; font-weight: 400; opacity: 0.95; margin-bottom: 2px; letter-spacing: 0.2px; }
+        .time-text { 
+            font-family: 'Playfair Display', serif;
+            font-size: 72px; 
+            font-weight: 400; 
+            letter-spacing: -1px; 
+            margin-bottom: 20px; 
+            line-height: 1; 
+        }
+        .passcode-label { font-size: 13px; font-weight: 400; opacity: 0.95; margin-bottom: 12px; }
         
         .dots-container {
             display: flex;
             justify-content: center;
-            gap: 14px;
-            margin-bottom: 8px;
+            gap: 16px;
+            margin-bottom: 10px;
         }
         .dot {
-            width: 14px; height: 14px;
+            width: 13px; height: 13px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.85);
             background: transparent;
         }
         .dot.filled { background: #ffffff; border-color: #ffffff; }
-        .hint-text { font-size: 11px; opacity: 0.7; margin-bottom: 25px; }
+        .hint-text { font-size: 11.5px; opacity: 0.8; margin-bottom: 22px; font-style: italic; }
 
+        /* Keypad iOS Style[cite: 10] */
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            gap: 12px 18px;
             max-width: 260px;
             margin: 0 auto;
         }
         .key-btn {
-            width: 65px; height: 65px;
+            width: 68px; height: 68px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.16);
+            backdrop-filter: blur(20px);
             border: none; color: white;
-            font-size: 22px; cursor: pointer;
+            cursor: pointer;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             margin: 0 auto;
+            transition: background 0.15s;
         }
+        .key-btn:active { background: rgba(255, 255, 255, 0.35); }
+        .key-number { font-size: 26px; font-weight: 400; line-height: 1; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        .key-sub { font-size: 9px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.75; margin-top: 1px; }
+
+        .lock-footer {
+            margin-top: 25px;
+            font-size: 12px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
         .error-shake { animation: shake 0.4s ease-in-out; }
 
         .main-layout {
@@ -163,7 +208,6 @@
             z-index: 5;
         }
 
-        /* Tombol Home di Minigame */
         .home-btn {
             position: absolute;
             top: 20px; left: 20px;
@@ -188,7 +232,6 @@
         .story-content h2 { font-size: 18px; color: #1f2937; margin-bottom: 10px; font-weight: 700; line-height: 1.4; }
         .story-content p { font-size: 13px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
 
-        .guess-header { text-align: center; margin-bottom: 10px; }
         .bubu-container {
             display: flex;
             align-items: center;
@@ -339,21 +382,39 @@
             animation: pulseGlow 2.5s infinite ease-in-out;
             margin-bottom: 25px;
             color: white;
+            position: relative;
         }
         @keyframes pulseGlow {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
             50% { transform: scale(1.02); box-shadow: 0 0 15px 3px rgba(244,63,94, 0.2); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
         }
+        .envelope-icon-wrapper {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px auto;
+        }
         .envelope-icon-circle {
             width: 60px; height: 60px;
-            background: #fbcfe8;
+            background: #f43f5e;
             border-radius: 50%;
-            margin: 0 auto 10px auto;
             display: flex; align-items: center; justify-content: center;
             font-size: 24px;
-            color: #831843;
+            color: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .notification-heart {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            font-size: 18px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            animation: bounceHeart 1.5s infinite ease-in-out;
+        }
+        @keyframes bounceHeart {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
 
         .letter-paper {
@@ -363,11 +424,17 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: left;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
         }
-        .letter-paper h3 { font-size: 24px; margin-bottom: 15px; color: #4a1525; font-weight: 600; }
+        .letter-paper h3 { 
+            font-size: 20px; 
+            margin-bottom: 15px; 
+            color: #4a1525; 
+            font-family: 'Cormorant Garamond', serif; 
+            font-style: italic; 
+            font-weight: 600; 
+        }
         .letter-paper p { line-height: 1.8; margin-bottom: 14px; color: #3b141d; }
 
         .countdown-grid {
@@ -410,12 +477,12 @@
 
     <div class="hearts-bg" id="hearts-bg"></div>
 
-    <!-- LOCKSCREEN -->
+    <!-- LOCKSCREEN (SESUAI REFERENSI iOS)[cite: 10] -->
     <div id="lock-screen" class="lockscreen-wrapper">
         <div class="lockscreen-container">
-            <div id="lock-icon" class="lock-icon-top">🔒</div>
+            <div id="lock-icon" class="ios-lock-icon"></div>
             <div id="current-date" class="date-text">Monday, November 2</div>
-            <div id="current-time" class="time-text">11:53</div>
+            <div id="current-time" class="time-text">10:52</div>
             
             <div class="passcode-label">Enter Passcode</div>
             
@@ -425,20 +492,22 @@
                 <div class="dot" id="dot-2"></div>
                 <div class="dot" id="dot-3"></div>
             </div>
-            <div class="hint-text">Guess the password, I believe in you</div>
+            <div class="hint-text">Hint: a very special day</div>
 
             <div class="keypad" id="keypad">
-                <button class="key-btn" onclick="pressKey('1')">1</button>
-                <button class="key-btn" onclick="pressKey('2')">2</button>
-                <button class="key-btn" onclick="pressKey('3')">3</button>
-                <button class="key-btn" onclick="pressKey('4')">4</button>
-                <button class="key-btn" onclick="pressKey('5')">5</button>
-                <button class="key-btn" onclick="pressKey('6')">6</button>
-                <button class="key-btn" onclick="pressKey('7')">7</button>
-                <button class="key-btn" onclick="pressKey('8')">8</button>
-                <button class="key-btn" onclick="pressKey('9')">9</button>
-                <button class="key-btn" onclick="pressKey('0')" style="grid-column: 2;">0</button>
+                <button class="key-btn" onclick="pressKey('1')"><span class="key-number">1</span><span class="key-sub"></span></button>
+                <button class="key-btn" onclick="pressKey('2')"><span class="key-number">2</span><span class="key-sub">ABC</span></button>
+                <button class="key-btn" onclick="pressKey('3')"><span class="key-number">3</span><span class="key-sub">DEF</span></button>
+                <button class="key-btn" onclick="pressKey('4')"><span class="key-number">4</span><span class="key-sub">GHI</span></button>
+                <button class="key-btn" onclick="pressKey('5')"><span class="key-number">5</span><span class="key-sub">JKL</span></button>
+                <button class="key-btn" onclick="pressKey('6')"><span class="key-number">6</span><span class="key-sub">MNO</span></button>
+                <button class="key-btn" onclick="pressKey('7')"><span class="key-number">7</span><span class="key-sub">PQRS</span></button>
+                <button class="key-btn" onclick="pressKey('8')"><span class="key-number">8</span><span class="key-sub">TUV</span></button>
+                <button class="key-btn" onclick="pressKey('9')"><span class="key-number">9</span><span class="key-sub">WXYZ</span></button>
+                <button class="key-btn" onclick="pressKey('0')" style="grid-column: 2;"><span class="key-number">0</span><span class="key-sub"></span></button>
             </div>
+
+            <div class="lock-footer">Emergency? Just call me</div>
         </div>
     </div>
 
@@ -655,7 +724,6 @@
 
             <!-- CHAPTER 6: MINIGAME -->
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative;">
-                <!-- TOMBOL HOME (KEMBALI KE PAGE SEBELUM Q1) -->
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
                 <div class="chapter-subtitle" style="margin-top: 5px;">Chapter 6 · Minigame</div>
@@ -679,7 +747,10 @@
                 <div id="envelope-wrapper">
                     <h2 style="font-size: 22px; color: #1f2937; text-align: center; margin-bottom: 20px;">A letter, just for you</h2>
                     <div class="envelope-container" onclick="openLetter()">
-                        <div class="envelope-icon-circle">✉️</div>
+                        <div class="envelope-icon-wrapper">
+                            <div class="envelope-icon-circle">✉️</div>
+                            <div class="notification-heart">💛</div>
+                        </div>
                         <h3 style="font-size: 18px; margin-bottom: 6px; color: #fff;">You've got mail</h3>
                         <p style="font-size: 12px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
                     </div>
@@ -692,7 +763,7 @@
                         <p>From the first time we met on the badminton court, I knew there was something special about you. Your kindness, your patience, the way you get way too competitive over games, and the way you always make me feel safe — I love all of it.</p>
                         <p>Thirty is a big chapter, and I’m so lucky I get to be in it with you. Thank you for every laugh, every late-night game session I watched from the sofa, and every quiet moment that felt like home.</p>
                         <p>Here’s to more adventures, more matches, more wins, and so many more birthdays together.</p>
-                        <p style="margin-top: 20px;">Forever yours,<br><strong style="font-size: 18px; color: #f43f5e; font-family: 'Cormorant Garamond', serif; font-style: italic;">秀 ❤️</strong></p>
+                        <p style="margin-top: 20px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 16px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
                     </div>
 
                     <!-- COUNTDOWN MUNCUL SETELAH SURAT DIBUKA -->
@@ -732,7 +803,7 @@
                     <!-- TOMBOL FINISH SETELAH COUNTDOWN -->
                     <div style="display: flex; gap: 10px; margin-top: 25px;" id="final-buttons-wrapper" class="hidden">
                         <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151;">← Back</button>
-                        <button class="btn-primary" onclick="alert('Happy 30th Birthday, Elgen! 🎉 I love you!')" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish ❤️</button>
+                        <button class="btn-primary" onclick="alert('Happy 30th Birthday, 張彬哥哥! 🎉 I love you! ❤️')" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish ❤️</button>
                     </div>
                 </div>
 
@@ -745,10 +816,8 @@
     </div>
 
     <script>
-        // --- WEB AUDIO API: IPHONE UNLOCK SOUND & ROMANTIC JAZZ BGM ---
+        // --- AUDIO UNLOCK IPHONE (VOLUME TINGGI) ---
         let audioCtx = null;
-        let isMusicPlaying = false;
-        let bgmInterval = null;
 
         function initAudioContext() {
             if (!audioCtx) {
@@ -759,12 +828,10 @@
             }
         }
 
-        // Suara Unlocked Khas iPhone (Chime lembut bernada naik)
         function playUnlockSound() {
             initAudioContext();
             const now = audioCtx.currentTime;
             
-            // Dua nada lembut ala kunci iPhone
             [587.33, 880].forEach((freq, index) => {
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
@@ -772,63 +839,15 @@
                 osc.type = 'sine';
                 osc.frequency.setValueAtTime(freq, now + (index * 0.08));
                 
-                gain.gain.setValueAtTime(0.15, now + (index * 0.08));
-                gain.gain.exponentialRampToValueAtTime(0.001, now + (index * 0.08) + 0.35);
+                gain.gain.setValueAtTime(0.35, now + (index * 0.08));
+                gain.gain.exponentialRampToValueAtTime(0.001, now + (index * 0.08) + 0.4);
                 
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
                 
                 osc.start(now + (index * 0.08));
-                osc.stop(now + (index * 0.08) + 0.35);
+                osc.stop(now + (index * 0.08) + 0.4);
             });
-        }
-
-        // Musik Romantis Jazz Lembut (Arpeggio hangat yang mengharukan)
-        function startRomanticJazzBGM() {
-            if (isMusicPlaying) return;
-            initAudioContext();
-            isMusicPlaying = true;
-
-            // Chord progresi romantis (Cmaj7 -> Am7 -> Dm7 -> G7)
-            const chords = [
-                [261.63, 329.63, 392.00, 493.88], // Cmaj7
-                [220.00, 261.63, 329.63, 392.00], // Am7
-                [146.83, 220.00, 261.63, 329.63], // Dm7
-                [196.00, 246.94, 293.66, 349.23]  // G7
-            ];
-            
-            let chordIndex = 0;
-            let noteIndex = 0;
-
-            bgmInterval = setInterval(() => {
-                if (!isMusicPlaying) return;
-                const now = audioCtx.currentTime;
-                const currentChord = chords[chordIndex];
-                const freq = currentChord[noteIndex];
-
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                // Karakter suara mirip electric piano / warm synth jazz
-                osc.type = 'triangle';
-                osc.frequency.setValueAtTime(freq, now);
-
-                gain.gain.setValueAtTime(0.001, now);
-                gain.gain.linearRampToValueAtTime(0.08, now + 0.05);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start(now);
-                osc.stop(now + 1.2);
-
-                noteIndex++;
-                if (noteIndex >= currentChord.length) {
-                    noteIndex = 0;
-                    chordIndex = (chordIndex + 1) % chords.length;
-                }
-            }, 700); // tempo lambat yang syahdu
         }
 
         // --- BACKGROUND & CLOCK ---
@@ -870,10 +889,9 @@
         }
         function checkPin() {
             if (enteredPin === "0711") {
-                playUnlockSound(); // Mainkan suara unlock iPhone
-                startRomanticJazzBGM(); // Mulai musik jazz romantis
+                playUnlockSound();
                 
-                document.getElementById('lock-icon').innerText = "🔓";
+                document.getElementById('lock-icon').style.transform = "scale(1.2)";
                 setTimeout(() => {
                     document.getElementById('lock-screen').classList.add('hidden');
                     document.getElementById('app-content').classList.remove('hidden');
