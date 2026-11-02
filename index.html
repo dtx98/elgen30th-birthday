@@ -4,58 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy 30th Birthday, Elgen!</title>
-    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; background-color: #fff1f2; color: #444; }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            color: #444;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 550px;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(244, 63, 94, 0.15);
+            text-align: center;
+        }
+        .hidden { display: none !important; }
+        .lock-icon { font-size: 48px; margin-bottom: 15px; }
+        h1 { font-size: 26px; color: #1f2937; margin-bottom: 10px; font-weight: 700; }
+        p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
+        input {
+            width: 100%;
+            padding: 14px;
+            font-size: 24px;
+            text-align: center;
+            letter-spacing: 8px;
+            border: 2px solid #fecdd3;
+            border-radius: 12px;
+            outline: none;
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+        input:focus { border-color: #f43f5e; }
+        button {
+            width: 100%;
+            background: #f43f5e;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+        }
+        button:hover { background: #e11d48; }
+        button:active { transform: scale(0.98); }
+        .error { color: #ef4444; font-size: 13px; margin-top: 15px; }
+        
+        /* Main Content Styles */
+        .content-header { margin-bottom: 30px; text-align: left; }
+        .badge {
+            background: #ffe4e6;
+            color: #e11d48;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .timeline-box {
+            background: #fff1f2;
+            border-left: 4px solid #f43f5e;
+            padding: 16px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .timeline-box h3 { font-size: 15px; color: #9f1239; margin-bottom: 6px; font-weight: 600; }
+        .timeline-box p { font-size: 13px; color: #4b5563; margin-bottom: 0; text-align: left; }
+        .letter-box {
+            background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 25px;
+            text-align: left;
+            box-shadow: 0 6px 20px rgba(244, 63, 94, 0.25);
+        }
+        .letter-box h3 { font-size: 17px; margin-bottom: 10px; font-weight: 700; }
+        .letter-box p { font-size: 13px; color: white; opacity: 0.95; line-height: 1.7; margin-bottom: 0; text-align: left; }
+        .footer-note { font-size: 11px; color: #9ca3af; margin-top: 20px; }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body>
 
-    <!-- 1. PASSCODE SCREEN -->
-    <div id="lock-screen" class="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center">
-        <div class="text-4xl mb-2">🔒</div>
-        <h1 class="text-2xl font-bold text-gray-800 mb-2">Enter Passcode</h1>
-        <p class="text-sm text-gray-500 mb-6">Hint: A very special date. (Month & Year, e.g., 122023)</p>
+    <!-- 1. LOCK SCREEN (PASSCODE) -->
+    <div id="lock-screen" class="card">
+        <div class="lock-icon">🔒</div>
+        <h1>Enter Passcode</h1>
+        <p>Hint: A very special date (Month & Year, e.g., 122023)</p>
         
-        <input type="password" id="passcode-input" maxlength="6" placeholder="• • • • • •" 
-            class="w-full text-center text-2xl tracking-widest py-3 border-2 border-pink-300 rounded-xl focus:outline-none focus:border-pink-500 mb-4">
+        <input type="password" id="passcode-input" maxlength="6" placeholder="••••••">
+        <button onclick="checkPasscode()">Unlock Surprise 💖</button>
         
-        <button onclick="checkPasscode()" class="w-full bg-pink-500 text-white font-semibold py-3 rounded-xl hover:bg-pink-600 transition shadow-lg">
-            Unlock Surprise 💖
-        </button>
-        <p id="error-msg" class="text-red-500 text-sm mt-3 hidden">Oops, wrong code! Try to remember again.</p>
-        <div class="mt-8 text-xs text-gray-400">Emergency? Just call me 😉</div>
+        <p id="error-msg" class="error hidden">Oops, wrong code! Try to remember again.</p>
+        <div class="footer-note">Emergency? Just call me 😉</div>
     </div>
 
     <!-- 2. MAIN WEBSITE CONTENT -->
-    <div id="main-content" class="max-w-2xl w-full bg-white rounded-2xl shadow-xl p-8 hidden">
-        <div class="text-center mb-8">
-            <span class="text-xs bg-pink-100 text-pink-600 font-semibold px-3 py-1 rounded-full">Special Milestone</span>
-            <h1 class="text-3xl font-bold text-gray-800 mt-3">Happy 30th Birthday, My Love! 🎉</h1>
-            <p class="text-gray-500 mt-1">A special interactive journey dedicated to you.</p>
+    <div id="main-content" class="card hidden" style="text-align: left;">
+        <div class="content-header" style="text-align: center;">
+            <span class="badge">Special Milestone</span>
+            <h1 style="margin-top: 5px;">Happy 30th Birthday, My Love! 🎉</h1>
+            <p style="margin-bottom: 0;">A special interactive journey dedicated to you.</p>
         </div>
 
         <!-- Story / Timeline Section -->
-        <div class="space-y-4 mb-8">
-            <div class="p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
-                <h3 class="font-bold text-pink-700">1. Early Days & Hobbies</h3>
-                <p class="text-sm text-gray-600 mt-1">Reading manga all day, playing football when there's free time, and spending the rest of the time acting like a rebel (totally zero studying hahaha).</p>
+        <div>
+            <div class="timeline-box">
+                <h3>1. Early Days & Hobbies</h3>
+                <p>Reading manga all day, playing football when there's free time, and spending the rest of the time acting like a rebel (totally zero studying hahaha).</p>
             </div>
-            <div class="p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
-                <h3 class="font-bold text-pink-700">2. Taiwan & University Adventures</h3>
-                <p class="text-sm text-gray-600 mt-1">Hard work, studies, and pushing through life's milestones.</p>
+            <div class="timeline-box">
+                <h3>2. Taiwan & University Adventures</h3>
+                <p>Hard work, studies, and pushing through life's milestones.</p>
             </div>
-            <div class="p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
-                <h3 class="font-bold text-pink-700">3. Reconnecting (December 2023) 🏸</h3>
-                <p class="text-sm text-gray-600 mt-1">Playing badminton with my brother's friends brought us back together!</p>
+            <div class="timeline-box">
+                <h3>3. Reconnecting (December 2023) 🏸</h3>
+                <p>Playing badminton with my brother's friends brought us back together!</p>
             </div>
         </div>
 
         <!-- Love Letter Section -->
-        <div class="bg-gradient-to-r from-pink-500 to-rose-500 text-white p-6 rounded-2xl text-center shadow-md">
-            <h3 class="text-xl font-bold mb-2">A Message For You 💌</h3>
-            <p class="text-sm leading-relaxed opacity-90">
+        <div class="letter-box">
+            <h3>A Message For You 💌</h3>
+            <p>
                 "Thank you for being such an incredible, hardworking man and for always bringing laughter into my life. Wishing you all your dreams come true in your 30s, as we continue walking forward together. I love you!"
             </p>
         </div>
@@ -65,7 +149,7 @@
         function checkPasscode() {
             const input = document.getElementById('passcode-input').value;
             if (input === '122023') {
-                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('lock-screen').classList.add('hidden');
                 document.getElementById('main-content').classList.remove('hidden');
             } else {
                 document.getElementById('error-msg').classList.remove('hidden');
