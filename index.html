@@ -130,22 +130,22 @@
             z-index: 2;
         }
 
-        /* Top Timeline Bar */
+        /* Top Timeline Bar (8 Steps) */
         .timeline-bar {
             display: flex;
             justify-content: space-between;
             width: 100%;
             background: white;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 16px;
             box-shadow: 0 4px 15px rgba(244, 63, 94, 0.1);
         }
         .tl-dot {
-            width: 28px; height: 28px;
+            width: 24px; height: 24px;
             border-radius: 50%;
             background: #f3f4f6;
             color: #9ca3af;
-            font-size: 12px; font-weight: 600;
+            font-size: 11px; font-weight: 600;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid #e5e7eb;
         }
@@ -168,45 +168,42 @@
             background: none; border: none;
             color: #f43f5e; font-weight: 600;
             font-size: 13px; cursor: pointer;
+            z-index: 5;
         }
 
-        /* Story Intro Page */
-        .story-header h1 {
-            font-size: 24px;
-            color: #1f2937;
-            font-weight: 700;
-            margin-bottom: 8px;
-            text-align: center;
+        /* Story Page */
+        .story-content { text-align: center; }
+        .bubu-img {
+            width: 180px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 16px;
         }
-        .story-header p {
-            font-size: 13px;
-            color: #6b7280;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        .story-content h2 { font-size: 18px; color: #1f2937; margin-bottom: 10px; font-weight: 700; line-height: 1.4; }
+        .story-content p { font-size: 13px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
+
+        /* Guess Right Page */
+        .guess-header { text-align: center; margin-bottom: 20px; }
+        .guess-header h1 { font-size: 22px; color: #1f2937; font-weight: 700; margin-bottom: 8px; }
         .bubu-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 20px;
         }
-        .bubu-img {
-            width: 140px;
-            height: auto;
-            border-radius: 14px;
-        }
+        .bubu-small { width: 110px; height: auto; border-radius: 12px; }
         .speech-bubble {
             background: #fff1f2;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 12px;
             font-weight: 600;
             color: #e11d48;
             border: 1px solid #fecdd3;
-            position: relative;
-            max-width: 180px;
+            max-width: 170px;
         }
+
         .btn-primary {
             width: 100%;
             background: #f43f5e;
@@ -281,31 +278,13 @@
         .success-box {
             background: #ecfdf5;
             border: 2px solid #10b981;
-            padding: 16px;
+            padding: 14px;
             border-radius: 14px;
             margin-bottom: 15px;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.3s ease-in-out;
         }
-        .success-box h3 { color: #065f46; font-size: 15px; margin-bottom: 6px; }
-        .success-box p { color: #047857; font-size: 13px; margin-bottom: 0; line-height: 1.5; }
-
-        /* Pop-up Modal */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center;
-            z-index: 100;
-        }
-        .modal-box {
-            background: white; padding: 24px; border-radius: 20px; text-align: center; max-width: 280px; width: 90%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            animation: fadeIn 0.3s ease;
-        }
-        .modal-box h3 { font-size: 18px; color: #1f2937; margin-bottom: 8px; }
-        .modal-box p { font-size: 13px; color: #6b7280; margin-bottom: 20px; line-height: 1.5; }
-        .modal-btn {
-            background: #f43f5e; color: white; border: none; padding: 10px 20px; font-size: 14px; font-weight: 600;
-            border-radius: 10px; cursor: pointer; width: 100%;
-        }
+        .success-box h3 { color: #065f46; font-size: 14px; margin-bottom: 4px; }
+        .success-box p { color: #047857; font-size: 12px; margin-bottom: 0; line-height: 1.4; }
 
         .nav-footer {
             display: flex;
@@ -320,6 +299,18 @@
             border-radius: 10px; cursor: pointer; font-family: 'Poppins', sans-serif;
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
+
+        /* Countdown Boxes Styling */
+        .countdown-box {
+            background: #fff1f2;
+            padding: 14px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            border: 1px solid #fecdd3;
+            text-align: center;
+        }
+        .countdown-title { font-size: 11px; color: #e11d48; font-weight: 600; margin-bottom: 4px; }
+        .countdown-timer { font-size: 14px; font-weight: 700; color: #1f2937; }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -366,64 +357,70 @@
         </div>
     </div>
 
-    <!-- POP-UP MODAL -->
-    <div id="popup-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <h3 id="modal-title">Keep going!</h3>
-            <p id="modal-text">Choose more correct answers!</p>
-            <button class="modal-btn" onclick="closeModal()">OK</button>
-        </div>
-    </div>
-
     <!-- MAIN APP CONTAINER -->
     <div id="app-content" class="main-layout hidden">
         
-        <!-- TOP TIMELINE BAR -->
+        <!-- TOP TIMELINE BAR (8 STEPS) -->
         <div class="timeline-bar">
-            <div class="tl-dot active" id="dot-ch1">1</div>
-            <div class="tl-dot" id="dot-ch2">2</div>
-            <div class="tl-dot" id="dot-ch3">3</div>
-            <div class="tl-dot" id="dot-ch4">4</div>
-            <div class="tl-dot" id="dot-ch5">5</div>
+            <div class="tl-dot active" id="dot-s1">1</div>
+            <div class="tl-dot" id="dot-s2">2</div>
+            <div class="tl-dot" id="dot-s3">3</div>
+            <div class="tl-dot" id="dot-s4">4</div>
+            <div class="tl-dot" id="dot-s5">5</div>
+            <div class="tl-dot" id="dot-s6">6</div>
+            <div class="tl-dot" id="dot-s7">7</div>
+            <div class="tl-dot" id="dot-s8">8</div>
         </div>
 
         <!-- CONTENT CARD -->
         <div class="card">
-            <!-- PART 1: INTRO STORY -->
-            <div id="story-screen">
-                <div class="story-header">
+            <button class="skip-btn" id="global-skip-btn" onclick="goToScreen('minigame')" style="display: none;">Skip &gt;</button>
+
+            <!-- PAGE 2: ONCE UPON A TIME (GIF TIUP LILIN) -->
+            <div id="story-screen" class="story-content">
+                <img src="https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif" alt="Bubu Dudu Birthday" class="bubu-img">
+                <h2>Once upon a time, this tiny guy came to this world.</h2>
+                <p>Thirty years later, he's my favourite person in the whole world.<br><br>Ready to play through his story?</p>
+                <button class="btn-primary" onclick="goToScreen('guess')">開始 (Let's Go!) ✨</button>
+            </div>
+
+            <!-- PAGE 3: GUESS RIGHT INTRO -->
+            <div id="guess-screen" class="hidden">
+                <div class="guess-header">
                     <h1>Guess right to unlock the next chapter</h1>
-                    <p>Once upon a time, this tiny guy came to this world.</p>
                 </div>
                 
                 <div class="bubu-container">
-                    <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-img">
+                    <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-small">
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
                 </div>
-                
-                <button class="btn-primary" onclick="goToQuiz(1)">Start Chapter 1 ✨</button>
+
+                <button class="btn-primary" onclick="goToScreen('ch1')">Start Chapter 1 ✨</button>
             </div>
 
             <!-- CHAPTER 1 QUIZ -->
             <div id="quiz-screen-1" class="hidden">
                 <div class="chapter-subtitle">Chapter 1 · Childhood</div>
                 <div class="quiz-question">How did Elgen spend his childhood?</div>
-                <div class="quiz-instruction">Pick all the right answers</div>
+                <div class="quiz-instruction" style="margin-bottom: 8px;">Pick all the right answers</div>
+                
+                <!-- Red status text inline -->
+                <div id="inline-status-1" style="font-size: 13px; font-weight: 600; color: #ef4444; margin-bottom: 12px; min-height: 20px;"></div>
 
                 <div class="options-grid">
-                    <button class="option-btn" onclick="toggleOption(this, 1, 1)">
+                    <button class="option-btn" onclick="toggleOption(this, 1)">
                         <div class="option-badge">A</div>
                         <span>Playing football</span>
                     </button>
-                    <button class="option-btn" onclick="toggleOption(this, 2, 1)">
+                    <button class="option-btn" onclick="toggleOption(this, 2)">
                         <div class="option-badge">B</div>
                         <span>Studying 24/7</span>
                     </button>
-                    <button class="option-btn" onclick="toggleOption(this, 3, 1)">
+                    <button class="option-btn" onclick="toggleOption(this, 3)">
                         <div class="option-badge">C</div>
                         <span>Reading Naruto comics</span>
                     </button>
-                    <button class="option-btn" onclick="toggleOption(this, 4, 1)">
+                    <button class="option-btn" onclick="toggleOption(this, 4)">
                         <div class="option-badge">D</div>
                         <span>Doing silly things</span>
                     </button>
@@ -440,8 +437,8 @@
                 </div>
 
                 <div class="nav-footer">
-                    <button class="nav-btn" onclick="goBackToIntro()">← Back</button>
-                    <button class="nav-btn next" id="next-btn-1" onclick="goToQuiz(2)">Next Chapter Unlocked</button>
+                    <button class="nav-btn" onclick="goToScreen('guess')">← Back</button>
+                    <button class="nav-btn next" id="next-btn-1" onclick="goToScreen('ch2')">Next Chapter Unlocked</button>
                 </div>
             </div>
 
@@ -452,19 +449,19 @@
                 <div class="quiz-instruction">Pick your choice</div>
 
                 <div class="options-grid">
-                    <button class="option-btn" onclick="answerChapter2(this)">
+                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
                         <div class="option-badge">A</div>
                         <span>Business/ finance</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter2(this)">
+                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
                         <div class="option-badge">B</div>
                         <span>Doctor</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter2(this)">
+                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
                         <div class="option-badge">C</div>
                         <span>Software engineering</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter2(this)">
+                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
                         <div class="option-badge">D</div>
                         <span>No, I will not change any of my past</span>
                     </button>
@@ -472,35 +469,35 @@
 
                 <div id="success-box-2" class="success-box hidden">
                     <h3>💖 Proud of You!</h3>
-                    <p>No matter what major you choose, i am proud of you.</p>
+                    <p id="msg-text-2">No matter what major you choose, i am proud of you 💖</p>
                 </div>
 
                 <div class="nav-footer">
-                    <button class="nav-btn" onclick="goToQuiz(1)">← Back</button>
-                    <button class="nav-btn next" id="next-btn-2" onclick="goToQuiz(3)">Next Chapter Unlocked</button>
+                    <button class="nav-btn" onclick="goToScreen('ch1')">← Back</button>
+                    <button class="nav-btn next" id="next-btn-2" onclick="goToScreen('ch3')">Next Chapter Unlocked</button>
                 </div>
             </div>
 
             <!-- CHAPTER 3 QUIZ -->
             <div id="quiz-screen-3" class="hidden">
                 <div class="chapter-subtitle">Chapter 3 · Life Motivation</div>
-                <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:13px; font-weight:400; color:#6b7280;">(What makes you keep going when life goes hard?)</span></div>
+                <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:12px; font-weight:400; color:#6b7280;">(What makes you keep going when life goes hard?)</span></div>
                 <div class="quiz-instruction">Pick your choice</div>
 
                 <div class="options-grid">
-                    <button class="option-btn" onclick="answerChapter3(this, 'You will be a great family man 👨‍👩‍👦')">
+                    <button class="option-btn" onclick="answerInline(this, 3, 'You will be a great family man 👨‍👩‍👦')">
                         <div class="option-badge">A</div>
                         <span>Working hard for a better family life.</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter3(this, 'What a great motivation 👍')">
+                    <button class="option-btn" onclick="answerInline(this, 3, 'What a great motivation 👍 (睡到自然醒)')">
                         <div class="option-badge">B</div>
-                        <span>Looking forward to my next day off to wake up late.</span>
+                        <span>Looking forward to my next day off to wake up late (睡到自然醒).</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter3(this, 'At least remember to video call me please 🥺')">
+                    <button class="option-btn" onclick="answerInline(this, 3, 'At least remember to video call me please 🥺')">
                         <div class="option-badge">C</div>
                         <span>Taking a quick break to game or watch movies.</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter3(this, 'Thank you for staying strong. Here is a big hug 🫂')">
+                    <button class="option-btn" onclick="answerInline(this, 3, 'Thank you for staying strong. Here is a big hug 🫂')">
                         <div class="option-badge">D</div>
                         <span>Honestly, just pushing through on autopilot.</span>
                     </button>
@@ -508,12 +505,12 @@
 
                 <div id="success-box-3" class="success-box hidden">
                     <h3>🫂 Always Here For You</h3>
-                    <p>Thank you for staying strong. Here is a big hug from me!</p>
+                    <p id="msg-text-3">Message here</p>
                 </div>
 
                 <div class="nav-footer">
-                    <button class="nav-btn" onclick="goToQuiz(2)">← Back</button>
-                    <button class="nav-btn next" id="next-btn-3" onclick="goToQuiz(4)">Next Chapter Unlocked</button>
+                    <button class="nav-btn" onclick="goToScreen('ch2')">← Back</button>
+                    <button class="nav-btn next" id="next-btn-3" onclick="goToScreen('ch4')">Next Chapter Unlocked</button>
                 </div>
             </div>
 
@@ -524,55 +521,106 @@
                 <div class="quiz-instruction">Pick your choice</div>
 
                 <div class="options-grid">
-                    <button class="option-btn" onclick="answerChapter4(this, 'dasar wibu wkwkwkwk 🎮')">
+                    <button class="option-btn" onclick="answerInline(this, 4, 'dasar wibu wkwkwkwk 🎮')">
                         <div class="option-badge">A</div>
                         <span>By withdrawing into music or games alone or anime</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter4(this, '要跟秀分享喔，不要自己承擔，秀會盡量幫忙哥哥 ❤️')">
+                    <button class="option-btn" onclick="answerInline(this, 4, '要跟秀分享喔，不要自己承擔，秀會盡量幫忙哥哥 ❤️')">
                         <div class="option-badge">B</div>
                         <span>Putting on a smile so nobody worries.</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter4(this, '辛苦了哥哥，記得每天睡前要禱告哦 ✨')">
+                    <button class="option-btn" onclick="answerInline(this, 4, '辛苦了哥哥，記得每天睡前要禱告哦 ✨')">
                         <div class="option-badge">C</div>
                         <span>Sleeping it off.</span>
                     </button>
                 </div>
 
+                <div id="success-box-4" class="success-box hidden">
+                    <h3>✨ Coping Mechanism</h3>
+                    <p id="msg-text-4">Message here</p>
+                </div>
+
                 <div class="nav-footer">
-                    <button class="nav-btn" onclick="goToQuiz(3)">← Back</button>
-                    <button class="nav-btn next" id="next-btn-4" onclick="goToQuiz(5)">Next Chapter Unlocked</button>
+                    <button class="nav-btn" onclick="goToScreen('ch3')">← Back</button>
+                    <button class="nav-btn next" id="next-btn-4" onclick="goToScreen('ch5')">Next Chapter Unlocked</button>
                 </div>
             </div>
 
-            <!-- CHAPTER 5: THE FINALE -->
+            <!-- CHAPTER 5 QUIZ -->
             <div id="quiz-screen-5" class="hidden">
                 <div class="chapter-subtitle">Chapter 5 · The Finale</div>
                 <div class="quiz-question">What is the most meaningful gift life has given you?</div>
                 <div class="quiz-instruction">Pick your choice</div>
 
                 <div class="options-grid">
-                    <button class="option-btn" onclick="answerChapter5(this, 'Let’s build a much calmer, happier future together. I love you 💖')">
+                    <button class="option-btn" onclick="answerInline(this, 5, 'Let’s build a much calmer, happier future together. I love you 💖')">
                         <div class="option-badge">A</div>
                         <span>Finding someone who truly stays by my side. (秀 ☺️)</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter5(this, 'tidak ada pekerjaan keras yang sia-sia ko 💪')">
+                    <button class="option-btn" onclick="answerInline(this, 5, 'tidak ada pekerjaan keras yang sia-sia ko 💪')">
                         <div class="option-badge">B</div>
                         <span>Finally seeing the fruits of my hard work.</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter5(this, '那我要天天吵你 😈')">
+                    <button class="option-btn" onclick="answerInline(this, 5, '那我要天天吵你 😈')">
                         <div class="option-badge">C</div>
                         <span>Having a little peace and quiet.</span>
                     </button>
-                    <button class="option-btn" onclick="answerChapter5(this, '雖然你以前做了很多不該做的事，現在沒做了，那希望上帝給你一輩子的健健康康哦 🙏')">
+                    <button class="option-btn" onclick="answerInline(this, 5, '雖然你以前做了很多不該做的事，現在沒做了，那希望上帝給你一輩子的健健康康哦 🙏')">
                         <div class="option-badge">D</div>
                         <span>My health</span>
                     </button>
                 </div>
 
-                <div class="nav-footer">
-                    <button class="nav-btn" onclick="goToQuiz(4)">← Back</button>
-                    <button class="nav-btn next" onclick="alert('Happy 30th Birthday, Elgen! 🎉 I love you!')">Finish ❤️</button>
+                <div id="success-box-5" class="success-box hidden">
+                    <h3>💖 The Finale</h3>
+                    <p id="msg-text-5">Message here</p>
                 </div>
+
+                <div class="nav-footer">
+                    <button class="nav-btn" onclick="goToScreen('ch4')">← Back</button>
+                    <button class="nav-btn next" id="next-btn-5" onclick="goToScreen('minigame')">Continue to Minigames 🎮</button>
+                </div>
+            </div>
+
+            <!-- CHAPTER 6: MINIGAME -->
+            <div id="minigame-screen" class="hidden" style="text-align: center;">
+                <div class="chapter-subtitle">Chapter 6 · Minigame</div>
+                <div class="quiz-question" style="margin-bottom: 10px;">Catching Hobbies! ⚽🏸🍣</div>
+                <p style="font-size: 13px; color: #6b7280; margin-bottom: 20px;">Tangkep bola sepak, kok badminton, dan sushi sebanyak mungkin!</p>
+                <div style="background: #fff1f2; border: 2px dashed #f43f5e; padding: 25px; border-radius: 14px; margin-bottom: 20px; color: #e11d48; font-weight: 600;">
+                    🎮 [Minigame Area Ready]
+                </div>
+                <button class="btn-primary" onclick="goToScreen('letter')">Continue to Letter 💌</button>
+            </div>
+
+            <!-- CHAPTER 7: LOVE LETTER -->
+            <div id="letter-screen" class="hidden">
+                <div class="chapter-subtitle">Chapter 7 · Love Letter</div>
+                <h2 style="font-size: 18px; color: #1f2937; margin-bottom: 12px;">我最愛的哥哥...</h2>
+                <p style="font-size: 13px; color: #4b5563; line-height: 1.7; margin-bottom: 20px;">
+                    哇今天有人生日喔，到這年齡有沒有感覺身體有點變老了呢？哈哈哈開玩笑~ Terima kasih sudah jadi sosok yang hebat, pekerja keras, dan selalu membawa tawa di hidupku.
+                </p>
+                <button class="btn-primary" onclick="goToScreen('countdown')">Continue to Countdown ⏳</button>
+            </div>
+
+            <!-- CHAPTER 8: COUNTDOWN -->
+            <div id="countdown-screen" class="hidden">
+                <div class="chapter-subtitle">Chapter 8 · Forever Milestone</div>
+                
+                <div class="countdown-box">
+                    <div class="countdown-title">Since November 7, 1996 🎂</div>
+                    <div class="countdown-timer" id="timer-birth">Calculating...</div>
+                </div>
+
+                <div class="countdown-box">
+                    <div class="countdown-title">Since December 31, 2023 💕</div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                        <div class="countdown-timer" id="timer-met" style="font-size: 12px;">Calculating...</div>
+                        <div style="font-size: 11px; color: #e11d48; font-weight: 600; text-align: right; max-width: 140px;">that long i have been and will continue to love you hehe</div>
+                    </div>
+                </div>
+
+                <button class="btn-primary" onclick="alert('Happy 30th Birthday, Elgen! 🎉 I love you!')">Finish ❤️</button>
             </div>
 
         </div>
@@ -632,51 +680,58 @@
             }
         }
 
-        // Navigation
-        function goToQuiz(chap) {
+        // Screen Switcher & Timeline Updater
+        function goToScreen(screenKey) {
             document.getElementById('story-screen').classList.add('hidden');
+            document.getElementById('guess-screen').classList.add('hidden');
             document.getElementById('quiz-screen-1').classList.add('hidden');
             document.getElementById('quiz-screen-2').classList.add('hidden');
             document.getElementById('quiz-screen-3').classList.add('hidden');
             document.getElementById('quiz-screen-4').classList.add('hidden');
             document.getElementById('quiz-screen-5').classList.add('hidden');
-            
-            if (chap === 1) {
-                document.getElementById('quiz-screen-1').classList.remove('hidden');
-                updateTimeline(1);
-            } else if (chap === 2) {
-                document.getElementById('quiz-screen-2').classList.remove('hidden');
-                updateTimeline(2);
-            } else if (chap === 3) {
-                document.getElementById('quiz-screen-3').classList.remove('hidden');
-                updateTimeline(3);
-            } else if (chap === 4) {
-                document.getElementById('quiz-screen-4').classList.remove('hidden');
-                updateTimeline(4);
-            } else if (chap === 5) {
-                document.getElementById('quiz-screen-5').classList.remove('hidden');
-                updateTimeline(5);
+            document.getElementById('minigame-screen').classList.add('hidden');
+            document.getElementById('letter-screen').classList.add('hidden');
+            document.getElementById('countdown-screen').classList.add('hidden');
+
+            const skipBtn = document.getElementById('global-skip-btn');
+
+            if (screenKey === 'story') { 
+                document.getElementById('story-screen').classList.remove('hidden'); 
+                updateTimeline(0); 
+                skipBtn.style.display = 'none';
             }
-        }
-        function goBackToIntro() {
-            document.getElementById('quiz-screen-1').classList.add('hidden');
-            document.getElementById('story-screen').classList.remove('hidden');
+            else if (screenKey === 'guess') { 
+                document.getElementById('guess-screen').classList.remove('hidden'); 
+                updateTimeline(0); 
+                skipBtn.style.display = 'block'; // Mulai muncul dari page 3 (guess)
+            }
+            else if (screenKey === 'ch1') { document.getElementById('quiz-screen-1').classList.remove('hidden'); updateTimeline(1); skipBtn.style.display = 'block'; }
+            else if (screenKey === 'ch2') { document.getElementById('quiz-screen-2').classList.remove('hidden'); updateTimeline(2); skipBtn.style.display = 'block'; }
+            else if (screenKey === 'ch3') { document.getElementById('quiz-screen-3').classList.remove('hidden'); updateTimeline(3); skipBtn.style.display = 'block'; }
+            else if (screenKey === 'ch4') { document.getElementById('quiz-screen-4').classList.remove('hidden'); updateTimeline(4); skipBtn.style.display = 'block'; }
+            else if (screenKey === 'ch5') { document.getElementById('quiz-screen-5').classList.remove('hidden'); updateTimeline(5); skipBtn.style.display = 'block'; }
+            else if (screenKey === 'minigame') { document.getElementById('minigame-screen').classList.remove('hidden'); updateTimeline(6); skipBtn.style.display = 'none'; }
+            else if (screenKey === 'letter') { document.getElementById('letter-screen').classList.remove('hidden'); updateTimeline(7); skipBtn.style.display = 'none'; }
+            else if (screenKey === 'countdown') { document.getElementById('countdown-screen').classList.remove('hidden'); updateTimeline(8); skipBtn.style.display = 'none'; }
         }
 
         function updateTimeline(ch) {
-            for (let i = 1; i <= 5; i++) {
-                const dot = document.getElementById(`dot-ch${i}`);
+            for (let i = 1; i <= 8; i++) {
+                const dot = document.getElementById(`dot-s${i}`);
+                if (!dot) continue;
                 dot.className = "tl-dot";
-                if (i < ch) dot.classList.add('completed'), dot.innerText = "✓";
-                else if (i === ch) dot.classList.add('active'), dot.innerText = i;
-                else dot.innerText = i;
+                if (i < ch) { dot.classList.add('completed'); dot.innerText = "✓"; }
+                else if (i === ch) { dot.classList.add('active'); dot.innerText = i; }
+                else { dot.innerText = i; }
             }
         }
 
-        // Quiz Logic Chapter 1
+        // Quiz Logic Chapter 1 (Multiple choice with red inline status text)
         let selectedCount = 0;
         function toggleOption(btn, id) {
             const wrongMsg = document.getElementById('wrong-msg-1');
+            const inlineStatus = document.getElementById('inline-status-1');
+            
             if (id === 2) {
                 wrongMsg.classList.remove('hidden');
                 return;
@@ -690,56 +745,51 @@
                 btn.classList.add('selected');
                 selectedCount++;
                 if (selectedCount < 3) {
-                    showModal("Keep going!", `You selected ${selectedCount}/3 correct answers. Choose more!`);
+                    inlineStatus.innerText = `${selectedCount}/3 correct answers. Choose more!`;
                 }
             }
 
             if (selectedCount === 3) {
+                inlineStatus.innerText = "";
                 document.getElementById('success-box-1').classList.remove('hidden');
-                const nextBtn = document.getElementById('next-btn-1');
-                nextBtn.innerText = "Next Chapter Unlocked 🎉";
+                document.getElementById('next-btn-1').innerText = "Next Chapter Unlocked 🎉";
             } else {
                 document.getElementById('success-box-1').classList.add('hidden');
             }
         }
 
-        // Quiz Logic Chapter 2
-        function answerChapter2(btn) {
-            document.querySelectorAll('#quiz-screen-2 .option-btn').forEach(b => b.classList.remove('selected'));
+        // Inline Answer Logic for Chapter 2 - 5
+        function answerInline(btn, chapterNum, messageText) {
+            const screen = document.getElementById(`quiz-screen-${chapterNum}`);
+            screen.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
             btn.classList.add('selected');
-            document.getElementById('success-box-2').classList.remove('hidden');
+
+            const successBox = document.getElementById(`success-box-${chapterNum}`);
+            const msgText = document.getElementById(`msg-text-${chapterNum}`);
+            if (msgText) msgText.innerText = messageText;
+            successBox.classList.remove('hidden');
         }
 
-        // Quiz Logic Chapter 3
-        function answerChapter3(btn, popupText) {
-            document.querySelectorAll('#quiz-screen-3 .option-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            showModal("Aww so sweet 💖", popupText);
-            document.getElementById('success-box-3').classList.remove('hidden');
-        }
+        // Countdowns Timer
+        setInterval(() => {
+            const birthDate = new Date('1996-11-07T00:00:00');
+            const metDate = new Date('2023-12-31T00:00:00');
+            const now = new Date();
 
-        // Quiz Logic Chapter 4
-        function answerChapter4(btn, popupText) {
-            document.querySelectorAll('#quiz-screen-4 .option-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            showModal("Coping Mechanism 🫂", popupText);
-        }
+            function getDiff(d1, d2) {
+                let diff = Math.abs(d2 - d1);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const mins = Math.floor((diff / 1000 / 60) % 60);
+                const secs = Math.floor((diff / 1000) % 60);
+                return `${days}d ${hours}h ${mins}m ${secs}s`;
+            }
 
-        // Quiz Logic Chapter 5 (The Finale)
-        function answerChapter5(btn, popupText) {
-            document.querySelectorAll('#quiz-screen-5 .option-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            showModal("The Finale ✨", popupText);
-        }
-
-        function showModal(title, text) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-text').innerText = text;
-            document.getElementById('popup-modal').classList.remove('hidden');
-        }
-        function closeModal() {
-            document.getElementById('popup-modal').classList.add('hidden');
-        }
+            const timerBirth = document.getElementById('timer-birth');
+            const timerMet = document.getElementById('timer-met');
+            if (timerBirth) timerBirth.innerText = getDiff(birthDate, now);
+            if (timerMet) timerMet.innerText = getDiff(metDate, now);
+        }, 1000);
     </script>
 </body>
 </html>
