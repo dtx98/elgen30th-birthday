@@ -17,7 +17,44 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow-x: hidden;
+            position: relative;
         }
+
+        /* Floating Hearts Animation Background */
+        .hearts-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            background: rgba(255, 182, 193, 0.6);
+            display: inline-block;
+            transform: rotate(45deg);
+            animation: floatUp 6s infinite linear;
+            border-radius: 4px;
+        }
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            border-radius: 50%;
+        }
+        .heart::before { top: -50%; left: 0; }
+        .heart::after { top: 0; left: -50%; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(45deg) scale(0.6); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(45deg) scale(1.2); opacity: 0; }
+        }
+
         .hidden { display: none !important; }
 
         /* Lockscreen Styles */
@@ -26,6 +63,7 @@
             width: 100%;
             max-width: 380px;
             padding: 20px;
+            z-index: 2;
         }
         .lock-icon-top { font-size: 22px; margin-bottom: 5px; opacity: 0.9; transition: transform 0.3s ease; }
         .date-text { font-size: 14px; font-weight: 400; opacity: 0.85; margin-bottom: 4px; letter-spacing: 0.5px; }
@@ -91,17 +129,24 @@
             background: white;
             width: 100%;
             max-width: 550px;
-            padding: 40px;
+            padding: 35px;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
             color: #444;
             text-align: center;
             animation: fadeIn 0.5s ease-in-out;
+            z-index: 2;
         }
         
         /* Intro Story Page Styles */
-        .story-content h2 { font-size: 22px; color: #1f2937; margin-bottom: 20px; font-weight: 700; line-height: 1.5; text-align: center; }
-        .story-content p { font-size: 15px; color: #6b7280; margin-bottom: 30px; line-height: 1.6; text-align: center; }
+        .bubu-img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 16px;
+        }
+        .story-content h2 { font-size: 20px; color: #1f2937; margin-bottom: 12px; font-weight: 700; line-height: 1.4; text-align: center; }
+        .story-content p { font-size: 14px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; text-align: center; }
         .btn-primary {
             width: 100%;
             background: #f43f5e;
@@ -128,7 +173,7 @@
             display: grid;
             grid-template-columns: 1fr;
             gap: 12px;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
         .option-btn {
             background: #ffffff;
@@ -168,17 +213,25 @@
             color: white;
         }
         
+        .wrong-msg {
+            color: #ef4444;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
         .success-box {
             background: #ecfdf5;
             border: 2px solid #10b981;
             padding: 20px;
             border-radius: 16px;
-            margin-top: 20px;
+            margin-top: 15px;
             text-align: left;
             animation: fadeIn 0.4s ease-in-out;
         }
         .success-box h3 { color: #065f46; font-size: 16px; margin-bottom: 8px; }
-        .success-box p { color: #047857; font-size: 14px; margin-bottom: 0; }
+        .success-box p { color: #047857; font-size: 14px; margin-bottom: 0; line-height: 1.6; }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
@@ -189,6 +242,9 @@
     </style>
 </head>
 <body>
+
+    <!-- Floating Hearts Background Effect -->
+    <div class="hearts-bg" id="hearts-bg"></div>
 
     <!-- 1. LOCKSCREEN ALA IPHONE -->
     <div id="lock-screen" class="lockscreen-container">
@@ -224,8 +280,8 @@
     <!-- 2. INTRO STORY PAGE -->
     <div id="story-screen" class="card hidden">
         <div class="story-content">
-            <div style="font-size: 40px; margin-bottom: 15px;">🎂</div>
-            <h2>Once upon a time, this tiny guy blew out his candles.</h2>
+            <img src="https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif" alt="Bubu Dudu GIF" class="bubu-img">
+            <h2>Once upon a time, this tiny guy came to this world.</h2>
             <p>Thirty years later, he's my favourite person in the whole world.<br><br>Ready to play through your story?</p>
             <button class="btn-primary" onclick="goToQuiz()">Let's Go! ✨</button>
         </div>
@@ -256,6 +312,11 @@
             </button>
         </div>
 
+        <!-- WRONG MESSAGE (FONT MERAH) -->
+        <div id="wrong-msg" class="wrong-msg hidden">
+            WRONG! Masa kecil koko mana ada belajar 24/7 😂 Coba pilih yang lain!
+        </div>
+
         <!-- SUCCESS MESSAGE BOX -->
         <div id="success-box" class="success-box hidden">
             <h3>✨ Correct!</h3>
@@ -264,6 +325,28 @@
     </div>
 
     <script>
+        // Membuat Efek Animasi Love Kecil Terbang di Background
+        function createHeart() {
+            const heartsContainer = document.getElementById('hearts-bg');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            
+            const size = Math.random() * 10 + 8;
+            heart.style.width = `${size}px`;
+            heart.style.height = `${size}px`;
+            heart.style.left = `${Math.random() * 100}vw`;
+            
+            const duration = Math.random() * 3 + 4;
+            heart.style.animationDuration = `${duration}s`;
+            
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, duration * 1000);
+        }
+        setInterval(createHeart, 350);
+
         // Update Jam & Tanggal secara Live otomatis
         function updateClock() {
             const now = new Date();
@@ -334,10 +417,16 @@
 
         // Logika Pilihan Ganda Chapter 1
         function toggleOption(btn, id) {
+            const wrongMsg = document.getElementById('wrong-msg');
+            
+            // Jika memilih opsi salah (Studying 24/7 = id 2)
             if (id === 2) {
-                alert("Boro2 wkwkwk. Masa kecil koko mana ada belajar 24/7 😂 Coba pilih yang lain!");
+                wrongMsg.classList.remove('hidden');
                 return;
             }
+
+            // Kalau klik yang lain, sembunyikan pesan salah jika sebelumnya sempat muncul
+            wrongMsg.classList.add('hidden');
 
             if (btn.classList.contains('selected')) {
                 btn.classList.remove('selected');
