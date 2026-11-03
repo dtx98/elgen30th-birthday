@@ -195,12 +195,14 @@
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
+        /* UKURAN CARD KEMBALI KECIL SEPERTI DESAIN AWAL */
         .card {
             background: #ffffff;
             color: #333;
             width: 100%;
+            max-width: 390px;
             flex: 1;
-            padding: 36px 20px;
+            padding: 30px 18px;
             border-radius: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
@@ -235,7 +237,7 @@
 
         .story-content { text-align: center; margin: auto 0; }
         .bubu-img {
-            width: 160px;
+            width: 150px;
             height: auto;
             margin-bottom: 15px;
             border-radius: 16px;
@@ -371,34 +373,34 @@
         /* MINIGAME 1 CONTAINER UKURAN STANDAR */
         .game-canvas-container {
             width: 100%;
-            height: 250px;
+            height: 230px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
             border-radius: 16px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             cursor: crosshair;
         }
         .falling-item {
             position: absolute;
-            font-size: 30px;
+            font-size: 28px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
         }
 
-        /* MINIGAME 2: FLAPPY BIRD UKURAN STANDAR & PROPORSIONAL */
+        /* MINIGAME 2: FLAPPY BIRD UKURAN STANDAR */
         .flappy-canvas-container {
             width: 100%;
-            height: 260px;
+            height: 240px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
             border-radius: 16px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             cursor: pointer;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -439,24 +441,24 @@
         }
         .flappy-bird {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             object-fit: contain;
-            left: 50px;
+            left: 45px;
             z-index: 5;
             pointer-events: none;
             transition: transform 0.1s linear;
         }
         .pipe-body {
             position: absolute;
-            width: 50px;
+            width: 48px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 56px;
+            width: 54px;
             height: 22px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
@@ -469,7 +471,7 @@
             top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
             color: #ffffff;
             font-family: 'Playfair Display', serif;
@@ -490,11 +492,11 @@
         }
         .get-ready-title {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 900;
             color: #ffffff;
             text-shadow: 3px 3px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .tap-instruction-box {
             display: flex;
@@ -539,14 +541,14 @@
         }
         .game-over-title {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: #ffa500;
             text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .score-board-box {
-            width: 220px;
+            width: 210px;
             background: #ded895;
             border: 4px solid #558022;
             border-radius: 12px;
@@ -570,18 +572,18 @@
             margin-bottom: 4px;
         }
         .medal-icon {
-            width: 36px;
-            height: 36px;
+            width: 34px;
+            height: 34px;
             background: radial-gradient(circle, #fde047 0%, #ca8a04 100%);
             border: 3px solid #713f12;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 16px;
+            font-size: 15px;
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
         }
         .sb-score-val {
             font-family: 'Playfair Display', serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
             color: #000;
             text-shadow: 1px 1px 0px #fff;
@@ -591,8 +593,8 @@
             display: inline-block;
             background: #f43f5e;
             color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
+            padding: 4px 10px;
+            border-radius: 16px;
             font-size: 11px;
             font-weight: 600;
             cursor: pointer;
@@ -989,9 +991,15 @@
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
                 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; margin-bottom: 8px; padding: 0 4px;">
+                <!-- Layout Sesuai Permintaan: Baris 1 Tengah Score, Pojok Kanan Time (Pink, Angka Hitam), Baris Bawah Target Benda -->
+                <div style="position: relative; margin-top: 2px; margin-bottom: 6px; min-height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
-                    <div style="font-size: 11px; font-weight: 600; color: #e11d48;" id="game-timer">Time: 30s</div>
+                    <div style="position: absolute; right: 0; top: 0; font-size: 13px; font-weight: 700; color: #f43f5e;">
+                        Time: <span id="game-timer" style="color: #000000; font-weight: 800;">30s</span>
+                    </div>
+                    <div id="game-target" style="font-size: 12px; font-weight: 600; color: #4b5563; margin-top: 3px;">
+                        Target: Tap any item to start!
+                    </div>
                 </div>
                 
                 <div class="game-canvas-container" id="game-container" style="flex: 1;"></div>
@@ -1042,7 +1050,7 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 220px; margin-top: 10px; padding: 7px;" onclick="initFlappyGame()">Try Again</button>
+                        <button class="btn-primary" style="width: 200px; margin-top: 10px; padding: 7px;" onclick="initFlappyGame()">Try Again</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1097,8 +1105,9 @@
                     </div>
 
                     <div style="margin-top: 20px;">
-                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
-                            How long you have survived in this world since November 7, 1996
+                        <!-- Teks Hitam, Angka Pink -->
+                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #000000; margin-bottom: 4px;">
+                            How long you have survived in this world since November 7, 1996 (<span style="color: #f43f5e;">Days count</span>)
                         </div>
                         <div class="countdown-grid">
                             <div class="cd-card"><div class="cd-number" id="life-years">00</div><div class="cd-label">Years</div></div>
@@ -1111,7 +1120,7 @@
 
                         <div style="height: 10px;"></div>
 
-                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
+                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #000000; margin-bottom: 4px;">
                             And you have been spending your time with me for
                         </div>
                         <div class="countdown-grid">
@@ -1123,7 +1132,8 @@
                             <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="text-align: center; font-size: 11px; color: #e11d48; margin-top: 8px; font-weight: 600;" id="cd-total-days">
+                        <!-- Teks Hitam, Angka/Total Days Pink -->
+                        <div style="text-align: center; font-size: 11px; color: #000000; margin-top: 8px; font-weight: 600;" id="cd-total-days">
                             That's calculating days of loving you — and counting.
                         </div>
                     </div>
@@ -1141,7 +1151,7 @@
 
             <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
             <div id="finish-celebration-screen" class="hidden" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 160px; height: auto; border-radius: 16px; margin: 0 auto 20px auto;">
+                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 150px; height: auto; border-radius: 16px; margin: 0 auto 20px auto;">
                 <h2 style="font-size: 18px; color: #1f2937; font-weight: 700; line-height: 1.6; margin-bottom: 25px;">
                     Happy 30th Birthday, 張彬哥哥! 🎉<br>
                     <span style="color: #f43f5e;">I love you! ❤️</span>
@@ -1429,7 +1439,8 @@
             timeLeft = 30;
             targetSymbol = null;
             document.getElementById('game-score').innerText = `Score: ${score} / 30`;
-            document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
+            document.getElementById('game-timer').innerText = `${timeLeft}s`;
+            document.getElementById('game-target').innerText = `Target: Tap any item to start!`;
             document.getElementById('game-next-btn').classList.add('hidden');
             document.getElementById('try-again-box').classList.add('hidden');
             
@@ -1441,7 +1452,7 @@
             
             gameInterval = setInterval(() => {
                 timeLeft--;
-                document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
+                document.getElementById('game-timer').innerText = `${timeLeft}s`;
                 if (timeLeft <= 0) {
                     stopMinigame();
                     const minigameBgAudio = document.getElementById('minigame1-bg-sound');
@@ -1496,7 +1507,8 @@
                     score = Math.max(0, score - 1);
                 }
 
-                document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
+                document.getElementById('game-score').innerText = `Score: ${score} / 30`;
+                document.getElementById('game-target').innerText = `Target: ${targetSymbol}`;
                 
                 if (score >= 30) {
                     stopMinigame();
@@ -1546,7 +1558,7 @@
 
         // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
-        let birdY = 100, birdVelocity = 0;
+        let birdY = 90, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
@@ -1564,7 +1576,7 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 100;
+            birdY = 90;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
@@ -1611,8 +1623,8 @@
         }
 
         function spawnFlappyPipe() {
-            const containerHeight = 260;
-            const gap = 110;
+            const containerHeight = 240;
+            const gap = 100;
             const minHeight = 30;
             const maxHeight = containerHeight - gap - minHeight - 25;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
@@ -1628,8 +1640,8 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            const containerHeight = 260;
-            const groundLimit = containerHeight - 25 - 40;
+            const containerHeight = 240;
+            const groundLimit = containerHeight - 25 - 38;
 
             if (isDying) {
                 birdVelocity += 0.8;
@@ -1696,18 +1708,18 @@
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
                 botPipeBody.style.top = (containerHeight - 25 - pipes[i].bottomHeight + 22) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight + 60) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight + 80) + 'px'; // Pipa bawah menjulur jauh sampai ke bawah dasar kanvas
                 pipesArea.appendChild(botPipeBody);
 
-                if (pipes[i].left < 50 + 40 && pipes[i].left + 50 > 50) {
-                    if (birdY < pipes[i].topHeight || birdY + 40 > containerHeight - 25 - pipes[i].bottomHeight) {
+                if (pipes[i].left < 45 + 38 && pipes[i].left + 48 > 45) {
+                    if (birdY < pipes[i].topHeight || birdY + 38 > containerHeight - 25 - pipes[i].bottomHeight) {
                         playHitSound();
                         isDying = true;
                         return;
                     }
                 }
 
-                if (!pipes[i].passed && pipes[i].left < 50) {
+                if (!pipes[i].passed && pipes[i].left < 45) {
                     pipes[i].passed = true;
                     flappyScore++;
                     playFlappyPointSound();
@@ -1776,7 +1788,8 @@
             document.getElementById('cd-secs').innerText = String(met.secs).padStart(2, '0');
 
             const totalDays = Math.floor(Math.abs(now - metDate) / (1000 * 60 * 60 * 24));
-            document.getElementById('cd-total-days').innerText = `That's ${totalDays.toLocaleString()} days of loving you — and counting.`;
+            // Teks Hitam dengan Total Days Pink
+            document.getElementById('cd-total-days').innerHTML = `That's calculating <span style="color: #f43f5e; font-weight: 700;">${totalDays.toLocaleString()} days</span> of loving you — and counting.`;
         }, 1000);
     </script>
 </body>
