@@ -210,14 +210,6 @@
             justify-content: space-between;
         }
 
-        .card.game-expanded-card {
-            max-width: 440px !important;
-            width: 105% !important;
-            margin-left: -2.5%;
-            margin-right: -2.5%;
-            padding: 24px 12px !important;
-        }
-
         .skip-btn {
             position: absolute;
             top: 20px; right: 20px;
@@ -376,9 +368,10 @@
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
+        /* MINIGAME 1 CONTAINER UKURAN NORMAL */
         .game-canvas-container {
             width: 100%;
-            height: 380px;
+            height: 270px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
             border-radius: 16px;
@@ -389,15 +382,16 @@
         }
         .falling-item {
             position: absolute;
-            font-size: 32px;
+            font-size: 30px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
         }
 
+        /* MINIGAME 2: FLAPPY BIRD UKURAN DISESUAIKAN (TIDAK TERLALU PANJANG KE BAWAH) */
         .flappy-canvas-container {
             width: 100%;
-            height: 390px;
+            height: 280px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
@@ -415,10 +409,10 @@
         }
         .flappy-bg-scenery {
             position: absolute;
-            bottom: 35px;
+            bottom: 30px;
             left: 0;
             width: 200%;
-            height: 90px;
+            height: 70px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -437,7 +431,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 35px;
+            height: 30px;
             background: #ded895;
             border-top: 4px solid #558022;
             background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 10px, transparent 0, transparent 20px);
@@ -445,30 +439,30 @@
         }
         .flappy-bird {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             object-fit: contain;
-            left: 55px;
+            left: 50px;
             z-index: 5;
             pointer-events: none;
             transition: transform 0.1s linear;
         }
         .pipe-body {
             position: absolute;
-            width: 55px;
+            width: 50px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 63px;
-            height: 24px;
+            width: 56px;
+            height: 22px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             border-radius: 4px;
             z-index: 3;
-            left: -4px;
+            left: -3px;
         }
         .flappy-score-display {
             position: absolute;
@@ -652,7 +646,7 @@
             50% { transform: translateY(-4px); }
         }
 
-        /* FONT SURAT DIPERBESAR (dari 13px ke 15px) */
+        /* FONT SURAT DIPERBESAR LAGI SEDIKIT */
         .letter-paper {
             background: #fff;
             color: #4a1525;
@@ -660,10 +654,10 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: left;
-            font-size: 15px; 
+            font-size: 16.5px; 
         }
         .letter-paper h3 { 
-            font-size: 20px; 
+            font-size: 21px; 
             margin-bottom: 14px; 
             color: #4a1525; 
             font-family: 'Cormorant Garamond', serif; 
@@ -781,7 +775,7 @@
         </div>
 
         <!-- CONTENT CARD -->
-        <div class="card" id="main-card">
+        <div class="card">
             <button class="skip-btn" id="global-skip-btn" onclick="startMinigame()" style="display: none;">Skip &gt;</button>
 
             <!-- PAGE 2: ONCE UPON A TIME -->
@@ -993,11 +987,9 @@
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
                 
-                <div>
-                    <div style="margin-top: 6px; margin-bottom: 8px;">
-                        <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
-                    </div>
-                    <div style="font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;" id="game-timer">Time: 30s</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; margin-bottom: 8px; padding: 0 4px;">
+                    <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
+                    <div style="font-size: 11px; font-weight: 600; color: #e11d48;" id="game-timer">Time: 30s</div>
                 </div>
                 
                 <div class="game-canvas-container" id="game-container" style="flex: 1;"></div>
@@ -1280,13 +1272,6 @@
 
             const music = document.getElementById('bg-music');
             const minigameBgAudio = document.getElementById('minigame1-bg-sound');
-            const mainCard = document.getElementById('main-card');
-
-            if (screenKey === 'minigame' || screenKey === 'flappy') {
-                mainCard.classList.add('game-expanded-card');
-            } else {
-                mainCard.classList.remove('game-expanded-card');
-            }
 
             if (screenKey === 'minigame') {
                 if (!music.paused) music.pause();
@@ -1559,7 +1544,7 @@
 
         // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
-        let birdY = 150, birdVelocity = 0;
+        let birdY = 110, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
@@ -1577,7 +1562,7 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 150;
+            birdY = 110;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
@@ -1624,16 +1609,16 @@
         }
 
         function spawnFlappyPipe() {
-            const containerHeight = 390;
-            const gap = 120;
-            const minHeight = 40;
-            const maxHeight = containerHeight - gap - minHeight - 35;
+            const containerHeight = 280;
+            const gap = 110;
+            const minHeight = 30;
+            const maxHeight = containerHeight - gap - minHeight - 30;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
 
             pipes.push({
-                left: 420,
+                left: 350,
                 topHeight: topHeight,
-                bottomHeight: containerHeight - topHeight - gap - 35,
+                bottomHeight: containerHeight - topHeight - gap - 30,
                 passed: false
             });
         }
@@ -1641,8 +1626,8 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            const containerHeight = 390;
-            const groundLimit = containerHeight - 35 - 50;
+            const containerHeight = 280;
+            const groundLimit = containerHeight - 30 - 42; // Tepat menyentuh lantai dasar tanah
 
             if (isDying) {
                 birdVelocity += 0.8;
@@ -1690,37 +1675,37 @@
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
                 topPipeBody.style.top = '0px';
-                topPipeBody.style.height = (pipes[i].topHeight - 24) + 'px';
+                topPipeBody.style.height = (pipes[i].topHeight - 22) + 'px';
                 pipesArea.appendChild(topPipeBody);
 
                 const topPipeLip = document.createElement('div');
                 topPipeLip.className = 'pipe-lip';
-                topPipeLip.style.left = (pipes[i].left - 4) + 'px';
-                topPipeLip.style.top = (pipes[i].topHeight - 24) + 'px';
+                topPipeLip.style.left = (pipes[i].left - 3) + 'px';
+                topPipeLip.style.top = (pipes[i].topHeight - 22) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
-                botPipeLip.style.left = (pipes[i].left - 4) + 'px';
-                botPipeLip.style.top = (containerHeight - 35 - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.left = (pipes[i].left - 3) + 'px';
+                botPipeLip.style.top = (containerHeight - 30 - pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (containerHeight - 35 - pipes[i].bottomHeight + 24) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight - 24) + 'px';
+                botPipeBody.style.top = (containerHeight - 30 - pipes[i].bottomHeight + 22) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight + 50) + 'px'; // Pipa bawah menjulur melewati dasar tanah
                 pipesArea.appendChild(botPipeBody);
 
-                if (pipes[i].left < 55 + 50 && pipes[i].left + 55 > 55) {
-                    if (birdY < pipes[i].topHeight || birdY + 50 > containerHeight - 35 - pipes[i].bottomHeight) {
+                if (pipes[i].left < 50 + 42 && pipes[i].left + 50 > 50) {
+                    if (birdY < pipes[i].topHeight || birdY + 42 > containerHeight - 30 - pipes[i].bottomHeight) {
                         playHitSound();
                         isDying = true;
                         return;
                     }
                 }
 
-                if (!pipes[i].passed && pipes[i].left < 55) {
+                if (!pipes[i].passed && pipes[i].left < 50) {
                     pipes[i].passed = true;
                     flappyScore++;
                     playPointSound();
@@ -1730,12 +1715,12 @@
                     }
                 }
 
-                if (pipes[i].left < -70) {
+                if (pipes[i].left < -60) {
                     pipes.splice(i, 1);
                 }
             }
 
-            if (pipes.length === 0 || pipes[pipes.length - 1].left < 200) {
+            if (pipes.length === 0 || pipes[pipes.length - 1].left < 180) {
                 spawnFlappyPipe();
             }
         }
