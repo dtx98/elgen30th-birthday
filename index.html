@@ -362,11 +362,11 @@
             user-select: none;
         }
 
-        /* FLAPPY BIRD STYLES (REFERENSI GAYA FLAPPY BIRD ASLI) */
+        /* FLAPPY BIRD STYLES */
         .flappy-canvas-container {
             width: 100%;
             height: 320px;
-            background: #4ec0ca; /* Warna langit khas flappy bird */
+            background: #4ec0ca;
             border: 2px solid #fecdd3;
             border-radius: 16px;
             position: relative;
@@ -374,20 +374,17 @@
             margin-bottom: 15px;
             cursor: pointer;
         }
-        /* Background awan & kota */
-        .flappy-bg-clouds {
+        .flappy-bg-scenery {
             position: absolute;
             bottom: 30px;
             left: 0;
-            width: 200%;
-            height: 80px;
-            background: repeat-x bottom;
-            background-image: radial-gradient(circle, #fff 20%, transparent 21%), radial-gradient(circle, #fff 20%, transparent 21%);
-            background-size: 60px 40px;
-            opacity: 0.4;
+            width: 100%;
+            height: 90px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="90" viewBox="0 0 300 90"><path d="M0,60 L20,30 L40,30 L50,60 L80,20 L110,60 L140,40 L160,60 L200,10 L240,60 L270,35 L300,60 Z" fill="%23d8f3dc" opacity="0.6"/><path d="M0,70 L30,45 L50,70 L90,35 L130,70 L170,50 L200,70 L250,25 L300,70 Z" fill="%2395d5b2"/></svg>');
+            background-repeat: repeat-x;
+            background-position: bottom;
             pointer-events: none;
         }
-        /* Tanah bawah */
         .flappy-ground {
             position: absolute;
             bottom: 0;
@@ -407,7 +404,6 @@
             left: 50px;
             z-index: 5;
         }
-        /* Pipa dengan gradasi dan lipatan mirip referensi */
         .pipe-body {
             position: absolute;
             width: 54px;
@@ -425,7 +421,6 @@
             z-index: 3;
             left: -3px;
         }
-        /* Skor di dalam game gaya retro/flappy bird */
         .flappy-score-display {
             position: absolute;
             top: 15px;
@@ -438,6 +433,56 @@
             text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
             z-index: 10;
             pointer-events: none;
+        }
+
+        /* GET READY OVERLAY STYLE */
+        .get-ready-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            pointer-events: none;
+        }
+        .get-ready-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 3px 3px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
+            margin-bottom: 20px;
+        }
+        .tap-instruction-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .tap-badges {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .tap-badge {
+            background: #ff3333;
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border: 2px solid #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        .tap-hand {
+            font-size: 24px;
+            animation: bounceHand 1s infinite ease-in-out;
+        }
+        @keyframes bounceHand {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         .score-button {
@@ -556,7 +601,6 @@
 </head>
 <body>
 
-    <!-- AUDIO FILES -->
     <audio id="bg-music" loop>
         <source src="bgmusic.mp3" type="audio/mpeg">
     </audio>
@@ -565,6 +609,15 @@
     </audio>
     <audio id="flap-sound">
         <source src="flappysound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="flappy-hit">
+        <source src="flappy hit sound.wav" type="audio/mpeg">
+    </audio>
+    <audio id="flappy-die">
+        <source src="flappy down die sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="flappy-point">
+        <source src="flappy get point.mp3" type="audio/mpeg">
     </audio>
 
     <div class="hearts-bg" id="hearts-bg"></div>
@@ -814,12 +867,11 @@
                 </div>
             </div>
 
-            <!-- CHAPTER 6: MINIGAME 1 (MENGGUNAKAN UNLOCK SOUND SEBAGAI EFEK KLIK) -->
+            <!-- MINIGAME 1 -->
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <div class="chapter-subtitle" style="margin-top: 5px;">Chapter 6 · Minigame 1</div>
-                <div class="quiz-question" style="margin-bottom: 8px;">Click items to score 30!</div>
+                <div class="quiz-question" style="margin-top: 10px; margin-bottom: 8px;">Click items to score 30!</div>
                 
                 <div style="margin-bottom: 12px;">
                     <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
@@ -829,27 +881,48 @@
                 
                 <div class="game-canvas-container" id="game-container"></div>
 
+                <div id="try-again-box" class="hidden" style="margin-bottom: 15px; animation: fadeIn 0.3s;">
+                    <button class="btn-primary" style="background:#f59e0b; margin-bottom: 8px;" onclick="initMinigame()">Try Again</button>
+                    <button class="btn-primary" style="background:#10b981;" onclick="startFlappyGame()">find the hidden button to continue</button>
+                </div>
+
                 <button class="btn-primary hidden" id="game-next-btn" onclick="startFlappyGame()">Next: Flappy Game 🦅</button>
             </div>
 
-            <!-- CHAPTER 6.5: MINIGAME 2 (FLAPPY BIRD DENGAN DESAIN MIRIP REFERENSI & FLAPPY SOUND) -->
+            <!-- MINIGAME 2: FLAPPY BIRD (DENGAN GET READY & SURPRISE TRANSFORMASI WAJAH) -->
             <div id="flappy-screen" class="hidden" style="text-align: center; position: relative;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <div class="chapter-subtitle" style="margin-top: 5px;">Chapter 6 · Minigame 2</div>
-                <div class="quiz-question" style="margin-bottom: 4px;">Tap/Click to fly through 5 pipes!</div>
+                <div class="quiz-question" style="margin-top: 10px; margin-bottom: 2px;">Tap to fly</div>
+                <div style="font-size: 11px; color: #6b7280; font-weight: 600; margin-bottom: 8px;">(min. score 7 to continue)</div>
                 
                 <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()">
                     <div class="flappy-score-display" id="flappy-score-text">0</div>
-                    <div class="flappy-bg-clouds"></div>
-                    <img src="wajah.png" alt="Wajah" class="flappy-bird" id="flappy-bird" onerror="this.src='https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif'">
+                    <div class="flappy-bg-scenery"></div>
+                    
+                    <!-- Get Ready Overlay Awal -->
+                    <div id="get-ready-overlay" class="get-ready-overlay">
+                        <div class="get-ready-title">Get Ready!</div>
+                        <div class="tap-instruction-box">
+                            <div class="tap-badges">
+                                <span class="tap-badge">TAP</span>
+                                <span class="tap-hand">👆</span>
+                                <span class="tap-badge">TAP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Burung Awal (Burung Kuning Klasik) atau Wajah setelah Tap -->
+                    <img src="https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif" alt="Bird" class="flappy-bird" id="flappy-bird">
                     <div id="pipes-area"></div>
                     <div class="flappy-ground"></div>
                 </div>
 
-                <div style="font-size: 12px; font-weight: 600; color: #4b5563; margin-bottom: 12px;" id="flappy-status">Tap to Start</div>
-
-                <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')">Open Your Letter 💌</button>
+                <div style="display: flex; gap: 10px; margin-top: 12px; align-items: center;">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 12px 20px;">← Back</button>
+                    <div style="font-size: 12px; font-weight: 600; color: #4b5563; flex: 1; text-align: center;" id="flappy-status">Tap to Start</div>
+                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 12px;">Open Letter 💌</button>
+                </div>
             </div>
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
@@ -878,7 +951,6 @@
                         <p style="margin-top: 20px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 16px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
                     </div>
 
-                    <!-- COUNTDOWN MUNCUL SETELAH SURAT DIBUKA -->
                     <div style="margin-top: 30px; animation: fadeIn 0.5s ease;">
                         <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;">
                             How long you have survived in this world since November 7, 1996 🎂
@@ -892,7 +964,6 @@
                             <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <!-- JEDA 1 BARIS -->
                         <div style="height: 15px;"></div>
 
                         <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;">
@@ -912,7 +983,6 @@
                         </div>
                     </div>
 
-                    <!-- TOMBOL FINISH -->
                     <div style="display: flex; gap: 10px; margin-top: 25px;" id="final-buttons-wrapper" class="hidden">
                         <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151;">← Back</button>
                         <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish ❤️</button>
@@ -938,7 +1008,6 @@
     </div>
 
     <script>
-        // --- AUDIO CONTROLLER ---
         function playUnlockSound() {
             const sound = document.getElementById('unlock-sound');
             if (sound) {
@@ -949,6 +1018,29 @@
 
         function playFlapSound() {
             const sound = document.getElementById('flap-sound');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(e => console.log(e));
+            }
+        }
+
+        function playHitSound() {
+            const hit = document.getElementById('flappy-hit');
+            const die = document.getElementById('flappy-die');
+            if (hit) {
+                hit.currentTime = 0;
+                hit.play().catch(e => console.log(e));
+            }
+            if (die) {
+                setTimeout(() => {
+                    die.currentTime = 0;
+                    die.play().catch(e => console.log(e));
+                }, 300);
+            }
+        }
+
+        function playPointSound() {
+            const sound = document.getElementById('flappy-point');
             if (sound) {
                 sound.currentTime = 0;
                 sound.play().catch(e => console.log(e));
@@ -993,7 +1085,7 @@
         }
         function checkPin() {
             if (enteredPin === "0711") {
-                playUnlockSound(); // Memutar audio unlock sound saat password benar[cite: 15]
+                playUnlockSound();
                 
                 const lockIcon = document.getElementById('lock-icon');
                 lockIcon.classList.add('unlocked');
@@ -1154,7 +1246,7 @@
             if (nextBtn) nextBtn.classList.remove('hidden');
         }
 
-        // --- MINIGAME 1 (BARANG JATUH MENGGUNAKAN UNLOCK SOUND SEBAGAI EFEK KLIK) ---
+        // --- MINIGAME 1 ---
         let gameInterval, spawnerInterval, score = 0, timeLeft = 20;
         let targetSymbol = null;
         const hobbies = ['⚽', '🏸', '🍣'];
@@ -1173,6 +1265,7 @@
             document.getElementById('game-score').innerText = `Score: ${score} / 30`;
             document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
             document.getElementById('game-next-btn').classList.add('hidden');
+            document.getElementById('try-again-box').classList.add('hidden');
             
             const container = document.getElementById('game-container');
             container.querySelectorAll('.falling-item').forEach(el => el.remove());
@@ -1184,9 +1277,10 @@
                 if (timeLeft <= 0) {
                     stopMinigame();
                     if (score < 30) {
-                        alert("Waktu habis! Tapi tenang, kamu tetap bisa lanjut ke game berikutnya ❤️");
+                        document.getElementById('try-again-box').classList.remove('hidden');
+                    } else {
+                        document.getElementById('game-next-btn').classList.remove('hidden');
                     }
-                    document.getElementById('game-next-btn').classList.remove('hidden');
                 }
             }, 1000);
         }
@@ -1215,7 +1309,7 @@
 
                 item.onmousedown = item.ontouchstart = (e) => {
                     e.preventDefault();
-                    playUnlockSound(); // Suara unlock lama diputar saat item di-klik di minigame 1[cite: 15]
+                    playUnlockSound();
 
                     if (!targetSymbol) {
                         targetSymbol = symbol; 
@@ -1249,12 +1343,13 @@
             document.getElementById('game-next-btn').classList.remove('hidden');
         }
 
-        // --- MINIGAME 2: FLAPPY BIRD DENGAN DESAIN BARU & FLAPPY SOUND ---
+        // --- MINIGAME 2: FLAPPY BIRD (GET READY -> SURPRISE WAJAH) ---
         let flappyInterval = null;
         let birdY = 140, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
+        let gameStarted = false;
 
         function startFlappyGame() {
             goToScreen('flappy');
@@ -1269,14 +1364,19 @@
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
-            isFlappyRunning = true;
+            isFlappyRunning = false;
+            gameStarted = false;
+
             document.getElementById('flappy-score-text').innerText = `0`;
-            document.getElementById('flappy-status').innerText = `Tap/Click to Fly!`;
+            document.getElementById('flappy-status').innerText = `Tap to Start`;
             document.getElementById('flappy-next-btn').classList.add('hidden');
             document.getElementById('pipes-area').innerHTML = '';
 
-            spawnFlappyPipe();
-            flappyInterval = setInterval(updateFlappyGame, 30);
+            // Tampilkan Get Ready overlay dan burung kuning klasik di awal
+            document.getElementById('get-ready-overlay').style.display = 'flex';
+            const birdEl = document.getElementById('flappy-bird');
+            birdEl.src = 'https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif';
+            birdEl.style.top = birdY + 'px';
         }
 
         function stopFlappyGame() {
@@ -1285,19 +1385,33 @@
         }
 
         function flappyJump() {
-            if (!isFlappyRunning) {
+            if (!gameStarted) {
+                // SURPRISE! Mulai game dan ubah burung jadi wajah.png
+                gameStarted = true;
+                isFlappyRunning = true;
+                document.getElementById('get-ready-overlay').style.display = 'none';
+                
+                const birdEl = document.getElementById('flappy-bird');
+                birdEl.src = 'wajah.png'; // Berubah jadi wajah.png saat mulai!
+                
+                spawnFlappyPipe();
+                flappyInterval = setInterval(updateFlappyGame, 30);
+            }
+
+            if (!isFlappyRunning && gameStarted) {
                 initFlappyGame();
                 return;
             }
+
             birdVelocity = -7;
-            playFlapSound(); // Putar file flappysound.mp3 saat melompat[cite: 15]
+            playFlapSound();
         }
 
         function spawnFlappyPipe() {
             const containerHeight = 320;
             const gap = 110;
             const minHeight = 40;
-            const maxHeight = containerHeight - gap - minHeight - 30; // Sisakan ruang untuk tanah
+            const maxHeight = containerHeight - gap - minHeight - 30;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
 
             pipes.push({
@@ -1317,8 +1431,8 @@
             const birdEl = document.getElementById('flappy-bird');
             birdEl.style.top = birdY + 'px';
 
-            // Cek tabrakan tanah (tinggi container 320 - tinggi ground 30 = 290)
             if (birdY > 250 || birdY < 0) {
+                playHitSound();
                 document.getElementById('flappy-status').innerText = `Ouch! Tap to Retry`;
                 stopFlappyGame();
                 return;
@@ -1330,7 +1444,6 @@
             for (let i = pipes.length - 1; i >= 0; i--) {
                 pipes[i].left -= 3;
 
-                // Pipa Atas (Badan + Lipatan Bawah)
                 const topPipeBody = document.createElement('div');
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
@@ -1344,7 +1457,6 @@
                 topPipeLip.style.top = (pipes[i].topHeight - 24) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
-                // Pipa Bawah (Lipatan Atas + Badan)
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
@@ -1358,22 +1470,22 @@
                 botPipeBody.style.height = (pipes[i].bottomHeight - 24) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-                // Deteksi Tabrakan
                 if (pipes[i].left < 90 && pipes[i].left + 54 > 50) {
                     if (birdY < pipes[i].topHeight || birdY + 35 > 320 - 30 - pipes[i].bottomHeight) {
+                        playHitSound();
                         document.getElementById('flappy-status').innerText = `Hit Pipe! Tap to Retry`;
                         stopFlappyGame();
                         return;
                     }
                 }
 
-                // Skor Terlewati
                 if (!pipes[i].passed && pipes[i].left < 50) {
                     pipes[i].passed = true;
                     flappyScore++;
+                    playPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
-                    if (flappyScore >= 5) {
-                        document.getElementById('flappy-status').innerText = `Awesome! 5 Pipes Passed 🎉`;
+                    if (flappyScore >= 7) {
+                        document.getElementById('flappy-status').innerText = `Awesome! 7 Pipes Passed 🎉`;
                         stopFlappyGame();
                         document.getElementById('flappy-next-btn').classList.remove('hidden');
                     }
@@ -1390,9 +1502,9 @@
         }
 
         function forcePassFlappy() {
-            flappyScore = 5;
+            flappyScore = 7;
             stopFlappyGame();
-            document.getElementById('flappy-score-text').innerText = `5`;
+            document.getElementById('flappy-score-text').innerText = `7`;
             document.getElementById('flappy-status').innerText = `Unlocked! 🎉`;
             document.getElementById('flappy-next-btn').classList.remove('hidden');
         }
@@ -1444,5 +1556,3 @@
     </script>
 </body>
 </html>
-
-```
