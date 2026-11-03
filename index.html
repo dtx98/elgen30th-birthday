@@ -16,7 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            padding: 10px;
             overflow-x: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
@@ -163,9 +163,11 @@
         .main-layout {
             display: flex;
             flex-direction: column;
-            max-width: 450px;
             width: 100%;
-            gap: 15px;
+            max-width: 390px;
+            height: 94vh;
+            max-height: 820px;
+            gap: 12px;
             align-items: center;
             z-index: 2;
         }
@@ -176,16 +178,17 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 16px;
+            padding: 8px 16px;
+            border-radius: 14px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            flex-shrink: 0;
         }
         .tl-dot {
-            width: 32px; height: 32px;
+            width: 28px; height: 28px;
             border-radius: 50%;
             background: rgba(255,255,255,0.15);
             color: #d1d5db;
-            font-size: 13px; font-weight: 600;
+            font-size: 12px; font-weight: 600;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid rgba(255,255,255,0.25);
         }
@@ -196,12 +199,15 @@
             background: #ffffff;
             color: #333;
             width: 100%;
-            padding: 30px 24px;
+            flex: 1;
+            padding: 36px 20px;
             border-radius: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
-            max-height: 85vh;
             overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .skip-btn {
@@ -227,33 +233,33 @@
         }
         .home-btn:hover { background: #e5e7eb; }
 
-        .story-content { text-align: center; }
+        .story-content { text-align: center; margin: auto 0; }
         .bubu-img {
-            width: 180px;
+            width: 160px;
             height: auto;
             margin-bottom: 15px;
             border-radius: 16px;
         }
-        .story-content h2 { font-size: 18px; color: #1f2937; margin-bottom: 10px; font-weight: 700; line-height: 1.4; }
-        .story-content p { font-size: 13px; color: #6b7280; margin-bottom: 25px; line-height: 1.6; }
+        .story-content h2 { font-size: 17px; color: #1f2937; margin-bottom: 10px; font-weight: 700; line-height: 1.4; }
+        .story-content p { font-size: 13px; color: #6b7280; margin-bottom: 20px; line-height: 1.6; }
 
         .bubu-container {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 14px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        .bubu-small { width: 120px; height: auto; border-radius: 12px; }
+        .bubu-small { width: 110px; height: auto; border-radius: 12px; }
         .speech-bubble {
             background: #fff1f2;
             padding: 12px 16px;
             border-radius: 14px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             color: #e11d48;
             border: 1px solid #fecdd3;
-            max-width: 180px;
+            max-width: 170px;
         }
 
         .btn-primary {
@@ -288,21 +294,21 @@
         .btn-compact:hover { background: #e11d48; }
 
         .chapter-subtitle { font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-        .quiz-question { font-size: 18px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
-        .quiz-instruction { font-size: 12px; color: #9ca3af; margin-bottom: 20px; }
+        .quiz-question { font-size: 17px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
+        .quiz-instruction { font-size: 12px; color: #9ca3af; margin-bottom: 15px; }
         
         .options-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
         }
         .option-btn {
             background: #ffffff;
             border: 2px solid #fecdd3;
-            padding: 14px 16px;
+            padding: 12px 14px;
             border-radius: 14px;
-            font-size: 14px;
+            font-size: 13px;
             color: #4b5563;
             cursor: pointer;
             display: flex;
@@ -317,13 +323,13 @@
             color: #065f46;
         }
         .option-badge {
-            width: 28px; height: 28px;
+            width: 26px; height: 26px;
             border-radius: 50%;
             background: #fee2e2;
             color: #f43f5e;
             display: flex; align-items: center; justify-content: center;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             flex-shrink: 0;
         }
         .option-btn.selected .option-badge {
@@ -335,62 +341,63 @@
             color: #ef4444;
             font-size: 12px;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .success-box {
             background: #ecfdf5;
             border: 2px solid #10b981;
-            padding: 14px;
+            padding: 12px;
             border-radius: 14px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
-        .success-box p { color: #047857; font-size: 13px; font-weight: 600; margin-bottom: 0; }
+        .success-box p { color: #047857; font-size: 12px; font-weight: 600; margin-bottom: 0; }
 
         .nav-footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 15px;
             border-top: 1px solid #f3f4f6;
-            padding-top: 16px;
+            padding-top: 14px;
+            flex-shrink: 0;
         }
         .nav-btn {
             background: #f3f4f6; color: #4b5563; border: none;
-            padding: 10px 18px; font-size: 13px; font-weight: 600;
+            padding: 10px 16px; font-size: 13px; font-weight: 600;
             border-radius: 10px; cursor: pointer;
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
         .game-canvas-container {
             width: 100%;
-            height: 320px;
+            height: 270px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
             border-radius: 16px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             cursor: crosshair;
         }
         .falling-item {
             position: absolute;
-            font-size: 32px;
+            font-size: 30px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
         }
 
-        /* FLAPPY BIRD STYLES WITH flappy bgdrop.jpg */
+        /* FLAPPY BIRD STYLES */
         .flappy-canvas-container {
             width: 100%;
-            height: 320px;
+            height: 270px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
             border-radius: 16px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             cursor: pointer;
         }
         .flappy-bg-scenery {
@@ -398,7 +405,7 @@
             bottom: 30px;
             left: 0;
             width: 200%;
-            height: 90px;
+            height: 80px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -425,23 +432,23 @@
         }
         .flappy-bird {
             position: absolute;
-            width: 42px;
-            height: 42px;
+            width: 38px;
+            height: 38px;
             object-fit: contain;
             left: 50px;
             z-index: 5;
         }
         .pipe-body {
             position: absolute;
-            width: 54px;
+            width: 50px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 60px;
-            height: 24px;
+            width: 56px;
+            height: 22px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             border-radius: 4px;
@@ -450,10 +457,10 @@
         }
         .flappy-score-display {
             position: absolute;
-            top: 15px;
+            top: 12px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 38px;
+            font-size: 34px;
             font-weight: 900;
             color: #ffffff;
             font-family: 'Playfair Display', serif;
@@ -474,41 +481,41 @@
         }
         .get-ready-title {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 900;
             color: #ffffff;
             text-shadow: 3px 3px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .tap-instruction-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .tap-badges {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
         .tap-badge {
             background: #ff3333;
             color: white;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
-            padding: 2px 8px;
+            padding: 2px 6px;
             border: 2px solid #ffffff;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             letter-spacing: 1px;
         }
         .tap-hand {
-            font-size: 24px;
+            font-size: 20px;
             animation: bounceHand 1s infinite ease-in-out;
         }
         @keyframes bounceHand {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-5px); }
         }
 
         .game-over-modal {
@@ -523,18 +530,18 @@
         }
         .game-over-title {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 900;
             color: #ffa500;
             text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .score-board-box {
-            width: 260px;
+            width: 240px;
             background: #ded895;
             border: 4px solid #558022;
             border-radius: 12px;
-            padding: 16px;
+            padding: 14px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             display: flex;
             justify-content: space-between;
@@ -547,25 +554,25 @@
             flex: 1;
         }
         .sb-label {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             color: #d97706;
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .medal-icon {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             background: radial-gradient(circle, #fde047 0%, #ca8a04 100%);
             border: 3px solid #713f12;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
         }
         .sb-score-val {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             color: #000;
             text-shadow: 1px 1px 0px #fff;
@@ -575,9 +582,9 @@
             display: inline-block;
             background: #f43f5e;
             color: white;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 3px 8px rgba(244,63,94,0.3);
@@ -588,12 +595,12 @@
         .envelope-container {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
-            padding: 25px 20px;
+            padding: 20px 16px;
             border-radius: 20px;
             text-align: center;
             cursor: pointer;
             animation: pulseGlow 2.5s infinite ease-in-out;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: white;
             position: relative;
         }
@@ -604,16 +611,16 @@
         }
         .envelope-icon-wrapper {
             position: relative;
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 10px auto;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 8px auto;
         }
         .envelope-icon-circle {
-            width: 60px; height: 60px;
+            width: 50px; height: 50px;
             background: #f43f5e;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             color: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
@@ -621,7 +628,7 @@
             position: absolute;
             top: -2px;
             right: -2px;
-            font-size: 18px;
+            font-size: 16px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             animation: bounceHeart 1.5s infinite ease-in-out;
         }
@@ -633,44 +640,44 @@
         .letter-paper {
             background: #fff;
             color: #4a1525;
-            padding: 25px 20px;
+            padding: 20px 16px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: left;
-            font-size: 14px;
+            font-size: 13px;
         }
         .letter-paper h3 { 
-            font-size: 20px; 
-            margin-bottom: 15px; 
+            font-size: 18px; 
+            margin-bottom: 12px; 
             color: #4a1525; 
             font-family: 'Cormorant Garamond', serif; 
             font-style: italic; 
             font-weight: 600; 
         }
-        .letter-paper p { line-height: 1.8; margin-bottom: 14px; color: #3b141d; }
+        .letter-paper p { line-height: 1.7; margin-bottom: 12px; color: #3b141d; }
 
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 6px;
-            margin-bottom: 12px;
+            gap: 4px;
+            margin-bottom: 10px;
         }
         .cd-card {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 10px;
-            padding: 8px 2px;
+            border-radius: 8px;
+            padding: 6px 2px;
             text-align: center;
             color: white;
         }
         .cd-number {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             color: #fff;
         }
         .cd-label {
-            font-size: 7px;
+            font-size: 6.5px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #fca5a5;
@@ -692,6 +699,9 @@
     </audio>
     <audio id="unlock-sound">
         <source src="unlock sound.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="minigame1-bg-sound" loop>
+        <source src="minigames 1 bg sound.mp3" type="audio/mpeg">
     </audio>
     <audio id="flap-sound">
         <source src="flappysound.mp3" type="audio/mpeg">
@@ -763,188 +773,200 @@
                 <img src="https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif" alt="Bubu Dudu Birthday" class="bubu-img">
                 <h2>Once upon a time, this tiny guy came to this world.</h2>
                 <p>Thirty years later, he's my favourite person in the whole world.<br><br>Ready to play through his story?</p>
-                <button class="btn-primary" onclick="goToScreen('guess')">開始 (Let's Go!) ✨</button>
+                <!-- Tombol let's go tanpa emoji -->
+                <button class="btn-primary" onclick="goToScreen('guess')">開始 (Let's Go)</button>
             </div>
 
             <!-- PAGE 3: GUESS RIGHT INTRO -->
-            <div id="guess-screen" class="hidden">
+            <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
                 <div class="bubu-container" style="margin-top: 15px;">
                     <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-small">
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
                 </div>
 
-                <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 25px;">Start Chapter 1 ✨</button>
+                <!-- Tombol start chapter 1 tanpa emoji -->
+                <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 25px;">Start Chapter 1</button>
             </div>
 
             <!-- CHAPTER 1 QUIZ -->
-            <div id="quiz-screen-1" class="hidden">
-                <div class="chapter-subtitle">Chapter 1 · Childhood</div>
-                <div class="quiz-question">How did Elgen spend his childhood?</div>
-                <div class="quiz-instruction" style="margin-bottom: 8px;">Pick all the right answers</div>
-                
-                <div id="inline-status-1" style="font-size: 13px; font-weight: 600; color: #ef4444; margin-bottom: 12px; min-height: 20px;"></div>
+            <div id="quiz-screen-1" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
+                <div>
+                    <div class="chapter-subtitle">Chapter 1 · Childhood</div>
+                    <div class="quiz-question">How did Elgen spend his childhood?</div>
+                    <div class="quiz-instruction">Pick all the right answers</div>
+                    
+                    <div id="inline-status-1" style="font-size: 12px; font-weight: 600; color: #ef4444; margin-bottom: 8px; min-height: 18px;"></div>
 
-                <div class="options-grid">
-                    <button class="option-btn" onclick="toggleOption(this, 1)">
-                        <div class="option-badge">A</div>
-                        <span>Playing football</span>
-                    </button>
-                    <button class="option-btn" onclick="toggleOption(this, 2)">
-                        <div class="option-badge">B</div>
-                        <span>Studying 24/7</span>
-                    </button>
-                    <button class="option-btn" onclick="toggleOption(this, 3)">
-                        <div class="option-badge">C</div>
-                        <span>Reading Naruto comics</span>
-                    </button>
-                    <button class="option-btn" onclick="toggleOption(this, 4)">
-                        <div class="option-badge">D</div>
-                        <span>Doing silly things</span>
-                    </button>
-                </div>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="toggleOption(this, 1)">
+                            <div class="option-badge">A</div>
+                            <span>Playing football</span>
+                        </button>
+                        <button class="option-btn" onclick="toggleOption(this, 2)">
+                            <div class="option-badge">B</div>
+                            <span>Studying 24/7</span>
+                        </button>
+                        <button class="option-btn" onclick="toggleOption(this, 3)">
+                            <div class="option-badge">C</div>
+                            <span>Reading Naruto comics</span>
+                        </button>
+                        <button class="option-btn" onclick="toggleOption(this, 4)">
+                            <div class="option-badge">D</div>
+                            <span>Doing silly things</span>
+                        </button>
+                    </div>
 
-                <div id="wrong-msg-1" class="wrong-msg hidden">
-                    WRONG! Masa kecil koko mana ada belajar 24/7 😂<br>Coba pilih yang lain!
-                </div>
+                    <div id="wrong-msg-1" class="wrong-msg hidden">
+                        WRONG! Masa kecil koko mana ada belajar 24/7 😂<br>Coba pilih yang lain!
+                    </div>
 
-                <div id="success-box-1" class="success-box hidden">
-                    <p style="font-size: 14px; font-weight: 600;">是不是都在看漫畫，有空去踢足球，剩下時間當屁孩哈哈哈，完全沒看書</p>
+                    <div id="success-box-1" class="success-box hidden">
+                        <p>是不是都在看漫畫，有空去踢足球，剩下時間當屁孩哈哈哈，完全沒看書</p>
+                    </div>
                 </div>
 
                 <div class="nav-footer">
                     <button class="nav-btn" onclick="goToScreen('guess')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-1" onclick="unlockChapter(2); goToScreen('ch2');">Next Chapter Unlocked 🎉</button>
+                    <button class="nav-btn next hidden" id="next-btn-1" onclick="unlockChapter(2); goToScreen('ch2');">Next Chapter 🎉</button>
                 </div>
             </div>
 
             <!-- CHAPTER 2 QUIZ -->
-            <div id="quiz-screen-2" class="hidden">
-                <div class="chapter-subtitle">Chapter 2 · Major Choice</div>
-                <div class="quiz-question">If you could turn back time and had all the resources like money to pursue it, what major would you choose?</div>
-                <div class="quiz-instruction">Pick your choice</div>
+            <div id="quiz-screen-2" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
+                <div>
+                    <div class="chapter-subtitle">Chapter 2 · Major Choice</div>
+                    <div class="quiz-question">If you could turn back time and had all the resources like money to pursue it, what major would you choose?</div>
+                    <div class="quiz-instruction">Pick your choice</div>
 
-                <div class="options-grid">
-                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
-                        <div class="option-badge">A</div>
-                        <span>Business/ finance</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
-                        <div class="option-badge">B</div>
-                        <span>Doctor</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
-                        <div class="option-badge">C</div>
-                        <span>Software engineering</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, i am proud of you 💖')">
-                        <div class="option-badge">D</div>
-                        <span>No, I will not change any of my past</span>
-                    </button>
-                </div>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="answerInline(this, 2, 'nah aku pasti bisa nebeng conviction kalo koko orang finance hahaha.')">
+                            <div class="option-badge">A</div>
+                            <span>Business/ finance</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 2, 'mau ambil spesialis apa kalo jadi dokter nih.')">
+                            <div class="option-badge">B</div>
+                            <span>Doctor</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 2, 'udah ada bakat jago main game nya sih padahal, hahaha.')">
+                            <div class="option-badge">C</div>
+                            <span>Software engineering</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 2, 'No matter what major you choose, I am proud of you 💖')">
+                            <div class="option-badge">D</div>
+                            <span>No, I will not change any of my past</span>
+                        </button>
+                    </div>
 
-                <div id="success-box-2" class="success-box hidden">
-                    <p id="msg-text-2">No matter what major you choose, i am proud of you 💖</p>
+                    <div id="success-box-2" class="success-box hidden">
+                        <p id="msg-text-2">Message here</p>
+                    </div>
                 </div>
 
                 <div class="nav-footer">
                     <button class="nav-btn" onclick="goToScreen('ch1')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-2" onclick="unlockChapter(3); goToScreen('ch3');">Next Chapter Unlocked 🎉</button>
+                    <button class="nav-btn next hidden" id="next-btn-2" onclick="unlockChapter(3); goToScreen('ch3');">Next Chapter 🎉</button>
                 </div>
             </div>
 
             <!-- CHAPTER 3 QUIZ -->
-            <div id="quiz-screen-3" class="hidden">
-                <div class="chapter-subtitle">Chapter 3 · Life Motivation</div>
-                <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:14px; font-weight:600; color:#4b5563;">(What makes you keep going when life goes hard?)</span></div>
-                <div class="quiz-instruction">Pick your choice</div>
+            <div id="quiz-screen-3" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
+                <div>
+                    <div class="chapter-subtitle">Chapter 3 · Life Motivation</div>
+                    <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:13px; font-weight:600; color:#4b5563;">(What makes you keep going when life goes hard?)</span></div>
+                    <div class="quiz-instruction">Pick your choice</div>
 
-                <div class="options-grid">
-                    <button class="option-btn" onclick="answerInline(this, 3, 'You will be a great family man 👨‍👩‍👦')">
-                        <div class="option-badge">A</div>
-                        <span>Working hard for a better family life.</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 3, 'What a great motivation 👍 (睡到自然醒)')">
-                        <div class="option-badge">B</div>
-                        <span>Looking forward to my next day off to wake up late (睡到自然醒).</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 3, 'At least remember to video call me please 🥺')">
-                        <div class="option-badge">C</div>
-                        <span>Taking a quick break to game or watch movies.</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 3, 'Thank you for staying strong. Here is a big hug 🫂')">
-                        <div class="option-badge">D</div>
-                        <span>Honestly, just pushing through on autopilot.</span>
-                    </button>
-                </div>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="answerInline(this, 3, 'You will be a great family man 👨‍👩‍👦')">
+                            <div class="option-badge">A</div>
+                            <span>Working hard for a better family life.</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 3, 'What a great motivation 👍 (睡到自然醒)')">
+                            <div class="option-badge">B</div>
+                            <span>Looking forward to my next day off to wake up late (睡到自然醒).</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 3, 'At least remember to video call me please 🥺')">
+                            <div class="option-badge">C</div>
+                            <span>Taking a quick break to game or watch movies.</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 3, 'Thank you for staying strong. Here is a big hug 🫂')">
+                            <div class="option-badge">D</div>
+                            <span>Honestly, just pushing through on autopilot.</span>
+                        </button>
+                    </div>
 
-                <div id="success-box-3" class="success-box hidden">
-                    <p id="msg-text-3">Message here</p>
+                    <div id="success-box-3" class="success-box hidden">
+                        <p id="msg-text-3">Message here</p>
+                    </div>
                 </div>
 
                 <div class="nav-footer">
                     <button class="nav-btn" onclick="goToScreen('ch2')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-3" onclick="unlockChapter(4); goToScreen('ch4');">Next Chapter Unlocked 🎉</button>
+                    <button class="nav-btn next hidden" id="next-btn-3" onclick="unlockChapter(4); goToScreen('ch4');">Next Chapter 🎉</button>
                 </div>
             </div>
 
             <!-- CHAPTER 4 QUIZ -->
-            <div id="quiz-screen-4" class="hidden">
-                <div class="chapter-subtitle">Chapter 4 · The Coping Mechanism</div>
-                <div class="quiz-question">How do you quietly handle overwhelming stress?</div>
-                <div class="quiz-instruction">Pick your choice</div>
+            <div id="quiz-screen-4" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
+                <div>
+                    <div class="chapter-subtitle">Chapter 4 · The Coping Mechanism</div>
+                    <div class="quiz-question">How do you quietly handle overwhelming stress?</div>
+                    <div class="quiz-instruction">Pick your choice</div>
 
-                <div class="options-grid">
-                    <button class="option-btn" onclick="answerInline(this, 4, 'dasar wibu wkwkwkwk 🎮')">
-                        <div class="option-badge">A</div>
-                        <span>By withdrawing into music or games alone or anime</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 4, '要跟秀分享喔，不要自己承擔，秀會盡量幫忙哥哥 ❤️')">
-                        <div class="option-badge">B</div>
-                        <span>Putting on a smile so nobody worries.</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 4, '辛苦了哥哥，記得每天睡前要禱告哦 ✨')">
-                        <div class="option-badge">C</div>
-                        <span>Sleeping it off.</span>
-                    </button>
-                </div>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="answerInline(this, 4, 'dasar wibu wkwkwkwk')">
+                            <div class="option-badge">A</div>
+                            <span>By withdrawing into music or games alone or anime</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 4, '要跟秀分享喔，不要自己承擔，秀會盡量幫忙哥哥 ❤️')">
+                            <div class="option-badge">B</div>
+                            <span>Putting on a smile so nobody worries.</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 4, '辛苦了哥哥，記得每天睡前要禱告哦 ✨')">
+                            <div class="option-badge">C</div>
+                            <span>Sleeping it off.</span>
+                        </button>
+                    </div>
 
-                <div id="success-box-4" class="success-box hidden">
-                    <p id="msg-text-4" style="font-size: 15px; font-weight: 600;">Message here</p>
+                    <div id="success-box-4" class="success-box hidden">
+                        <p id="msg-text-4" style="font-size: 14px; font-weight: 600;">Message here</p>
+                    </div>
                 </div>
 
                 <div class="nav-footer">
                     <button class="nav-btn" onclick="goToScreen('ch3')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-4" onclick="unlockChapter(5); goToScreen('ch5');">Next Chapter Unlocked 🎉</button>
+                    <button class="nav-btn next hidden" id="next-btn-4" onclick="unlockChapter(5); goToScreen('ch5');">Next Chapter 🎉</button>
                 </div>
             </div>
 
             <!-- CHAPTER 5 QUIZ -->
-            <div id="quiz-screen-5" class="hidden">
-                <div class="chapter-subtitle">Chapter 5 · The Finale</div>
-                <div class="quiz-question">What is the most meaningful gift life has given you?</div>
-                <div class="quiz-instruction">Pick your choice</div>
+            <div id="quiz-screen-5" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
+                <div>
+                    <div class="chapter-subtitle">Chapter 5 · The Finale</div>
+                    <div class="quiz-question">What is the most meaningful gift life has given you?</div>
+                    <div class="quiz-instruction">Pick your choice</div>
 
-                <div class="options-grid">
-                    <button class="option-btn" onclick="answerInline(this, 5, 'Let’s build a much calmer, happier future together. I love you 💖')">
-                        <div class="option-badge">A</div>
-                        <span>Finding someone who truly stays by my side. (秀 ☺️)</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 5, 'tidak ada pekerjaan keras yang sia-sia ko 💪')">
-                        <div class="option-badge">B</div>
-                        <span>Finally seeing the fruits of my hard work.</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 5, '那我要天天吵你 😈')">
-                        <div class="option-badge">C</div>
-                        <span>Having a little peace and quiet.</span>
-                    </button>
-                    <button class="option-btn" onclick="answerInline(this, 5, '雖然你以前做了很多不該做的事，現在沒做了，那希望上帝給你一輩子的健健康康哦 🙏')">
-                        <div class="option-badge">D</div>
-                        <span>My health</span>
-                    </button>
-                </div>
+                    <div class="options-grid">
+                        <button class="option-btn" onclick="answerInline(this, 5, 'Let’s build a much calmer, happier future together. I love you 💖')">
+                            <div class="option-badge">A</div>
+                            <span>Finding someone who truly stays by my side. (秀 ☺️)</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 5, 'Tidak ada pekerjaan keras yang sia-sia ko 💪')">
+                            <div class="option-badge">B</div>
+                            <span>Finally seeing the fruits of my hard work.</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 5, '那我要天天吵你 😈😈😈😈')">
+                            <div class="option-badge">C</div>
+                            <span>Having a little peace and quiet.</span>
+                        </button>
+                        <button class="option-btn" onclick="answerInline(this, 5, '雖然你以前做了很多不該做的事，現在沒做了，那希望上帝給你一輩子的健健康康哦 🙏')">
+                            <div class="option-badge">D</div>
+                            <span>My health</span>
+                        </button>
+                    </div>
 
-                <div id="success-box-5" class="success-box hidden">
-                    <p id="msg-text-5" style="font-size: 15px; font-weight: 600;">Message here</p>
+                    <div id="success-box-5" class="success-box hidden">
+                        <p id="msg-text-5" style="font-size: 14px; font-weight: 600;">Message here</p>
+                    </div>
                 </div>
 
                 <div class="nav-footer">
@@ -954,32 +976,37 @@
             </div>
 
             <!-- MINIGAME 1 -->
-            <div id="minigame-screen" class="hidden" style="text-align: center; position: relative;">
+            <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
                 
-                <div style="margin-top: 10px; margin-bottom: 12px;">
-                    <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
+                <div>
+                    <div style="margin-top: 6px; margin-bottom: 8px;">
+                        <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
+                    </div>
+                    <div style="font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;" id="game-timer">Time: 20s</div>
                 </div>
-
-                <div style="font-size: 12px; font-weight: 600; color: #e11d48; margin-bottom: 8px;" id="game-timer">Time: 20s</div>
                 
-                <div class="game-canvas-container" id="game-container"></div>
+                <div class="game-canvas-container" id="game-container" style="flex: 1;"></div>
 
-                <div id="try-again-box" class="hidden" style="margin-bottom: 15px; animation: fadeIn 0.3s;">
-                    <button class="btn-compact" style="background:#f59e0b; margin-bottom: 8px;" onclick="initMinigame()">Try Again</button>
-                    <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
+                <div>
+                    <div id="try-again-box" class="hidden" style="margin-bottom: 10px; animation: fadeIn 0.3s;">
+                        <button class="btn-compact" style="background:#f59e0b; margin-bottom: 6px;" onclick="initMinigame()">Try Again</button>
+                        <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
+                    </div>
+                    <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()">Next</button>
                 </div>
-
-                <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()" style="margin-bottom: 10px;">Next</button>
             </div>
 
             <!-- MINIGAME 2: FLAPPY BIRD -->
-            <div id="flappy-screen" class="hidden" style="text-align: center; position: relative;">
+            <div id="flappy-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <div class="quiz-question" style="margin-top: 10px; margin-bottom: 8px; cursor: pointer;" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
+                <div style="margin-top: 4px; margin-bottom: 6px; flex-shrink: 0;">
+                    <div style="display: inline-block; padding: 4px 12px; background: #f43f5e; color: white; border-radius: 16px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
+                    <div style="font-size: 10px; color: #6b7280; font-weight: 600; margin-top: 3px;">score min. 3 to continue</div>
+                </div>
                 
-                <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()">
+                <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()" style="flex: 1;">
                     <div class="flappy-score-display" id="flappy-score-text">0</div>
                     <div class="flappy-bg-scenery"></div>
                     
@@ -1007,7 +1034,7 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 260px; margin-top: 15px; padding: 10px;" onclick="initFlappyGame()">Try Again</button>
+                        <button class="btn-primary" style="width: 240px; margin-top: 12px; padding: 8px;" onclick="initFlappyGame()">Try Again</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1015,42 +1042,45 @@
                     <div class="flappy-ground"></div>
                 </div>
 
-                <div style="display: flex; gap: 10px; margin-top: 12px; align-items: center;">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 12px 20px;">← Back</button>
+                <div style="display: flex; gap: 10px; align-items: center; flex-shrink: 0;">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 10px 16px;">← Back</button>
                     <div style="flex: 1;"></div>
-                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 12px;">Open Letter 💌</button>
+                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 10px;">Open Letter 💌</button>
                 </div>
             </div>
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
-            <div id="letter-countdown-screen" class="hidden">
-                <div class="chapter-subtitle" style="text-align: center; margin-bottom: 6px;">One Last Thing</div>
-                <h2 style="font-size: 22px; color: #1f2937; text-align: center; margin-bottom: 20px; font-family: 'Playfair Display', serif; font-weight: 600; font-style: normal;">A letter, just for you</h2>
+            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
+                <div>
+                    <div class="chapter-subtitle" style="text-align: center; margin-bottom: 4px;">One Last Thing</div>
+                    <h2 style="font-size: 20px; color: #1f2937; text-align: center; margin-bottom: 15px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
                 
-                <div id="envelope-wrapper">
-                    <div class="envelope-container" onclick="openLetter()">
-                        <div class="envelope-icon-wrapper">
-                            <div class="envelope-icon-circle">✉️</div>
-                            <div class="notification-heart">💛</div>
+                    <div id="envelope-wrapper">
+                        <div class="envelope-container" onclick="openLetter()">
+                            <div class="envelope-icon-wrapper">
+                                <div class="envelope-icon-circle">✉️</div>
+                                <div class="notification-heart">💛</div>
+                            </div>
+                            <h3 style="font-size: 16px; margin-bottom: 4px; color: #fff;">You've got mail</h3>
+                            <p style="font-size: 11px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
                         </div>
-                        <h3 style="font-size: 18px; margin-bottom: 6px; color: #fff;">You've got mail</h3>
-                        <p style="font-size: 12px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
                     </div>
                 </div>
 
-                <div id="opened-letter-wrapper" class="hidden">
+                <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
                     <div class="letter-paper">
                         <h3 style="font-style: italic;">To my favourite person,</h3>
                         <p>Happy 30th birthday, my love. I wanted to make you something that you could open, click through, and smile at — because you make me smile every single day.</p>
                         <p>From the first time we met on the badminton court, I knew there was something special about you. Your kindness, your patience, the way you get way too competitive over games, and the way you always make me feel safe — I love all of it.</p>
                         <p>Thirty is a big chapter, and I’m so lucky I get to be in it with you. Thank you for every laugh, every late-night game session I watched from the sofa, and every quiet moment that felt like home.</p>
                         <p>Here’s to more adventures, more matches, more wins, and so many more birthdays together.</p>
-                        <p style="margin-top: 20px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 16px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
+                        <p style="margin-top: 15px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 15px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
                     </div>
 
-                    <div style="margin-top: 30px; animation: fadeIn 0.5s ease;">
-                        <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;">
-                            How long you have survived in this world since November 7, 1996 🎂
+                    <div style="margin-top: 20px;">
+                        <!-- Teks tanpa emoji kue -->
+                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
+                            How long you have survived in this world since November 7, 1996
                         </div>
                         <div class="countdown-grid">
                             <div class="cd-card"><div class="cd-number" id="life-years">00</div><div class="cd-label">Years</div></div>
@@ -1061,10 +1091,11 @@
                             <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="height: 15px;"></div>
+                        <div style="height: 10px;"></div>
 
-                        <div style="text-align: center; font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;">
-                            And you have been spending your time with me for 💕
+                        <!-- Teks tanpa emoji hati -->
+                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
+                            And you have been spending your time with me for
                         </div>
                         <div class="countdown-grid">
                             <div class="cd-card"><div class="cd-number" id="cd-years">00</div><div class="cd-label">Years</div></div>
@@ -1075,26 +1106,28 @@
                             <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="text-align: center; font-size: 12px; color: #6b7280; margin-top: 10px; font-weight: 500;" id="cd-total-days">
+                        <!-- Teks diubah warnanya menjadi merah (#e11d48) -->
+                        <div style="text-align: center; font-size: 11px; color: #e11d48; margin-top: 8px; font-weight: 600;" id="cd-total-days">
                             That's calculating days of loving you — and counting.
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 10px; margin-top: 25px;" id="final-buttons-wrapper" class="hidden">
-                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151;">← Back</button>
-                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish ❤️</button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;" id="final-buttons-wrapper" class="hidden">
+                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
+                        <!-- Tombol Click finish tanpa emoji hati -->
+                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 10px; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish</button>
                     </div>
                 </div>
 
-                <div style="margin-top: 20px;" id="envelope-back-btn">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151;">← Back</button>
+                <div style="margin-top: 15px;" id="envelope-back-btn">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
                 </div>
             </div>
 
             <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
-            <div id="finish-celebration-screen" class="hidden" style="text-align: center; padding: 20px 0;">
-                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 180px; height: auto; border-radius: 16px; margin-bottom: 20px;">
-                <h2 style="font-size: 20px; color: #1f2937; font-weight: 700; line-height: 1.6; margin-bottom: 25px;">
+            <div id="finish-celebration-screen" class="hidden" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
+                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 160px; height: auto; border-radius: 16px; margin: 0 auto 20px auto;">
+                <h2 style="font-size: 18px; color: #1f2937; font-weight: 700; line-height: 1.6; margin-bottom: 25px;">
                     Happy 30th Birthday, 張彬哥哥! 🎉<br>
                     <span style="color: #f43f5e;">I love you! ❤️</span>
                 </h2>
@@ -1225,11 +1258,24 @@
             stopFlappyGame();
 
             const music = document.getElementById('bg-music');
-            if (screenKey === 'minigame' || screenKey === 'flappy') {
+            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
+
+            if (screenKey === 'minigame') {
                 if (!music.paused) music.pause();
+                if (minigameBgAudio) {
+                    minigameBgAudio.volume = 0.25;
+                    minigameBgAudio.currentTime = 0;
+                    minigameBgAudio.play().catch(e => console.log(e));
+                }
             } else {
-                if (music.paused && document.getElementById('lock-screen').classList.contains('hidden')) {
-                    music.play().catch(e => console.log(e));
+                if (minigameBgAudio && !minigameBgAudio.paused) minigameBgAudio.pause();
+                
+                if (screenKey === 'flappy') {
+                    if (!music.paused) music.pause();
+                } else {
+                    if (music.paused && document.getElementById('lock-screen').classList.contains('hidden')) {
+                        music.play().catch(e => console.log(e));
+                    }
                 }
             }
 
@@ -1350,14 +1396,19 @@
         const hobbies = ['⚽', '🏸', '🍣'];
         let fallingItemsList = [];
 
+        function playMinigame1ClickSound() {
+            const sound = document.getElementById('flappy-point');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(e => console.log(e));
+            }
+        }
+
         function startMinigame() {
             goToScreen('minigame');
         }
 
         function initMinigame() {
-            const music = document.getElementById('bg-music');
-            if (!music.paused) music.pause();
-
             stopMinigame();
             score = 0;
             timeLeft = 20;
@@ -1378,6 +1429,9 @@
                 document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
                 if (timeLeft <= 0) {
                     stopMinigame();
+                    const minigameBgAudio = document.getElementById('minigame1-bg-sound');
+                    if (minigameBgAudio) minigameBgAudio.pause();
+
                     if (score < 30) {
                         document.getElementById('try-again-box').classList.remove('hidden');
                     } else {
@@ -1414,7 +1468,7 @@
 
             itemEl.onmousedown = itemEl.ontouchstart = (e) => {
                 e.preventDefault();
-                playUnlockSound();
+                playMinigame1ClickSound();
 
                 if (!targetSymbol) {
                     targetSymbol = symbol;
@@ -1431,6 +1485,8 @@
                 
                 if (score >= 30) {
                     stopMinigame();
+                    const minigameBgAudio = document.getElementById('minigame1-bg-sound');
+                    if (minigameBgAudio) minigameBgAudio.pause();
                     document.getElementById('game-next-btn').classList.remove('hidden');
                 }
 
@@ -1467,19 +1523,23 @@
         function forceOpenLetter() {
             score = 30;
             stopMinigame();
+            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
+            if (minigameBgAudio) minigameBgAudio.pause();
             document.getElementById('game-score').innerText = `Score: 30 / 30 (Unlocked!)`;
             document.getElementById('game-next-btn').classList.remove('hidden');
         }
 
         // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
-        let birdY = 140, birdVelocity = 0;
+        let birdY = 120, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
         let gameStarted = false;
 
         function startFlappyGame() {
+            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
+            if (minigameBgAudio) minigameBgAudio.pause();
             goToScreen('flappy');
         }
 
@@ -1488,7 +1548,7 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 140;
+            birdY = 120;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
@@ -1528,14 +1588,14 @@
                 return;
             }
 
-            birdVelocity = -7;
+            birdVelocity = -6.5;
             playFlapSound();
         }
 
         function spawnFlappyPipe() {
-            const containerHeight = 320;
-            const gap = 110;
-            const minHeight = 40;
+            const containerHeight = 270;
+            const gap = 105;
+            const minHeight = 30;
             const maxHeight = containerHeight - gap - minHeight - 30;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
 
@@ -1550,13 +1610,13 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            birdVelocity += 0.45;
+            birdVelocity += 0.42;
             birdY += birdVelocity;
 
             const birdEl = document.getElementById('flappy-bird');
             birdEl.style.top = birdY + 'px';
 
-            if (birdY > 250 || birdY < 0) {
+            if (birdY > 210 || birdY < 0) {
                 playHitSound();
                 gameOverFlappy();
                 return;
@@ -1572,30 +1632,30 @@
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
                 topPipeBody.style.top = '0px';
-                topPipeBody.style.height = (pipes[i].topHeight - 24) + 'px';
+                topPipeBody.style.height = (pipes[i].topHeight - 22) + 'px';
                 pipesArea.appendChild(topPipeBody);
 
                 const topPipeLip = document.createElement('div');
                 topPipeLip.className = 'pipe-lip';
                 topPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                topPipeLip.style.top = (pipes[i].topHeight - 24) + 'px';
+                topPipeLip.style.top = (pipes[i].topHeight - 22) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (320 - 30 - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.top = (270 - 30 - pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (320 - 30 - pipes[i].bottomHeight + 24) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight - 24) + 'px';
+                botPipeBody.style.top = (270 - 30 - pipes[i].bottomHeight + 22) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight - 22) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-                if (pipes[i].left < 90 && pipes[i].left + 54 > 50) {
-                    if (birdY < pipes[i].topHeight || birdY + 35 > 320 - 30 - pipes[i].bottomHeight) {
+                if (pipes[i].left < 90 && pipes[i].left + 50 > 50) {
+                    if (birdY < pipes[i].topHeight || birdY + 32 > 270 - 30 - pipes[i].bottomHeight) {
                         playHitSound();
                         gameOverFlappy();
                         return;
@@ -1607,8 +1667,7 @@
                     flappyScore++;
                     playPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
-                    if (flappyScore >= 7) {
-                        stopFlappyGame();
+                    if (flappyScore >= 3) {
                         document.getElementById('flappy-next-btn').classList.remove('hidden');
                     }
                 }
@@ -1618,7 +1677,7 @@
                 }
             }
 
-            if (pipes.length === 0 || pipes[pipes.length - 1].left < 180) {
+            if (pipes.length === 0 || pipes[pipes.length - 1].left < 160) {
                 spawnFlappyPipe();
             }
         }
@@ -1627,15 +1686,15 @@
             stopFlappyGame();
             document.getElementById('final-score-val').innerText = flappyScore;
             document.getElementById('game-over-modal').classList.remove('hidden');
-            if (flappyScore >= 7) {
+            if (flappyScore >= 3) {
                 document.getElementById('flappy-next-btn').classList.remove('hidden');
             }
         }
 
         function forcePassFlappy() {
-            flappyScore = 7;
+            flappyScore = 3;
             stopFlappyGame();
-            document.getElementById('flappy-score-text').innerText = `7`;
+            document.getElementById('flappy-score-text').innerText = `3`;
             document.getElementById('flappy-next-btn').classList.remove('hidden');
         }
 
