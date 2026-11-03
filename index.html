@@ -210,6 +210,14 @@
             justify-content: space-between;
         }
 
+        .card.game-expanded-card {
+            max-width: 440px !important;
+            width: 105% !important;
+            margin-left: -2.5%;
+            margin-right: -2.5%;
+            padding: 24px 12px !important;
+        }
+
         .skip-btn {
             position: absolute;
             top: 20px; right: 20px;
@@ -370,7 +378,7 @@
 
         .game-canvas-container {
             width: 100%;
-            height: 270px;
+            height: 380px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
             border-radius: 16px;
@@ -381,16 +389,15 @@
         }
         .falling-item {
             position: absolute;
-            font-size: 30px;
+            font-size: 32px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
         }
 
-        /* FLAPPY BIRD STYLES */
         .flappy-canvas-container {
             width: 100%;
-            height: 270px;
+            height: 390px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
@@ -408,10 +415,10 @@
         }
         .flappy-bg-scenery {
             position: absolute;
-            bottom: 30px;
+            bottom: 35px;
             left: 0;
             width: 200%;
-            height: 80px;
+            height: 90px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -430,7 +437,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 30px;
+            height: 35px;
             background: #ded895;
             border-top: 4px solid #558022;
             background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 10px, transparent 0, transparent 20px);
@@ -438,29 +445,30 @@
         }
         .flappy-bird {
             position: absolute;
-            width: 38px;
-            height: 38px;
+            width: 50px;
+            height: 50px;
             object-fit: contain;
-            left: 50px;
+            left: 55px;
             z-index: 5;
             pointer-events: none;
+            transition: transform 0.1s linear;
         }
         .pipe-body {
             position: absolute;
-            width: 50px;
+            width: 55px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 56px;
-            height: 22px;
+            width: 63px;
+            height: 24px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             border-radius: 4px;
             z-index: 3;
-            left: -3px;
+            left: -4px;
         }
         .flappy-score-display {
             position: absolute;
@@ -644,24 +652,25 @@
             50% { transform: translateY(-4px); }
         }
 
+        /* FONT SURAT DIPERBESAR (dari 13px ke 15px) */
         .letter-paper {
             background: #fff;
             color: #4a1525;
-            padding: 20px 16px;
+            padding: 24px 20px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: left;
-            font-size: 13px;
+            font-size: 15px; 
         }
         .letter-paper h3 { 
-            font-size: 18px; 
-            margin-bottom: 12px; 
+            font-size: 20px; 
+            margin-bottom: 14px; 
             color: #4a1525; 
             font-family: 'Cormorant Garamond', serif; 
             font-style: italic; 
             font-weight: 600; 
         }
-        .letter-paper p { line-height: 1.7; margin-bottom: 12px; color: #3b141d; }
+        .letter-paper p { line-height: 1.8; margin-bottom: 14px; color: #3b141d; }
 
         .countdown-grid {
             display: grid;
@@ -772,7 +781,7 @@
         </div>
 
         <!-- CONTENT CARD -->
-        <div class="card">
+        <div class="card" id="main-card">
             <button class="skip-btn" id="global-skip-btn" onclick="startMinigame()" style="display: none;">Skip &gt;</button>
 
             <!-- PAGE 2: ONCE UPON A TIME -->
@@ -906,854 +915,4 @@
 
                 <div class="nav-footer">
                     <button class="nav-btn" onclick="goToScreen('ch2')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-3" onclick="unlockChapter(4); goToScreen('ch4');">Next Chapter 🎉</button>
-                </div>
-            </div>
-
-            <!-- CHAPTER 4 QUIZ -->
-            <div id="quiz-screen-4" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
-                <div>
-                    <div class="chapter-subtitle">Chapter 4 · The Coping Mechanism</div>
-                    <div class="quiz-question">How do you quietly handle overwhelming stress?</div>
-                    <div class="quiz-instruction">Pick your choice</div>
-
-                    <div class="options-grid">
-                        <button class="option-btn" onclick="answerInline(this, 4, 'dasar wibu wkwkwkwk')">
-                            <div class="option-badge">A</div>
-                            <span>By withdrawing into music or games alone or anime</span>
-                        </button>
-                        <button class="option-btn" onclick="answerInline(this, 4, '要跟秀分享喔，不要自己承擔，秀會盡量幫忙哥哥 ❤️')">
-                            <div class="option-badge">B</div>
-                            <span>Putting on a smile so nobody worries.</span>
-                        </button>
-                        <button class="option-btn" onclick="answerInline(this, 4, '辛苦了哥哥，記得每天睡前要禱告哦 ✨')">
-                            <div class="option-badge">C</div>
-                            <span>Sleeping it off.</span>
-                        </button>
-                    </div>
-
-                    <div id="success-box-4" class="success-box hidden">
-                        <p id="msg-text-4" style="font-size: 14px; font-weight: 600;">Message here</p>
-                    </div>
-                </div>
-
-                <div class="nav-footer">
-                    <button class="nav-btn" onclick="goToScreen('ch3')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-4" onclick="unlockChapter(5); goToScreen('ch5');">Next Chapter 🎉</button>
-                </div>
-            </div>
-
-            <!-- CHAPTER 5 QUIZ -->
-            <div id="quiz-screen-5" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
-                <div>
-                    <div class="chapter-subtitle">Chapter 5 · The Finale</div>
-                    <div class="quiz-question">What is the most meaningful gift life has given you?</div>
-                    <div class="quiz-instruction">Pick your choice</div>
-
-                    <div class="options-grid">
-                        <button class="option-btn" onclick="answerInline(this, 5, 'Let’s build a much calmer, happier future together. I love you 💖')">
-                            <div class="option-badge">A</div>
-                            <span>Finding someone who truly stays by my side. (秀 ☺️)</span>
-                        </button>
-                        <button class="option-btn" onclick="answerInline(this, 5, 'Tidak ada pekerjaan keras yang sia-sia ko 💪')">
-                            <div class="option-badge">B</div>
-                            <span>Finally seeing the fruits of my hard work.</span>
-                        </button>
-                        <button class="option-btn" onclick="answerInline(this, 5, '那我要天天吵你 😈😈😈😈')">
-                            <div class="option-badge">C</div>
-                            <span>Having a little peace and quiet.</span>
-                        </button>
-                        <button class="option-btn" onclick="answerInline(this, 5, '雖然你以前做了很多不該做的事，現在沒做了，那希望上帝給你一輩子的健健康康哦 🙏')">
-                            <div class="option-badge">D</div>
-                            <span>My health</span>
-                        </button>
-                    </div>
-
-                    <div id="success-box-5" class="success-box hidden">
-                        <p id="msg-text-5" style="font-size: 14px; font-weight: 600;">Message here</p>
-                    </div>
-                </div>
-
-                <div class="nav-footer">
-                    <button class="nav-btn" onclick="goToScreen('ch4')">← Back</button>
-                    <button class="nav-btn next hidden" id="next-btn-5" onclick="startMinigame()">Continue to Minigames 🎮</button>
-                </div>
-            </div>
-
-            <!-- MINIGAME 1 -->
-            <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
-                <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
-                
-                <div>
-                    <div style="margin-top: 6px; margin-bottom: 8px;">
-                        <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
-                    </div>
-                    <div style="font-size: 11px; font-weight: 600; color: #e11d48; margin-bottom: 6px;" id="game-timer">Time: 20s</div>
-                </div>
-                
-                <div class="game-canvas-container" id="game-container" style="flex: 1;"></div>
-
-                <div>
-                    <div id="try-again-box" class="hidden" style="margin-bottom: 10px; animation: fadeIn 0.3s;">
-                        <button class="btn-compact" style="background:#f59e0b; margin-bottom: 6px;" onclick="initMinigame()">Try Again</button>
-                        <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
-                    </div>
-                    <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()">Next</button>
-                </div>
-            </div>
-
-            <!-- MINIGAME 2: FLAPPY BIRD -->
-            <div id="flappy-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
-                <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
-
-                <div style="margin-top: 4px; margin-bottom: 6px; flex-shrink: 0;">
-                    <div style="display: inline-block; padding: 4px 12px; background: #f43f5e; color: white; border-radius: 16px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
-                    <div style="font-size: 10px; color: #6b7280; font-weight: 600; margin-top: 3px;">score min. 3 to continue</div>
-                </div>
-                
-                <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()" style="flex: 1;">
-                    <div class="flappy-score-display" id="flappy-score-text">0</div>
-                    <div class="flappy-bg-scenery"></div>
-                    
-                    <div id="get-ready-overlay" class="get-ready-overlay">
-                        <div class="get-ready-title">Get Ready!</div>
-                        <div class="tap-instruction-box">
-                            <div class="tap-badges">
-                                <span class="tap-badge">TAP</span>
-                                <span class="tap-hand">👆</span>
-                                <span class="tap-badge">TAP</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game Over Modal -->
-                    <div id="game-over-modal" class="game-over-modal hidden" onclick="event.stopPropagation();">
-                        <div class="game-over-title">GAME OVER</div>
-                        <div class="score-board-box">
-                            <div class="sb-column">
-                                <div class="sb-label">MEDAL</div>
-                                <div class="medal-icon">🏆</div>
-                            </div>
-                            <div class="sb-column">
-                                <div class="sb-label">SCORE</div>
-                                <div class="sb-score-val" id="final-score-val">0</div>
-                            </div>
-                        </div>
-                        <button class="btn-primary" style="width: 240px; margin-top: 12px; padding: 8px;" onclick="initFlappyGame()">Try Again</button>
-                    </div>
-
-                    <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
-                    <div id="pipes-area"></div>
-                    <div class="flappy-ground"></div>
-                </div>
-
-                <div style="display: flex; gap: 10px; align-items: center; flex-shrink: 0;">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 10px 16px;">← Back</button>
-                    <div style="flex: 1;"></div>
-                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 10px;">Open Letter 💌</button>
-                </div>
-            </div>
-
-            <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
-            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
-                <div>
-                    <div class="chapter-subtitle" style="text-align: center; margin-bottom: 4px;">One Last Thing</div>
-                    <h2 style="font-size: 20px; color: #1f2937; text-align: center; margin-bottom: 15px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
-                
-                    <div id="envelope-wrapper">
-                        <div class="envelope-container" onclick="openLetter()">
-                            <div class="envelope-icon-wrapper">
-                                <div class="envelope-icon-circle">✉️</div>
-                                <div class="notification-heart">💛</div>
-                            </div>
-                            <h3 style="font-size: 16px; margin-bottom: 4px; color: #fff;">You've got mail</h3>
-                            <p style="font-size: 11px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                    <div class="letter-paper">
-                        <h3>哥哥哥哥哥哥，</h3>
-                        <p>秀最愛的哥哥，今天生日啦❤️<br>哇，30歲了耶。</p>
-                        <p>30年真的不是一段短短的時間，我知道哥哥一路走到今天不容易。從小在不容易的環境長大，一定有很多委屈、很多掙扎，也有很多我沒有經歷過的事情。</p>
-                        <p>但我一直覺得，哥哥其實比你自己想像中的還要堅強。也許以前很多事情都不完美，也走過一些彎路，但現在回頭來看，我相信一切都不是巧合。上帝一步一步帶領哥哥走到今天，所以不管以前發生什麼，我相信神都有祂的計畫。現在的哥哥有上帝、有愛你的家人，也有秀在這裡☺️</p>
-                        <p>第一次認識哥哥的時候，我對你有興趣。（上次我有跟你説過了）結果5年後，我們竟然又在雅加達重新遇見。而且到現在我還是不知道，你那時候到底為什麼一直回復我去台灣玩的IG Story，還那麼自然地跟我裝熟🤣問東問西哈哈哈。</p>
-                        <p>我也記得第一次邀請你去教會是在聖誕節。老實說，那時候除了邀請你，我也偷偷在測試你一下，看看你會不會直接拒絕。感謝上帝，你不但沒有拒絕，反應還比我想像中好很多。</p>
-                        <p>不知不覺，Thank God, here we are. 可能是以前一個禮拜見一兩次面，不知不覺時間過的很快。我們快3年在一起了噢。</p>
-                        <p>雖然有時候我真的很討厭哥哥😒。也常常被哥哥氣到不行。（我生氣真的不是沒有理由的好不好，只是有時候懶得再解釋，解釋到累了😤）</p>
-                        <p>可是就算這樣，我還是很感謝上帝讓我認識你。因為哥哥已經變成我很重要的人了。看到你壓力大，我會擔心。看到你不開心，我會心疼。看到你慢慢變得更好，我也會替你開心。</p>
-                        <p>哥哥，<br>30歲了。<br>有一句話我想認真跟你說。<br>你真的很棒!<br>你走過很多別人不知道的路，也熬過很多辛苦的日子。你跌倒過、迷路過，也犯過錯。可是直到今天，你還是沒有放棄自己。而我覺得，這件事情真的很了不起。（不要常常跟別人比自己哦，你自己也很棒！）</p>
-                        <p>未來會發生什麼事，我們都不知道。但我希望哥哥永遠記得，一定要一輩子靠著上帝。正如耶利米書(Yeremia) 29:11：<br><em>「因為我知道我向你們所懷的意念，是賜平安的意念，不是降災禍的意念，要叫你們末後有指望。」</em><br>"Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan."</p>
-                        <p>所以你累的時候找上帝。當你迷茫的時候，回到神面前。不要自己硬扛。因為神從來沒有放棄過你。</p>
-                        <p>還有，<br>30歲了請認真多多去運動，做健身！（雖然我自己也常常很懶惰😂）</p>
-                        <p>祝30歲的張彬哥哥身體健康、工作順利、越來越成熟、越來越有智慧，也越來越靠近上帝。更希望未來不管遇到什麼事情，都不要覺得自己是一個人。因為神陪著你。家人陪著你。秀也陪著你。</p>
-                        <p>謝謝你努力活到了30歲。謝謝你沒有放棄自己。也謝謝你重新出現在我的生命裡。如果當初沒有莫名其妙的回復我IG Story，如果沒有重新遇見，如果聖誕節那天你拒絕跟我去教會，也許今天的我們就不會在這裡。</p>
-                        <p>所以我真的很感謝上帝。感謝祂讓我們再次相遇。感謝神讓我們再次遇見彼此。也感謝神讓我有機會，在你30歲生日的時候陪在你身邊。</p>
-                        <p>生日快樂呀，哥哥❤️<br>希望以後還有很多很多個生日，我都可以繼續陪在你身邊。我愛你。🎂✨</p>
-                    </div>
-
-                    <div style="margin-top: 20px;">
-                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
-                            How long you have survived in this world since November 7, 1996
-                        </div>
-                        <div class="countdown-grid">
-                            <div class="cd-card"><div class="cd-number" id="life-years">00</div><div class="cd-label">Years</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-months">00</div><div class="cd-label">Months</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-days">00</div><div class="cd-label">Days</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-hours">00</div><div class="cd-label">Hours</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-mins">00</div><div class="cd-label">Mins</div></div>
-                            <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Secs</div></div>
-                        </div>
-
-                        <div style="height: 10px;"></div>
-
-                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
-                            And you have been spending your time with me for
-                        </div>
-                        <div class="countdown-grid">
-                            <div class="cd-card"><div class="cd-number" id="cd-years">00</div><div class="cd-label">Years</div></div>
-                            <div class="cd-card"><div class="cd-number" id="cd-months">00</div><div class="cd-label">Months</div></div>
-                            <div class="cd-card"><div class="cd-number" id="cd-days">00</div><div class="cd-label">Days</div></div>
-                            <div class="cd-card"><div class="cd-number" id="cd-hours">00</div><div class="cd-label">Hours</div></div>
-                            <div class="cd-card"><div class="cd-number" id="cd-mins">00</div><div class="cd-label">Mins</div></div>
-                            <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
-                        </div>
-
-                        <div style="text-align: center; font-size: 11px; color: #e11d48; margin-top: 8px; font-weight: 600;" id="cd-total-days">
-                            That's calculating days of loving you — and counting.
-                        </div>
-                    </div>
-
-                    <div style="display: flex; gap: 10px; margin-top: 15px;" id="final-buttons-wrapper" class="hidden">
-                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
-                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 10px; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish</button>
-                    </div>
-                </div>
-
-                <div style="margin-top: 15px;" id="envelope-back-btn">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
-                </div>
-            </div>
-
-            <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
-            <div id="finish-celebration-screen" class="hidden" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 160px; height: auto; border-radius: 16px; margin: 0 auto 20px auto;">
-                <h2 style="font-size: 18px; color: #1f2937; font-weight: 700; line-height: 1.6; margin-bottom: 25px;">
-                    Happy 30th Birthday, 張彬哥哥! 🎉<br>
-                    <span style="color: #f43f5e;">I love you! ❤️</span>
-                </h2>
-                <button class="btn-primary" onclick="goToScreen('story')">Play Again 💖</button>
-            </div>
-
-        </div>
-    </div>
-
-    <script>
-        function playUnlockSound() {
-            const sound = document.getElementById('unlock-sound');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log(e));
-            }
-        }
-
-        function playFlapSound() {
-            const sound = document.getElementById('flap-sound');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log(e));
-            }
-        }
-
-        function playHitSound() {
-            const hit = document.getElementById('flappy-hit');
-            const die = document.getElementById('flappy-die');
-            if (hit) {
-                hit.currentTime = 0;
-                hit.play().catch(e => console.log(e));
-            }
-            if (die) {
-                setTimeout(() => {
-                    die.currentTime = 0;
-                    die.play().catch(e => console.log(e));
-                }, 300);
-            }
-        }
-
-        function playPointSound() {
-            const sound = document.getElementById('flappy-point');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log(e));
-            }
-        }
-
-        function createHeart() {
-            const container = document.getElementById('hearts-bg');
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            const size = Math.random() * 8 + 6;
-            heart.style.width = `${size}px`;
-            heart.style.height = `${size}px`;
-            heart.style.left = `${Math.random() * 100}vw`;
-            const duration = Math.random() * 3 + 4;
-            heart.style.animationDuration = `${duration}s`;
-            container.appendChild(heart);
-            setTimeout(() => heart.remove(), duration * 1000);
-        }
-        setInterval(createHeart, 400);
-
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('current-date').innerText = now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-            document.getElementById('current-time').innerText = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        let enteredPin = "";
-        function pressKey(num) {
-            if (enteredPin.length < 4) {
-                enteredPin += num;
-                updateDots();
-                if (enteredPin.length === 4) setTimeout(checkPin, 300);
-            }
-        }
-        function updateDots() {
-            for (let i = 0; i < 4; i++) {
-                document.getElementById(`dot-${i}`).classList.toggle('filled', i < enteredPin.length);
-            }
-        }
-        function checkPin() {
-            if (enteredPin === "0711") {
-                playUnlockSound();
-                
-                const lockIcon = document.getElementById('lock-icon');
-                lockIcon.classList.add('unlocked');
-
-                const music = document.getElementById('bg-music');
-                music.volume = 0.5;
-                music.play().catch(e => console.log("Audio autoplay prevented", e));
-                
-                setTimeout(() => {
-                    document.getElementById('lock-screen').classList.add('hidden');
-                    document.getElementById('app-content').classList.remove('hidden');
-                }, 400);
-            } else {
-                const kp = document.getElementById('keypad');
-                kp.classList.add('error-shake');
-                setTimeout(() => { kp.classList.remove('error-shake'); enteredPin = ""; updateDots(); }, 400);
-            }
-        }
-
-        let unlockedLevel = 1;
-        function unlockLevel(lvl) {
-            if (lvl > unlockedLevel) unlockedLevel = lvl;
-            for (let i = 1; i <= 5; i++) {
-                const dot = document.getElementById(`dot-s${i}`);
-                if (i < unlockedLevel) {
-                    dot.className = "tl-dot completed";
-                    dot.innerText = "✓";
-                } else if (i === unlockedLevel) {
-                    dot.className = "tl-dot active";
-                    dot.innerText = i;
-                } else {
-                    dot.className = "tl-dot";
-                    dot.innerText = "🔒";
-                }
-            }
-        }
-
-        function goToScreen(screenKey) {
-            stopMinigame();
-            stopFlappyGame();
-
-            const music = document.getElementById('bg-music');
-            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
-
-            if (screenKey === 'minigame') {
-                if (!music.paused) music.pause();
-                if (minigameBgAudio) {
-                    minigameBgAudio.volume = 0.25;
-                    minigameBgAudio.currentTime = 0;
-                    minigameBgAudio.play().catch(e => console.log(e));
-                }
-            } else {
-                if (minigameBgAudio && !minigameBgAudio.paused) minigameBgAudio.pause();
-                
-                if (screenKey === 'flappy') {
-                    if (!music.paused) music.pause();
-                } else {
-                    if (music.paused && document.getElementById('lock-screen').classList.contains('hidden')) {
-                        music.play().catch(e => console.log(e));
-                    }
-                }
-            }
-
-            document.getElementById('story-screen').classList.add('hidden');
-            document.getElementById('guess-screen').classList.add('hidden');
-            document.getElementById('quiz-screen-1').classList.add('hidden');
-            document.getElementById('quiz-screen-2').classList.add('hidden');
-            document.getElementById('quiz-screen-3').classList.add('hidden');
-            document.getElementById('quiz-screen-4').classList.add('hidden');
-            document.getElementById('quiz-screen-5').classList.add('hidden');
-            document.getElementById('minigame-screen').classList.add('hidden');
-            document.getElementById('flappy-screen').classList.add('hidden');
-            document.getElementById('letter-countdown-screen').classList.add('hidden');
-            document.getElementById('finish-celebration-screen').classList.add('hidden');
-
-            document.getElementById('envelope-wrapper').classList.remove('hidden');
-            document.getElementById('opened-letter-wrapper').classList.add('hidden');
-            document.getElementById('envelope-back-btn').classList.remove('hidden');
-            document.getElementById('final-buttons-wrapper').classList.add('hidden');
-
-            const skipBtn = document.getElementById('global-skip-btn');
-            const timelineBar = document.getElementById('timeline-bar');
-
-            if (screenKey === 'story') { 
-                document.getElementById('story-screen').classList.remove('hidden'); 
-                skipBtn.style.display = 'none';
-                timelineBar.style.display = 'none';
-            }
-            else if (screenKey === 'guess') { 
-                document.getElementById('guess-screen').classList.remove('hidden'); 
-                skipBtn.style.display = 'block'; 
-                timelineBar.style.display = 'none';
-            }
-            else if (screenKey === 'ch1') { document.getElementById('quiz-screen-1').classList.remove('hidden'); unlockLevel(1); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
-            else if (screenKey === 'ch2') { document.getElementById('quiz-screen-2').classList.remove('hidden'); unlockLevel(2); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
-            else if (screenKey === 'ch3') { document.getElementById('quiz-screen-3').classList.remove('hidden'); unlockLevel(3); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
-            else if (screenKey === 'ch4') { document.getElementById('quiz-screen-4').classList.remove('hidden'); unlockLevel(4); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
-            else if (screenKey === 'ch5') { document.getElementById('quiz-screen-5').classList.remove('hidden'); unlockLevel(5); skipBtn.style.display = 'block'; timelineBar.style.display = 'flex'; }
-            else if (screenKey === 'minigame') { 
-                document.getElementById('minigame-screen').classList.remove('hidden'); 
-                skipBtn.style.display = 'none'; 
-                timelineBar.style.display = 'none';
-                initMinigame();
-            }
-            else if (screenKey === 'flappy') {
-                document.getElementById('flappy-screen').classList.remove('hidden');
-                skipBtn.style.display = 'none';
-                timelineBar.style.display = 'none';
-                initFlappyGame();
-            }
-            else if (screenKey === 'letter-countdown') { 
-                if (music.paused) music.play().catch(e => console.log(e));
-                document.getElementById('letter-countdown-screen').classList.remove('hidden'); 
-                skipBtn.style.display = 'none'; 
-                timelineBar.style.display = 'none';
-            }
-        }
-
-        function showFinishCelebration() {
-            document.getElementById('letter-countdown-screen').classList.add('hidden');
-            document.getElementById('finish-celebration-screen').classList.remove('hidden');
-        }
-
-        function unlockChapter(nextCh) {
-            unlockLevel(nextCh);
-        }
-
-        let selectedCount = 0;
-        function toggleOption(btn, id) {
-            const wrongMsg = document.getElementById('wrong-msg-1');
-            const inlineStatus = document.getElementById('inline-status-1');
-            
-            if (id === 2) {
-                wrongMsg.classList.remove('hidden');
-                return;
-            }
-            wrongMsg.classList.add('hidden');
-
-            if (btn.classList.contains('selected')) {
-                btn.classList.remove('selected');
-                selectedCount--;
-            } else {
-                btn.classList.add('selected');
-                selectedCount++;
-                if (selectedCount < 3) {
-                    inlineStatus.innerText = `${selectedCount}/3 correct answers. Choose more!`;
-                }
-            }
-
-            if (selectedCount === 3) {
-                inlineStatus.innerText = "";
-                document.getElementById('success-box-1').classList.remove('hidden');
-                document.getElementById('next-btn-1').classList.remove('hidden');
-            } else {
-                document.getElementById('success-box-1').classList.add('hidden');
-                document.getElementById('next-btn-1').classList.add('hidden');
-            }
-        }
-
-        function answerInline(btn, chapterNum, messageText) {
-            const screen = document.getElementById(`quiz-screen-${chapterNum}`);
-            screen.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-
-            const successBox = document.getElementById(`success-box-${chapterNum}`);
-            const msgText = document.getElementById(`msg-text-${chapterNum}`);
-            if (msgText) msgText.innerText = messageText;
-            successBox.classList.remove('hidden');
-
-            const nextBtn = document.getElementById(`next-btn-${chapterNum}`);
-            if (nextBtn) nextBtn.classList.remove('hidden');
-        }
-
-        // --- MINIGAME 1 ---
-        let gameInterval, spawnerInterval, animFrameId = null;
-        let score = 0, timeLeft = 20;
-        let targetSymbol = null;
-        const hobbies = ['⚽', '🏸', '🍣'];
-        let fallingItemsList = [];
-
-        function playMinigame1ClickSound() {
-            const sound = document.getElementById('flappy-point');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log(e));
-            }
-        }
-
-        function startMinigame() {
-            goToScreen('minigame');
-        }
-
-        function initMinigame() {
-            stopMinigame();
-            score = 0;
-            timeLeft = 20;
-            targetSymbol = null;
-            document.getElementById('game-score').innerText = `Score: ${score} / 30`;
-            document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
-            document.getElementById('game-next-btn').classList.add('hidden');
-            document.getElementById('try-again-box').classList.add('hidden');
-            
-            const container = document.getElementById('game-container');
-            container.innerHTML = '';
-            fallingItemsList = [];
-
-            spawnerInterval = setInterval(spawnItem, 250);
-            
-            gameInterval = setInterval(() => {
-                timeLeft--;
-                document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
-                if (timeLeft <= 0) {
-                    stopMinigame();
-                    const minigameBgAudio = document.getElementById('minigame1-bg-sound');
-                    if (minigameBgAudio) minigameBgAudio.pause();
-
-                    if (score < 30) {
-                        document.getElementById('try-again-box').classList.remove('hidden');
-                    } else {
-                        document.getElementById('game-next-btn').classList.remove('hidden');
-                    }
-                }
-            }, 1000);
-
-            animFrameId = requestAnimationFrame(updateFallingItems);
-        }
-
-        function stopMinigame() {
-            clearInterval(gameInterval);
-            clearInterval(spawnerInterval);
-            if (animFrameId) cancelAnimationFrame(animFrameId);
-        }
-
-        function spawnItem() {
-            const container = document.getElementById('game-container');
-            if (!container) return;
-            const itemEl = document.createElement('div');
-            itemEl.className = 'falling-item';
-            const symbol = hobbies[Math.floor(Math.random() * hobbies.length)];
-            itemEl.innerText = symbol;
-            
-            const maxX = container.clientWidth - 40;
-            const x = Math.random() * maxX;
-            let y = -40;
-
-            itemEl.style.left = x + 'px';
-            itemEl.style.top = y + 'px';
-
-            const itemObj = { el: itemEl, x: x, y: y, symbol: symbol, speed: 2.5 + Math.random() * 2 };
-
-            itemEl.onmousedown = itemEl.ontouchstart = (e) => {
-                e.preventDefault();
-                playMinigame1ClickSound();
-
-                if (!targetSymbol) {
-                    targetSymbol = symbol;
-                }
-
-                if (symbol === targetSymbol) {
-                    score++;
-                } else {
-                    targetSymbol = symbol;
-                    score = Math.max(0, score - 1);
-                }
-
-                document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
-                
-                if (score >= 30) {
-                    stopMinigame();
-                    const minigameBgAudio = document.getElementById('minigame1-bg-sound');
-                    if (minigameBgAudio) minigameBgAudio.pause();
-                    document.getElementById('game-next-btn').classList.remove('hidden');
-                }
-
-                itemEl.remove();
-                const idx = fallingItemsList.indexOf(itemObj);
-                if (idx > -1) fallingItemsList.splice(idx, 1);
-            };
-
-            container.appendChild(itemEl);
-            fallingItemsList.push(itemObj);
-        }
-
-        function updateFallingItems() {
-            const container = document.getElementById('game-container');
-            if (!container) return;
-            const containerHeight = container.clientHeight;
-
-            for (let i = fallingItemsList.length - 1; i >= 0; i--) {
-                let item = fallingItemsList[i];
-                item.y += item.speed;
-                item.el.style.top = item.y + 'px';
-
-                if (item.y > containerHeight - 30) {
-                    item.el.remove();
-                    fallingItemsList.splice(i, 1);
-                }
-            }
-
-            if (timeLeft > 0) {
-                animFrameId = requestAnimationFrame(updateFallingItems);
-            }
-        }
-
-        function forceOpenLetter() {
-            score = 30;
-            stopMinigame();
-            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
-            if (minigameBgAudio) minigameBgAudio.pause();
-            document.getElementById('game-score').innerText = `Score: 30 / 30 (Unlocked!)`;
-            document.getElementById('game-next-btn').classList.remove('hidden');
-        }
-
-        // --- MINIGAME 2: FLAPPY BIRD ---
-        let flappyInterval = null;
-        let birdY = 120, birdVelocity = 0;
-        let pipes = [];
-        let flappyScore = 0;
-        let isFlappyRunning = false;
-        let gameStarted = false;
-
-        function startFlappyGame() {
-            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
-            if (minigameBgAudio) minigameBgAudio.pause();
-            goToScreen('flappy');
-        }
-
-        function initFlappyGame() {
-            const music = document.getElementById('bg-music');
-            if (!music.paused) music.pause();
-
-            stopFlappyGame();
-            birdY = 120;
-            birdVelocity = 0;
-            pipes = [];
-            flappyScore = 0;
-            isFlappyRunning = false;
-            gameStarted = false;
-
-            document.getElementById('flappy-score-text').innerText = `0`;
-            document.getElementById('flappy-next-btn').classList.add('hidden');
-            document.getElementById('pipes-area').innerHTML = '';
-            document.getElementById('game-over-modal').classList.add('hidden');
-
-            document.getElementById('get-ready-overlay').style.display = 'flex';
-            const birdEl = document.getElementById('flappy-bird');
-            birdEl.src = 'bird.png';
-            birdEl.style.top = birdY + 'px';
-        }
-
-        function stopFlappyGame() {
-            isFlappyRunning = false;
-            clearInterval(flappyInterval);
-        }
-
-        function flappyJump() {
-            if (!gameStarted) {
-                gameStarted = true;
-                isFlappyRunning = true;
-                document.getElementById('get-ready-overlay').style.display = 'none';
-                
-                const birdEl = document.getElementById('flappy-bird');
-                birdEl.src = 'wajah.png';
-                
-                spawnFlappyPipe();
-                flappyInterval = setInterval(updateFlappyGame, 30);
-            }
-
-            if (!isFlappyRunning && gameStarted) {
-                return;
-            }
-
-            birdVelocity = -6.5;
-            playFlapSound();
-        }
-
-        function spawnFlappyPipe() {
-            const containerHeight = 270;
-            const gap = 105;
-            const minHeight = 30;
-            const maxHeight = containerHeight - gap - minHeight - 30;
-            const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
-
-            pipes.push({
-                left: 350,
-                topHeight: topHeight,
-                bottomHeight: containerHeight - topHeight - gap - 30,
-                passed: false
-            });
-        }
-
-        function updateFlappyGame() {
-            if (!isFlappyRunning) return;
-
-            birdVelocity += 0.42;
-            birdY += birdVelocity;
-
-            const birdEl = document.getElementById('flappy-bird');
-            birdEl.style.top = birdY + 'px';
-
-            if (birdY > 210 || birdY < 0) {
-                playHitSound();
-                gameOverFlappy();
-                return;
-            }
-
-            const pipesArea = document.getElementById('pipes-area');
-            pipesArea.innerHTML = '';
-
-            for (let i = pipes.length - 1; i >= 0; i--) {
-                pipes[i].left -= 3;
-
-                const topPipeBody = document.createElement('div');
-                topPipeBody.className = 'pipe-body';
-                topPipeBody.style.left = pipes[i].left + 'px';
-                topPipeBody.style.top = '0px';
-                topPipeBody.style.height = (pipes[i].topHeight - 22) + 'px';
-                pipesArea.appendChild(topPipeBody);
-
-                const topPipeLip = document.createElement('div');
-                topPipeLip.className = 'pipe-lip';
-                topPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                topPipeLip.style.top = (pipes[i].topHeight - 22) + 'px';
-                pipesArea.appendChild(topPipeLip);
-
-                const botPipeLip = document.createElement('div');
-                botPipeLip.className = 'pipe-lip';
-                botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (270 - 30 - pipes[i].bottomHeight) + 'px';
-                pipesArea.appendChild(botPipeLip);
-
-                const botPipeBody = document.createElement('div');
-                botPipeBody.className = 'pipe-body';
-                botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (270 - 30 - pipes[i].bottomHeight + 22) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight - 22) + 'px';
-                pipesArea.appendChild(botPipeBody);
-
-                if (pipes[i].left < 90 && pipes[i].left + 50 > 50) {
-                    if (birdY < pipes[i].topHeight || birdY + 32 > 270 - 30 - pipes[i].bottomHeight) {
-                        playHitSound();
-                        gameOverFlappy();
-                        return;
-                    }
-                }
-
-                if (!pipes[i].passed && pipes[i].left < 50) {
-                    pipes[i].passed = true;
-                    flappyScore++;
-                    playPointSound();
-                    document.getElementById('flappy-score-text').innerText = flappyScore;
-                    if (flappyScore >= 3) {
-                        document.getElementById('flappy-next-btn').classList.remove('hidden');
-                    }
-                }
-
-                if (pipes[i].left < -60) {
-                    pipes.splice(i, 1);
-                }
-            }
-
-            if (pipes.length === 0 || pipes[pipes.length - 1].left < 160) {
-                spawnFlappyPipe();
-            }
-        }
-
-        function gameOverFlappy() {
-            stopFlappyGame();
-            document.getElementById('final-score-val').innerText = flappyScore;
-            document.getElementById('game-over-modal').classList.remove('hidden');
-            if (flappyScore >= 3) {
-                document.getElementById('flappy-next-btn').classList.remove('hidden');
-            }
-        }
-
-        function forcePassFlappy() {
-            flappyScore = 3;
-            stopFlappyGame();
-            document.getElementById('flappy-score-text').innerText = `3`;
-            document.getElementById('flappy-next-btn').classList.remove('hidden');
-        }
-
-        function openLetter() {
-            document.getElementById('envelope-wrapper').classList.add('hidden');
-            document.getElementById('opened-letter-wrapper').classList.remove('hidden');
-            document.getElementById('envelope-back-btn').classList.add('hidden');
-            document.getElementById('final-buttons-wrapper').classList.remove('hidden');
-        }
-
-        setInterval(() => {
-            const birthDate = new Date('1996-11-07T00:00:00');
-            const metDate = new Date('2023-12-31T00:00:00');
-            const now = new Date();
-
-            function calcDetailed(d1, d2) {
-                let diff = Math.abs(d2 - d1);
-                const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-                diff -= years * (1000 * 60 * 60 * 24 * 365);
-                const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-                diff -= months * (1000 * 60 * 60 * 24 * 30.44);
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const mins = Math.floor((diff / 1000 / 60) % 60);
-                const secs = Math.floor((diff / 1000) % 60);
-                return { years, months, days, hours, mins, secs };
-            }
-
-            const life = calcDetailed(birthDate, now);
-            document.getElementById('life-years').innerText = String(life.years).padStart(2, '0');
-            document.getElementById('life-months').innerText = String(life.months).padStart(2, '0');
-            document.getElementById('life-days').innerText = String(life.days).padStart(2, '0');
-            document.getElementById('life-hours').innerText = String(life.hours).padStart(2, '0');
-            document.getElementById('life-mins').innerText = String(life.mins).padStart(2, '0');
-            document.getElementById('life-secs').innerText = String(life.secs).padStart(2, '0');
-
-            const met = calcDetailed(metDate, now);
-            document.getElementById('cd-years').innerText = String(met.years).padStart(2, '0');
-            document.getElementById('cd-months').innerText = String(met.months).padStart(2, '0');
-            document.getElementById('cd-days').innerText = String(met.days).padStart(2, '0');
-            document.getElementById('cd-hours').innerText = String(met.hours).padStart(2, '0');
-            document.getElementById('cd-mins').innerText = String(met.mins).padStart(2, '0');
-            document.getElementById('cd-secs').innerText = String(met.secs).padStart(2, '0');
-
-            const totalDays = Math.floor(Math.abs(now - metDate) / (1000 * 60 * 60 * 24));
-            document.getElementById('cd-total-days').innerText = `That's ${totalDays.toLocaleString()} days of loving you — and counting.`;
-        }, 1000);
-    </script>
-</body>
-</html>
+                    <button class="nav-btn next hidden" id="next-btn-3" onclick="unlockChapter(4); goToScreen('
