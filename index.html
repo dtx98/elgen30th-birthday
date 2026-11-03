@@ -270,6 +270,23 @@
         }
         .btn-primary:hover { background: #e11d48; }
 
+        .btn-compact {
+            display: block;
+            width: 180px;
+            margin: 0 auto;
+            background: #f43f5e;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+            text-align: center;
+        }
+        .btn-compact:hover { background: #e11d48; }
+
         .chapter-subtitle { font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
         .quiz-question { font-size: 18px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
         .quiz-instruction { font-size: 12px; color: #9ca3af; margin-bottom: 20px; }
@@ -360,13 +377,15 @@
             font-size: 32px;
             cursor: pointer;
             user-select: none;
+            touch-action: manipulation;
         }
 
-        /* FLAPPY BIRD STYLES */
+        /* FLAPPY BIRD STYLES WITH flappy bgdrop.jpg */
         .flappy-canvas-container {
             width: 100%;
             height: 320px;
-            background: #4ec0ca;
+            background: url('flappy bgdrop.jpg') no-repeat center center;
+            background-size: cover;
             border: 2px solid #fecdd3;
             border-radius: 16px;
             position: relative;
@@ -376,16 +395,17 @@
         }
         .flappy-bg-scenery {
             position: absolute;
-            top: 0;
+            bottom: 30px;
             left: 0;
             width: 200%;
-            height: 100%;
+            height: 90px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
-            animation: scrollBg 20s linear infinite;
+            animation: scrollBg 25s linear infinite;
             z-index: 1;
             pointer-events: none;
+            opacity: 0.85;
         }
         @keyframes scrollBg {
             0% { transform: translateX(0); }
@@ -442,7 +462,6 @@
             pointer-events: none;
         }
 
-        /* GET READY OVERLAY STYLE */
         .get-ready-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -492,7 +511,6 @@
             50% { transform: translateY(-6px); }
         }
 
-        /* GAME OVER MODAL STYLE (IMAGE INSPIRATION) */
         .game-over-modal {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -685,7 +703,7 @@
         <source src="flappy down die sound.mp3" type="audio/mpeg">
     </audio>
     <audio id="flappy-point">
-        <source src="Click minigames 2 sound.mp3" type="audio/mpeg">
+        <source src="click minigames 2 sound.mp3" type="audio/mpeg">
     </audio>
 
     <div class="hearts-bg" id="hearts-bg"></div>
@@ -948,19 +966,18 @@
                 <div class="game-canvas-container" id="game-container"></div>
 
                 <div id="try-again-box" class="hidden" style="margin-bottom: 15px; animation: fadeIn 0.3s;">
-                    <button class="btn-primary" style="background:#f59e0b; margin-bottom: 8px;" onclick="initMinigame()">Try Again</button>
-                    <button class="btn-primary" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
+                    <button class="btn-compact" style="background:#f59e0b; margin-bottom: 8px;" onclick="initMinigame()">Try Again</button>
+                    <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
                 </div>
 
-                <button class="btn-primary hidden" id="game-next-btn" onclick="startFlappyGame()">Next</button>
+                <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()" style="margin-bottom: 10px;">Next</button>
             </div>
 
             <!-- MINIGAME 2: FLAPPY BIRD -->
             <div id="flappy-screen" class="hidden" style="text-align: center; position: relative;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <!-- Hidden button di atas judul (Tap to fly) untuk langsung lanjut -->
-                <div class="quiz-question" style="margin-top: 10px; margin-bottom: 8px; cursor: pointer;" onclick="forcePassFlappy()" title="Click to skip">Tap to fly 🦅</div>
+                <div class="quiz-question" style="margin-top: 10px; margin-bottom: 8px; cursor: pointer;" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
                 
                 <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()">
                     <div class="flappy-score-display" id="flappy-score-text">0</div>
@@ -977,7 +994,7 @@
                         </div>
                     </div>
 
-                    <!-- Game Over Modal (Sesuai Gambar Referensi) -->
+                    <!-- Game Over Modal -->
                     <div id="game-over-modal" class="game-over-modal hidden" onclick="event.stopPropagation();">
                         <div class="game-over-title">GAME OVER</div>
                         <div class="score-board-box">
@@ -1327,9 +1344,11 @@
         }
 
         // --- MINIGAME 1 ---
-        let gameInterval, spawnerInterval, score = 0, timeLeft = 20;
+        let gameInterval, spawnerInterval, animFrameId = null;
+        let score = 0, timeLeft = 20;
         let targetSymbol = null;
         const hobbies = ['⚽', '🏸', '🍣'];
+        let fallingItemsList = [];
 
         function startMinigame() {
             goToScreen('minigame');
@@ -1339,6 +1358,7 @@
             const music = document.getElementById('bg-music');
             if (!music.paused) music.pause();
 
+            stopMinigame();
             score = 0;
             timeLeft = 20;
             targetSymbol = null;
@@ -1348,9 +1368,11 @@
             document.getElementById('try-again-box').classList.add('hidden');
             
             const container = document.getElementById('game-container');
-            container.querySelectorAll('.falling-item').forEach(el => el.remove());
+            container.innerHTML = '';
+            fallingItemsList = [];
 
-            spawnerInterval = setInterval(spawnItem, 200);
+            spawnerInterval = setInterval(spawnItem, 250);
+            
             gameInterval = setInterval(() => {
                 timeLeft--;
                 document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
@@ -1363,57 +1385,83 @@
                     }
                 }
             }, 1000);
+
+            animFrameId = requestAnimationFrame(updateFallingItems);
         }
 
         function stopMinigame() {
             clearInterval(gameInterval);
             clearInterval(spawnerInterval);
+            if (animFrameId) cancelAnimationFrame(animFrameId);
         }
 
         function spawnItem() {
             const container = document.getElementById('game-container');
-            const item = document.createElement('div');
-            item.className = 'falling-item';
+            if (!container) return;
+            const itemEl = document.createElement('div');
+            itemEl.className = 'falling-item';
             const symbol = hobbies[Math.floor(Math.random() * hobbies.length)];
-            item.innerText = symbol;
+            itemEl.innerText = symbol;
             
             const maxX = container.clientWidth - 40;
-            item.style.left = Math.random() * maxX + 'px';
-            item.style.top = '-40px';
-            container.appendChild(item);
+            const x = Math.random() * maxX;
+            let y = -40;
 
-            let posY = -40;
-            const fall = setInterval(() => {
-                posY += 6; 
-                item.style.top = posY + 'px';
+            itemEl.style.left = x + 'px';
+            itemEl.style.top = y + 'px';
 
-                item.onmousedown = item.ontouchstart = (e) => {
-                    e.preventDefault();
-                    playUnlockSound();
+            const itemObj = { el: itemEl, x: x, y: y, symbol: symbol, speed: 2.5 + Math.random() * 2 };
 
-                    if (!targetSymbol) {
-                        targetSymbol = symbol; 
-                    }
-                    if (symbol === targetSymbol) {
-                        score++;
-                        document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
-                        if (score >= 30) {
-                            stopMinigame();
-                            document.getElementById('game-next-btn').classList.remove('hidden');
-                        }
-                    } else {
-                        score = Math.max(0, score - 1); 
-                        document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
-                    }
-                    item.remove();
-                    clearInterval(fall);
-                };
+            itemEl.onmousedown = itemEl.ontouchstart = (e) => {
+                e.preventDefault();
+                playUnlockSound();
 
-                if (posY > container.clientHeight - 30) {
-                    item.remove();
-                    clearInterval(fall);
+                if (!targetSymbol) {
+                    targetSymbol = symbol;
                 }
-            }, 20);
+
+                if (symbol === targetSymbol) {
+                    score++;
+                } else {
+                    targetSymbol = symbol;
+                    score = Math.max(0, score - 1);
+                }
+
+                document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
+                
+                if (score >= 30) {
+                    stopMinigame();
+                    document.getElementById('game-next-btn').classList.remove('hidden');
+                }
+
+                itemEl.remove();
+                const idx = fallingItemsList.indexOf(itemObj);
+                if (idx > -1) fallingItemsList.splice(idx, 1);
+            };
+
+            container.appendChild(itemEl);
+            fallingItemsList.push(itemObj);
+        }
+
+        function updateFallingItems() {
+            const container = document.getElementById('game-container');
+            if (!container) return;
+            const containerHeight = container.clientHeight;
+
+            for (let i = fallingItemsList.length - 1; i >= 0; i--) {
+                let item = fallingItemsList[i];
+                item.y += item.speed;
+                item.el.style.top = item.y + 'px';
+
+                if (item.y > containerHeight - 30) {
+                    item.el.remove();
+                    fallingItemsList.splice(i, 1);
+                }
+            }
+
+            if (timeLeft > 0) {
+                animFrameId = requestAnimationFrame(updateFallingItems);
+            }
         }
 
         function forceOpenLetter() {
@@ -1454,7 +1502,7 @@
 
             document.getElementById('get-ready-overlay').style.display = 'flex';
             const birdEl = document.getElementById('flappy-bird');
-            birdEl.src = 'bird.png'; // Mulai dengan bird.png
+            birdEl.src = 'bird.png';
             birdEl.style.top = birdY + 'px';
         }
 
@@ -1470,7 +1518,7 @@
                 document.getElementById('get-ready-overlay').style.display = 'none';
                 
                 const birdEl = document.getElementById('flappy-bird');
-                birdEl.src = 'wajah.png'; // Berubah jadi wajah.png saat mulai
+                birdEl.src = 'wajah.png';
                 
                 spawnFlappyPipe();
                 flappyInterval = setInterval(updateFlappyGame, 30);
