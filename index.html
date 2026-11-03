@@ -200,8 +200,9 @@
             color: #333;
             width: 100%;
             max-width: 390px;
-            flex: 1;
-            padding: 16px 14px;
+            height: 52vh; /* Diatur agar lebih kompak / sekitar setengah layar */
+            max-height: 480px; /* Dibatasi agar tidak terlalu panjang ke bawah */
+            padding: 12px 14px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
@@ -210,7 +211,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
         .skip-btn {
             position: absolute;
             top: 12px; right: 14px;
