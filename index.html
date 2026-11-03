@@ -399,6 +399,12 @@
             overflow: hidden;
             margin-bottom: 12px;
             cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
         }
         .flappy-bg-scenery {
             position: absolute;
@@ -437,6 +443,7 @@
             object-fit: contain;
             left: 50px;
             z-index: 5;
+            pointer-events: none;
         }
         .pipe-body {
             position: absolute;
@@ -773,7 +780,6 @@
                 <img src="https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif" alt="Bubu Dudu Birthday" class="bubu-img">
                 <h2>Once upon a time, this tiny guy came to this world.</h2>
                 <p>Thirty years later, he's my favourite person in the whole world.<br><br>Ready to play through his story?</p>
-                <!-- Tombol let's go tanpa emoji -->
                 <button class="btn-primary" onclick="goToScreen('guess')">開始 (Let's Go)</button>
             </div>
 
@@ -784,7 +790,6 @@
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
                 </div>
 
-                <!-- Tombol start chapter 1 tanpa emoji -->
                 <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 25px;">Start Chapter 1</button>
             </div>
 
@@ -1069,16 +1074,26 @@
 
                 <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
                     <div class="letter-paper">
-                        <h3 style="font-style: italic;">To my favourite person,</h3>
-                        <p>Happy 30th birthday, my love. I wanted to make you something that you could open, click through, and smile at — because you make me smile every single day.</p>
-                        <p>From the first time we met on the badminton court, I knew there was something special about you. Your kindness, your patience, the way you get way too competitive over games, and the way you always make me feel safe — I love all of it.</p>
-                        <p>Thirty is a big chapter, and I’m so lucky I get to be in it with you. Thank you for every laugh, every late-night game session I watched from the sofa, and every quiet moment that felt like home.</p>
-                        <p>Here’s to more adventures, more matches, more wins, and so many more birthdays together.</p>
-                        <p style="margin-top: 15px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 15px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
+                        <h3>哥哥哥哥哥哥，</h3>
+                        <p>秀最愛的哥哥，今天生日啦❤️<br>哇，30歲了耶。</p>
+                        <p>30年真的不是一段短短的時間，我知道哥哥一路走到今天不容易。從小在不容易的環境長大，一定有很多委屈、很多掙扎，也有很多我沒有經歷過的事情。</p>
+                        <p>但我一直覺得，哥哥其實比你自己想像中的還要堅強。也許以前很多事情都不完美，也走過一些彎路，但現在回頭來看，我相信一切都不是巧合。上帝一步一步帶領哥哥走到今天，所以不管以前發生什麼，我相信神都有祂的計畫。現在的哥哥有上帝、有愛你的家人，也有秀在這裡☺️</p>
+                        <p>第一次認識哥哥的時候，我對你有興趣。（上次我有跟你説過了）結果5年後，我們竟然又在雅加達重新遇見。而且到現在我還是不知道，你那時候到底為什麼一直回復我去台灣玩的IG Story，還那麼自然地跟我裝熟🤣問東問西哈哈哈。</p>
+                        <p>我也記得第一次邀請你去教會是在聖誕節。老實說，那時候除了邀請你，我也偷偷在測試你一下，看看你會不會直接拒絕。感謝上帝，你不但沒有拒絕，反應還比我想像中好很多。</p>
+                        <p>不知不覺，Thank God, here we are. 可能是以前一個禮拜見一兩次面，不知不覺時間過的很快。我們快3年在一起了噢。</p>
+                        <p>雖然有時候我真的很討厭哥哥😒。也常常被哥哥氣到不行。（我生氣真的不是沒有理由的好不好，只是有時候懶得再解釋，解釋到累了😤）</p>
+                        <p>可是就算這樣，我還是很感謝上帝讓我認識你。因為哥哥已經變成我很重要的人了。看到你壓力大，我會擔心。看到你不開心，我會心疼。看到你慢慢變得更好，我也會替你開心。</p>
+                        <p>哥哥，<br>30歲了。<br>有一句話我想認真跟你說。<br>你真的很棒!<br>你走過很多別人不知道的路，也熬過很多辛苦的日子。你跌倒過、迷路過，也犯過錯。可是直到今天，你還是沒有放棄自己。而我覺得，這件事情真的很了不起。（不要常常跟別人比自己哦，你自己也很棒！）</p>
+                        <p>未來會發生什麼事，我們都不知道。但我希望哥哥永遠記得，一定要一輩子靠著上帝。正如耶利米書(Yeremia) 29:11：<br><em>「因為我知道我向你們所懷的意念，是賜平安的意念，不是降災禍的意念，要叫你們末後有指望。」</em><br>"Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan."</p>
+                        <p>所以你累的時候找上帝。當你迷茫的時候，回到神面前。不要自己硬扛。因為神從來沒有放棄過你。</p>
+                        <p>還有，<br>30歲了請認真多多去運動，做健身！（雖然我自己也常常很懶惰😂）</p>
+                        <p>祝30歲的張彬哥哥身體健康、工作順利、越來越成熟、越來越有智慧，也越來越靠近上帝。更希望未來不管遇到什麼事情，都不要覺得自己是一個人。因為神陪著你。家人陪著你。秀也陪著你。</p>
+                        <p>謝謝你努力活到了30歲。謝謝你沒有放棄自己。也謝謝你重新出現在我的生命裡。如果當初沒有莫名其妙的回復我IG Story，如果沒有重新遇見，如果聖誕節那天你拒絕跟我去教會，也許今天的我們就不會在這裡。</p>
+                        <p>所以我真的很感謝上帝。感謝祂讓我們再次相遇。感謝神讓我們再次遇見彼此。也感謝神讓我有機會，在你30歲生日的時候陪在你身邊。</p>
+                        <p>生日快樂呀，哥哥❤️<br>希望以後還有很多很多個生日，我都可以繼續陪在你身邊。我愛你。🎂✨</p>
                     </div>
 
                     <div style="margin-top: 20px;">
-                        <!-- Teks tanpa emoji kue -->
                         <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
                             How long you have survived in this world since November 7, 1996
                         </div>
@@ -1093,7 +1108,6 @@
 
                         <div style="height: 10px;"></div>
 
-                        <!-- Teks tanpa emoji hati -->
                         <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #e11d48; margin-bottom: 4px;">
                             And you have been spending your time with me for
                         </div>
@@ -1106,7 +1120,6 @@
                             <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <!-- Teks diubah warnanya menjadi merah (#e11d48) -->
                         <div style="text-align: center; font-size: 11px; color: #e11d48; margin-top: 8px; font-weight: 600;" id="cd-total-days">
                             That's calculating days of loving you — and counting.
                         </div>
@@ -1114,7 +1127,6 @@
 
                     <div style="display: flex; gap: 10px; margin-top: 15px;" id="final-buttons-wrapper" class="hidden">
                         <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
-                        <!-- Tombol Click finish tanpa emoji hati -->
                         <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 10px; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish</button>
                     </div>
                 </div>
