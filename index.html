@@ -160,17 +160,16 @@
 
         .error-shake { animation: shake 0.4s ease-in-out; }
 
-        .main-layout {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 380px;
-            height: 90vh;
-            max-height: 750px;
-            gap: 8px;
-            align-items: center;
-            z-index: 2;
-        }
+       .main-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px;
+    height: 580px; /* Batasi tinggi total aplikasi secara pasti */
+    gap: 6px;
+    align-items: center;
+    z-index: 2;
+}
 
         .timeline-bar {
             display: flex;
@@ -195,23 +194,22 @@
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        /* HEIGHT KARTU DIPERKECIL & RINGKAS */
-        .card {
-            background: #ffffff;
-            color: #333;
-            width: 100%;
-            max-width: 380px;
-            flex: 1;
-            padding: 20px 16px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
+       /* Ganti .card dengan rumus ini */
+.card {
+    background: #ffffff;
+    color: #333;
+    width: 100%;
+    height: 100%; /* Mengikuti tinggi max-height / height dari parent-nya (.main-layout) */
+    max-height: 520px; /* Kunci tinggi maksimal card putih agar tidak bisa membesar */
+    padding: 14px 12px; /* Padding dibuat sangat tipis supaya muat dan tidak makan tempat */
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
         .skip-btn {
             position: absolute;
             top: 14px; right: 16px;
@@ -716,7 +714,7 @@
         <source src="flappy down die sound.mp3" type="audio/mpeg">
     </audio>
     <audio id="flappy-point">
-        <source src="click minigames 2 sound.mp3" type="audio/mpeg">
+        <source src="flappy get point.mp3" type="audio/mpeg">
     </audio>
 
     <div class="hearts-bg" id="hearts-bg"></div>
@@ -1664,14 +1662,12 @@
                     }
                 }
 
-                if (!pipes[i].passed && pipes[i].left < 45) {
-                    pipes[i].passed = true;
-                    flappyScore++;
-                    playPointSound();
-                    document.getElementById('flappy-score-text').innerText = flappyScore;
-                    if (flappyScore >= 3) {
-                        document.getElementById('flappy-next-btn').classList.remove('hidden');
-                    }
+               if (!pipes[i].passed && pipes[i].left < 45) {
+    pipes[i].passed = true;
+    flappyScore++;
+    playPointSound(); // <-- Fungsi suara skor dipanggil di sini
+    document.getElementById('flappy-score-text').innerText = flappyScore;
+}
                 }
 
                 if (pipes[i].left < -60) {
