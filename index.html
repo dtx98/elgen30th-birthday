@@ -362,6 +362,38 @@
             user-select: none;
         }
 
+        /* FLAPPY BIRD STYLES */
+        .flappy-canvas-container {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(to bottom, #70c5ce, #ffffff);
+            border: 2px solid #fecdd3;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .flappy-bird {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            left: 50px;
+            z-index: 5;
+        }
+        .pipe {
+            position: absolute;
+            width: 50px;
+            background: #73bf2e;
+            border: 2px solid #558022;
+            border-radius: 6px;
+            z-index: 2;
+        }
+
         .score-button {
             display: inline-block;
             background: #f43f5e;
@@ -725,22 +757,43 @@
                 </div>
             </div>
 
-            <!-- CHAPTER 6: MINIGAME -->
+            <!-- CHAPTER 6: MINIGAME 1 (BARANG JATUH - 20s, FASTER SPEED, TARGET 30) -->
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <div class="chapter-subtitle" style="margin-top: 5px;">Chapter 6 · Minigame</div>
-                <div class="quiz-question" style="margin-bottom: 8px;">Click as much as you can</div>
+                <div class="chapter-subtitle" style="margin-top: 5px;">Chapter 6 · Minigame 1</div>
+                <div class="quiz-question" style="margin-bottom: 8px;">Click items to score 30!</div>
                 
                 <div style="margin-bottom: 12px;">
-                    <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 7</div>
+                    <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
                 </div>
 
-                <div style="font-size: 12px; font-weight: 600; color: #e11d48; margin-bottom: 8px;" id="game-timer">Time: 15s</div>
+                <div style="font-size: 12px; font-weight: 600; color: #e11d48; margin-bottom: 8px;" id="game-timer">Time: 20s</div>
                 
                 <div class="game-canvas-container" id="game-container"></div>
 
-                <button class="btn-primary hidden" id="game-next-btn" onclick="goToScreen('letter-countdown')">Open Your Letter 💌</button>
+                <button class="btn-primary hidden" id="game-next-btn" onclick="startFlappyGame()">Next: Flappy Game 🦅</button>
+            </div>
+
+            <!-- CHAPTER 6.5: MINIGAME 2 (FLAPPY BIRD DENGAN WAJAH.PNG) -->
+            <div id="flappy-screen" class="hidden" style="text-align: center; position: relative;">
+                <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
+
+                <div class="chapter-subtitle" style="margin-top: 5px;">Chapter 6 · Minigame 2</div>
+                <div class="quiz-question" style="margin-bottom: 8px;">Tap/Click to fly through 5 pipes!</div>
+                
+                <div style="margin-bottom: 12px;">
+                    <div class="score-button" id="flappy-score" onclick="forcePassFlappy()">Pipes Passed: 0 / 5</div>
+                </div>
+
+                <div style="font-size: 12px; font-weight: 600; color: #1e3a8a; margin-bottom: 8px;" id="flappy-status">Tap to Start</div>
+                
+                <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()">
+                    <img src="wajah.png" alt="Wajah" class="flappy-bird" id="flappy-bird" onerror="this.src='https://i.pinimg.com/originals/45/7c/84/457c840b0395937e449ec67281d05dc1.gif'">
+                    <div id="pipes-area"></div>
+                </div>
+
+                <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')">Open Your Letter 💌</button>
             </div>
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
@@ -815,10 +868,13 @@
                 </div>
             </div>
 
-            <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
+            <!-- HALAMAN AKHIR SETELAH KLIK FINISH (I LOVE YOU PINDAH KE BARIS BERIKUTNYA) -->
             <div id="finish-celebration-screen" class="hidden" style="text-align: center; padding: 20px 0;">
                 <img src="https://i.pinimg.com/originals/f5/e0/a5/f5e0a5e748b2dc73bdec6ba0aca0a083.gif" alt="Celebration GIF" style="width: 180px; height: auto; border-radius: 16px; margin-bottom: 20px;">
-                <h2 style="font-size: 20px; color: #1f2937; font-weight: 700; line-height: 1.5; margin-bottom: 25px;">Happy 30th Birthday, 張彬哥哥! 🎉 I love you! ❤️</h2>
+                <h2 style="font-size: 20px; color: #1f2937; font-weight: 700; line-height: 1.6; margin-bottom: 25px;">
+                    Happy 30th Birthday, 張彬哥哥! 🎉<br>
+                    <span style="color: #f43f5e;">I love you! ❤️</span>
+                </h2>
                 <button class="btn-primary" onclick="goToScreen('story')">Play Again 💖</button>
             </div>
 
@@ -933,6 +989,7 @@
 
         function goToScreen(screenKey) {
             stopMinigame();
+            stopFlappyGame();
             document.getElementById('story-screen').classList.add('hidden');
             document.getElementById('guess-screen').classList.add('hidden');
             document.getElementById('quiz-screen-1').classList.add('hidden');
@@ -941,6 +998,7 @@
             document.getElementById('quiz-screen-4').classList.add('hidden');
             document.getElementById('quiz-screen-5').classList.add('hidden');
             document.getElementById('minigame-screen').classList.add('hidden');
+            document.getElementById('flappy-screen').classList.add('hidden');
             document.getElementById('letter-countdown-screen').classList.add('hidden');
             document.getElementById('finish-celebration-screen').classList.add('hidden');
 
@@ -1035,7 +1093,8 @@
             if (nextBtn) nextBtn.classList.remove('hidden');
         }
 
-        let gameInterval, spawnerInterval, score = 0, timeLeft = 15;
+        // --- MINIGAME 1 (BARANG JATUH: 20s, FASTER SPEED, TARGET 30) ---
+        let gameInterval, spawnerInterval, score = 0, timeLeft = 20;
         let targetSymbol = null;
         const hobbies = ['⚽', '🏸', '🍣'];
 
@@ -1045,23 +1104,23 @@
 
         function initMinigame() {
             score = 0;
-            timeLeft = 15;
+            timeLeft = 20;
             targetSymbol = null;
-            document.getElementById('game-score').innerText = `Score: ${score} / 7`;
+            document.getElementById('game-score').innerText = `Score: ${score} / 30`;
             document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
             document.getElementById('game-next-btn').classList.add('hidden');
             
             const container = document.getElementById('game-container');
             container.querySelectorAll('.falling-item').forEach(el => el.remove());
 
-            spawnerInterval = setInterval(spawnItem, 250);
+            spawnerInterval = setInterval(spawnItem, 200);
             gameInterval = setInterval(() => {
                 timeLeft--;
                 document.getElementById('game-timer').innerText = `Time: ${timeLeft}s`;
                 if (timeLeft <= 0) {
                     stopMinigame();
-                    if (score < 7) {
-                        alert("Waktu habis! Tapi tenang, kamu tetap bisa lanjut ke surat ❤️");
+                    if (score < 30) {
+                        alert("Waktu habis! Tapi tenang, kamu tetap bisa lanjut ke game berikutnya ❤️");
                     }
                     document.getElementById('game-next-btn').classList.remove('hidden');
                 }
@@ -1086,8 +1145,9 @@
             container.appendChild(item);
 
             let posY = -40;
+            // Kecepatan turun dipercepat (6px per frame)
             const fall = setInterval(() => {
-                posY += 4; 
+                posY += 6; 
                 item.style.top = posY + 'px';
 
                 item.onmousedown = item.ontouchstart = (e) => {
@@ -1097,13 +1157,14 @@
                     }
                     if (symbol === targetSymbol) {
                         score++;
-                        document.getElementById('game-score').innerText = `Score: ${score} / 7 (Target: ${targetSymbol})`;
-                        if (score >= 7) {
+                        document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
+                        if (score >= 30) {
+                            stopMinigame();
                             document.getElementById('game-next-btn').classList.remove('hidden');
                         }
                     } else {
                         score = Math.max(0, score - 1); 
-                        document.getElementById('game-score').innerText = `Score: ${score} / 7 (Target: ${targetSymbol})`;
+                        document.getElementById('game-score').innerText = `Score: ${score} / 30 (Target: ${targetSymbol})`;
                     }
                     item.remove();
                     clearInterval(fall);
@@ -1113,14 +1174,154 @@
                     item.remove();
                     clearInterval(fall);
                 }
-            }, 25);
+            }, 20);
         }
 
         function forceOpenLetter() {
-            score = 7;
+            score = 30;
             stopMinigame();
-            document.getElementById('game-score').innerText = `Score: 7 / 7 (Unlocked!)`;
+            document.getElementById('game-score').innerText = `Score: 30 / 30 (Unlocked!)`;
             document.getElementById('game-next-btn').classList.remove('hidden');
+        }
+
+        // --- MINIGAME 2: FLAPPY BIRD DENGAN WAJAH.PNG ---
+        let flappyInterval = null;
+        let birdY = 140, birdVelocity = 0;
+        let pipes = [];
+        let flappyScore = 0;
+        let isFlappyRunning = false;
+
+        function startFlappyGame() {
+            document.getElementById('minigame-screen').classList.add('hidden');
+            document.getElementById('flappy-screen').classList.remove('hidden');
+            initFlappyGame();
+        }
+
+        function initFlappyGame() {
+            stopFlappyGame();
+            birdY = 140;
+            birdVelocity = 0;
+            pipes = [];
+            flappyScore = 0;
+            isFlappyRunning = true;
+            document.getElementById('flappy-score').innerText = `Pipes Passed: 0 / 5`;
+            document.getElementById('flappy-status').innerText = `Tap/Click to Fly!`;
+            document.getElementById('flappy-next-btn').classList.add('hidden');
+            document.getElementById('pipes-area').innerHTML = '';
+
+            // Buat pipa pertama
+            spawnFlappyPipe();
+
+            flappyInterval = setInterval(updateFlappyGame, 30);
+        }
+
+        function stopFlappyGame() {
+            isFlappyRunning = false;
+            clearInterval(flappyInterval);
+        }
+
+        function flappyJump() {
+            if (!isFlappyRunning) {
+                initFlappyGame();
+                return;
+            }
+            birdVelocity = -7;
+        }
+
+        function spawnFlappyPipe() {
+            const containerHeight = 320;
+            const gap = 110;
+            const minHeight = 50;
+            const maxHeight = containerHeight - gap - minHeight;
+            const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+
+            pipes.push({
+                left: 350,
+                topHeight: topHeight,
+                bottomHeight: containerHeight - topHeight - gap,
+                passed: false
+            });
+        }
+
+        function updateFlappyGame() {
+            if (!isFlappyRunning) return;
+
+            // Gravitasi burung
+            birdVelocity += 0.45;
+            birdY += birdVelocity;
+
+            const birdEl = document.getElementById('flappy-bird');
+            birdEl.style.top = birdY + 'px';
+
+            // Cek jatuh / nabrak tanah
+            if (birdY > 280 || birdY < 0) {
+                document.getElementById('flappy-status').innerText = `Ouch! Tap to Retry`;
+                stopFlappyGame();
+                return;
+            }
+
+            // Gerakkan pipa
+            const pipesArea = document.getElementById('pipes-area');
+            pipesArea.innerHTML = '';
+
+            for (let i = pipes.length - 1; i >= 0; i--) {
+                pipes[i].left -= 3;
+
+                // Render pipa atas
+                const topPipe = document.createElement('div');
+                topPipe.className = 'pipe';
+                topPipe.style.left = pipes[i].left + 'px';
+                topPipe.style.top = '0px';
+                topPipe.style.height = pipes[i].topHeight + 'px';
+                pipesArea.appendChild(topPipe);
+
+                // Render pipa bawah
+                const botPipe = document.createElement('div');
+                botPipe.className = 'pipe';
+                botPipe.style.left = pipes[i].left + 'px';
+                botPipe.style.bottom = '0px';
+                botPipe.style.height = pipes[i].bottomHeight + 'px';
+                pipesArea.appendChild(botPipe);
+
+                // Deteksi tabrakan (burung di posisi X: 50 -> 90)
+                if (pipes[i].left < 90 && pipes[i].left + 50 > 50) {
+                    if (birdY < pipes[i].topHeight || birdY + 35 > 320 - pipes[i].bottomHeight) {
+                        document.getElementById('flappy-status').innerText = `Hit Pipe! Tap to Retry`;
+                        stopFlappyGame();
+                        return;
+                    }
+                }
+
+                // Hitung skor pipa terlewati
+                if (!pipes[i].passed && pipes[i].left < 50) {
+                    pipes[i].passed = true;
+                    flappyScore++;
+                    document.getElementById('flappy-score').innerText = `Pipes Passed: ${flappyScore} / 5`;
+                    if (flappyScore >= 5) {
+                        document.getElementById('flappy-status').innerText = `Awesome! 5 Pipes Passed 🎉`;
+                        stopFlappyGame();
+                        document.getElementById('flappy-next-btn').classList.remove('hidden');
+                    }
+                }
+
+                // Hapus pipa yang sudah lewat layar
+                if (pipes[i].left < -60) {
+                    pipes.splice(i, 1);
+                }
+            }
+
+            // Spawn pipa baru secara berkala
+            if (pipes.length === 0 || pipes[pipes.length - 1].left < 180) {
+                spawnFlappyPipe();
+            }
+        }
+
+        function forcePassFlappy() {
+            flappyScore = 5;
+            stopFlappyGame();
+            document.getElementById('flappy-score').innerText = `Pipes Passed: 5 / 5 (Unlocked!)`;
+            document.getElementById('flappy-status').innerText = `Unlocked! 🎉`;
+            document.getElementById('flappy-next-btn').classList.remove('hidden');
         }
 
         function openLetter() {
