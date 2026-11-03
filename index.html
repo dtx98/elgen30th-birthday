@@ -16,7 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 8px;
             overflow-x: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
@@ -103,41 +103,41 @@
             transform: rotate(-45deg) translateY(-1px);
         }
 
-        .date-text { font-size: 15px; font-weight: 400; opacity: 0.95; margin-bottom: 2px; letter-spacing: 0.2px; }
+        .date-text { font-size: 14px; font-weight: 400; opacity: 0.95; margin-bottom: 2px; letter-spacing: 0.2px; }
         .time-text { 
             font-family: 'Playfair Display', serif;
-            font-size: 72px; 
+            font-size: 64px; 
             font-weight: 400; 
             letter-spacing: -1px; 
-            margin-bottom: 20px; 
+            margin-bottom: 15px; 
             line-height: 1; 
         }
-        .passcode-label { font-size: 13px; font-weight: 400; opacity: 0.95; margin-bottom: 12px; }
+        .passcode-label { font-size: 12px; font-weight: 400; opacity: 0.95; margin-bottom: 10px; }
         
         .dots-container {
             display: flex;
             justify-content: center;
-            gap: 16px;
-            margin-bottom: 10px;
+            gap: 14px;
+            margin-bottom: 8px;
         }
         .dot {
-            width: 13px; height: 13px;
+            width: 12px; height: 12px;
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.85);
             background: transparent;
         }
         .dot.filled { background: #ffffff; border-color: #ffffff; }
-        .hint-text { font-size: 11.5px; opacity: 0.8; margin-bottom: 22px; font-style: italic; }
+        .hint-text { font-size: 11px; opacity: 0.8; margin-bottom: 18px; font-style: italic; }
 
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px 18px;
-            max-width: 260px;
+            gap: 10px 16px;
+            max-width: 240px;
             margin: 0 auto;
         }
         .key-btn {
-            width: 68px; height: 68px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.16);
             backdrop-filter: blur(20px);
@@ -148,12 +148,12 @@
             transition: background 0.15s;
         }
         .key-btn:active { background: rgba(255, 255, 255, 0.35); }
-        .key-number { font-size: 26px; font-weight: 400; line-height: 1; }
-        .key-sub { font-size: 9px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.75; margin-top: 1px; }
+        .key-number { font-size: 24px; font-weight: 400; line-height: 1; }
+        .key-sub { font-size: 8px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.75; margin-top: 1px; }
 
         .lock-footer {
-            margin-top: 25px;
-            font-size: 12px;
+            margin-top: 18px;
+            font-size: 11px;
             opacity: 0.85;
             font-weight: 400;
         }
@@ -164,10 +164,10 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 390px;
-            height: 94vh;
-            max-height: 820px;
-            gap: 12px;
+            max-width: 380px;
+            height: 90vh;
+            max-height: 750px;
+            gap: 8px;
             align-items: center;
             z-index: 2;
         }
@@ -178,32 +178,32 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            padding: 8px 16px;
-            border-radius: 14px;
+            padding: 6px 14px;
+            border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             flex-shrink: 0;
         }
         .tl-dot {
-            width: 28px; height: 28px;
+            width: 24px; height: 24px;
             border-radius: 50%;
             background: rgba(255,255,255,0.15);
             color: #d1d5db;
-            font-size: 12px; font-weight: 600;
+            font-size: 11px; font-weight: 600;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid rgba(255,255,255,0.25);
         }
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        /* UKURAN CARD KECIL SEPERTI DESAIN AWAL */
+        /* HEIGHT KARTU DIPERKECIL & RINGKAS */
         .card {
             background: #ffffff;
             color: #333;
             width: 100%;
-            max-width: 390px;
+            max-width: 380px;
             flex: 1;
-            padding: 30px 18px;
-            border-radius: 24px;
+            padding: 20px 16px;
+            border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow-y: auto;
@@ -214,20 +214,20 @@
 
         .skip-btn {
             position: absolute;
-            top: 20px; right: 20px;
+            top: 14px; right: 16px;
             background: none; border: none;
             color: #f43f5e; font-weight: 600;
-            font-size: 13px; cursor: pointer;
+            font-size: 12px; cursor: pointer;
             z-index: 5;
         }
 
         .home-btn {
             position: absolute;
-            top: 12px; left: 12px;
+            top: 10px; left: 10px;
             background: #f3f4f6; border: none;
             color: #4b5563; font-weight: 600;
-            font-size: 14px; cursor: pointer;
-            width: 32px; height: 32px;
+            font-size: 13px; cursor: pointer;
+            width: 28px; height: 28px;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             z-index: 5;
@@ -237,31 +237,31 @@
 
         .story-content { text-align: center; margin: auto 0; }
         .bubu-img {
-            width: 150px;
+            width: 120px;
             height: auto;
-            margin-bottom: 15px;
-            border-radius: 16px;
+            margin-bottom: 10px;
+            border-radius: 14px;
         }
-        .story-content h2 { font-size: 17px; color: #1f2937; margin-bottom: 10px; font-weight: 700; line-height: 1.4; }
-        .story-content p { font-size: 13px; color: #6b7280; margin-bottom: 20px; line-height: 1.6; }
+        .story-content h2 { font-size: 16px; color: #1f2937; margin-bottom: 8px; font-weight: 700; line-height: 1.3; }
+        .story-content p { font-size: 12px; color: #6b7280; margin-bottom: 15px; line-height: 1.5; }
 
         .bubu-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 10px;
         }
-        .bubu-small { width: 110px; height: auto; border-radius: 12px; }
+        .bubu-small { width: 90px; height: auto; border-radius: 10px; }
         .speech-bubble {
             background: #fff1f2;
-            padding: 12px 16px;
-            border-radius: 14px;
-            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 12px;
             font-weight: 600;
             color: #e11d48;
             border: 1px solid #fecdd3;
-            max-width: 170px;
+            max-width: 160px;
         }
 
         .btn-primary {
@@ -269,53 +269,53 @@
             background: #f43f5e;
             color: white;
             border: none;
-            padding: 14px;
-            font-size: 15px;
+            padding: 11px;
+            font-size: 14px;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
         }
         .btn-primary:hover { background: #e11d48; }
 
         .btn-compact {
             display: block;
-            width: 180px;
+            width: 160px;
             margin: 0 auto;
             background: #f43f5e;
             color: white;
             border: none;
-            padding: 10px 16px;
-            font-size: 14px;
+            padding: 8px 14px;
+            font-size: 13px;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 4px 8px rgba(244, 63, 94, 0.3);
             text-align: center;
         }
         .btn-compact:hover { background: #e11d48; }
 
-        .chapter-subtitle { font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-        .quiz-question { font-size: 17px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.4; }
-        .quiz-instruction { font-size: 12px; color: #9ca3af; margin-bottom: 15px; }
+        .chapter-subtitle { font-size: 10px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .quiz-question { font-size: 15px; color: #1f2937; font-weight: 700; margin-bottom: 2px; line-height: 1.3; }
+        .quiz-instruction { font-size: 11px; color: #9ca3af; margin-bottom: 10px; }
         
         .options-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 8px;
         }
         .option-btn {
             background: #ffffff;
             border: 2px solid #fecdd3;
-            padding: 12px 14px;
-            border-radius: 14px;
-            font-size: 13px;
+            padding: 9px 12px;
+            border-radius: 12px;
+            font-size: 12px;
             color: #4b5563;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-align: left;
         }
         .option-btn:hover { border-color: #f43f5e; background: #fff1f2; }
@@ -325,13 +325,13 @@
             color: #065f46;
         }
         .option-badge {
-            width: 26px; height: 26px;
+            width: 22px; height: 22px;
             border-radius: 50%;
             background: #fee2e2;
             color: #f43f5e;
             display: flex; align-items: center; justify-content: center;
             font-weight: 700;
-            font-size: 11px;
+            font-size: 10px;
             flex-shrink: 0;
         }
         .option-btn.selected .option-badge {
@@ -341,73 +341,74 @@
         
         .wrong-msg {
             color: #ef4444;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .success-box {
             background: #ecfdf5;
             border: 2px solid #10b981;
-            padding: 12px;
-            border-radius: 14px;
-            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
         }
-        .success-box p { color: #047857; font-size: 12px; font-weight: 600; margin-bottom: 0; }
+        .success-box p { color: #047857; font-size: 11px; font-weight: 600; margin-bottom: 0; }
 
         .nav-footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 15px;
+            margin-top: 10px;
             border-top: 1px solid #f3f4f6;
-            padding-top: 14px;
+            padding-top: 10px;
             flex-shrink: 0;
         }
         .nav-btn {
             background: #f3f4f6; color: #4b5563; border: none;
-            padding: 10px 16px; font-size: 13px; font-weight: 600;
-            border-radius: 10px; cursor: pointer;
+            padding: 8px 14px; font-size: 12px; font-weight: 600;
+            border-radius: 8px; cursor: pointer;
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
+        /* HEIGHT CONTAINER GAMES DIPERKECIL */
         .game-canvas-container {
             width: 100%;
-            height: 230px;
+            height: 170px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
-            border-radius: 16px;
+            border-radius: 14px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: crosshair;
         }
         .falling-item {
             position: absolute;
-            font-size: 28px;
+            font-size: 26px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
         }
 
-        /* FLAPPY BIRD STYLES */
+        /* FLAPPY BIRD STYLES (HEIGHT DIPERKECIL) */
         .flappy-canvas-container {
             width: 100%;
-            height: 240px;
+            height: 180px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
-            border-radius: 16px;
+            border-radius: 14px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             cursor: pointer;
         }
         .flappy-bg-scenery {
             position: absolute;
-            bottom: 25px;
+            bottom: 22px;
             left: 0;
             width: 200%;
-            height: 60px;
+            height: 50px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -426,31 +427,31 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 25px;
+            height: 22px;
             background: #ded895;
-            border-top: 4px solid #558022;
+            border-top: 3px solid #558022;
             background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 10px, transparent 0, transparent 20px);
             z-index: 4;
         }
         .flappy-bird {
             position: absolute;
-            width: 38px;
-            height: 38px;
+            width: 32px;
+            height: 32px;
             object-fit: contain;
             left: 45px;
             z-index: 5;
         }
         .pipe-body {
             position: absolute;
-            width: 48px;
+            width: 44px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 54px;
-            height: 22px;
+            width: 50px;
+            height: 20px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             border-radius: 4px;
@@ -459,14 +460,14 @@
         }
         .flappy-score-display {
             position: absolute;
-            top: 10px;
+            top: 6px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 30px;
+            font-size: 26px;
             font-weight: 900;
             color: #ffffff;
             font-family: 'Playfair Display', serif;
-            text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
             z-index: 10;
             pointer-events: none;
         }
@@ -483,41 +484,41 @@
         }
         .get-ready-title {
             font-family: 'Playfair Display', serif;
-            font-size: 30px;
+            font-size: 26px;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 3px 3px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
-            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
+            margin-bottom: 6px;
         }
         .tap-instruction-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
         .tap-badges {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
         }
         .tap-badge {
             background: #ff3333;
             color: white;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 800;
-            padding: 2px 6px;
+            padding: 2px 5px;
             border: 2px solid #ffffff;
             border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             letter-spacing: 1px;
         }
         .tap-hand {
-            font-size: 18px;
+            font-size: 16px;
             animation: bounceHand 1s infinite ease-in-out;
         }
         @keyframes bounceHand {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-4px); }
         }
 
         .game-over-modal {
@@ -532,19 +533,19 @@
         }
         .game-over-title {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 900;
             color: #ffa500;
-            text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
-            margin-bottom: 6px;
+            text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            margin-bottom: 4px;
         }
         .score-board-box {
-            width: 210px;
+            width: 190px;
             background: #ded895;
-            border: 4px solid #558022;
-            border-radius: 12px;
-            padding: 10px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 3px solid #558022;
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -556,25 +557,25 @@
             flex: 1;
         }
         .sb-label {
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 800;
             color: #d97706;
             letter-spacing: 1px;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .medal-icon {
-            width: 34px;
-            height: 34px;
+            width: 30px;
+            height: 30px;
             background: radial-gradient(circle, #fde047 0%, #ca8a04 100%);
-            border: 3px solid #713f12;
+            border: 2px solid #713f12;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 15px;
+            font-size: 13px;
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
         }
         .sb-score-val {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 900;
             color: #000;
             text-shadow: 1px 1px 0px #fff;
@@ -584,12 +585,12 @@
             display: inline-block;
             background: #f43f5e;
             color: white;
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 14px;
+            font-size: 10px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 3px 8px rgba(244,63,94,0.3);
+            box-shadow: 0 2px 6px rgba(244,63,94,0.3);
             transition: transform 0.1s;
         }
         .score-button:active { transform: scale(0.95); }
@@ -597,89 +598,89 @@
         .envelope-container {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
-            padding: 20px 16px;
-            border-radius: 20px;
+            padding: 14px 12px;
+            border-radius: 16px;
             text-align: center;
             cursor: pointer;
             animation: pulseGlow 2.5s infinite ease-in-out;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             color: white;
             position: relative;
         }
         @keyframes pulseGlow {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
-            50% { transform: scale(1.02); box-shadow: 0 0 15px 3px rgba(244,63,94, 0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 0 12px 2px rgba(244,63,94, 0.2); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
         }
         .envelope-icon-wrapper {
             position: relative;
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 8px auto;
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 6px auto;
         }
         .envelope-icon-circle {
-            width: 50px; height: 50px;
+            width: 42px; height: 42px;
             background: #f43f5e;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 22px;
+            font-size: 18px;
             color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
         }
         .notification-heart {
             position: absolute;
             top: -2px;
             right: -2px;
-            font-size: 16px;
+            font-size: 14px;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             animation: bounceHeart 1.5s infinite ease-in-out;
         }
         @keyframes bounceHeart {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
+            50% { transform: translateY(-3px); }
         }
 
         .letter-paper {
             background: #fff;
             color: #4a1525;
-            padding: 20px 16px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 14px 12px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             text-align: left;
-            font-size: 13px;
+            font-size: 12px;
         }
         .letter-paper h3 { 
-            font-size: 18px; 
-            margin-bottom: 12px; 
+            font-size: 16px; 
+            margin-bottom: 8px; 
             color: #4a1525; 
             font-family: 'Cormorant Garamond', serif; 
             font-style: italic; 
             font-weight: 600; 
         }
-        .letter-paper p { line-height: 1.7; margin-bottom: 12px; color: #3b141d; }
+        .letter-paper p { line-height: 1.5; margin-bottom: 8px; color: #3b141d; }
 
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 4px;
-            margin-bottom: 10px;
+            gap: 3px;
+            margin-bottom: 8px;
         }
         .cd-card {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 8px;
-            padding: 6px 2px;
+            border-radius: 6px;
+            padding: 4px 2px;
             text-align: center;
             color: white;
         }
         .cd-number {
             font-family: 'Playfair Display', serif;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: #fff;
         }
         .cd-label {
-            font-size: 6.5px;
+            font-size: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #fca5a5;
@@ -780,12 +781,12 @@
 
             <!-- PAGE 3: GUESS RIGHT INTRO -->
             <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <div class="bubu-container" style="margin-top: 15px;">
+                <div class="bubu-container" style="margin-top: 10px;">
                     <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-small">
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
                 </div>
 
-                <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 25px;">Start Chapter 1</button>
+                <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 15px;">Start Chapter 1</button>
             </div>
 
             <!-- CHAPTER 1 QUIZ -->
@@ -795,7 +796,7 @@
                     <div class="quiz-question">How did Elgen spend his childhood?</div>
                     <div class="quiz-instruction">Pick all the right answers</div>
                     
-                    <div id="inline-status-1" style="font-size: 12px; font-weight: 600; color: #ef4444; margin-bottom: 8px; min-height: 18px;"></div>
+                    <div id="inline-status-1" style="font-size: 11px; font-weight: 600; color: #ef4444; margin-bottom: 6px; min-height: 16px;"></div>
 
                     <div class="options-grid">
                         <button class="option-btn" onclick="toggleOption(this, 1)">
@@ -872,7 +873,7 @@
             <div id="quiz-screen-3" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
                 <div>
                     <div class="chapter-subtitle">Chapter 3 · Life Motivation</div>
-                    <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:13px; font-weight:600; color:#4b5563;">(What makes you keep going when life goes hard?)</span></div>
+                    <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:12px; font-weight:600; color:#4b5563;">(What makes you keep going when life goes hard?)</span></div>
                     <div class="quiz-instruction">Pick your choice</div>
 
                     <div class="options-grid">
@@ -928,7 +929,7 @@
                     </div>
 
                     <div id="success-box-4" class="success-box hidden">
-                        <p id="msg-text-4" style="font-size: 14px; font-weight: 600;">Message here</p>
+                        <p id="msg-text-4" style="font-size: 12px; font-weight: 600;">Message here</p>
                     </div>
                 </div>
 
@@ -965,7 +966,7 @@
                     </div>
 
                     <div id="success-box-5" class="success-box hidden">
-                        <p id="msg-text-5" style="font-size: 14px; font-weight: 600;">Message here</p>
+                        <p id="msg-text-5" style="font-size: 12px; font-weight: 600;">Message here</p>
                     </div>
                 </div>
 
@@ -979,12 +980,12 @@
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
                 
-                <div style="position: relative; margin-top: 2px; margin-bottom: 6px; min-height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="position: relative; margin-top: 2px; margin-bottom: 4px; min-height: 35px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
-                    <div style="position: absolute; right: 0; top: 0; font-size: 13px; font-weight: 700; color: #f43f5e;">
+                    <div style="position: absolute; right: 0; top: 0; font-size: 12px; font-weight: 700; color: #f43f5e;">
                         Time: <span id="game-timer" style="color: #000000; font-weight: 800;">20s</span>
                     </div>
-                    <div id="game-target" style="font-size: 12px; font-weight: 600; color: #4b5563; margin-top: 3px;">
+                    <div id="game-target" style="font-size: 11px; font-weight: 600; color: #4b5563; margin-top: 2px;">
                         Target: Tap any item to start!
                     </div>
                 </div>
@@ -992,8 +993,8 @@
                 <div class="game-canvas-container" id="game-container" style="flex: 1;"></div>
 
                 <div>
-                    <div id="try-again-box" class="hidden" style="margin-bottom: 10px; animation: fadeIn 0.3s;">
-                        <button class="btn-compact" style="background:#f59e0b; margin-bottom: 6px;" onclick="initMinigame()">Try Again</button>
+                    <div id="try-again-box" class="hidden" style="margin-bottom: 8px; animation: fadeIn 0.3s;">
+                        <button class="btn-compact" style="background:#f59e0b; margin-bottom: 4px;" onclick="initMinigame()">Try Again</button>
                         <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
                     </div>
                     <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()">Next</button>
@@ -1004,9 +1005,9 @@
             <div id="flappy-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <div style="margin-top: 4px; margin-bottom: 6px; flex-shrink: 0;">
-                    <div style="display: inline-block; padding: 4px 12px; background: #f43f5e; color: white; border-radius: 16px; font-size: 12px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
-                    <div style="font-size: 10px; color: #6b7280; font-weight: 600; margin-top: 3px;">score min. 3 to continue</div>
+                <div style="margin-top: 2px; margin-bottom: 4px; flex-shrink: 0;">
+                    <div style="display: inline-block; padding: 3px 10px; background: #f43f5e; color: white; border-radius: 14px; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 5px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
+                    <div style="font-size: 9.5px; color: #6b7280; font-weight: 600; margin-top: 2px;">score min. 3 to continue</div>
                 </div>
                 
                 <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()" style="flex: 1;">
@@ -1037,7 +1038,7 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 210px; margin-top: 10px; padding: 7px;" onclick="initFlappyGame()">Try Again</button>
+                        <button class="btn-primary" style="width: 190px; margin-top: 8px; padding: 6px;" onclick="initFlappyGame()">Try Again</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1045,18 +1046,18 @@
                     <div class="flappy-ground"></div>
                 </div>
 
-                <div style="display: flex; gap: 10px; align-items: center; flex-shrink: 0;">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 10px 16px;">← Back</button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0;">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 8px 14px;">← Back</button>
                     <div style="flex: 1;"></div>
-                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 10px;">Open Letter 💌</button>
+                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 8px;">Open Letter 💌</button>
                 </div>
             </div>
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
             <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
                 <div>
-                    <div class="chapter-subtitle" style="text-align: center; margin-bottom: 4px;">One Last Thing</div>
-                    <h2 style="font-size: 20px; color: #1f2937; text-align: center; margin-bottom: 15px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
+                    <div class="chapter-subtitle" style="text-align: center; margin-bottom: 2px;">One Last Thing</div>
+                    <h2 style="font-size: 18px; color: #1f2937; text-align: center; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
                 
                     <div id="envelope-wrapper">
                         <div class="envelope-container" onclick="openLetter()">
@@ -1064,8 +1065,8 @@
                                 <div class="envelope-icon-circle">✉️</div>
                                 <div class="notification-heart">💛</div>
                             </div>
-                            <h3 style="font-size: 16px; margin-bottom: 4px; color: #fff;">You've got mail</h3>
-                            <p style="font-size: 11px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
+                            <h3 style="font-size: 15px; margin-bottom: 2px; color: #fff;">You've got mail</h3>
+                            <p style="font-size: 10.5px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
                         </div>
                     </div>
                 </div>
@@ -1077,12 +1078,11 @@
                         <p>From the first time we met on the badminton court, I knew there was something special about you. Your kindness, your patience, the way you get way too competitive over games, and the way you always make me feel safe — I love all of it.</p>
                         <p>Thirty is a big chapter, and I’m so lucky I get to be in it with you. Thank you for every laugh, every late-night game session I watched from the sofa, and every quiet moment that felt like home.</p>
                         <p>Here’s to more adventures, more matches, more wins, and so many more birthdays together.</p>
-                        <p style="margin-top: 15px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 15px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
+                        <p style="margin-top: 10px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 14px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
                     </div>
 
-                    <div style="margin-top: 20px;">
-                        <!-- Tulisan dalam kurung sudah dihapus -->
-                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #000000; margin-bottom: 4px;">
+                    <div style="margin-top: 10px;">
+                        <div style="text-align: center; font-size: 10px; font-weight: 600; color: #000000; margin-bottom: 3px;">
                             How long you have survived in this world since November 7, 1996
                         </div>
                         <div class="countdown-grid">
@@ -1094,9 +1094,9 @@
                             <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="height: 10px;"></div>
+                        <div style="height: 6px;"></div>
 
-                        <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #000000; margin-bottom: 4px;">
+                        <div style="text-align: center; font-size: 10px; font-weight: 600; color: #000000; margin-bottom: 3px;">
                             And you have been spending your time with me for
                         </div>
                         <div class="countdown-grid">
@@ -1108,26 +1108,26 @@
                             <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="text-align: center; font-size: 11px; color: #000000; margin-top: 8px; font-weight: 600;" id="cd-total-days">
+                        <div style="text-align: center; font-size: 10.5px; color: #000000; margin-top: 6px; font-weight: 600;" id="cd-total-days">
                             That's calculating days of loving you — and counting.
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 10px; margin-top: 15px;" id="final-buttons-wrapper" class="hidden">
-                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
-                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 10px; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);">Click finish</button>
+                    <div style="display: flex; gap: 8px; margin-top: 10px;" id="final-buttons-wrapper" class="hidden">
+                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 8px;">← Back</button>
+                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 8px; box-shadow: 0 4px 10px rgba(244, 63, 94, 0.2);">Click finish</button>
                     </div>
                 </div>
 
-                <div style="margin-top: 15px;" id="envelope-back-btn">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
+                <div style="margin-top: 10px;" id="envelope-back-btn">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151; padding: 8px;">← Back</button>
                 </div>
             </div>
 
             <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
             <div id="finish-celebration-screen" class="hidden" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 150px; height: auto; border-radius: 16px; margin: 0 auto 20px auto;">
-                <h2 style="font-size: 18px; color: #1f2937; font-weight: 700; line-height: 1.6; margin-bottom: 25px;">
+                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 130px; height: auto; border-radius: 14px; margin: 0 auto 15px auto;">
+                <h2 style="font-size: 16px; color: #1f2937; font-weight: 700; line-height: 1.5; margin-bottom: 20px;">
                     Happy 30th Birthday, 張彬哥哥! 🎉<br>
                     <span style="color: #f43f5e;">I love you! ❤️</span>
                 </h2>
@@ -1533,7 +1533,7 @@
 
         // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
-        let birdY = 120, birdVelocity = 0;
+        let birdY = 100, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
@@ -1550,7 +1550,7 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 120;
+            birdY = 100;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
@@ -1590,21 +1590,21 @@
                 return;
             }
 
-            birdVelocity = -6.5;
+            birdVelocity = -6;
             playFlapSound();
         }
 
         function spawnFlappyPipe() {
-            const containerHeight = 240;
-            const gap = 100;
-            const minHeight = 30;
-            const maxHeight = containerHeight - gap - minHeight - 25;
+            const containerHeight = 180;
+            const gap = 85;
+            const minHeight = 25;
+            const maxHeight = containerHeight - gap - minHeight - 20;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
 
             pipes.push({
                 left: 350,
                 topHeight: topHeight,
-                bottomHeight: containerHeight - topHeight - gap - 25,
+                bottomHeight: containerHeight - topHeight - gap - 20,
                 passed: false
             });
         }
@@ -1612,13 +1612,13 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            birdVelocity += 0.42;
+            birdVelocity += 0.38;
             birdY += birdVelocity;
 
             const birdEl = document.getElementById('flappy-bird');
             birdEl.style.top = birdY + 'px';
 
-            if (birdY > 185 || birdY < 0) {
+            if (birdY > 130 || birdY < 0) {
                 playHitSound();
                 gameOverFlappy();
                 return;
@@ -1634,30 +1634,30 @@
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
                 topPipeBody.style.top = '0px';
-                topPipeBody.style.height = (pipes[i].topHeight - 22) + 'px';
+                topPipeBody.style.height = (pipes[i].topHeight - 20) + 'px';
                 pipesArea.appendChild(topPipeBody);
 
                 const topPipeLip = document.createElement('div');
                 topPipeLip.className = 'pipe-lip';
                 topPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                topPipeLip.style.top = (pipes[i].topHeight - 22) + 'px';
+                topPipeLip.style.top = (pipes[i].topHeight - 20) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (240 - 25 - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.top = (180 - 22 - pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (240 - 25 - pipes[i].bottomHeight + 22) + 'px';
+                botPipeBody.style.top = (180 - 22 - pipes[i].bottomHeight + 20) + 'px';
                 botPipeBody.style.height = (pipes[i].bottomHeight + 50) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-                if (pipes[i].left < 45 + 38 && pipes[i].left + 48 > 45) {
-                    if (birdY < pipes[i].topHeight || birdY + 38 > 240 - 25 - pipes[i].bottomHeight) {
+                if (pipes[i].left < 45 + 32 && pipes[i].left + 44 > 45) {
+                    if (birdY < pipes[i].topHeight || birdY + 32 > 180 - 22 - pipes[i].bottomHeight) {
                         playHitSound();
                         gameOverFlappy();
                         return;
