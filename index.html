@@ -368,10 +368,10 @@
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
-        /* MINIGAME 1 CONTAINER UKURAN NORMAL */
+        /* MINIGAME 1 CONTAINER UKURAN STANDAR */
         .game-canvas-container {
             width: 100%;
-            height: 270px;
+            height: 250px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
             border-radius: 16px;
@@ -388,10 +388,10 @@
             touch-action: manipulation;
         }
 
-        /* MINIGAME 2: FLAPPY BIRD UKURAN DISESUAIKAN (TIDAK TERLALU PANJANG KE BAWAH) */
+        /* MINIGAME 2: FLAPPY BIRD UKURAN STANDAR & PROPORSIONAL */
         .flappy-canvas-container {
             width: 100%;
-            height: 280px;
+            height: 260px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
@@ -409,10 +409,10 @@
         }
         .flappy-bg-scenery {
             position: absolute;
-            bottom: 30px;
+            bottom: 25px;
             left: 0;
             width: 200%;
-            height: 70px;
+            height: 60px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -431,7 +431,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 30px;
+            height: 25px;
             background: #ded895;
             border-top: 4px solid #558022;
             background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 10px, transparent 0, transparent 20px);
@@ -439,8 +439,8 @@
         }
         .flappy-bird {
             position: absolute;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
             left: 50px;
             z-index: 5;
@@ -466,10 +466,10 @@
         }
         .flappy-score-display {
             position: absolute;
-            top: 12px;
+            top: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 900;
             color: #ffffff;
             font-family: 'Playfair Display', serif;
@@ -490,11 +490,11 @@
         }
         .get-ready-title {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 900;
             color: #ffffff;
             text-shadow: 3px 3px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .tap-instruction-box {
             display: flex;
@@ -519,7 +519,7 @@
             letter-spacing: 1px;
         }
         .tap-hand {
-            font-size: 20px;
+            font-size: 18px;
             animation: bounceHand 1s infinite ease-in-out;
         }
         @keyframes bounceHand {
@@ -539,18 +539,18 @@
         }
         .game-over-title {
             font-family: 'Playfair Display', serif;
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 900;
             color: #ffa500;
             text-shadow: 3px 3px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .score-board-box {
-            width: 240px;
+            width: 220px;
             background: #ded895;
             border: 4px solid #558022;
             border-radius: 12px;
-            padding: 14px;
+            padding: 10px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             display: flex;
             justify-content: space-between;
@@ -563,25 +563,25 @@
             flex: 1;
         }
         .sb-label {
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 800;
             color: #d97706;
             letter-spacing: 1px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .medal-icon {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: radial-gradient(circle, #fde047 0%, #ca8a04 100%);
             border: 3px solid #713f12;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
             box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
         }
         .sb-score-val {
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             color: #000;
             text-shadow: 1px 1px 0px #fff;
@@ -646,7 +646,6 @@
             50% { transform: translateY(-4px); }
         }
 
-        /* FONT SURAT DIPERBESAR LAGI SEDIKIT */
         .letter-paper {
             background: #fff;
             color: #4a1525;
@@ -654,17 +653,17 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: left;
-            font-size: 16.5px; 
+            font-size: 17.5px; 
         }
         .letter-paper h3 { 
-            font-size: 21px; 
+            font-size: 22px; 
             margin-bottom: 14px; 
             color: #4a1525; 
             font-family: 'Cormorant Garamond', serif; 
             font-style: italic; 
             font-weight: 600; 
         }
-        .letter-paper p { line-height: 1.8; margin-bottom: 14px; color: #3b141d; }
+        .letter-paper p { line-height: 1.85; margin-bottom: 14px; color: #3b141d; }
 
         .countdown-grid {
             display: grid;
@@ -713,6 +712,9 @@
     <audio id="minigame1-bg-sound" loop>
         <source src="minigames 1 bg sound.mp3" type="audio/mpeg">
     </audio>
+    <audio id="minigame1-point">
+        <source src="click minigames 2 sound.mp3" type="audio/mpeg">
+    </audio>
     <audio id="flap-sound">
         <source src="flappysound.mp3" type="audio/mpeg">
     </audio>
@@ -723,7 +725,7 @@
         <source src="flappy down die sound.mp3" type="audio/mpeg">
     </audio>
     <audio id="flappy-point">
-        <source src="click minigames 2 sound.mp3" type="audio/mpeg">
+        <source src="flappy get point.mp3" type="audio/mpeg">
     </audio>
 
     <div class="hearts-bg" id="hearts-bg"></div>
@@ -1040,7 +1042,7 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 240px; margin-top: 12px; padding: 8px;" onclick="initFlappyGame()">Try Again</button>
+                        <button class="btn-primary" style="width: 220px; margin-top: 10px; padding: 7px;" onclick="initFlappyGame()">Try Again</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1182,7 +1184,15 @@
             }
         }
 
-        function playPointSound() {
+        function playMinigame1PointSound() {
+            const sound = document.getElementById('minigame1-point');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(e => console.log(e));
+            }
+        }
+
+        function playFlappyPointSound() {
             const sound = document.getElementById('flappy-point');
             if (sound) {
                 sound.currentTime = 0;
@@ -1409,14 +1419,6 @@
         const hobbies = ['⚽', '🏸', '🍣'];
         let fallingItemsList = [];
 
-        function playMinigame1ClickSound() {
-            const sound = document.getElementById('flappy-point');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log(e));
-            }
-        }
-
         function startMinigame() {
             goToScreen('minigame');
         }
@@ -1481,7 +1483,7 @@
 
             itemEl.onmousedown = itemEl.ontouchstart = (e) => {
                 e.preventDefault();
-                playMinigame1ClickSound();
+                playMinigame1PointSound();
 
                 if (!targetSymbol) {
                     targetSymbol = symbol;
@@ -1544,7 +1546,7 @@
 
         // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
-        let birdY = 110, birdVelocity = 0;
+        let birdY = 100, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
@@ -1562,7 +1564,7 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 110;
+            birdY = 100;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
@@ -1604,21 +1606,21 @@
                 return;
             }
 
-            birdVelocity = -6.5;
+            birdVelocity = -6.0;
             playFlapSound();
         }
 
         function spawnFlappyPipe() {
-            const containerHeight = 280;
+            const containerHeight = 260;
             const gap = 110;
             const minHeight = 30;
-            const maxHeight = containerHeight - gap - minHeight - 30;
+            const maxHeight = containerHeight - gap - minHeight - 25;
             const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
 
             pipes.push({
                 left: 350,
                 topHeight: topHeight,
-                bottomHeight: containerHeight - topHeight - gap - 30,
+                bottomHeight: containerHeight - topHeight - gap - 25,
                 passed: false
             });
         }
@@ -1626,8 +1628,8 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            const containerHeight = 280;
-            const groundLimit = containerHeight - 30 - 42; // Tepat menyentuh lantai dasar tanah
+            const containerHeight = 260;
+            const groundLimit = containerHeight - 25 - 40;
 
             if (isDying) {
                 birdVelocity += 0.8;
@@ -1687,18 +1689,18 @@
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (containerHeight - 30 - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.top = (containerHeight - 25 - pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (containerHeight - 30 - pipes[i].bottomHeight + 22) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight + 50) + 'px'; // Pipa bawah menjulur melewati dasar tanah
+                botPipeBody.style.top = (containerHeight - 25 - pipes[i].bottomHeight + 22) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight + 60) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-                if (pipes[i].left < 50 + 42 && pipes[i].left + 50 > 50) {
-                    if (birdY < pipes[i].topHeight || birdY + 42 > containerHeight - 30 - pipes[i].bottomHeight) {
+                if (pipes[i].left < 50 + 40 && pipes[i].left + 50 > 50) {
+                    if (birdY < pipes[i].topHeight || birdY + 40 > containerHeight - 25 - pipes[i].bottomHeight) {
                         playHitSound();
                         isDying = true;
                         return;
@@ -1708,7 +1710,7 @@
                 if (!pipes[i].passed && pipes[i].left < 50) {
                     pipes[i].passed = true;
                     flappyScore++;
-                    playPointSound();
+                    playFlappyPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
                     if (flappyScore >= 3) {
                         document.getElementById('flappy-next-btn').classList.remove('hidden');
