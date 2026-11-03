@@ -195,7 +195,7 @@
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        /* UKURAN CARD KEMBALI KECIL SEPERTI DESAIN AWAL */
+        /* UKURAN CARD KECIL SEPERTI DESAIN AWAL */
         .card {
             background: #ffffff;
             color: #333;
@@ -370,7 +370,6 @@
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
-        /* MINIGAME 1 CONTAINER UKURAN STANDAR */
         .game-canvas-container {
             width: 100%;
             height: 230px;
@@ -390,7 +389,7 @@
             touch-action: manipulation;
         }
 
-        /* MINIGAME 2: FLAPPY BIRD UKURAN STANDAR */
+        /* FLAPPY BIRD STYLES */
         .flappy-canvas-container {
             width: 100%;
             height: 240px;
@@ -402,12 +401,6 @@
             overflow: hidden;
             margin-bottom: 10px;
             cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
         }
         .flappy-bg-scenery {
             position: absolute;
@@ -446,8 +439,6 @@
             object-fit: contain;
             left: 45px;
             z-index: 5;
-            pointer-events: none;
-            transition: transform 0.1s linear;
         }
         .pipe-body {
             position: absolute;
@@ -651,21 +642,21 @@
         .letter-paper {
             background: #fff;
             color: #4a1525;
-            padding: 24px 20px;
+            padding: 20px 16px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: left;
-            font-size: 17.5px; 
+            font-size: 13px;
         }
         .letter-paper h3 { 
-            font-size: 22px; 
-            margin-bottom: 14px; 
+            font-size: 18px; 
+            margin-bottom: 12px; 
             color: #4a1525; 
             font-family: 'Cormorant Garamond', serif; 
             font-style: italic; 
             font-weight: 600; 
         }
-        .letter-paper p { line-height: 1.85; margin-bottom: 14px; color: #3b141d; }
+        .letter-paper p { line-height: 1.7; margin-bottom: 12px; color: #3b141d; }
 
         .countdown-grid {
             display: grid;
@@ -714,9 +705,6 @@
     <audio id="minigame1-bg-sound" loop>
         <source src="minigames 1 bg sound.mp3" type="audio/mpeg">
     </audio>
-    <audio id="minigame1-point">
-        <source src="click minigames 2 sound.mp3" type="audio/mpeg">
-    </audio>
     <audio id="flap-sound">
         <source src="flappysound.mp3" type="audio/mpeg">
     </audio>
@@ -727,7 +715,7 @@
         <source src="flappy down die sound.mp3" type="audio/mpeg">
     </audio>
     <audio id="flappy-point">
-        <source src="flappy get point.mp3" type="audio/mpeg">
+        <source src="click minigames 2 sound.mp3" type="audio/mpeg">
     </audio>
 
     <div class="hearts-bg" id="hearts-bg"></div>
@@ -851,15 +839,15 @@
                     <div class="quiz-instruction">Pick your choice</div>
 
                     <div class="options-grid">
-                        <button class="option-btn" onclick="answerInline(this, 2, 'nah aku pasti bisa nebeng conviction kalo koko orang finance hahaha.')">
+                        <button class="option-btn" onclick="answerInline(this, 2, 'nah aku pasti bisa nebeng conviction kalo koko orang finance hahaha')">
                             <div class="option-badge">A</div>
                             <span>Business/ finance</span>
                         </button>
-                        <button class="option-btn" onclick="answerInline(this, 2, 'mau ambil spesialis apa kalo jadi dokter nih.')">
+                        <button class="option-btn" onclick="answerInline(this, 2, 'mau ambil spesialis apa kalo jadi dokter nih')">
                             <div class="option-badge">B</div>
                             <span>Doctor</span>
                         </button>
-                        <button class="option-btn" onclick="answerInline(this, 2, 'udah ada bakat jago main game nya sih padahal, hahaha.')">
+                        <button class="option-btn" onclick="answerInline(this, 2, 'udah ada bakat jago main game nya sih padahal, hahaha')">
                             <div class="option-badge">C</div>
                             <span>Software engineering</span>
                         </button>
@@ -966,7 +954,7 @@
                             <div class="option-badge">B</div>
                             <span>Finally seeing the fruits of my hard work.</span>
                         </button>
-                        <button class="option-btn" onclick="answerInline(this, 5, '那我要天天吵你 😈😈😈😈')">
+                        <button class="option-btn" onclick="answerInline(this, 5, '那我要天天吵你 😈😈😈')">
                             <div class="option-badge">C</div>
                             <span>Having a little peace and quiet.</span>
                         </button>
@@ -991,11 +979,10 @@
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
                 
-                <!-- Layout Sesuai Permintaan: Baris 1 Tengah Score, Pojok Kanan Time (Pink, Angka Hitam), Baris Bawah Target Benda -->
                 <div style="position: relative; margin-top: 2px; margin-bottom: 6px; min-height: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
                     <div style="position: absolute; right: 0; top: 0; font-size: 13px; font-weight: 700; color: #f43f5e;">
-                        Time: <span id="game-timer" style="color: #000000; font-weight: 800;">30s</span>
+                        Time: <span id="game-timer" style="color: #000000; font-weight: 800;">20s</span>
                     </div>
                     <div id="game-target" style="font-size: 12px; font-weight: 600; color: #4b5563; margin-top: 3px;">
                         Target: Tap any item to start!
@@ -1050,7 +1037,7 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 200px; margin-top: 10px; padding: 7px;" onclick="initFlappyGame()">Try Again</button>
+                        <button class="btn-primary" style="width: 210px; margin-top: 10px; padding: 7px;" onclick="initFlappyGame()">Try Again</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1085,29 +1072,18 @@
 
                 <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
                     <div class="letter-paper">
-                        <h3>哥哥哥哥哥哥，</h3>
-                        <p>秀最愛的哥哥，今天生日啦❤️<br>哇，30歲了耶。</p>
-                        <p>30年真的不是一段短短的時間，我知道哥哥一路走到今天不容易。從小在不容易的環境長大，一定有很多委屈、很多掙扎，也有很多我沒有經歷過的事情。</p>
-                        <p>但我一直覺得，哥哥其實比你自己想像中的還要堅強。也許以前很多事情都不完美，也走過一些彎路，但現在回頭來看，我相信一切都不是巧合。上帝一步一步帶領哥哥走到今天，所以不管以前發生什麼，我相信神都有祂的計畫。現在的哥哥有上帝、有愛你的家人，也有秀在這裡☺️</p>
-                        <p>第一次認識哥哥的時候，我對你有興趣。（上次我有跟你説過了）結果5年後，我們竟然又在雅加達重新遇見。而且到現在我還是不知道，你那時候到底為什麼一直回復我去台灣玩的IG Story，還那麼自然地跟我裝熟🤣問東問西哈哈哈。</p>
-                        <p>我也記得第一次邀請你去教會是在聖誕節。老實說，那時候除了邀請你，我也偷偷在測試你一下，看看你會不會直接拒絕。感謝上帝，你不但沒有拒絕，反應還比我想像中好很多。</p>
-                        <p>不知不覺，Thank God, here we are. 可能是以前一個禮拜見一兩次面，不知不覺時間過的很快。我們快3年在一起了噢。</p>
-                        <p>雖然有時候我真的很討厭哥哥😒。也常常被哥哥氣到不行。（我生氣真的不是沒有理由的好不好，只是有時候懶得再解釋，解釋到累了😤）</p>
-                        <p>可是就算這樣，我還是很感謝上帝讓我認識你。因為哥哥已經變成我很重要的人了。看到你壓力大，我會擔心。看到你不開心，我會心疼。看到你慢慢變得更好，我也會替你開心。</p>
-                        <p>哥哥，<br>30歲了。<br>有一句話我想認真跟你說。<br>你真的很棒!<br>你走過很多別人不知道的路，也熬過很多辛苦的日子。你跌倒過、迷路過，也犯過錯。可是直到今天，你還是沒有放棄自己。而我覺得，這件事情真的很了不起。（不要常常跟別人比自己哦，你自己也很棒！）</p>
-                        <p>未來會發生什麼事，我們都不知道。但我希望哥哥永遠記得，一定要一輩子靠著上帝。正如耶利米書(Yeremia) 29:11：<br><em>「因為我知道我向你們所懷的意念，是賜平安的意念，不是降災禍的意念，要叫你們末後有指望。」</em><br>"Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan."</p>
-                        <p>所以你累的時候找上帝。當你迷茫的時候，回到神面前。不要自己硬扛。因為神從來沒有放棄過你。</p>
-                        <p>還有，<br>30歲了請認真多多去運動，做健身！（雖然我自己也常常很懶惰😂）</p>
-                        <p>祝30歲的張彬哥哥身體健康、工作順利、越來越成熟、越來越有智慧，也越來越靠近上帝。更希望未來不管遇到什麼事情，都不要覺得自己是一個人。因為神陪著你。家人陪著你。秀也陪著你。</p>
-                        <p>謝謝你努力活到了30歲。謝謝你沒有放棄自己。也謝謝你重新出現在我的生命裡。如果當初沒有莫名其妙的回復我IG Story，如果沒有重新遇見，如果聖誕節那天你拒絕跟我去教會，也許今天的我們就不會在這裡。</p>
-                        <p>所以我真的很感謝上帝。感謝祂讓我們再次相遇。感謝神讓我們再次遇見彼此。也感謝神讓我有機會，在你30歲生日的時候陪在你身邊。</p>
-                        <p>生日快樂呀，哥哥❤️<br>希望以後還有很多很多個生日，我都可以繼續陪在你身邊。我愛你。🎂✨</p>
+                        <h3 style="font-style: italic;">To my favourite person,</h3>
+                        <p>Happy 30th birthday, my love. I wanted to make you something that you could open, click through, and smile at — because you make me smile every single day.</p>
+                        <p>From the first time we met on the badminton court, I knew there was something special about you. Your kindness, your patience, the way you get way too competitive over games, and the way you always make me feel safe — I love all of it.</p>
+                        <p>Thirty is a big chapter, and I’m so lucky I get to be in it with you. Thank you for every laugh, every late-night game session I watched from the sofa, and every quiet moment that felt like home.</p>
+                        <p>Here’s to more adventures, more matches, more wins, and so many more birthdays together.</p>
+                        <p style="margin-top: 15px;"><span style="font-style: italic;">Forever yours,</span><br><strong style="font-size: 15px; color: #f43f5e; font-style: normal;">秀 ❤️</strong></p>
                     </div>
 
                     <div style="margin-top: 20px;">
-                        <!-- Teks Hitam, Angka Pink -->
+                        <!-- Tulisan dalam kurung sudah dihapus -->
                         <div style="text-align: center; font-size: 10.5px; font-weight: 600; color: #000000; margin-bottom: 4px;">
-                            How long you have survived in this world since November 7, 1996 (<span style="color: #f43f5e;">Days count</span>)
+                            How long you have survived in this world since November 7, 1996
                         </div>
                         <div class="countdown-grid">
                             <div class="cd-card"><div class="cd-number" id="life-years">00</div><div class="cd-label">Years</div></div>
@@ -1132,7 +1108,6 @@
                             <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <!-- Teks Hitam, Angka/Total Days Pink -->
                         <div style="text-align: center; font-size: 11px; color: #000000; margin-top: 8px; font-weight: 600;" id="cd-total-days">
                             That's calculating days of loving you — and counting.
                         </div>
@@ -1194,15 +1169,7 @@
             }
         }
 
-        function playMinigame1PointSound() {
-            const sound = document.getElementById('minigame1-point');
-            if (sound) {
-                sound.currentTime = 0;
-                sound.play().catch(e => console.log(e));
-            }
-        }
-
-        function playFlappyPointSound() {
+        function playPointSound() {
             const sound = document.getElementById('flappy-point');
             if (sound) {
                 sound.currentTime = 0;
@@ -1422,12 +1389,20 @@
             if (nextBtn) nextBtn.classList.remove('hidden');
         }
 
-        // --- MINIGAME 1 (30 SECONDS) ---
+        // --- MINIGAME 1 ---
         let gameInterval, spawnerInterval, animFrameId = null;
-        let score = 0, timeLeft = 30;
+        let score = 0, timeLeft = 20;
         let targetSymbol = null;
         const hobbies = ['⚽', '🏸', '🍣'];
         let fallingItemsList = [];
+
+        function playMinigame1ClickSound() {
+            const sound = document.getElementById('flappy-point');
+            if (sound) {
+                sound.currentTime = 0;
+                sound.play().catch(e => console.log(e));
+            }
+        }
 
         function startMinigame() {
             goToScreen('minigame');
@@ -1436,7 +1411,7 @@
         function initMinigame() {
             stopMinigame();
             score = 0;
-            timeLeft = 30;
+            timeLeft = 20;
             targetSymbol = null;
             document.getElementById('game-score').innerText = `Score: ${score} / 30`;
             document.getElementById('game-timer').innerText = `${timeLeft}s`;
@@ -1494,7 +1469,7 @@
 
             itemEl.onmousedown = itemEl.ontouchstart = (e) => {
                 e.preventDefault();
-                playMinigame1PointSound();
+                playMinigame1ClickSound();
 
                 if (!targetSymbol) {
                     targetSymbol = symbol;
@@ -1558,12 +1533,11 @@
 
         // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
-        let birdY = 90, birdVelocity = 0;
+        let birdY = 120, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
         let gameStarted = false;
-        let isDying = false;
 
         function startFlappyGame() {
             const minigameBgAudio = document.getElementById('minigame1-bg-sound');
@@ -1576,13 +1550,12 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 90;
+            birdY = 120;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
             isFlappyRunning = false;
             gameStarted = false;
-            isDying = false;
 
             document.getElementById('flappy-score-text').innerText = `0`;
             document.getElementById('flappy-next-btn').classList.add('hidden');
@@ -1592,7 +1565,6 @@
             document.getElementById('get-ready-overlay').style.display = 'flex';
             const birdEl = document.getElementById('flappy-bird');
             birdEl.src = 'bird.png';
-            birdEl.style.transform = 'rotate(0deg)';
             birdEl.style.top = birdY + 'px';
         }
 
@@ -1614,11 +1586,11 @@
                 flappyInterval = setInterval(updateFlappyGame, 30);
             }
 
-            if (!isFlappyRunning || isDying) {
+            if (!isFlappyRunning && gameStarted) {
                 return;
             }
 
-            birdVelocity = -6.0;
+            birdVelocity = -6.5;
             playFlapSound();
         }
 
@@ -1640,42 +1612,15 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            const containerHeight = 240;
-            const groundLimit = containerHeight - 25 - 38;
-
-            if (isDying) {
-                birdVelocity += 0.8;
-                birdY += birdVelocity;
-                if (birdY >= groundLimit) {
-                    birdY = groundLimit;
-                    isFlappyRunning = false;
-                    clearInterval(flappyInterval);
-                    document.getElementById('final-score-val').innerText = flappyScore;
-                    document.getElementById('game-over-modal').classList.remove('hidden');
-                    if (flappyScore >= 3) {
-                        document.getElementById('flappy-next-btn').classList.remove('hidden');
-                    }
-                }
-                const birdEl = document.getElementById('flappy-bird');
-                birdEl.style.top = birdY + 'px';
-                birdEl.style.transform = 'rotate(90deg)';
-                return;
-            }
-
             birdVelocity += 0.42;
             birdY += birdVelocity;
 
             const birdEl = document.getElementById('flappy-bird');
             birdEl.style.top = birdY + 'px';
-            
-            let rot = birdVelocity * 4;
-            if (rot > 70) rot = 70;
-            if (rot < -20) rot = -20;
-            birdEl.style.transform = `rotate(${rot}deg)`;
 
-            if (birdY > groundLimit || birdY < 0) {
+            if (birdY > 185 || birdY < 0) {
                 playHitSound();
-                isDying = true;
+                gameOverFlappy();
                 return;
             }
 
@@ -1701,20 +1646,20 @@
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (containerHeight - 25 - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.top = (240 - 25 - pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (containerHeight - 25 - pipes[i].bottomHeight + 22) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight + 80) + 'px'; // Pipa bawah menjulur jauh sampai ke bawah dasar kanvas
+                botPipeBody.style.top = (240 - 25 - pipes[i].bottomHeight + 22) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight + 50) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
                 if (pipes[i].left < 45 + 38 && pipes[i].left + 48 > 45) {
-                    if (birdY < pipes[i].topHeight || birdY + 38 > containerHeight - 25 - pipes[i].bottomHeight) {
+                    if (birdY < pipes[i].topHeight || birdY + 38 > 240 - 25 - pipes[i].bottomHeight) {
                         playHitSound();
-                        isDying = true;
+                        gameOverFlappy();
                         return;
                     }
                 }
@@ -1722,7 +1667,7 @@
                 if (!pipes[i].passed && pipes[i].left < 45) {
                     pipes[i].passed = true;
                     flappyScore++;
-                    playFlappyPointSound();
+                    playPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
                     if (flappyScore >= 3) {
                         document.getElementById('flappy-next-btn').classList.remove('hidden');
@@ -1734,8 +1679,17 @@
                 }
             }
 
-            if (pipes.length === 0 || pipes[pipes.length - 1].left < 180) {
+            if (pipes.length === 0 || pipes[pipes.length - 1].left < 160) {
                 spawnFlappyPipe();
+            }
+        }
+
+        function gameOverFlappy() {
+            stopFlappyGame();
+            document.getElementById('final-score-val').innerText = flappyScore;
+            document.getElementById('game-over-modal').classList.remove('hidden');
+            if (flappyScore >= 3) {
+                document.getElementById('flappy-next-btn').classList.remove('hidden');
             }
         }
 
@@ -1788,7 +1742,6 @@
             document.getElementById('cd-secs').innerText = String(met.secs).padStart(2, '0');
 
             const totalDays = Math.floor(Math.abs(now - metDate) / (1000 * 60 * 60 * 24));
-            // Teks Hitam dengan Total Days Pink
             document.getElementById('cd-total-days').innerHTML = `That's calculating <span style="color: #f43f5e; font-weight: 700;">${totalDays.toLocaleString()} days</span> of loving you — and counting.`;
         }, 1000);
     </script>
