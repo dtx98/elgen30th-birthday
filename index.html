@@ -232,15 +232,15 @@
 
         .home-btn {
             position: absolute;
-            top: 10px; left: 12px;
+            top: 4px; left: 8px;
             background: #f3f4f6; border: none;
             color: #4b5563; font-weight: 600;
-            font-size: 13px; cursor: pointer;
-            width: 30px; height: 30px;
+            font-size: 17px; cursor: pointer;
+            width: 36px; height: 36px;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            z-index: 5;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 15;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
         .home-btn:hover { background: #e5e7eb; }
 
@@ -1222,7 +1222,8 @@ Thank God, here we are.<br>
 生日快樂呀，哥哥🎂✨<br>
 希望以後還有很多很多個生日，<br>
 我都可以繼續陪在你身邊。<br>
-我愛你。
+我愛你。<br>
+<br>
 <hr style="border: none; border-top: 1px solid #fde047; margin: 12px 0 10px 0;">
 <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #4a1525;">
     Forever yours,<br>
@@ -1783,13 +1784,14 @@ Thank God, here we are.<br>
         function spawnFlappyPipe() {
             const containerHeight = 240;
             const groundHeight = 30;
-            const playableHeight = containerHeight - groundHeight;
-            const gap = 135;
+            const playableHeight = containerHeight - groundHeight; // 210px area bersih
+            const gap = 145; // Celah awal yang lega/mudah dipertahankan
             
-            const minTop = 30;
-            const maxTop = 80;
+            // Variasi tinggi pipa atas acak dari sangat pendek hingga panjang
+            const minTop = 15;
+            const maxTop = playableHeight - gap - 10; // max ~55px hingga 140px
             const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
-            const bottomHeight = playableHeight - topHeight - gap;
+            const bottomHeight = Math.max(10, playableHeight - topHeight - gap);
 
             pipes.push({
                 left: 380,
@@ -1863,7 +1865,7 @@ Thank God, here we are.<br>
             pipesArea.innerHTML = '';
 
             for (let i = pipes.length - 1; i >= 0; i--) {
-                pipes[i].left -= (1.8 + Math.min(flappyScore * 0.15, 2));
+                pipes[i].left -= (1.8 + Math.min(flappyScore * 0.25, 3));
 
                 const bottomPipeTopPos = containerHeight - groundHeight - pipes[i].bottomHeight;
 
