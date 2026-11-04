@@ -16,7 +16,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4px;
+            padding: 10px;
             overflow: hidden;
             position: relative;
             -webkit-font-smoothing: antialiased;
@@ -71,7 +71,7 @@
             text-align: center;
             width: 100%;
             max-width: 340px;
-            padding: 10px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -83,7 +83,7 @@
             border: 2px solid rgba(255, 255, 255, 0.9);
             border-radius: 4px;
             position: relative;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             transition: all 0.3s ease;
         }
         .ios-lock-icon::after {
@@ -103,41 +103,41 @@
             transform: rotate(-45deg) translateY(-1px);
         }
 
-        .date-text { font-size: 14px; font-weight: 400; opacity: 0.95; margin-bottom: 2px; letter-spacing: 0.2px; }
+        .date-text { font-size: 15px; font-weight: 400; opacity: 0.95; margin-bottom: 2px; letter-spacing: 0.2px; }
         .time-text { 
             font-family: 'Playfair Display', serif;
-            font-size: 60px; 
+            font-size: 72px; 
             font-weight: 400; 
             letter-spacing: -1px; 
-            margin-bottom: 12px; 
+            margin-bottom: 20px; 
             line-height: 1; 
         }
-        .passcode-label { font-size: 12px; font-weight: 400; opacity: 0.95; margin-bottom: 8px; }
+        .passcode-label { font-size: 13px; font-weight: 400; opacity: 0.95; margin-bottom: 12px; }
         
         .dots-container {
             display: flex;
             justify-content: center;
-            gap: 14px;
-            margin-bottom: 8px;
+            gap: 16px;
+            margin-bottom: 10px;
         }
         .dot {
-            width: 12px; height: 12px;
+            width: 13px; height: 13px;
             border-radius: 50%;
             border: 2px solid rgba(255, 255, 255, 0.85);
             background: transparent;
         }
         .dot.filled { background: #ffffff; border-color: #ffffff; }
-        .hint-text { font-size: 11px; opacity: 0.8; margin-bottom: 14px; font-style: italic; }
+        .hint-text { font-size: 11.5px; opacity: 0.8; margin-bottom: 22px; font-style: italic; }
 
         .keypad {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px 14px;
-            max-width: 240px;
+            gap: 12px 18px;
+            max-width: 260px;
             margin: 0 auto;
         }
         .key-btn {
-            width: 58px; height: 58px;
+            width: 68px; height: 68px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.16);
             backdrop-filter: blur(20px);
@@ -148,86 +148,88 @@
             transition: background 0.15s;
         }
         .key-btn:active { background: rgba(255, 255, 255, 0.35); }
-        .key-number { font-size: 22px; font-weight: 400; line-height: 1; }
-        .key-sub { font-size: 8px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.75; margin-top: 1px; }
+        .key-number { font-size: 26px; font-weight: 400; line-height: 1; }
+        .key-sub { font-size: 9px; font-weight: 600; letter-spacing: 1.5px; opacity: 0.75; margin-top: 1px; }
 
         .lock-footer {
-            margin-top: 15px;
-            font-size: 11px;
+            margin-top: 25px;
+            font-size: 12px;
             opacity: 0.85;
             font-weight: 400;
         }
 
         .error-shake { animation: shake 0.4s ease-in-out; }
 
+        /* MAIN LAYOUT UKURAN 100% */
         .main-layout {
             display: flex;
             flex-direction: column;
             width: 100%;
             max-width: 390px;
-            height: 96vh;
-            max-height: 640px;
-            gap: 8px;
+            height: 92vh;
+            max-height: 780px;
+            gap: 10px;
             align-items: center;
             z-index: 2;
+            margin: auto;
         }
 
+        /* TIMELINE BAR DI ATAS KARTU PUTIH */
         .timeline-bar {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
-            padding: 6px 14px;
-            border-radius: 12px;
+            padding: 8px 16px;
+            border-radius: 14px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             flex-shrink: 0;
         }
         .tl-dot {
-            width: 24px; height: 24px;
+            width: 30px; height: 30px;
             border-radius: 50%;
             background: rgba(255,255,255,0.15);
             color: #d1d5db;
-            font-size: 11px; font-weight: 600;
+            font-size: 12px; font-weight: 600;
             display: flex; align-items: center; justify-content: center;
             border: 2px solid rgba(255,255,255,0.25);
         }
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-       .card {
+        .card {
             background: #ffffff;
             color: #333;
             width: 100%;
             max-width: 390px;
-            height: 50vh;
-            max-height: 460px;
-            padding: 12px 14px;
-            border-radius: 20px;
+            flex: 1;
+            padding: 22px 18px;
+            border-radius: 24px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            margin: auto; /* Membuat posisi card persis di tengah secara vertical & horizontal */
         }
+
         .skip-btn {
             position: absolute;
-            top: 12px; right: 14px;
+            top: 14px; right: 16px;
             background: none; border: none;
             color: #f43f5e; font-weight: 600;
-            font-size: 12px; cursor: pointer;
+            font-size: 13px; cursor: pointer;
             z-index: 5;
         }
 
         .home-btn {
             position: absolute;
-            top: 8px; left: 8px;
+            top: 10px; left: 10px;
             background: #f3f4f6; border: none;
             color: #4b5563; font-weight: 600;
-            font-size: 12px; cursor: pointer;
-            width: 24px; height: 24px;
+            font-size: 13px; cursor: pointer;
+            width: 28px; height: 28px;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             z-index: 5;
@@ -237,31 +239,31 @@
 
         .story-content { text-align: center; margin: auto 0; }
         .bubu-img {
-            width: 110px;
+            width: 130px;
             height: auto;
-            margin-bottom: 8px;
-            border-radius: 14px;
+            margin-bottom: 10px;
+            border-radius: 16px;
         }
-        .story-content h2 { font-size: 15px; color: #1f2937; margin-bottom: 6px; font-weight: 700; line-height: 1.35; }
-        .story-content p { font-size: 12px; color: #6b7280; margin-bottom: 12px; line-height: 1.4; }
+        .story-content h2 { font-size: 16px; color: #1f2937; margin-bottom: 8px; font-weight: 700; line-height: 1.4; }
+        .story-content p { font-size: 12.5px; color: #6b7280; margin-bottom: 14px; line-height: 1.5; }
 
         .bubu-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 10px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
-        .bubu-small { width: 85px; height: auto; border-radius: 10px; }
+        .bubu-small { width: 100px; height: auto; border-radius: 12px; }
         .speech-bubble {
             background: #fff1f2;
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 11.5px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 12px;
             font-weight: 600;
             color: #e11d48;
             border: 1px solid #fecdd3;
-            max-width: 150px;
+            max-width: 160px;
         }
 
         .btn-primary {
@@ -269,53 +271,53 @@
             background: #f43f5e;
             color: white;
             border: none;
-            padding: 10px;
-            font-size: 13px;
+            padding: 12px;
+            font-size: 14px;
             font-weight: 600;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.3);
         }
         .btn-primary:hover { background: #e11d48; }
 
         .btn-compact {
             display: block;
-            width: 140px;
+            width: 150px;
             margin: 0 auto;
             background: #f43f5e;
             color: white;
             border: none;
-            padding: 6px 12px;
-            font-size: 12px;
+            padding: 8px 14px;
+            font-size: 13px;
             font-weight: 600;
-            border-radius: 10px;
+            border-radius: 12px;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(244, 63, 94, 0.3);
             text-align: center;
         }
         .btn-compact:hover { background: #e11d48; }
 
-        .chapter-subtitle { font-size: 10px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
-        .quiz-question { font-size: 14.5px; color: #1f2937; font-weight: 700; margin-bottom: 2px; line-height: 1.3; }
-        .quiz-instruction { font-size: 11px; color: #9ca3af; margin-bottom: 8px; }
+        .chapter-subtitle { font-size: 10.5px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .quiz-question { font-size: 15.5px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.35; }
+        .quiz-instruction { font-size: 11.5px; color: #9ca3af; margin-bottom: 10px; }
         
         .options-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 6px;
-            margin-bottom: 8px;
+            gap: 8px;
+            margin-bottom: 10px;
         }
         .option-btn {
             background: #ffffff;
             border: 2px solid #fecdd3;
-            padding: 8px 10px;
-            border-radius: 10px;
-            font-size: 11.5px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            font-size: 12.5px;
             color: #4b5563;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             text-align: left;
         }
         .option-btn:hover { border-color: #f43f5e; background: #fff1f2; }
@@ -325,13 +327,13 @@
             color: #065f46;
         }
         .option-badge {
-            width: 20px; height: 20px;
+            width: 24px; height: 24px;
             border-radius: 50%;
             background: #fee2e2;
             color: #f43f5e;
             display: flex; align-items: center; justify-content: center;
             font-weight: 700;
-            font-size: 10px;
+            font-size: 11px;
             flex-shrink: 0;
         }
         .option-btn.selected .option-badge {
@@ -341,64 +343,65 @@
         
         .wrong-msg {
             color: #ef4444;
-            font-size: 11px;
+            font-size: 11.5px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .success-box {
             background: #ecfdf5;
             border: 2px solid #10b981;
-            padding: 8px;
-            border-radius: 10px;
-            margin-bottom: 6px;
+            padding: 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
         }
-        .success-box p { color: #047857; font-size: 11px; font-weight: 600; margin-bottom: 0; }
+        .success-box p { color: #047857; font-size: 11.5px; font-weight: 600; margin-bottom: 0; }
 
         .nav-footer {
             display: flex;
             justify-content: space-between;
-            margin-top: 6px;
+            margin-top: 8px;
             border-top: 1px solid #f3f4f6;
-            padding-top: 8px;
+            padding-top: 10px;
             flex-shrink: 0;
         }
         .nav-btn {
             background: #f3f4f6; color: #4b5563; border: none;
-            padding: 6px 12px; font-size: 11.5px; font-weight: 600;
-            border-radius: 8px; cursor: pointer;
+            padding: 8px 14px; font-size: 12.5px; font-weight: 600;
+            border-radius: 10px; cursor: pointer;
         }
         .nav-btn.next { background: #f43f5e; color: white; margin-left: auto; }
 
         .game-canvas-container {
             width: 100%;
-            height: 130px;
+            height: 170px;
             background: #fff1f2;
             border: 2px solid #fecdd3;
-            border-radius: 12px;
+            border-radius: 14px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             cursor: crosshair;
         }
         .falling-item {
             position: absolute;
-            font-size: 22px;
+            font-size: 26px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
         }
 
-       .flappy-canvas-container {
+        /* MINIGAME 2 (FLAPPY BIRD) - DIPERBESAR / ZOOM-IN */
+        .flappy-canvas-container {
             width: 100%;
-            height: 120px;
+            height: 180px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
-            border-radius: 12px;
+            border-radius: 14px;
             position: relative;
             overflow: hidden;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             cursor: pointer;
             -webkit-user-select: none;
             user-select: none;
@@ -406,10 +409,10 @@
         }
         .flappy-bg-scenery {
             position: absolute;
-            bottom: 18px;
+            bottom: 22px;
             left: 0;
             width: 200%;
-            height: 35px;
+            height: 40px;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -423,49 +426,49 @@
             100% { transform: translateX(-50%); }
         }
 
-       .flappy-ground {
+        .flappy-ground {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 16px;
+            height: 22px;
             background: #ded895;
-            border-top: 2px solid #558022;
+            border-top: 3px solid #558022;
             z-index: 4;
         }
         .flappy-bird {
             position: absolute;
-            width: 28px;
-            height: 28px;
+            width: 36px;
+            height: 36px;
             object-fit: contain;
-            left: 35px;
+            left: 45px;
             z-index: 5;
             pointer-events: none;
             transition: transform 0.1s linear;
         }
-       .pipe-body {
+        .pipe-body {
             position: absolute;
-            width: 36px;
+            width: 48px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 42px;
-            height: 12px;
+            width: 54px;
+            height: 16px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
-            border-radius: 3px;
+            border-radius: 4px;
             z-index: 3;
             left: -3px;
         }
         .flappy-score-display {
             position: absolute;
-            top: 4px;
+            top: 6px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 22px;
+            font-size: 26px;
             font-weight: 900;
             color: #ffffff;
             font-family: 'Playfair Display', serif;
@@ -486,41 +489,41 @@
         }
         .get-ready-title {
             font-family: 'Playfair Display', serif;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 900;
             color: #ffffff;
             text-shadow: 2px 2px 0px #225522, -2px -2px 0px #225522, 2px -2px 0px #225522, -2px 2px 0px #225522;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .tap-instruction-box {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
         .tap-badges {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             align-items: center;
         }
         .tap-badge {
             background: #ff3333;
             color: white;
-            font-size: 8px;
+            font-size: 9px;
             font-weight: 800;
-            padding: 2px 4px;
-            border: 1px solid #ffffff;
-            border-radius: 3px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            padding: 2px 5px;
+            border: 1.5px solid #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             letter-spacing: 1px;
         }
         .tap-hand {
-            font-size: 14px;
+            font-size: 16px;
             animation: bounceHand 1s infinite ease-in-out;
         }
         @keyframes bounceHand {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
+            50% { transform: translateY(-4px); }
         }
 
         .game-over-modal {
@@ -535,19 +538,19 @@
         }
         .game-over-title {
             font-family: 'Playfair Display', serif;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 900;
             color: #ffa500;
             text-shadow: 2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
         .score-board-box {
-            width: 160px;
+            width: 180px;
             background: #ded895;
-            border: 2px solid #558022;
-            border-radius: 8px;
-            padding: 6px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            border: 3px solid #558022;
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -559,25 +562,25 @@
             flex: 1;
         }
         .sb-label {
-            font-size: 7px;
+            font-size: 8px;
             font-weight: 800;
             color: #d97706;
             letter-spacing: 1px;
-            margin-bottom: 1px;
+            margin-bottom: 2px;
         }
         .medal-icon {
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             background: radial-gradient(circle, #fde047 0%, #ca8a04 100%);
             border: 2px solid #713f12;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 11px;
-            box-shadow: inset 0 2px 3px rgba(255,255,255,0.6);
+            font-size: 13px;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
         }
         .sb-score-val {
             font-family: 'Playfair Display', serif;
-            font-size: 15px;
+            font-size: 18px;
             font-weight: 900;
             color: #000;
             text-shadow: 1px 1px 0px #fff;
@@ -587,12 +590,12 @@
             display: inline-block;
             background: #f43f5e;
             color: white;
-            padding: 2px 6px;
-            border-radius: 12px;
-            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 14px;
+            font-size: 11px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(244,63,94,0.3);
+            box-shadow: 0 2px 6px rgba(244,63,94,0.3);
             transition: transform 0.1s;
         }
         .score-button:active { transform: scale(0.95); }
@@ -600,81 +603,82 @@
         .envelope-container {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
-            padding: 14px 12px;
-            border-radius: 14px;
+            padding: 16px 14px;
+            border-radius: 16px;
             text-align: center;
             cursor: pointer;
             animation: pulseGlow 2.5s infinite ease-in-out;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: white;
             position: relative;
         }
         @keyframes pulseGlow {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
-            50% { transform: scale(1.02); box-shadow: 0 0 10px 2px rgba(244,63,94, 0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 0 12px 2px rgba(244,63,94, 0.2); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(244,63,94, 0.2); }
         }
         .envelope-icon-wrapper {
             position: relative;
-            width: 38px;
-            height: 38px;
-            margin: 0 auto 4px auto;
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 6px auto;
         }
         .envelope-icon-circle {
-            width: 38px; height: 38px;
+            width: 42px; height: 42px;
             background: #f43f5e;
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            font-size: 17px;
+            font-size: 19px;
             color: white;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
         .notification-heart {
             position: absolute;
             top: -2px;
             right: -2px;
-            font-size: 12px;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+            font-size: 13px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
             animation: bounceHeart 1.5s infinite ease-in-out;
         }
         @keyframes bounceHeart {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
+            50% { transform: translateY(-3px); }
         }
 
         .letter-paper {
-            background: #fff;
+            background: #fefce8;
+            border: 1px solid #fef08a;
             color: #4a1525;
-            padding: 16px 14px;
-            border-radius: 12px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            padding: 16px;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
             text-align: left;
-            font-size: 14.5px; 
+            font-size: 15px; 
+            line-height: 1.5;
         }
-        .letter-paper p { line-height: 1.6; margin-bottom: 10px; color: #3b141d; white-space: pre-line; }
 
         .countdown-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            gap: 2px;
-            margin-bottom: 6px;
+            gap: 3px;
+            margin-bottom: 8px;
         }
         .cd-card {
             background: #4a1525;
             border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 5px;
-            padding: 4px 1px;
+            border-radius: 6px;
+            padding: 5px 2px;
             text-align: center;
             color: white;
         }
         .cd-number {
             font-family: 'Playfair Display', serif;
-            font-size: 13px;
+            font-size: 15px;
             font-weight: 700;
             color: #fff;
         }
         .cd-label {
-            font-size: 5.5px;
+            font-size: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #fca5a5;
@@ -683,10 +687,10 @@
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-6px); }
-            40%, 80% { transform: translateX(6px); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -755,7 +759,7 @@
     <!-- MAIN APP CONTAINER -->
     <div id="app-content" class="main-layout hidden">
         
-        <!-- TOP TIMELINE BAR -->
+        <!-- TOP TIMELINE BAR (DI ATAS KARTU PUTIH) -->
         <div class="timeline-bar" id="timeline-bar">
             <div class="tl-dot active" id="dot-s1">1</div>
             <div class="tl-dot" id="dot-s2">🔒</div>
@@ -778,12 +782,12 @@
 
             <!-- PAGE 3: GUESS RIGHT INTRO -->
             <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <div class="bubu-container" style="margin-top: 5px;">
+                <div class="bubu-container" style="margin-top: 10px;">
                     <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-small">
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
                 </div>
 
-                <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 10px;">Start Chapter 1</button>
+                <button class="btn-primary" onclick="goToScreen('ch1')" style="margin-top: 15px;">Start Chapter 1</button>
             </div>
 
             <!-- CHAPTER 1 QUIZ -->
@@ -793,7 +797,7 @@
                     <div class="quiz-question">How did Elgen spend his childhood?</div>
                     <div class="quiz-instruction">Pick all the right answers</div>
                     
-                    <div id="inline-status-1" style="font-size: 11px; font-weight: 600; color: #ef4444; margin-bottom: 4px; min-height: 14px;"></div>
+                    <div id="inline-status-1" style="font-size: 11.5px; font-weight: 600; color: #ef4444; margin-bottom: 6px; min-height: 16px;"></div>
 
                     <div class="options-grid">
                         <button class="option-btn" onclick="toggleOption(this, 1)">
@@ -870,7 +874,7 @@
             <div id="quiz-screen-3" class="hidden" style="display: flex; flex-direction: column; height: 100%;">
                 <div>
                     <div class="chapter-subtitle">Chapter 3 · Life Motivation</div>
-                    <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:11.5px; font-weight:600; color:#4b5563;">(What makes you keep going when life goes hard?)</span></div>
+                    <div class="quiz-question">當生活變得很艱難時，是什麼讓你堅持下去？<br><span style="font-size:12px; font-weight:600; color:#4b5563;">(What makes you keep going when life goes hard?)</span></div>
                     <div class="quiz-instruction">Pick your choice</div>
 
                     <div class="options-grid">
@@ -926,7 +930,7 @@
                     </div>
 
                     <div id="success-box-4" class="success-box hidden">
-                        <p id="msg-text-4" style="font-size: 12px; font-weight: 600;">Message here</p>
+                        <p id="msg-text-4" style="font-size: 12.5px; font-weight: 600;">Message here</p>
                     </div>
                 </div>
 
@@ -963,7 +967,7 @@
                     </div>
 
                     <div id="success-box-5" class="success-box hidden">
-                        <p id="msg-text-5" style="font-size: 12px; font-weight: 600;">Message here</p>
+                        <p id="msg-text-5" style="font-size: 12.5px; font-weight: 600;">Message here</p>
                     </div>
                 </div>
 
@@ -977,12 +981,12 @@
             <div id="minigame-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
                 
-                <div style="position: relative; margin-top: 2px; margin-bottom: 2px; min-height: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div style="position: relative; margin-top: 2px; margin-bottom: 4px; min-height: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
                     <div class="score-button" id="game-score" onclick="forceOpenLetter()" title="Click to skip">Score: 0 / 30</div>
-                    <div style="position: absolute; right: 0; top: 0; font-size: 11.5px; font-weight: 700; color: #f43f5e;">
+                    <div style="position: absolute; right: 0; top: 0; font-size: 12px; font-weight: 700; color: #f43f5e;">
                         Time: <span id="game-timer" style="color: #000000; font-weight: 800;">30s</span>
                     </div>
-                    <div id="game-target" style="font-size: 11px; font-weight: 600; color: #4b5563; margin-top: 1px;">
+                    <div id="game-target" style="font-size: 11.5px; font-weight: 600; color: #4b5563; margin-top: 2px;">
                         Target: Tap any item to start!
                     </div>
                 </div>
@@ -991,20 +995,20 @@
 
                 <div>
                     <div id="try-again-box" class="hidden" style="margin-bottom: 6px; animation: fadeIn 0.3s;">
-                        <button class="btn-compact" style="background:#f59e0b; margin-bottom: 3px;" onclick="initMinigame()">Try Again</button>
+                        <button class="btn-compact" style="background:#f59e0b; margin-bottom: 4px;" onclick="initMinigame()">Try Again</button>
                         <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
                     </div>
                     <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()">Next</button>
                 </div>
             </div>
 
-            <!-- MINIGAME 2: FLAPPY BIRD -->
+            <!-- MINIGAME 2: FLAPPY BIRD (ZOOM-IN & PERBAIKAN PIPA) -->
             <div id="flappy-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
-                <div style="margin-top: 2px; margin-bottom: 2px; flex-shrink: 0;">
-                    <div style="display: inline-block; padding: 2px 8px; background: #f43f5e; color: white; border-radius: 12px; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 5px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
-                    <div style="font-size: 9px; color: #6b7280; font-weight: 600; margin-top: 1px;">score min. 3 to continue</div>
+                <div style="margin-top: 2px; margin-bottom: 4px; flex-shrink: 0;">
+                    <div style="display: inline-block; padding: 3px 10px; background: #f43f5e; color: white; border-radius: 14px; font-size: 11.5px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 5px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
+                    <div style="font-size: 9.5px; color: #6b7280; font-weight: 600; margin-top: 2px;">score min. 3 to continue</div>
                 </div>
                 
                 <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()" style="flex: 1;">
@@ -1035,7 +1039,7 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 150px; margin-top: 6px; padding: 5px;" onclick="initFlappyGame()">Try Again</button>
+                        <button class="btn-primary" style="width: 170px; margin-top: 8px; padding: 6px;" onclick="initFlappyGame()">Try Again</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1043,10 +1047,10 @@
                     <div class="flappy-ground"></div>
                 </div>
 
-                <div style="display: flex; gap: 6px; align-items: center; flex-shrink: 0;">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 6px 12px;">← Back</button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0;">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 8px 14px;">← Back</button>
                     <div style="flex: 1;"></div>
-                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 6px;">Open Letter 💌</button>
+                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 8px;">Open Letter 💌</button>
                 </div>
             </div>
 
@@ -1054,7 +1058,7 @@
             <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
                 <div>
                     <div class="chapter-subtitle" style="text-align: center; margin-bottom: 2px;">One Last Thing</div>
-                    <h2 style="font-size: 17px; color: #1f2937; text-align: center; margin-bottom: 8px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
+                    <h2 style="font-size: 18px; color: #1f2937; text-align: center; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
                 
                     <div id="envelope-wrapper">
                         <div class="envelope-container" onclick="openLetter()">
@@ -1062,121 +1066,119 @@
                                 <div class="envelope-icon-circle">✉️</div>
                                 <div class="notification-heart">💛</div>
                             </div>
-                            <h3 style="font-size: 14px; margin-bottom: 2px; color: #fff;">You've got mail</h3>
-                            <p style="font-size: 10px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
+                            <h3 style="font-size: 14.5px; margin-bottom: 3px; color: #fff;">You've got mail</h3>
+                            <p style="font-size: 10.5px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
                         </div>
                     </div>
                 </div>
 
                 <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-               <div class="letter-paper" style="background: #fefce8; border: 1px solid #fef08a; color: #4a1525; padding: 14px; border-radius: 12px; font-size: 14.5px; line-height: 1.5; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-    哥哥哥哥哥哥，<br>
-    秀最愛的哥哥，今天生日啦❤️<br>
-    哇，30歲了耶。<br>
-    30年真的不是一段短短的時間，我知道哥哥一路走到今天不容易。<br>
-    從小在不容易的環境長大，一定有很多委屈、很多掙扎，也有很多我沒有經歷過的事情。<br>
-    但我一直覺得，哥哥其實比你自己想像中的還要堅強。<br>
-    也許以前很多事情都不完美，<br>
-    也走過一些彎路，<br>
-    但現在回頭來看，<br>
-    我相信一切都不是巧合。<br>
-    上帝一步一步帶領哥哥走到今天，<br>
-    所以不管以前發生什麼，<br>
-    我相信神都有祂的計畫。<br>
-    現在的哥哥有上帝、<br>
-    有愛你的家人，<br>
-    也有秀在這裡☺️<br>
-    <br>
-    第一次認識哥哥的時候，我對你有興趣。（上次我有跟你説過了）<br>
-    結果5年後，我們竟然又在雅加達重新遇見。<br>
-    而且到現在我還是不知道，<br>
-    你那時候到底為什麼一直回復我去台灣玩的IG Story，還那麼自然地跟我裝熟🤣問東問西哈哈哈。<br>
-    我也記得第一次邀請你去教會是在聖誕節。<br>
-    老實說，那時候除了邀請你，<br>
-    我也偷偷在測試你一下，看看你會不會直接拒絕。<br>
-    感謝上帝，你不但沒有拒絕，<br>
-    反應還比我想像中好很多。<br>
-    Thank God, here we are.<br>
-    可能是以前一個禮拜見一兩次面，<br>
-    不知不覺時間過的很快。<br>
-    我們快3年在一起了噢。<br>
-    雖然有時候我真的很討厭哥哥😒。<br>
-    也常常被哥哥氣到不行。（我生氣真的不是沒有理由的好不好，只是有時候懶得再解釋，解釋到累了😤）<br>
-    可是就算這樣，<br>
-    我還是很感謝上帝讓我認識你。<br>
-    因為哥哥已經變成我很重要的人了。<br>
-    看到你壓力大，我會擔心。<br>
-    看到你不開心，我會心疼。<br>
-    看到你慢慢變得更好，我也會替你開心。<br>
-    <br>
-    哥哥，<br>
-    30歲了。<br>
-    有一句話我想認真跟你說。<br>
-    你真的很棒!<br>
-    你走過很多別人不知道的路，<br>
-    也熬過很多辛苦的日子。<br>
-    你跌倒過、迷路過，<br>
-    也犯過錯。<br>
-    可是直到今天，你還是沒有放棄自己。<br>
-    而我覺得，這件事情真的很了不起。<br>
-    （不要常常跟別人比自己哦，<br>
-    你自己也很棒！）<br>
-    未來會發生什麼事，<br>
-    我們都不知道。<br>
-    但我希望哥哥永遠記得，<br>
-    一定要一輩子靠著上帝。<br>
-    正如耶利米書<br>
-    (Yeremia) 29:11：<br>
-    「因為我知道我向你們所懷的意念，<br>
-    是賜平安的意念，<br>
-    不是降災禍的意念，<br>
-    要叫你們末後有指望。」<br>
-    "Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan."<br>
-    所以你累的時候找上帝。<br>
-    當你迷茫的時候，<br>
-    回到神面前。<br>
-    不要自己硬扛。<br>
-    因為神從來沒有放棄過你。<br>
-    <br>
-    還有，<br>
-    30歲了請認真多多去運動，做健身！（<br>
-    雖然我自己也常常很懶惰😂）<br>
-    <br>
-    祝30歲的張彬哥哥身體健康、<br>
-    工作順利、越來越成熟、<br>
-    越來越有智慧，<br>
-    也越來越靠近上帝。<br>
-    更希望未來不管遇到什麼事情，<br>
-    都不要覺得自己是一個人。<br>
-    因為神陪著你。<br>
-    家人陪著你。<br>
-    秀也陪著你。<br>
-    謝謝你努力活到了30歲。<br>
-    謝謝你沒有放棄自己。<br>
-    也謝謝你重新出現在我的生命裡。<br>
-    如果當初沒有莫名其妙的回復我IG Story，<br>
-    如果沒有重新遇見，<br>
-    如果聖誕節那天你拒絕跟我去教會，<br>
-    也許今天的我們就不會在這裡。<br>
-    所以我真的很感謝上帝。<br>
-    感謝祂讓我們再次相遇。<br>
-    感謝神讓我們再次遇見彼此。<br>
-    也感謝神讓我有機會，<br>
-    在你30歲生日的時候陪在你身邊。<br>
-    <br>
-    生日快樂呀，哥哥❤️<br>
-    希望以後還有很多很多個生日，我都可以繼續陪在你身邊。<br>
-    我愛你。🎂✨
+                    <div class="letter-paper">哥哥哥哥哥哥，<br>
+秀最愛的哥哥，今天生日啦❤️<br>
+哇，30歲了耶。<br>
+30年真的不是一段短短的時間，我知道哥哥一路走到今天不容易。<br>
+從小在不容易的環境長大，一定有很多委屈、很多掙扎，也有很多我沒有經歷過的事情。<br>
+但我一直覺得，哥哥其實比你自己想像中的還要堅強。<br>
+也許以前很多事情都不完美，<br>
+也走過一些彎路，<br>
+但現在回頭來看，<br>
+我相信一切都不是巧合。<br>
+上帝一步一步帶領哥哥走到今天，<br>
+所以不管以前發生什麼，<br>
+我相信神都有祂的計畫。<br>
+現在的哥哥有上帝、<br>
+有愛你的家人，<br>
+也有秀在這裡☺️<br>
+<br>
+第一次認識哥哥的時候，我對你有興趣。（上次我有跟你説過了）<br>
+結果5年後，我們竟然又在雅加達重新遇見。<br>
+而且到現在我還是不知道，<br>
+你那時候到底為什麼一直回復我去台灣玩的IG Story，還那麼自然地跟我裝熟🤣問東問西哈哈哈。<br>
+我也記得第一次邀請你去教會是在聖誕節。<br>
+老實說，那時候除了邀請你，<br>
+我也偷偷在測試你一下，看看你會不會直接拒絕。<br>
+感謝上帝，你不但沒有拒絕，<br>
+反應還比我想像中好很多。<br>
+Thank God, here we are.<br>
+可能是以前一個禮拜見一兩次面，<br>
+不知不覺時間過的很快。<br>
+我們快3年在一起了噢。<br>
+雖然有時候我真的很討厭哥哥😒。<br>
+也常常被哥哥氣到不行。（我生氣真的不是沒有理由的好不好，只是有時候懶得再解釋，解釋到累了😤）<br>
+可是就算這樣，<br>
+我還是很感謝上帝讓我認識你。<br>
+因為哥哥已經變成我很重要的人了。<br>
+看到你壓力大，我會擔心。<br>
+看到你不開心，我會心疼。<br>
+看到你慢慢變得更好，我也會替你開心。<br>
+<br>
+哥哥，<br>
+30歲了。<br>
+有一句話我想認真跟你說。<br>
+你真的很棒!<br>
+你走過很多別人不知道的路，<br>
+也熬過很多辛苦的日子。<br>
+你跌倒過、迷路過，<br>
+也犯過錯。<br>
+可是直到今天，你還是沒有放棄自己。<br>
+而我覺得，這件事情真的很了不起。<br>
+（不要常常跟別人比自己哦，<br>
+你自己也很棒！）<br>
+未來會發生什麼事，<br>
+我們都不知道。<br>
+但我希望哥哥永遠記得，<br>
+一定要一輩子靠著上帝。<br>
+正如耶利米書<br>
+(Yeremia) 29:11：<br>
+「因為我知道我向你們所懷的意念，<br>
+是賜平安的意念，<br>
+不是降災禍的意念，<br>
+要叫你們末後有指望。」<br>
+"Sebab Aku ini mengetahui rancangan-rancangan apa yang ada pada-Ku mengenai kamu, demikianlah firman TUHAN, yaitu rancangan damai sejahtera dan bukan rancangan kecelakaan, untuk memberikan kepadamu hari depan yang penuh harapan."<br>
+所以你累的時候找上帝。<br>
+當你迷茫的時候，<br>
+回到神面前。<br>
+不要自己硬扛。<br>
+因為神從來沒有放棄過你。<br>
+<br>
+還有，<br>
+30歲了請認真多多去運動，做健身！（<br>
+雖然我自己也常常很懶惰😂）<br>
+<br>
+祝30歲的張彬哥哥身體健康、<br>
+工作順利、越來越成熟、<br>
+越來越有智慧，<br>
+也越來越靠近上帝。<br>
+更希望未來不管遇到什麼事情，<br>
+都不要覺得自己是一個人。<br>
+因為神陪著你。<br>
+家人陪著你。<br>
+秀也陪著你。<br>
+謝謝你努力活到了30歲。<br>
+謝謝你沒有放棄自己。<br>
+也謝謝你重新出現在我的生命裡。<br>
+如果當初沒有莫名其妙的回復我IG Story，<br>
+如果沒有重新遇見，<br>
+如果聖誕節那天你拒絕跟我去教會，<br>
+也許今天的我們就不會在這裡。<br>
+所以我真的很感謝上帝。<br>
+感謝祂讓我們再次相遇。<br>
+感謝神讓我們再次遇見彼此。<br>
+也感謝神讓我有機會，<br>
+在你30歲生日的時候陪在你身邊。<br>
+<br>
+生日快樂呀，哥哥❤️<br>
+希望以後還有很多很多個生日，我都可以繼續陪在你身邊。<br>
+我愛你。🎂✨
 
-    <hr style="border: none; border-top: 1px solid #fde047; margin: 12px 0 10px 0;">
-    <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #4a1525;">
-        Forever yours,<br>
-        <span style="font-style: italic; font-size: 17px; color: #f43f5e; font-weight: 600;">秀</span> <span style="font-style: normal; color: #f43f5e;">❤️</span>
-    </div>
-</div>
+<hr style="border: none; border-top: 1px solid #fde047; margin: 14px 0 10px 0;">
+<div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15.5px; color: #4a1525;">
+    Forever yours,<br>
+    <span style="font-style: italic; font-size: 17.5px; color: #f43f5e; font-weight: 600;">秀</span> <span style="font-style: normal; color: #f43f5e;">❤️</span>
+</div></div>
 
-                    <div style="margin-top: 10px;">
-                        <div style="text-align: center; font-size: 9.5px; font-weight: 600; color: #000000; margin-bottom: 2px;">
+                    <div style="margin-top: 12px;">
+                        <div style="text-align: center; font-size: 10px; font-weight: 600; color: #000000; margin-bottom: 3px;">
                             How long you have survived in this world since November 7, 1996
                         </div>
                         <div class="countdown-grid">
@@ -1188,9 +1190,9 @@
                             <div class="cd-card"><div class="cd-number" id="life-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="height: 4px;"></div>
+                        <div style="height: 5px;"></div>
 
-                        <div style="text-align: center; font-size: 9.5px; font-weight: 600; color: #000000; margin-bottom: 2px;">
+                        <div style="text-align: center; font-size: 10px; font-weight: 600; color: #000000; margin-bottom: 3px;">
                             And you have been spending your time with me for
                         </div>
                         <div class="countdown-grid">
@@ -1202,36 +1204,36 @@
                             <div class="cd-card"><div class="cd-number" id="cd-secs">00</div><div class="cd-label">Secs</div></div>
                         </div>
 
-                        <div style="text-align: center; font-size: 10px; color: #000000; margin-top: 4px; font-weight: 600;" id="cd-total-days">
+                        <div style="text-align: center; font-size: 10.5px; color: #000000; margin-top: 5px; font-weight: 600;" id="cd-total-days">
                             That's calculating days of loving you — and counting.
                         </div>
                     </div>
 
-                    <div style="display: flex; gap: 6px; margin-top: 8px;" id="final-buttons-wrapper" class="hidden">
-                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 6px;">← Back</button>
-                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 6px; box-shadow: 0 3px 8px rgba(244, 63, 94, 0.2);">Click finish</button>
+                    <div style="display: flex; gap: 8px; margin-top: 10px;" id="final-buttons-wrapper" class="hidden">
+                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 8px;">← Back</button>
+                        <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 8px; box-shadow: 0 4px 10px rgba(244, 63, 94, 0.2);">Click finish</button>
                     </div>
                 </div>
 
-                <div style="margin-top: 8px;" id="envelope-back-btn">
-                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151; padding: 6px;">← Back</button>
+                <div style="margin-top: 10px;" id="envelope-back-btn">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="width: 100%; background: #e5e7eb; color: #374151; padding: 8px;">← Back</button>
                 </div>
             </div>
 
             <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
             <div id="finish-celebration-screen" class="hidden" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 110px; height: auto; border-radius: 14px; margin: 0 auto 8px auto;">
-                <h2 style="font-size: 15px; color: #1f2937; font-weight: 700; line-height: 1.3; margin-bottom: 4px;">
+                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 120px; height: auto; border-radius: 16px; margin: 0 auto 10px auto;">
+                <h2 style="font-size: 16px; color: #1f2937; font-weight: 700; line-height: 1.4; margin-bottom: 6px;">
                     Happy 30th Birthday, 張彬哥哥! 🎉<br>
                     <span style="color: #f43f5e;">I love you! ❤️</span>
                 </h2>
-                <div style="font-size: 11px; font-style: italic; color: #6b7280; margin-bottom: 15px;">
+                <div style="font-size: 11.5px; font-style: italic; color: #6b7280; margin-bottom: 18px;">
                     today and every day after .
                 </div>
                 
-                <div style="display: flex; gap: 8px; width: 100%;">
-                    <button class="nav-btn" onclick="goToScreen('letter-countdown')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 8px;">← Back</button>
-                    <button class="btn-primary" onclick="goToScreen('story')" style="flex: 2; padding: 8px;">Play Again 💖</button>
+                <div style="display: flex; gap: 10px; width: 100%;">
+                    <button class="nav-btn" onclick="goToScreen('letter-countdown')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 10px;">← Back</button>
+                    <button class="btn-primary" onclick="goToScreen('story')" style="flex: 2; padding: 10px;">Play Again 💖</button>
                 </div>
             </div>
 
@@ -1559,9 +1561,9 @@
             const symbol = hobbies[Math.floor(Math.random() * hobbies.length)];
             itemEl.innerText = symbol;
             
-            const maxX = container.clientWidth - 35;
+            const maxX = container.clientWidth - 40;
             const x = Math.random() * maxX;
-            let y = -35;
+            let y = -40;
 
             itemEl.style.left = x + 'px';
             itemEl.style.top = y + 'px';
@@ -1612,7 +1614,7 @@
                 item.y += item.speed;
                 item.el.style.top = item.y + 'px';
 
-                if (item.y > containerHeight - 25) {
+                if (item.y > containerHeight - 30) {
                     item.el.remove();
                     fallingItemsList.splice(i, 1);
                 }
@@ -1632,9 +1634,9 @@
             document.getElementById('game-next-btn').classList.remove('hidden');
         }
 
-        // --- MINIGAME 2: FLAPPY BIRD ---
+        // --- MINIGAME 2: FLAPPY BIRD (DI-ZOOM IN & PIPA PRESISI) ---
         let flappyInterval = null;
-        let birdY = 55, birdVelocity = 0;
+        let birdY = 70, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
         let isFlappyRunning = false;
@@ -1652,7 +1654,7 @@
             if (!music.paused) music.pause();
 
             stopFlappyGame();
-            birdY = 55;
+            birdY = 70;
             birdVelocity = 0;
             pipes = [];
             flappyScore = 0;
@@ -1694,24 +1696,23 @@
                 return;
             }
 
-            birdVelocity = -5.0;
+            birdVelocity = -5.5;
             playFlapSound();
         }
 
-       function spawnFlappyPipe() {
-            const containerHeight = 120;
-            const groundHeight = 16;
-            const playableHeight = containerHeight - groundHeight; // 104px
-            const gap = 52; // Celah pas untuk burung melompat naik turun
+        function spawnFlappyPipe() {
+            const containerHeight = 180;
+            const groundHeight = 22;
+            const playableHeight = containerHeight - groundHeight; // 158px
+            const gap = 65; // Celah lompatan
             
-            // Variasi tinggi pipa atas agar acak (naik turun)
-            const minTop = 15;
-            const maxTop = playableHeight - gap - 25;
+            const minTop = 20;
+            const maxTop = playableHeight - gap - 30;
             const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
             const bottomHeight = playableHeight - topHeight - gap;
 
             pipes.push({
-                left: 300,
+                left: 350,
                 topHeight: topHeight,
                 bottomHeight: bottomHeight,
                 passed: false
@@ -1721,9 +1722,9 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            const containerHeight = 120;
-            const groundHeight = 16;
-            const groundLimit = containerHeight - groundHeight - 26; // Batas tanah bawah untuk burung (ukuran burung 26px)
+            const containerHeight = 180;
+            const groundHeight = 22;
+            const groundLimit = containerHeight - groundHeight - 36; // Ukuran burung 36px
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1744,7 +1745,7 @@
                 return;
             }
 
-            birdVelocity += 0.35;
+            birdVelocity += 0.38;
             birdY += birdVelocity;
 
             const birdEl = document.getElementById('flappy-bird');
@@ -1755,7 +1756,6 @@
             if (rot < -20) rot = -20;
             birdEl.style.transform = `rotate(${rot}deg)`;
 
-            // Cek jika jatuh ke tanah atau terbang lewat batas atas
             if (birdY > groundLimit || birdY < 0) {
                 playHitSound();
                 isDying = true;
@@ -1766,23 +1766,23 @@
             pipesArea.innerHTML = '';
 
             for (let i = pipes.length - 1; i >= 0; i--) {
-                pipes[i].left -= 2.2;
+                pipes[i].left -= 2.6;
 
-                // Render Pipa Atas (dari 0 sampai topHeight)
+                // Render Pipa Atas
                 const topPipeBody = document.createElement('div');
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
                 topPipeBody.style.top = '0px';
-                topPipeBody.style.height = Math.max(0, pipes[i].topHeight - 12) + 'px';
+                topPipeBody.style.height = Math.max(0, pipes[i].topHeight - 16) + 'px';
                 pipesArea.appendChild(topPipeBody);
 
                 const topPipeLip = document.createElement('div');
                 topPipeLip.className = 'pipe-lip';
                 topPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                topPipeLip.style.top = Math.max(0, pipes[i].topHeight - 12) + 'px';
+                topPipeLip.style.top = Math.max(0, pipes[i].topHeight - 16) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
-                // Render Pipa Bawah (dari bawah sampai groundHeight)
+                // Render Pipa Bawah
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
@@ -1792,19 +1792,18 @@
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (containerHeight - groundHeight - pipes[i].bottomHeight + 12) + 'px';
+                botPipeBody.style.top = (containerHeight - groundHeight - pipes[i].bottomHeight + 16) + 'px';
                 botPipeBody.style.height = (pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-                // Deteksi Tabrakan Presisi (Hanya mati jika benar-benar menabrak bodi pipa atas atau bawah)
-                // Posisi burung horizontal di 35px dengan lebar 26px
-                const birdLeft = 35;
-                const birdRight = 35 + 26;
+                // Deteksi Tabrakan Presisi
+                const birdLeft = 45;
+                const birdRight = 45 + 36;
                 const birdTop = birdY;
-                const birdBottom = birdY + 26;
+                const birdBottom = birdY + 36;
 
                 const pipeLeft = pipes[i].left;
-                const pipeRight = pipes[i].left + 36;
+                const pipeRight = pipes[i].left + 48;
 
                 if (birdRight > pipeLeft && birdLeft < pipeRight) {
                     if (birdTop < pipes[i].topHeight || birdBottom > (containerHeight - groundHeight - pipes[i].bottomHeight)) {
@@ -1814,8 +1813,8 @@
                     }
                 }
 
-                // Penambahan Skor
-                if (!pipes[i].passed && pipes[i].left < 35) {
+                // Tambah Skor
+                if (!pipes[i].passed && pipes[i].left < 45) {
                     pipes[i].passed = true;
                     flappyScore++;
                     playFlappyPointSound();
@@ -1825,15 +1824,16 @@
                     }
                 }
 
-                if (pipes[i].left < -50) {
+                if (pipes[i].left < -60) {
                     pipes.splice(i, 1);
                 }
             }
 
-            if (pipes.length === 0 || pipes[pipes.length - 1].left < 140) {
+            if (pipes.length === 0 || pipes[pipes.length - 1].left < 160) {
                 spawnFlappyPipe();
             }
         }
+
         function forcePassFlappy() {
             flappyScore = 3;
             stopFlappyGame();
