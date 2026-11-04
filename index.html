@@ -260,16 +260,16 @@
             gap: 12px;
             margin-bottom: 10px;
         }
-        .bubu-small { width: 95px; height: auto; border-radius: 12px; }
+        .bubu-small { width: 150px; height: auto; border-radius: 12px; }
         .speech-bubble {
             background: #fff1f2;
-            padding: 10px 14px;
+            padding: 18px;
             border-radius: 14px;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 700;
             color: #e11d48;
             border: 1px solid #fecdd3;
-            max-width: 170px;
+            max-width: 260px;
         }
 
         .btn-primary {
@@ -304,7 +304,7 @@
         .btn-compact:hover { background: #e11d48; }
 
         .chapter-subtitle { font-size: 11px; color: #f43f5e; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; }
-        .quiz-question { font-size: 15.5px; color: #1f2937; font-weight: 700; margin-bottom: 4px; line-height: 1.35; }
+        .quiz-question { font-size: 24px; color: #1f2937; font-weight: 800; margin-bottom: 4px; line-height: 1.5; }
         .quiz-instruction { font-size: 12px; color: #9ca3af; margin-bottom: 8px; }
         
         .options-grid {
@@ -316,9 +316,10 @@
         .option-btn {
             background: #ffffff;
             border: 2px solid #fecdd3;
-            padding: 10px 12px;
+            padding: 18px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 18px;
+            min-height: 68px;
             color: #4b5563;
             cursor: pointer;
             display: flex;
@@ -333,13 +334,13 @@
             color: #065f46;
         }
         .option-badge {
-            width: 25px; height: 25px;
+            width: 40px; height: 40px;
             border-radius: 50%;
             background: #fee2e2;
             color: #f43f5e;
             display: flex; align-items: center; justify-content: center;
             font-weight: 700;
-            font-size: 11px;
+            font-size: 16px;
             flex-shrink: 0;
         }
         .option-btn.selected .option-badge {
@@ -391,7 +392,7 @@
         }
         .falling-item {
             position: absolute;
-            font-size: 28px;
+            font-size: 48px;
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
@@ -1701,7 +1702,7 @@ Thank God, here we are.<br>
                 return;
             }
 
-            birdVelocity = -5.5;
+            birdVelocity = -5;
             playFlapSound();
         }
 
@@ -1709,7 +1710,7 @@ Thank God, here we are.<br>
             const containerHeight = 240; // Tinggi canvas baru
             const groundHeight = 30;     // Tinggi ground paling bawah
             const playableHeight = containerHeight - groundHeight; // 210px area bersih
-            const gap = 85;              // Celah pipa dibuat sangat besar & lega agar mudah dapat skor
+            const gap = 145;              // Celah pipa dibuat sangat besar & lega agar mudah dapat skor
             
             const minTop = 20;
             const maxTop = playableHeight - gap - 35;
@@ -1750,7 +1751,7 @@ Thank God, here we are.<br>
                 return;
             }
 
-            birdVelocity += 0.35;
+            birdVelocity += 0.28;
             birdY += birdVelocity;
 
             const birdEl = document.getElementById('flappy-bird');
@@ -1761,7 +1762,17 @@ Thank God, here we are.<br>
             if (rot < -20) rot = -20;
             birdEl.style.transform = `rotate(${rot}deg)`;
 
-            if (birdY > groundLimit || birdY < 0) {
+           if (birdY > groundLimit) {
+    playHitSound();
+    isDying = true;
+    return;
+}
+
+if (birdY < 0) {
+    birdY = 0;
+    birdVelocity = 0;
+}
+            {
                 playHitSound();
                 isDying = true;
                 return;
@@ -1771,7 +1782,7 @@ Thank God, here we are.<br>
             pipesArea.innerHTML = '';
 
             for (let i = pipes.length - 1; i >= 0; i--) {
-                pipes[i].left -= 2.2;
+                pipes[i].left -= 1.8;
 
                 // --- 1. RENDER PIPA ATAS ---
                 const topPipeBody = document.createElement('div');
@@ -1801,14 +1812,14 @@ Thank God, here we are.<br>
                 botPipeBody.style.left = pipes[i].left + 'px';
                 botPipeBody.style.top = (bottomPipeTopPos + 18) + 'px';
                 // Tinggi pipa bawah dilebihkan hingga menembus dasar paling bawah canvas
-                botPipeBody.style.height = (pipes[i].bottomHeight + groundHeight + 20) + 'px'; 
+               botPipeBody.style.height = (pipes[i].bottomHeight * 2 + 80) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
                 // --- 3. DETEKSI TABRAKAN AKURAT ---
-                const birdLeft = 50;
-                const birdRight = 50 + 40;
-                const birdTop = birdY;
-                const birdBottom = birdY + 40;
+                const birdLeft = 60;
+                const birdRight = 80;
+                const birdTop = birdY+8;
+                const birdBottom = birdY + 32;
 
                 const pipeLeft = pipes[i].left;
                 const pipeRight = pipes[i].left + 52;
