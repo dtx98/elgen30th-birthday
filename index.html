@@ -1062,7 +1062,7 @@
             </div>
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
-            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 100%; overflow-y: auto;">
+            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: flex-start; height: 100%; overflow-y: auto;">
                 <div style="text-align: center;">
                     <div class="chapter-subtitle" style="margin-bottom: 3px;">One Last Thing</div>
                     <h2 style="font-size: 17px; color: #1f2937; margin-bottom: 8px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
@@ -1874,15 +1874,15 @@ if (birdY < 0) {
     document.getElementById('envelope-back-btn').classList.add('hidden');
     document.getElementById('final-buttons-wrapper').classList.remove('hidden');
 
-    const letterScreen =
-        document.getElementById('letter-countdown-screen');
+    requestAnimationFrame(() => {
+        document
+            .getElementById('letter-countdown-screen')
+            .scrollTo(0, 0);
 
-    letterScreen.scrollTop = 0;
-
-    const card =
-        document.querySelector('.card');
-
-    card.scrollTop = 0;
+        document
+            .querySelector('.card')
+            .scrollTo(0, 0);
+    });
 }
         setInterval(() => {
             const birthDate = new Date('1996-11-07T00:00:00');
