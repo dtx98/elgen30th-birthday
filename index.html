@@ -1006,7 +1006,15 @@
                         <button class="btn-compact" style="background:#f59e0b; margin-bottom: 4px;" onclick="initMinigame()">Try Again</button>
                         <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
                     </div>
-                    <button class="btn-compact hidden" id="game-next-btn" onclick="startFlappyGame()">Next</button>
+                   <button
+class="btn-compact hidden"
+id="game-next-btn"
+onclick="startFlappyGame()"
+style="
+margin:0 auto;
+">
+Next
+</button>
                 </div>
             </div>
             <!-- MINIGAME 2: FLAPPY BIRD (CELAH LEBIH BESAR & PIPA BAWAH MENANCAP KE DASAR) -->
@@ -1046,7 +1054,19 @@
                                 <div class="sb-score-val" id="final-score-val">0</div>
                             </div>
                         </div>
-                        <button class="btn-primary" style="width: 160px; margin-top: 8px; padding: 6px;" onclick="initFlappyGame()">Try Again</button>
+                       <button
+id="flappy-restart-btn"
+class="nav-btn"
+onclick="initFlappyGame()">
+Try Again
+</button>
+
+<button
+id="flappy-win-btn"
+class="btn-primary hidden"
+onclick="goToScreen('letter-countdown')">
+Open Letter 💌
+</button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1057,13 +1077,16 @@
                 <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0; margin-top: 4px;">
                     <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 7px 14px;">← Back</button>
                     <div style="flex: 1;"></div>
-                    <button class="btn-primary hidden" id="flappy-next-btn" onclick="goToScreen('letter-countdown')" style="flex: 2; padding: 7px;">Open Letter 💌</button>
-                </div>
             </div>
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
-            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: flex-start; height: 100%; overflow-y: auto;">
-                <div style="text-align: center;">
+            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
+                <div style="
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+">
                     <div class="chapter-subtitle" style="margin-bottom: 3px;">One Last Thing</div>
                     <h2 style="font-size: 17px; color: #1f2937; margin-bottom: 8px; font-family: 'Playfair Display', serif; font-weight: 600;">A letter, just for you</h2>
                 
@@ -1683,7 +1706,7 @@ style="margin-top:8px; text-align:left;"
             isDying = false;
 
             document.getElementById('flappy-score-text').innerText = `0`;
-            document.getElementById('flappy-next-btn').classList.add('hidden');
+           
             document.getElementById('pipes-area').innerHTML = '';
             document.getElementById('game-over-modal').classList.add('hidden');
 
@@ -1744,7 +1767,7 @@ style="margin-top:8px; text-align:left;"
 
             const containerHeight = 240;
             const groundHeight = 30;
-           const groundLimit = containerHeight - 58;
+          const groundLimit = containerHeight - groundHeight - 58;
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1753,11 +1776,38 @@ style="margin-top:8px; text-align:left;"
                     birdY = groundLimit;
                     isFlappyRunning = false;
                     clearInterval(flappyInterval);
+                   const title =
+document.querySelector('.game-over-title');
+
+if (flappyScore >= 3) {
+
+    title.innerText = 'YOU WIN';
+    title.style.color = '#fde047';
+
+    document.getElementById('flappy-restart-btn')
+        .classList.add('hidden');
+
+    document.getElementById('flappy-win-btn')
+        .classList.remove('hidden');
+
+}
+else {
+
+    title.innerText = 'GAME OVER';
+    title.style.color = '#ffa500';
+
+    document.getElementById('flappy-restart-btn')
+        .classList.remove('hidden');
+
+    document.getElementById('flappy-win-btn')
+        .classList.add('hidden');
+
+}
+
+
                     document.getElementById('final-score-val').innerText = flappyScore;
                     document.getElementById('game-over-modal').classList.remove('hidden');
-                    if (flappyScore >= 3) {
-                        document.getElementById('flappy-next-btn').classList.remove('hidden');
-                    }
+                    
                 }
                 const birdEl = document.getElementById('flappy-bird');
                 birdEl.style.top = birdY + 'px';
@@ -1807,8 +1857,11 @@ if (birdY < 0) {
                 pipesArea.appendChild(topPipeLip);
 
                 // --- 2. RENDER PIPA BAWAH (BENAR-BENAR MENANCAP HINGGA DASAR GAMBAR & GROUND) ---
-                const bottomPipeTopPos = containerHeight - groundHeight - pipes[i].bottomHeight;
-                
+                const bottomPipeTopPos =
+containerHeight - pipes[i].bottomHeight;
+
+const collisionBottom =
+bottomPipeTopPos + 18;
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
@@ -1820,20 +1873,22 @@ if (birdY < 0) {
                 botPipeBody.style.left = pipes[i].left + 'px';
                 botPipeBody.style.top = (bottomPipeTopPos + 18) + 'px';
                 // Tinggi pipa bawah dilebihkan hingga menembus dasar paling bawah canvas
-               botPipeBody.style.height = (pipes[i].bottomHeight * 2.5 + 120) + 'px';
+              botPipeBody.style.height =(pipes[i].bottomHeight + 200) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
+
                 // --- 3. DETEKSI TABRAKAN AKURAT ---
-                const birdLeft = 66;
-                const birdRight = 92;
-                const birdTop = birdY + 14;
-                const birdBottom = birdY + 44;
+                const birdLeft = 72;
+                const birdRight = 86;
+                const birdTop = birdY + 20;
+                const birdBottom = birdY + 38;
 
                 const pipeLeft = pipes[i].left;
                 const pipeRight = pipes[i].left + 52;
 
                 if (birdRight > pipeLeft && birdLeft < pipeRight) {
-                    if (birdTop < pipes[i].topHeight || birdBottom > bottomPipeTopPos) {
+    if (birdTop < pipes[i].topHeight ||
+        birdBottom > collisionBottom) {
                         playHitSound();
                         isDying = true;
                         return;
@@ -1847,8 +1902,14 @@ if (birdY < 0) {
                     playFlappyPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
                     if (flappyScore >= 3) {
-                        document.getElementById('flappy-next-btn').classList.remove('hidden');
-                    }
+    document
+        .getElementById('flappy-restart-btn')
+        .classList.add('hidden');
+
+    document
+        .getElementById('flappy-win-btn')
+        .classList.remove('hidden');
+}
                 }
 
                 if (pipes[i].left < -70) {
@@ -1862,11 +1923,9 @@ if (birdY < 0) {
         }
 
         function forcePassFlappy() {
-            flappyScore = 3;
-            stopFlappyGame();
-            document.getElementById('flappy-score-text').innerText = `3`;
-            document.getElementById('flappy-next-btn').classList.remove('hidden');
-        }
+    flappyScore = 3;
+    goToScreen('letter-countdown');
+}
 
       function openLetter() {
     document.getElementById('envelope-wrapper').classList.add('hidden');
