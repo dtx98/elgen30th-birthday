@@ -1059,15 +1059,24 @@ Next
                     <!-- Game Over Modal -->
                     <div id="game-over-modal" class="game-over-modal hidden" onclick="event.stopPropagation();">
                         <div class="game-over-title">GAME OVER</div>
-                        <div class="score-board-box">
-                            <div class="sb-column">
-                                <div class="sb-label">MEDAL</div>
-                                <div class="medal-icon">🏆</div>
-                            </div>
-                            <div class="sb-column">
-                                <div class="sb-label">SCORE</div>
-                                <div class="sb-score-val" id="final-score-val">0</div>
-                            </div>
+                       <div class="score-board-box">
+
+    <div class="sb-column">
+        <div class="sb-label">MEDAL</div>
+        <div class="medal-icon">🏆</div>
+    </div>
+
+    <div class="sb-column">
+        <div class="sb-label">SCORE</div>
+        <div class="sb-score-val" id="final-score-val">0</div>
+    </div>
+
+    <div class="sb-column">
+        <div class="sb-label">BEST</div>
+        <div class="sb-score-val" id="best-score-val">0</div>
+    </div>
+
+</div>
                         </div>
                        <button
 id="flappy-restart-btn"
@@ -1569,6 +1578,14 @@ style="margin-top:8px; text-align:left;"
 
         function initMinigame() {
             stopMinigame();
+            const minigameBgAudio =
+    document.getElementById('minigame1-bg-sound');
+
+if (minigameBgAudio) {
+    minigameBgAudio.volume = 0.25;
+    minigameBgAudio.currentTime = 0;
+    minigameBgAudio.play().catch(e => console.log(e));
+}
             score = 0;
             timeLeft = 30;
             targetSymbol = null;
@@ -1695,6 +1712,9 @@ style="margin-top:8px; text-align:left;"
         let birdY = 80, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
+        let bestScore =
+parseInt(localStorage.getItem('flappyBestScore')) || 0;
+
         let isFlappyRunning = false;
         let gameStarted = false;
         let isDying = false;
@@ -1780,7 +1800,7 @@ style="margin-top:8px; text-align:left;"
 
             const containerHeight = 240;
             const groundHeight = 30;
-        const groundLimit = containerHeight - groundHeight + 90;
+        const groundLimit = containerHeight - groundHeight + 120;
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1819,6 +1839,7 @@ else {
 
 
                     document.getElementById('final-score-val').innerText = flappyScore;
+                    document.getElementById('best-score-val').innerText = bestScore;
                     document.getElementById('game-over-modal').classList.remove('hidden');
                     
                 }
@@ -1853,8 +1874,8 @@ if (birdY < 0) {
             pipesArea.innerHTML = '';
 
             for (let i = pipes.length - 1; i >= 0; i--) {
-                pipes[i].left -= 1.8;
-
+               const pipeSpeed =
+1.8 + Math.min(flappyScore * 0.15, 2);
                 // --- 1. RENDER PIPA ATAS ---
                 const topPipeBody = document.createElement('div');
                 topPipeBody.className = 'pipe-body';
@@ -1909,9 +1930,18 @@ bottomPipeTopPos;
                 }
 
                 // Tambah Skor
-                if (!pipes[i].passed && pipes[i].left < 50) {
-                    pipes[i].passed = true;
-                    flappyScore++;
+              if (!pipes[i].passed && pipes[i].left < 50) {
+    pipes[i].passed = true;
+    flappyScore++;
+
+    if (flappyScore > bestScore) {
+        bestScore = flappyScore;
+        localStorage.setItem(
+            'flappyBestScore',
+            bestScore
+        );
+    }
+
                     playFlappyPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
                     if (flappyScore >= 3) {
