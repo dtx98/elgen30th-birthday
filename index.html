@@ -195,13 +195,13 @@
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        .card {
+       .card {
             background: #ffffff;
             color: #333;
             width: 100%;
             max-width: 390px;
-            height: 52vh; /* Diatur agar lebih kompak / sekitar setengah layar */
-            max-height: 480px; /* Dibatasi agar tidak terlalu panjang ke bawah */
+            height: 50vh;
+            max-height: 460px;
             padding: 12px 14px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -210,6 +210,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            margin: auto; /* Membuat posisi card persis di tengah secara vertical & horizontal */
         }
         .skip-btn {
             position: absolute;
@@ -388,9 +389,9 @@
             touch-action: manipulation;
         }
 
-        .flappy-canvas-container {
+       .flappy-canvas-container {
             width: 100%;
-            height: 130px;
+            height: 120px;
             background: url('flappy bgdrop.jpg') no-repeat center center;
             background-size: cover;
             border: 2px solid #fecdd3;
@@ -400,11 +401,8 @@
             margin-bottom: 6px;
             cursor: pointer;
             -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
         }
         .flappy-bg-scenery {
             position: absolute;
@@ -425,15 +423,14 @@
             100% { transform: translateX(-50%); }
         }
 
-        .flappy-ground {
+       .flappy-ground {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 18px;
+            height: 16px;
             background: #ded895;
             border-top: 2px solid #558022;
-            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.05) 0, rgba(0,0,0,0.05) 8px, transparent 0, transparent 16px);
             z-index: 4;
         }
         .flappy-bird {
@@ -446,17 +443,17 @@
             pointer-events: none;
             transition: transform 0.1s linear;
         }
-        .pipe-body {
+       .pipe-body {
             position: absolute;
-            width: 38px;
+            width: 36px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             z-index: 2;
         }
         .pipe-lip {
             position: absolute;
-            width: 44px;
-            height: 14px;
+            width: 42px;
+            height: 12px;
             background: linear-gradient(90deg, #558022 0%, #73bf2e 45%, #9ade52 70%, #4a7019 100%);
             border: 2px solid #2b3e0c;
             border-radius: 3px;
@@ -1701,17 +1698,22 @@
             playFlapSound();
         }
 
-        function spawnFlappyPipe() {
-            const containerHeight = 130;
-            const gap = 65;
-            const minHeight = 20;
-            const maxHeight = containerHeight - gap - minHeight - 18;
-            const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+       function spawnFlappyPipe() {
+            const containerHeight = 120;
+            const groundHeight = 16;
+            const playableHeight = containerHeight - groundHeight; // 104px
+            const gap = 52; // Celah pas untuk burung melompat naik turun
+            
+            // Variasi tinggi pipa atas agar acak (naik turun)
+            const minTop = 15;
+            const maxTop = playableHeight - gap - 25;
+            const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
+            const bottomHeight = playableHeight - topHeight - gap;
 
             pipes.push({
                 left: 300,
                 topHeight: topHeight,
-                bottomHeight: containerHeight - topHeight - gap - 18,
+                bottomHeight: bottomHeight,
                 passed: false
             });
         }
@@ -1719,8 +1721,9 @@
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
-            const containerHeight = 130;
-            const groundLimit = containerHeight - 18 - 28;
+            const containerHeight = 120;
+            const groundHeight = 16;
+            const groundLimit = containerHeight - groundHeight - 26; // Batas tanah bawah untuk burung (ukuran burung 26px)
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1752,6 +1755,7 @@
             if (rot < -20) rot = -20;
             birdEl.style.transform = `rotate(${rot}deg)`;
 
+            // Cek jika jatuh ke tanah atau terbang lewat batas atas
             if (birdY > groundLimit || birdY < 0) {
                 playHitSound();
                 isDying = true;
@@ -1762,42 +1766,55 @@
             pipesArea.innerHTML = '';
 
             for (let i = pipes.length - 1; i >= 0; i--) {
-                pipes[i].left -= 2.5;
+                pipes[i].left -= 2.2;
 
+                // Render Pipa Atas (dari 0 sampai topHeight)
                 const topPipeBody = document.createElement('div');
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
                 topPipeBody.style.top = '0px';
-                topPipeBody.style.height = (pipes[i].topHeight - 14) + 'px';
+                topPipeBody.style.height = Math.max(0, pipes[i].topHeight - 12) + 'px';
                 pipesArea.appendChild(topPipeBody);
 
                 const topPipeLip = document.createElement('div');
                 topPipeLip.className = 'pipe-lip';
                 topPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                topPipeLip.style.top = (pipes[i].topHeight - 14) + 'px';
+                topPipeLip.style.top = Math.max(0, pipes[i].topHeight - 12) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
+                // Render Pipa Bawah (dari bawah sampai groundHeight)
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (containerHeight - 18 - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.top = (containerHeight - groundHeight - pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (containerHeight - 18 - pipes[i].bottomHeight + 14) + 'px';
-                botPipeBody.style.height = (pipes[i].bottomHeight + 60) + 'px';
+                botPipeBody.style.top = (containerHeight - groundHeight - pipes[i].bottomHeight + 12) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-                if (pipes[i].left < 35 + 28 && pipes[i].left + 38 > 35) {
-                    if (birdY < pipes[i].topHeight || birdY + 28 > containerHeight - 18 - pipes[i].bottomHeight) {
+                // Deteksi Tabrakan Presisi (Hanya mati jika benar-benar menabrak bodi pipa atas atau bawah)
+                // Posisi burung horizontal di 35px dengan lebar 26px
+                const birdLeft = 35;
+                const birdRight = 35 + 26;
+                const birdTop = birdY;
+                const birdBottom = birdY + 26;
+
+                const pipeLeft = pipes[i].left;
+                const pipeRight = pipes[i].left + 36;
+
+                if (birdRight > pipeLeft && birdLeft < pipeRight) {
+                    if (birdTop < pipes[i].topHeight || birdBottom > (containerHeight - groundHeight - pipes[i].bottomHeight)) {
                         playHitSound();
                         isDying = true;
                         return;
                     }
                 }
 
+                // Penambahan Skor
                 if (!pipes[i].passed && pipes[i].left < 35) {
                     pipes[i].passed = true;
                     flappyScore++;
@@ -1813,11 +1830,10 @@
                 }
             }
 
-            if (pipes.length === 0 || pipes[pipes.length - 1].left < 150) {
+            if (pipes.length === 0 || pipes[pipes.length - 1].left < 140) {
                 spawnFlappyPipe();
             }
         }
-
         function forcePassFlappy() {
             flappyScore = 3;
             stopFlappyGame();
