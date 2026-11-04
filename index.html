@@ -1002,16 +1002,29 @@
                 <div class="game-canvas-container" id="game-container" style="flex: 1;"></div>
 
                 <div>
-                    <div id="try-again-box" class="hidden" style="margin-bottom: 6px; animation: fadeIn 0.3s;">
+                   <div id="try-again-box"
+     class="hidden"
+     style="
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        z-index:50;
+        animation:fadeIn 0.3s;
+     ">
                         <button class="btn-compact" style="background:#f59e0b; margin-bottom: 4px;" onclick="initMinigame()">Try Again</button>
                         <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
                     </div>
-                   <button
+                  <button
 class="btn-compact hidden"
 id="game-next-btn"
 onclick="startFlappyGame()"
 style="
-margin:0 auto;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:50;
 ">
 Next
 </button>
@@ -1057,6 +1070,7 @@ Next
                        <button
 id="flappy-restart-btn"
 class="nav-btn"
+style="margin-top:15px;"
 onclick="initFlappyGame()">
 Try Again
 </button>
