@@ -1228,7 +1228,7 @@ Thank God, here we are.<br>
 
             <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
             <div id="finish-celebration-screen" class="hidden" style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 120px; height: auto; border-radius: 16px; margin: 0 auto 10px auto;">
+                <img src="https://i.pinimg.com/originals/34/44/85/34448583290eb3b5ebb0a8699847ed21.gif" alt="Celebration GIF" style="width: 300px; height: auto; border-radius: 16px; margin: 0 auto 10px auto;">
                 <h2 style="font-size: 16px; color: #1f2937; font-weight: 700; line-height: 1.35; margin-bottom: 6px;">
                     Happy 30th Birthday, 張彬哥哥! 🎉<br>
                     <span style="color: #f43f5e;">I love you! ❤️</span>
@@ -1772,12 +1772,6 @@ if (birdY < 0) {
     birdY = 0;
     birdVelocity = 0;
 }
-            {
-                playHitSound();
-                isDying = true;
-                return;
-            }
-
             const pipesArea = document.getElementById('pipes-area');
             pipesArea.innerHTML = '';
 
@@ -1812,14 +1806,14 @@ if (birdY < 0) {
                 botPipeBody.style.left = pipes[i].left + 'px';
                 botPipeBody.style.top = (bottomPipeTopPos + 18) + 'px';
                 // Tinggi pipa bawah dilebihkan hingga menembus dasar paling bawah canvas
-               botPipeBody.style.height = (pipes[i].bottomHeight * 2 + 80) + 'px';
+               botPipeBody.style.height = (pipes[i].bottomHeight * 2.5 + 120) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
                 // --- 3. DETEKSI TABRAKAN AKURAT ---
-                const birdLeft = 60;
-                const birdRight = 80;
-                const birdTop = birdY+8;
-                const birdBottom = birdY + 32;
+                const birdLeft = 63;
+                const birdRight = 77;
+                const birdTop = birdY+10;
+                const birdBottom = birdY + 30;
 
                 const pipeLeft = pipes[i].left;
                 const pipeRight = pipes[i].left + 52;
