@@ -397,6 +397,15 @@
             cursor: pointer;
             user-select: none;
             touch-action: manipulation;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .falling-item img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
 
         /* MINIGAME 2 (FLAPPY BIRD) */
@@ -1609,35 +1618,54 @@ Thank God, here we are.<br>
             if (!container) return;
             const itemEl = document.createElement('div');
             itemEl.className = 'falling-item';
-            const symbol = hobbies[Math.floor(Math.random() * hobbies.length)];
-            itemEl.innerText = symbol;
-            
-            const maxX = container.clientWidth - 35;
+
+            // 15% peluang muncul bonus wajah.png dengan speed cepat & ukuran besar
+            const isSpecialFace = Math.random() < 0.15;
+            let symbol = isSpecialFace ? 'FACE' : hobbies[Math.floor(Math.random() * hobbies.length)];
+            let speed = isSpecialFace ? (6.5 + Math.random() * 2) : (2.5 + Math.random() * 2);
+
+            if (isSpecialFace) {
+                const img = document.createElement('img');
+                img.src = 'wajah.png';
+                img.alt = 'Face Bonus';
+                itemEl.appendChild(img);
+            } else {
+                itemEl.innerText = symbol;
+            }
+
+            const itemWidth = isSpecialFace ? 64 : 48;
+            const maxX = Math.max(10, container.clientWidth - itemWidth);
             const x = Math.random() * maxX;
-            let y = -35;
+            let y = -itemWidth;
 
             itemEl.style.left = x + 'px';
             itemEl.style.top = y + 'px';
 
-            const itemObj = { el: itemEl, x: x, y: y, symbol: symbol, speed: 2.5 + Math.random() * 2 };
+            const itemObj = { el: itemEl, x: x, y: y, symbol: symbol, isSpecialFace: isSpecialFace, speed: speed };
 
             itemEl.onmousedown = itemEl.ontouchstart = (e) => {
                 e.preventDefault();
                 playMinigame1PointSound();
 
-                if (!targetSymbol) {
-                    targetSymbol = symbol;
-                }
-
-                if (symbol === targetSymbol) {
-                    score++;
+                if (isSpecialFace) {
+                    score += 7;
                 } else {
-                    targetSymbol = symbol;
-                    score = Math.max(0, score - 1);
+                    if (!targetSymbol) {
+                        targetSymbol = symbol;
+                    }
+
+                    if (symbol === targetSymbol) {
+                        score++;
+                    } else {
+                        targetSymbol = symbol;
+                        score = Math.max(0, score - 1);
+                    }
                 }
 
                 document.getElementById('game-score').innerText = `Score: ${score} / 30`;
-                document.getElementById('game-target').innerText = `Target: ${targetSymbol}`;
+                if (targetSymbol) {
+                    document.getElementById('game-target').innerText = `Target: ${targetSymbol}`;
+                }
                 
                 if (score >= 30) {
                     stopMinigame();
