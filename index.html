@@ -161,54 +161,45 @@
 
         .error-shake { animation: shake 0.4s ease-in-out; }
 
-        /* MOBILE OPTIMIZED LAYOUT */
+       /* MOBILE OPTIMIZED LAYOUT - FIX KETUTUP URL BAR HP */
         .main-layout {
             display: flex;
             flex-direction: column;
             width: 100%;
             max-width: 380px;
-            height: 88vh; /* Aman dari ketutup URL bar mobile browser */
-            max-height: 600px;
-            gap: 8px;
+            height: 100vh;
+            height: 100dvh; /* Menggunakan dynamic viewport agar aman dari URL bar mobile browser */
+            max-height: 580px;
+            gap: 6px;
             align-items: center;
             justify-content: center;
             z-index: 2;
             margin: auto;
+            padding: 4px 0;
         }
 
-        /* TIMELINE BAR */
+        /* TIMELINE BAR DI ATAS KARTU PUTIH */
         .timeline-bar {
             display: flex;
             justify-content: space-between;
             width: 100%;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
-            padding: 6px 14px;
+            padding: 5px 14px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             flex-shrink: 0;
         }
-        .tl-dot {
-            width: 26px; height: 26px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            color: #d1d5db;
-            font-size: 11px; font-weight: 600;
-            display: flex; align-items: center; justify-content: center;
-            border: 2px solid rgba(255,255,255,0.25);
-        }
-        .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
-        .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        /* KANVAS PUTIH (CARD) YANG DIKECILKAN TINGGINYA */
+        /* KANVAS PUTIH (CARD) YANG DINGKATKAN TINGGINYA AGAR TIDAK KEPANJANGAN */
         .card {
             background: #ffffff;
             color: #333;
             width: 100%;
             max-width: 380px;
             height: 100%;
-            max-height: 520px; /* Pas di layar HP tanpa perlu scroll */
-            padding: 14px 14px;
+            max-height: 480px; /* Dibatasi proporsional agar pas di layar HP */
+            padding: 12px 14px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
