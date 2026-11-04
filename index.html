@@ -1868,13 +1868,20 @@ if (birdY < 0) {
             document.getElementById('flappy-next-btn').classList.remove('hidden');
         }
 
-       function openLetter() {
+      function openLetter() {
     document.getElementById('envelope-wrapper').classList.add('hidden');
     document.getElementById('opened-letter-wrapper').classList.remove('hidden');
     document.getElementById('envelope-back-btn').classList.add('hidden');
     document.getElementById('final-buttons-wrapper').classList.remove('hidden');
 
-    const card = document.querySelector('.card');
+    const letterScreen =
+        document.getElementById('letter-countdown-screen');
+
+    letterScreen.scrollTop = 0;
+
+    const card =
+        document.querySelector('.card');
+
     card.scrollTop = 0;
 }
         setInterval(() => {
