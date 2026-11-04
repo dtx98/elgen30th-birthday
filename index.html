@@ -416,10 +416,11 @@
         }
         .flappy-bg-scenery {
             position: absolute;
-            bottom: 30px;
+            top: 0;
+            bottom: 0;
             left: 0;
             width: 200%;
-            height: 45px;
+            height: auto;
             background-image: url('flappy bgdrop.jpg');
             background-size: cover;
             background-repeat: repeat-x;
@@ -1216,7 +1217,7 @@ Thank God, here we are.<br>
                     </div>
 
                     <div style="display: flex; gap: 8px; margin-top: 10px;" id="final-buttons-wrapper" class="hidden">
-                        <button class="nav-btn" onclick="goToScreen('minigame')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 7px;">← Back</button>
+                        <button class="nav-btn" onclick="goToScreen('flappy')" style="flex: 1; background: #e5e7eb; color: #374151; padding: 7px;">← Back</button>
                         <button class="btn-primary" onclick="showFinishCelebration()" style="flex: 2; background: #fbcfe8; color: #831843; padding: 7px; box-shadow: 0 3px 8px rgba(244, 63, 94, 0.2);">Click finish</button>
                     </div>
                 </div>
@@ -1227,7 +1228,7 @@ style="margin-top:8px; text-align:left;"
 >
     <button
         class="nav-btn"
-        onclick="goToScreen('minigame')"
+        onclick="goToScreen('flappy')"
         style="
             padding:6px 12px;
             background:#e5e7eb;
@@ -1743,7 +1744,7 @@ style="margin-top:8px; text-align:left;"
 
             const containerHeight = 240;
             const groundHeight = 30;
-            const groundLimit = containerHeight - groundHeight - 40; // Tinggi burung 40px
+           const groundLimit = containerHeight - 58;
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1867,13 +1868,14 @@ if (birdY < 0) {
             document.getElementById('flappy-next-btn').classList.remove('hidden');
         }
 
-        function openLetter() {
+       function openLetter() {
     document.getElementById('envelope-wrapper').classList.add('hidden');
     document.getElementById('opened-letter-wrapper').classList.remove('hidden');
     document.getElementById('envelope-back-btn').classList.add('hidden');
     document.getElementById('final-buttons-wrapper').classList.remove('hidden');
 
-    document.querySelector('.card').scrollTop = 0;
+    const card = document.querySelector('.card');
+    card.scrollTop = 0;
 }
         setInterval(() => {
             const birthDate = new Date('1996-11-07T00:00:00');
