@@ -6,7 +6,6 @@
     <title>Happy 30th Birthday, Elgen!</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Playfair+Display:wght@400;600&display=swap');
-        
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none;
     user-select: none; }
@@ -61,7 +60,7 @@
 
         .hidden { display: none !important; }
 
-        /* LOCKSCREEN iOS STYLE (DIPERBESAR) */
+        /* LOCKSCREEN iOS STYLE */
         .lockscreen-wrapper {
             background: linear-gradient(160deg, #9b5a6c 0%, #7b4352 40%, #512633 80%, #35131f 100%);
             color: #fff;
@@ -163,7 +162,7 @@
 
         .error-shake { animation: shake 0.4s ease-in-out; }
 
-        /* MAIN LAYOUT (DIPERBESAR RESOLUSINYA) */
+        /* MAIN LAYOUT */
         .main-layout {
             display: flex;
             flex-direction: column;
@@ -204,7 +203,7 @@
         .tl-dot.active { background: #f43f5e; color: white; border-color: #f43f5e; }
         .tl-dot.completed { background: #10b981; color: white; border-color: #10b981; }
 
-        /* KANVAS PUTIH (CARD) DIPERBESAR TAPI TETAP KOMPAK DI TENGAH */
+        /* CARD CONTAINERS */
         .card {
             background: #ffffff;
             color: #333;
@@ -400,7 +399,7 @@
             touch-action: manipulation;
         }
 
-        /* MINIGAME 2 (FLAPPY BIRD) - RESOLUSI DIPERBESAR & PIPA BAWAH MENANCAP SAMPAI DASAR GAMBAR */
+        /* MINIGAME 2 (FLAPPY BIRD) */
         .flappy-canvas-container {
             width: 100%;
             height: 240px;
@@ -441,15 +440,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 30px; /* Persis di dasar paling bawah gambar */
+            height: 30px;
             background: #ded895;
             border-top: 3px solid #558022;
             z-index: 4;
         }
         .flappy-bird {
             position: absolute;
-            width: 58px;
-            height: 58px;
+            width: 48px;
+            height: 48px;
             object-fit: contain;
             left: 50px;
             z-index: 5;
@@ -704,7 +703,6 @@
     </style>
 </head>
 <body>
-
     <audio id="bg-music" loop>
         <source src="bgmusic.mp3" type="audio/mpeg">
     </audio>
@@ -1005,34 +1003,35 @@
 
                 <div>
                    <div id="try-again-box"
-     class="hidden"
-     style="
-        position:absolute;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        z-index:50;
-        animation:fadeIn 0.3s;
-     ">
+                        class="hidden"
+                        style="
+                            position:absolute;
+                            top:50%;
+                            left:50%;
+                            transform:translate(-50%,-50%);
+                            z-index:50;
+                            animation:fadeIn 0.3s;
+                        ">
                         <button class="btn-compact" style="background:#f59e0b; margin-bottom: 4px;" onclick="initMinigame()">Try Again</button>
                         <button class="btn-compact" style="background:#10b981;" onclick="startFlappyGame()">Next</button>
                     </div>
-                  <button
-class="btn-compact hidden"
-id="game-next-btn"
-onclick="startFlappyGame()"
-style="
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-z-index:50;
-">
-Next
-</button>
+                    <button
+                        class="btn-compact hidden"
+                        id="game-next-btn"
+                        onclick="startFlappyGame()"
+                        style="
+                            position:absolute;
+                            top:50%;
+                            left:50%;
+                            transform:translate(-50%,-50%);
+                            z-index:50;
+                        ">
+                        Next
+                    </button>
                 </div>
             </div>
-            <!-- MINIGAME 2: FLAPPY BIRD (CELAH LEBIH BESAR & PIPA BAWAH MENANCAP KE DASAR) -->
+
+            <!-- MINIGAME 2: FLAPPY BIRD -->
             <div id="flappy-screen" class="hidden" style="text-align: center; position: relative; display: flex; flex-direction: column; height: 100%;">
                 <button class="home-btn" onclick="goToScreen('story')" title="Home">🏠</button>
 
@@ -1059,39 +1058,38 @@ Next
                     <!-- Game Over Modal -->
                     <div id="game-over-modal" class="game-over-modal hidden" onclick="event.stopPropagation();">
                         <div class="game-over-title">GAME OVER</div>
-                       <div class="score-board-box">
+                        <div class="score-board-box">
+                            <div class="sb-column">
+                                <div class="sb-label">MEDAL</div>
+                                <div class="medal-icon">🏆</div>
+                            </div>
 
-    <div class="sb-column">
-        <div class="sb-label">MEDAL</div>
-        <div class="medal-icon">🏆</div>
-    </div>
+                            <div class="sb-column">
+                                <div class="sb-label">SCORE</div>
+                                <div class="sb-score-val" id="final-score-val">0</div>
+                            </div>
 
-    <div class="sb-column">
-        <div class="sb-label">SCORE</div>
-        <div class="sb-score-val" id="final-score-val">0</div>
-    </div>
-
-    <div class="sb-column">
-        <div class="sb-label">BEST</div>
-        <div class="sb-score-val" id="best-score-val">0</div>
-    </div>
-
-</div>
+                            <div class="sb-column">
+                                <div class="sb-label">BEST</div>
+                                <div class="sb-score-val" id="best-score-val">0</div>
+                            </div>
                         </div>
-                       <button
-id="flappy-restart-btn"
-class="nav-btn"
-style="margin-top:15px;"
-onclick="initFlappyGame()">
-Try Again
-</button>
 
-<button
-id="flappy-win-btn"
-class="btn-primary hidden"
-onclick="goToScreen('letter-countdown')">
-Open Letter 💌
-</button>
+                        <button
+                            id="flappy-restart-btn"
+                            class="nav-btn"
+                            style="margin-top:15px;"
+                            onclick="initFlappyGame()">
+                            Try Again
+                        </button>
+
+                        <button
+                            id="flappy-win-btn"
+                            class="btn-primary hidden"
+                            style="margin-top:15px; width:auto; padding:8px 16px;"
+                            onclick="goToScreen('letter-countdown')">
+                            Open Letter 💌
+                        </button>
                     </div>
 
                     <img src="bird.png" alt="Bird" class="flappy-bird" id="flappy-bird">
@@ -1099,24 +1097,18 @@ Open Letter 💌
                     <div class="flappy-ground"></div>
                 </div>
 
-               <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0; margin-top: 4px;">
-    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 7px 14px;">
-        ← Back
-    </button>
+                <div style="display: flex; gap: 8px; align-items: center; flex-shrink: 0; margin-top: 4px;">
+                    <button class="nav-btn" onclick="goToScreen('minigame')" style="background: #e5e7eb; color: #374151; padding: 7px 14px;">
+                        ← Back
+                    </button>
+                    <div style="flex: 1;"></div>
+                </div>
 
-    <div style="flex: 1;"></div>
-</div>
+            </div>  <!-- PENUTUP FLAPPY-SCREEN -->
 
-</div>  <!-- PENUTUP FLAPPY-SCREEN -->
-
-<!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
-<div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
-                <div style="
-flex:1;
-display:flex;
-flex-direction:column;
-justify-content:center;
-">
+            <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
+            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
+                <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
                     <div class="chapter-subtitle" style="margin-bottom: 3px;text-align: center;">One Last Thing</div>
                     <h2 style="font-size: 17px; color: #1f2937; margin-bottom: 8px; font-family: 'Playfair Display', serif; font-weight: 600;text-align: center;">A letter, just for you</h2>
                 
@@ -1203,7 +1195,7 @@ Thank God, here we are.<br>
 都不要覺得自己是一個人。<br>
 因為神陪著你。<br>
 家人陪著你。<br>
-秀也陪著你。<br> 
+秀也陪著你。<br>
 <br>
 謝謝你努力活到了30歲。<br>
 謝謝你沒有放棄自己。<br>
@@ -1222,13 +1214,11 @@ Thank God, here we are.<br>
 希望以後還有很多很多個生日，<br>
 我都可以繼續陪在你身邊。<br>
 我愛你。
-
 <hr style="border: none; border-top: 1px solid #fde047; margin: 12px 0 10px 0;">
 <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #4a1525;">
     Forever yours,<br>
     <span style="font-style: italic; font-size: 17.5px; color: #f43f5e; font-weight: 600;">秀</span> <span style="font-style: normal; color: #f43f5e;">❤️</span>
 </div></div>
-
                     <div style="margin-top: 10px;">
                         <div style="text-align: center; font-size: 10px; font-weight: 600; color: #000000; margin-bottom: 3px;">
                             How long you have survived in this world since November 7, 1996
@@ -1267,22 +1257,11 @@ Thank God, here we are.<br>
                     </div>
                 </div>
 
-              <div
-id="envelope-back-btn"
-style="margin-top:8px; text-align:left;"
->
-    <button
-        class="nav-btn"
-        onclick="goToScreen('flappy')"
-        style="
-            padding:6px 12px;
-            background:#e5e7eb;
-            color:#374151;
-        "
-    >
-        ← Back
-    </button>
-</div>
+                <div id="envelope-back-btn" style="margin-top:8px; text-align:left;">
+                    <button class="nav-btn" onclick="goToScreen('flappy')" style="padding:6px 12px; background:#e5e7eb; color:#374151;">
+                        ← Back
+                    </button>
+                </div>
             </div>
 
             <!-- HALAMAN AKHIR SETELAH KLIK FINISH -->
@@ -1389,7 +1368,7 @@ style="margin-top:8px; text-align:left;"
                 document.getElementById(`dot-${i}`).classList.toggle('filled', i < enteredPin.length);
             }
         }
-       function checkPin() {
+        function checkPin() {
             if (enteredPin === "0711") {
                 playUnlockSound();
                 
@@ -1578,14 +1557,13 @@ style="margin-top:8px; text-align:left;"
 
         function initMinigame() {
             stopMinigame();
-            const minigameBgAudio =
-    document.getElementById('minigame1-bg-sound');
+            const minigameBgAudio = document.getElementById('minigame1-bg-sound');
 
-if (minigameBgAudio) {
-    minigameBgAudio.volume = 0.25;
-    minigameBgAudio.currentTime = 0;
-    minigameBgAudio.play().catch(e => console.log(e));
-}
+            if (minigameBgAudio) {
+                minigameBgAudio.volume = 0.25;
+                minigameBgAudio.currentTime = 0;
+                minigameBgAudio.play().catch(e => console.log(e));
+            }
             score = 0;
             timeLeft = 30;
             targetSymbol = null;
@@ -1707,13 +1685,12 @@ if (minigameBgAudio) {
             document.getElementById('game-next-btn').classList.remove('hidden');
         }
 
-        // --- MINIGAME 2: FLAPPY BIRD (CELAH DIPERBESAR, PIPA BAWAH MENANCAP SAMPAI DASAR) ---
+        // --- MINIGAME 2: FLAPPY BIRD ---
         let flappyInterval = null;
         let birdY = 80, birdVelocity = 0;
         let pipes = [];
         let flappyScore = 0;
-        let bestScore =
-parseInt(localStorage.getItem('flappyBestScore')) || 0;
+        let bestScore = parseInt(localStorage.getItem('flappyBestScore')) || 0;
 
         let isFlappyRunning = false;
         let gameStarted = false;
@@ -1739,7 +1716,6 @@ parseInt(localStorage.getItem('flappyBestScore')) || 0;
             isDying = false;
 
             document.getElementById('flappy-score-text').innerText = `0`;
-           
             document.getElementById('pipes-area').innerHTML = '';
             document.getElementById('game-over-modal').classList.add('hidden');
 
@@ -1777,30 +1753,30 @@ parseInt(localStorage.getItem('flappyBestScore')) || 0;
         }
 
         function spawnFlappyPipe() {
-            const containerHeight = 240; // Tinggi canvas baru
-            const groundHeight = 30;     // Tinggi ground paling bawah
-            const playableHeight = containerHeight - groundHeight; // 210px area bersih
-            const gap = 145;              // Celah pipa dibuat sangat besar & lega agar mudah dapat skor
+            const containerHeight = 240;
+            const groundHeight = 30;
+            const playableHeight = containerHeight - groundHeight;
+            const gap = 135;
             
             const minTop = 30;
-            const maxTop = 120;
+            const maxTop = 80;
             const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
             const bottomHeight = playableHeight - topHeight - gap;
 
-           pipes.push({
-        left: 380,
-        topHeight,
-        bottomHeight,
-        passed:false
-    });
-}
+            pipes.push({
+                left: 380,
+                topHeight: topHeight,
+                bottomHeight: bottomHeight,
+                passed: false
+            });
+        }
 
         function updateFlappyGame() {
             if (!isFlappyRunning) return;
 
             const containerHeight = 240;
             const groundHeight = 30;
-        const groundLimit = containerHeight - groundHeight + 120;
+            const groundLimit = containerHeight - groundHeight - 40;
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1809,39 +1785,23 @@ parseInt(localStorage.getItem('flappyBestScore')) || 0;
                     birdY = groundLimit;
                     isFlappyRunning = false;
                     clearInterval(flappyInterval);
-                   const title =
-document.querySelector('.game-over-title');
+                    const title = document.querySelector('.game-over-title');
 
-if (flappyScore >= 3) {
-
-    title.innerText = 'YOU WIN';
-    title.style.color = '#fde047';
-
-    document.getElementById('flappy-restart-btn')
-        .classList.add('hidden');
-
-    document.getElementById('flappy-win-btn')
-        .classList.remove('hidden');
-
-}
-else {
-
-    title.innerText = 'GAME OVER';
-    title.style.color = '#ffa500';
-
-    document.getElementById('flappy-restart-btn')
-        .classList.remove('hidden');
-
-    document.getElementById('flappy-win-btn')
-        .classList.add('hidden');
-
-}
-
+                    if (flappyScore >= 3) {
+                        title.innerText = 'YOU WIN';
+                        title.style.color = '#fde047';
+                        document.getElementById('flappy-restart-btn').classList.add('hidden');
+                        document.getElementById('flappy-win-btn').classList.remove('hidden');
+                    } else {
+                        title.innerText = 'GAME OVER';
+                        title.style.color = '#ffa500';
+                        document.getElementById('flappy-restart-btn').classList.remove('hidden');
+                        document.getElementById('flappy-win-btn').classList.add('hidden');
+                    }
 
                     document.getElementById('final-score-val').innerText = flappyScore;
                     document.getElementById('best-score-val').innerText = bestScore;
                     document.getElementById('game-over-modal').classList.remove('hidden');
-                    
                 }
                 const birdEl = document.getElementById('flappy-bird');
                 birdEl.style.top = birdY + 'px';
@@ -1860,23 +1820,26 @@ else {
             if (rot < -20) rot = -20;
             birdEl.style.transform = `rotate(${rot}deg)`;
 
-           if (birdY > groundLimit) {
-    playHitSound();
-    isDying = true;
-    return;
-}
+            if (birdY > groundLimit) {
+                playHitSound();
+                isDying = true;
+                return;
+            }
 
-if (birdY < 0) {
-    birdY = 0;
-    birdVelocity = 0;
-}
+            if (birdY < 0) {
+                birdY = 0;
+                birdVelocity = 0;
+            }
+
             const pipesArea = document.getElementById('pipes-area');
             pipesArea.innerHTML = '';
 
             for (let i = pipes.length - 1; i >= 0; i--) {
-               const pipeSpeed =
-1.8 + Math.min(flappyScore * 0.15, 2);
-                // --- 1. RENDER PIPA ATAS ---
+                pipes[i].left -= (1.8 + Math.min(flappyScore * 0.15, 2));
+
+                const bottomPipeTopPos = containerHeight - groundHeight - pipes[i].bottomHeight;
+
+                // 1. Pipe Top
                 const topPipeBody = document.createElement('div');
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
@@ -1890,12 +1853,7 @@ if (birdY < 0) {
                 topPipeLip.style.top = Math.max(0, pipes[i].topHeight - 18) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
-                // --- 2. RENDER PIPA BAWAH (BENAR-BENAR MENANCAP HINGGA DASAR GAMBAR & GROUND) ---
-                const bottomPipeTopPos =
-containerHeight - groundHeight - pipes[i].bottomHeight;
-
-const collisionBottom =
-bottomPipeTopPos;
+                // 2. Pipe Bottom
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
@@ -1906,53 +1864,42 @@ bottomPipeTopPos;
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
                 botPipeBody.style.top = (bottomPipeTopPos + 18) + 'px';
-                // Tinggi pipa bawah dilebihkan hingga menembus dasar paling bawah canvas
-              botPipeBody.style.height =(pipes[i].bottomHeight + 200) + 'px';
+                botPipeBody.style.height = (pipes[i].bottomHeight + 200) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
-
-                // --- 3. DETEKSI TABRAKAN AKURAT ---
-                const birdLeft = 72;
-                const birdRight = 86;
-                const birdTop = birdY + 20;
-                const birdBottom = birdY + 38;
+                // 3. Collision Detection
+                const birdLeft = 50;
+                const birdRight = 85;
+                const birdTop = birdY + 8;
+                const birdBottom = birdY + 40;
 
                 const pipeLeft = pipes[i].left;
                 const pipeRight = pipes[i].left + 52;
 
                 if (birdRight > pipeLeft && birdLeft < pipeRight) {
-    if (birdTop < pipes[i].topHeight ||
-        birdBottom > collisionBottom) {
+                    if (birdTop < pipes[i].topHeight || birdBottom > bottomPipeTopPos) {
                         playHitSound();
                         isDying = true;
                         return;
                     }
                 }
 
-                // Tambah Skor
-              if (!pipes[i].passed && pipes[i].left < 50) {
-    pipes[i].passed = true;
-    flappyScore++;
+                // Increase Score
+                if (!pipes[i].passed && pipes[i].left < 50) {
+                    pipes[i].passed = true;
+                    flappyScore++;
 
-    if (flappyScore > bestScore) {
-        bestScore = flappyScore;
-        localStorage.setItem(
-            'flappyBestScore',
-            bestScore
-        );
-    }
+                    if (flappyScore > bestScore) {
+                        bestScore = flappyScore;
+                        localStorage.setItem('flappyBestScore', bestScore);
+                    }
 
                     playFlappyPointSound();
                     document.getElementById('flappy-score-text').innerText = flappyScore;
                     if (flappyScore >= 3) {
-    document
-        .getElementById('flappy-restart-btn')
-        .classList.add('hidden');
-
-    document
-        .getElementById('flappy-win-btn')
-        .classList.remove('hidden');
-}
+                        document.getElementById('flappy-restart-btn').classList.add('hidden');
+                        document.getElementById('flappy-win-btn').classList.remove('hidden');
+                    }
                 }
 
                 if (pipes[i].left < -70) {
@@ -1966,26 +1913,22 @@ bottomPipeTopPos;
         }
 
         function forcePassFlappy() {
-    flappyScore = 3;
-    goToScreen('letter-countdown');
-}
+            flappyScore = 3;
+            goToScreen('letter-countdown');
+        }
 
-      function openLetter() {
-    document.getElementById('envelope-wrapper').classList.add('hidden');
-    document.getElementById('opened-letter-wrapper').classList.remove('hidden');
-    document.getElementById('envelope-back-btn').classList.add('hidden');
-    document.getElementById('final-buttons-wrapper').classList.remove('hidden');
+        function openLetter() {
+            document.getElementById('envelope-wrapper').classList.add('hidden');
+            document.getElementById('opened-letter-wrapper').classList.remove('hidden');
+            document.getElementById('envelope-back-btn').classList.add('hidden');
+            document.getElementById('final-buttons-wrapper').classList.remove('hidden');
 
-    requestAnimationFrame(() => {
-        document
-            .getElementById('letter-countdown-screen')
-            .scrollTo(0, 0);
+            requestAnimationFrame(() => {
+                document.getElementById('letter-countdown-screen').scrollTo(0, 0);
+                document.querySelector('.card').scrollTo(0, 0);
+            });
+        }
 
-        document
-            .querySelector('.card')
-            .scrollTo(0, 0);
-    });
-}
         setInterval(() => {
             const birthDate = new Date('1996-11-07T00:00:00');
             const metDate = new Date('2023-12-31T00:00:00');
@@ -1993,14 +1936,17 @@ bottomPipeTopPos;
 
             function calcDetailed(d1, d2) {
                 let diff = Math.abs(d2 - d1);
-                const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-                diff -= years * (1000 * 60 * 60 * 24 * 365);
-                const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-                diff -= months * (1000 * 60 * 60 * 24 * 30.44);
+                const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+                diff -= years * (1000 * 60 * 60 * 24 * 365.25);
+                const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.4375));
+                diff -= months * (1000 * 60 * 60 * 24 * 30.4375);
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const mins = Math.floor((diff / 1000 / 60) % 60);
-                const secs = Math.floor((diff / 1000) % 60);
+                diff -= days * (1000 * 60 * 60 * 24);
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                diff -= hours * (1000 * 60 * 60);
+                const mins = Math.floor(diff / (1000 * 60));
+                diff -= mins * (1000 * 60);
+                const secs = Math.floor(diff / 1000);
                 return { years, months, days, hours, mins, secs };
             }
 
