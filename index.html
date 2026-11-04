@@ -1695,11 +1695,11 @@ Thank God, here we are.<br>
             playFlapSound();
         }
 
-        function spawnFlappyPipe() {
+ function spawnFlappyPipe() {
             const containerHeight = 150;
             const groundHeight = 18;
-            const playableHeight = containerHeight - groundHeight;
-            const gap = 60;
+            const playableHeight = containerHeight - groundHeight; // 132px area main
+            const gap = 58; // Celah aman untuk terbang
             
             const minTop = 15;
             const maxTop = playableHeight - gap - 25;
@@ -1719,7 +1719,7 @@ Thank God, here we are.<br>
 
             const containerHeight = 150;
             const groundHeight = 18;
-            const groundLimit = containerHeight - groundHeight - 32;
+            const groundLimit = containerHeight - groundHeight - 32; // Tinggi burung 32px
 
             if (isDying) {
                 birdVelocity += 0.7;
@@ -1751,6 +1751,7 @@ Thank God, here we are.<br>
             if (rot < -20) rot = -20;
             birdEl.style.transform = `rotate(${rot}deg)`;
 
+            // Mati jika jatuh ke tanah atau menabrak langit-langit atas
             if (birdY > groundLimit || birdY < 0) {
                 playHitSound();
                 isDying = true;
@@ -1763,6 +1764,7 @@ Thank God, here we are.<br>
             for (let i = pipes.length - 1; i >= 0; i--) {
                 pipes[i].left -= 2.5;
 
+                // --- 1. RENDER PIPA ATAS ---
                 const topPipeBody = document.createElement('div');
                 topPipeBody.className = 'pipe-body';
                 topPipeBody.style.left = pipes[i].left + 'px';
@@ -1776,19 +1778,23 @@ Thank God, here we are.<br>
                 topPipeLip.style.top = Math.max(0, pipes[i].topHeight - 14) + 'px';
                 pipesArea.appendChild(topPipeLip);
 
+                // --- 2. RENDER PIPA BAWAH (MENANCAP PAS SAMPAI DASAR TANAH) ---
+                const bottomPipeTopPos = containerHeight - groundHeight - pipes[i].bottomHeight;
+                
                 const botPipeLip = document.createElement('div');
                 botPipeLip.className = 'pipe-lip';
                 botPipeLip.style.left = (pipes[i].left - 3) + 'px';
-                botPipeLip.style.top = (containerHeight - groundHeight - pipes[i].bottomHeight) + 'px';
+                botPipeLip.style.top = bottomPipeTopPos + 'px';
                 pipesArea.appendChild(botPipeLip);
 
                 const botPipeBody = document.createElement('div');
                 botPipeBody.className = 'pipe-body';
                 botPipeBody.style.left = pipes[i].left + 'px';
-                botPipeBody.style.top = (containerHeight - groundHeight - pipes[i].bottomHeight + 14) + 'px';
+                botPipeBody.style.top = (bottomPipeTopPos + 14) + 'px';
                 botPipeBody.style.height = (pipes[i].bottomHeight) + 'px';
                 pipesArea.appendChild(botPipeBody);
 
+                // --- 3. DETEKSI TABRAKAN PRESISI ---
                 const birdLeft = 40;
                 const birdRight = 40 + 32;
                 const birdTop = birdY;
@@ -1798,13 +1804,15 @@ Thank God, here we are.<br>
                 const pipeRight = pipes[i].left + 42;
 
                 if (birdRight > pipeLeft && birdLeft < pipeRight) {
-                    if (birdTop < pipes[i].topHeight || birdBottom > (containerHeight - groundHeight - pipes[i].bottomHeight)) {
+                    // Burung mati jika menabrak pipa atas ATAU menembus masuk ke area pipa bawah
+                    if (birdTop < pipes[i].topHeight || birdBottom > bottomPipeTopPos) {
                         playHitSound();
                         isDying = true;
                         return;
                     }
                 }
 
+                // Tambah Skor
                 if (!pipes[i].passed && pipes[i].left < 40) {
                     pipes[i].passed = true;
                     flappyScore++;
