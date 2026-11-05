@@ -1788,10 +1788,11 @@ Thank God, here we are.<br>
             const gap = 145; // Celah awal yang lega/mudah dipertahankan
             
             // Variasi tinggi pipa atas acak dari sangat pendek hingga panjang
-            const minTop = 15;
-            const maxTop = playableHeight - gap - 10; // max ~55px hingga 140px
-            const topHeight = Math.floor(Math.random() * (maxTop - minTop + 1)) + minTop;
-            const bottomHeight = Math.max(10, playableHeight - topHeight - gap);
+const topHeight =
+Math.floor(Math.random() * 150) + 5;
+
+const bottomHeight =
+Math.max(10, playableHeight - topHeight - gap);
 
             pipes.push({
                 left: 380,
