@@ -798,7 +798,7 @@
             </div>
 
             <!-- PAGE 3: GUESS RIGHT INTRO -->
-            <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 65%;">
+            <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; align-items:center; height: 100%;">
                 <div class="bubu-container" style="margin-top: 6px;">
                     <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-small">
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
@@ -947,7 +947,7 @@
                     </div>
 
                     <div id="success-box-4" class="success-box hidden">
-                        <p id="msg-text-4" style="font-size: 12.5px; font-weight: 600;">Message here</p>
+                        <p id="msg-text-4" style="font-size: 15px; font-weight: 600; line-height:1.5;">Message here</p>
                     </div>
                 </div>
 
@@ -984,7 +984,7 @@
                     </div>
 
                     <div id="success-box-5" class="success-box hidden">
-                        <p id="msg-text-5" style="font-size: 12.5px; font-weight: 600;">Message here</p>
+                        <p id="msg-text-5" style="font-size: 15px; font-weight: 600; line-height:1.5;">Message here</p>
                     </div>
                 </div>
 
@@ -1046,7 +1046,7 @@
 
                 <div style="margin-top: 2px; margin-bottom: 4px; flex-shrink: 0;">
                     <div style="display: inline-block; padding: 3px 10px; background: #f43f5e; color: white; border-radius: 14px; font-size: 11.5px; font-weight: 700; cursor: pointer; box-shadow: 0 2px 5px rgba(244,63,94,0.3);" onclick="forcePassFlappy()" title="Click to skip">Tap to fly</div>
-                    <div style="font-size: 10px; color: #6b7280; font-weight: 600; margin-top: 2px;">score min. 3 to continue</div>
+                    <div style="font-size: 11.5px; color: #4b5563; font-weight: 600; margin-top: 2px;">score min.3 to continue</div>
                 </div>
                 
                 <div class="flappy-canvas-container" id="flappy-container" onclick="flappyJump()" style="flex: 1;">
@@ -1117,7 +1117,12 @@
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
          <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
-    <div style="flex:0.5; display:flex; flex-direction:column; justify-content:center;">
+ <div style="
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+">
 
         <div id="envelope-wrapper">
             <div class="envelope-container" onclick="openLetter()">
