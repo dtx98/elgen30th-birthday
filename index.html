@@ -363,7 +363,7 @@
             border-radius: 12px;
             margin-bottom: 8px;
         }
-        .success-box p { color: #047857; font-size: 12px; font-weight: 600; margin-bottom: 0; }
+        .success-box p { color: #047857; font-size: 15px; font-weight: 600; margin-bottom: 0; line-height: 1.5;}
 
         .nav-footer {
             display: flex;
@@ -798,7 +798,7 @@
             </div>
 
             <!-- PAGE 3: GUESS RIGHT INTRO -->
-            <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
+            <div id="guess-screen" class="hidden" style="display: flex; flex-direction: column; justify-content: center; height: 65%;">
                 <div class="bubu-container" style="margin-top: 6px;">
                     <img src="https://i.pinimg.com/originals/5f/f8/79/5ff8792f7d15ecaa02ff39ff11ff1fb9.gif" alt="Bubu Dudu" class="bubu-small">
                     <div class="speech-bubble">Let's see how well you know your own story.</div>
@@ -1116,24 +1116,38 @@
             </div>  <!-- PENUTUP FLAPPY-SCREEN -->
 
             <!-- CHAPTER 7 & 8: LETTER & COUNTDOWN -->
-            <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
-                <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
-                    <div class="chapter-subtitle" style="margin-bottom: 3px;text-align: center;">One Last Thing</div>
-                    <h2 style="font-size: 17px; color: #1f2937; margin-bottom: 8px; font-family: 'Playfair Display', serif; font-weight: 600;text-align: center;">A letter, just for you</h2>
-                
-                    <div id="envelope-wrapper">
-                        <div class="envelope-container" onclick="openLetter()">
-                            <div class="envelope-icon-wrapper">
-                                <div class="envelope-icon-circle">✉️</div>
-                                <div class="notification-heart">💛</div>
-                            </div>
-                            <h3 style="font-size: 14.5px; margin-bottom: 3px; color: #fff;">You've got mail</h3>
-                            <p style="font-size: 11px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
-                        </div>
-                    </div>
-                </div>
+         <div id="letter-countdown-screen" class="hidden" style="display: flex; flex-direction: column; height: 100%; overflow-y: auto;">
+    <div style="flex:0.5; display:flex; flex-direction:column; justify-content:center;">
 
-                <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+        <div id="envelope-wrapper">
+            <div class="envelope-container" onclick="openLetter()">
+                <div class="envelope-icon-wrapper">
+                    <div class="envelope-icon-circle">✉️</div>
+                    <div class="notification-heart">💛</div>
+                </div>
+                <h3 style="font-size: 14.5px; margin-bottom: 3px; color: #fff;">You've got mail</h3>
+                <p style="font-size: 11px; opacity: 0.8; color: #fff;">Tap to open the envelope</p>
+            </div>
+        </div>
+
+    </div>
+
+              <div id="opened-letter-wrapper" class="hidden" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+
+    <div class="chapter-subtitle"
+         style="margin-bottom: 3px; text-align: center;">
+        One Last Thing
+    </div>
+
+    <h2 style="
+        font-size: 17px;
+        color: #1f2937;
+        margin-bottom: 8px;
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        text-align: center;">
+        A letter, just for you
+    </h2>
                     <div class="letter-paper">哥哥哥哥哥哥，<br>
 秀最愛的哥哥，今天生日啦❤️<br>
 哇，30歲了耶。<br>
